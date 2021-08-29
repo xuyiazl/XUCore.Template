@@ -6,7 +6,7 @@
 		<description>Ddd 项目模板，Web MVC和WebApi项目</description>
 		<authors>XUCore</authors>
 		<copyright>Copyright © XUCore 2020</copyright>
-		<projectUrl>hhttps://github.com/xuyiazl/XUCore.Template</projectUrl>
+		<projectUrl>https://github.com/xuyiazl/XUCore.Template</projectUrl>
 		<iconUrl>http://www.3624091.com/favicon.ico</iconUrl>
 		<packageTypes>
 			<packageType name="Template" />
