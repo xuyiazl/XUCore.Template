@@ -1,0 +1,2 @@
+# XUCore.Template
+XUCore.Template
