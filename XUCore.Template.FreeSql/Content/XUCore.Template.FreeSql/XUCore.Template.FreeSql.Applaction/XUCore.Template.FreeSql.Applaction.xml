@@ -4,6 +4,112 @@
         <name>XUCore.Template.FreeSql.Applaction</name>
     </assembly>
     <members>
+        <member name="T:XUCore.Template.FreeSql.Applaction.Basics.IChinaAreaAppService">
+            <summary>
+            城市区域管理
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.FreeSql.Applaction.Basics.IChinaAreaAppService.CreateAsync(XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaCreateCommand,System.Threading.CancellationToken)">
+            <summary>
+            创建城市区域
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.FreeSql.Applaction.Basics.IChinaAreaAppService.UpdateAsync(XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaUpdateCommand,System.Threading.CancellationToken)">
+            <summary>
+            更新城市区域信息
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.FreeSql.Applaction.Basics.IChinaAreaAppService.DeleteAsync(System.Int64[],System.Threading.CancellationToken)">
+            <summary>
+            删除城市区域（物理删除）
+            </summary>
+            <param name="ids"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.FreeSql.Applaction.Basics.IChinaAreaAppService.GetAsync(System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            获取城市区域信息
+            </summary>
+            <param name="id"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.FreeSql.Applaction.Basics.IChinaAreaAppService.GetTreeAsync(XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaQueryTreeCommand,System.Threading.CancellationToken)">
+            <summary>
+            获取城市区域树形结构
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.FreeSql.Applaction.Basics.IChinaAreaAppService.GetListAsync(XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaQueryCommand,System.Threading.CancellationToken)">
+            <summary>
+            获取城市区域列表
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:XUCore.Template.FreeSql.Applaction.Basics.ChinaAreaAppService">
+            <summary>
+            城市区域管理
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.FreeSql.Applaction.Basics.ChinaAreaAppService.CreateAsync(XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaCreateCommand,System.Threading.CancellationToken)">
+            <summary>
+            创建城市区域
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.FreeSql.Applaction.Basics.ChinaAreaAppService.UpdateAsync(XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaUpdateCommand,System.Threading.CancellationToken)">
+            <summary>
+            更新城市区域信息
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.FreeSql.Applaction.Basics.ChinaAreaAppService.DeleteAsync(System.Int64[],System.Threading.CancellationToken)">
+            <summary>
+            删除城市区域（物理删除）
+            </summary>
+            <param name="ids"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.FreeSql.Applaction.Basics.ChinaAreaAppService.GetAsync(System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            获取城市区域信息
+            </summary>
+            <param name="id"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.FreeSql.Applaction.Basics.ChinaAreaAppService.GetTreeAsync(XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaQueryTreeCommand,System.Threading.CancellationToken)">
+            <summary>
+            获取城市区域树形结构
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.FreeSql.Applaction.Basics.ChinaAreaAppService.GetListAsync(XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaQueryCommand,System.Threading.CancellationToken)">
+            <summary>
+            获取城市区域列表
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
         <member name="T:XUCore.Template.FreeSql.Applaction.Login.ILoginAppService">
             <summary>
             用户登录接口

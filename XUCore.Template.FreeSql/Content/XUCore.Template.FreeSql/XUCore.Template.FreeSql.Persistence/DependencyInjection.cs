@@ -62,6 +62,9 @@ namespace XUCore.Template.FreeSql.Persistence
             if (connection.SyncStructure)
                 DbHelper.SyncStructure(fsql, dbConfig: connection);
 
+            if (connection.SyncData)
+                DbHelper.SyncData(fsql);
+
             //计算服务器时间（时间偏移）
             var serverTime = fsql.Select<DualEntity>().Limit(1).First(a => DateTime.UtcNow);
             var timeOffset = DateTime.UtcNow.Subtract(serverTime);

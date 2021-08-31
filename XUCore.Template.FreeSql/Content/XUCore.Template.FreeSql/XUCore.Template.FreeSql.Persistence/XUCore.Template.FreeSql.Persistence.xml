@@ -40,6 +40,12 @@
             同步结构
             </summary>
         </member>
+        <member name="M:XUCore.Template.FreeSql.Persistence.DbHelper.SyncData(IFreeSql)">
+            <summary>
+            同步基础数据
+            </summary>
+            <param name="db"></param>
+        </member>
         <member name="T:XUCore.Template.FreeSql.Persistence.MySqlDb">
             <summary>
             多数据库命名
@@ -51,6 +57,76 @@
             </summary>
             <param name="multiDb"></param>
             <returns></returns>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.Persistence.Entities.ChinaAreaEntity.ParentId">
+            <summary>
+            上级区域Id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.Persistence.Entities.ChinaAreaEntity.Childs">
+            <summary>
+            下级城市
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.Persistence.Entities.ChinaAreaEntity.Level">
+            <summary>
+            行政区域等级 1-省 2-市 3-区县 4-街道镇
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.Persistence.Entities.ChinaAreaEntity.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.Persistence.Entities.ChinaAreaEntity.WholeName">
+            <summary>
+            完整名称
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.Persistence.Entities.ChinaAreaEntity.Lon">
+            <summary>
+            本区域经度
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.Persistence.Entities.ChinaAreaEntity.Lat">
+            <summary>
+            本区域维度
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.Persistence.Entities.ChinaAreaEntity.CityCode">
+            <summary>
+            电话区号
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.Persistence.Entities.ChinaAreaEntity.ZipCode">
+            <summary>
+            邮政编码
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.Persistence.Entities.ChinaAreaEntity.AreaCode">
+            <summary>
+            行政区划代码
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.Persistence.Entities.ChinaAreaEntity.PinYin">
+            <summary>
+            名称全拼
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.Persistence.Entities.ChinaAreaEntity.SimplePy">
+            <summary>
+            首字母简拼
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.Persistence.Entities.ChinaAreaEntity.PerPinYin">
+            <summary>
+            区域名称拼音的第一个字母
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.Persistence.Entities.ChinaAreaEntity.Sort">
+            <summary>
+            权重排序
+            </summary>
         </member>
         <member name="T:XUCore.Template.FreeSql.Persistence.Entities.DualEntity">
             <summary>

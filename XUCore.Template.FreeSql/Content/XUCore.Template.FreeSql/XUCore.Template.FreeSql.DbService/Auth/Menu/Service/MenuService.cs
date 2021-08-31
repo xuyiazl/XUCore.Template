@@ -112,7 +112,7 @@ namespace XUCore.Template.FreeSql.DbService.Auth.Menu
             //        r.Childs.AddRange(datalist);
             //    });
 
-            var res = repo.Select.OrderByDescending(c => c.Sort).OrderBy(c => c.CreatedAt).OrderBy(c => c.CreatedAt).ToTreeList();
+            var res = repo.Select.OrderByDescending(c => c.Sort).OrderBy(c => c.CreatedAt).ToTreeList();
 
             var tree = mapper.Map<IList<MenuEntity>, IList<MenuTreeDto>>(res);
 

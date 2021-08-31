@@ -3,14 +3,18 @@ using FreeSql.Aop;
 using FreeSql.DataAnnotations;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 using XUCore.Ddd.Domain;
 using XUCore.Extensions;
 using XUCore.Helpers;
+using XUCore.IO;
 using XUCore.NetCore.FreeSql;
 using XUCore.NetCore.FreeSql.Entity;
+using XUCore.Serializer;
 using XUCore.Template.FreeSql.Core;
+using XUCore.Template.FreeSql.Persistence.Entities;
 
 namespace XUCore.Template.FreeSql.Persistence
 {
@@ -205,5 +209,30 @@ namespace XUCore.Template.FreeSql.Persistence
 
             Console.WriteLine($" {(msg.NotEmpty() ? msg : $"sync {dbType} structure")} succeed");
         }
+
+        /// <summary>
+        /// 同步基础数据
+        /// </summary>
+        /// <param name="db"></param>
+        public static void SyncData(IFreeSql db)
+        {
+            var initData = $"{Directory.GetCurrentDirectory()}\\InitData";
+            {
+                var any = db.Select<ChinaAreaEntity>().Any();
+                if (!any)
+                {
+                    var data = FileHelper.ReadAllTextAsync($"{initData}\\sys_china_area.json").GetAwaiter().GetResult();
+
+                    var list = data.ToObject<List<ChinaAreaEntity>>();
+
+                    var res = db.Insert(list).ExecuteAffrows();
+
+                    Console.WriteLine($"初始化数据：省份城市数据 {res} 条...");
+                }
+                else
+                    Console.WriteLine($"初始化数据：省份城市数据已存在，无需同步...");
+            }
+        }
     }
+
 }

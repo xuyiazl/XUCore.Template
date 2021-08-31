@@ -322,6 +322,261 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
+        <member name="T:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaCreateCommand">
+            <summary>
+            创建省市区域命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaCreateCommand.ParentId">
+            <summary>
+            上级区域Id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaCreateCommand.Level">
+            <summary>
+            行政区域等级 1-省 2-市 3-区县 4-街道镇
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaCreateCommand.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaCreateCommand.WholeName">
+            <summary>
+            完整名称
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaCreateCommand.Lon">
+            <summary>
+            本区域经度
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaCreateCommand.Lat">
+            <summary>
+            本区域维度
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaCreateCommand.CityCode">
+            <summary>
+            电话区号
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaCreateCommand.ZipCode">
+            <summary>
+            邮政编码
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaCreateCommand.AreaCode">
+            <summary>
+            行政区划代码
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaCreateCommand.PinYin">
+            <summary>
+            名称全拼
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaCreateCommand.SimplePy">
+            <summary>
+            首字母简拼
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaCreateCommand.PerPinYin">
+            <summary>
+            区域名称拼音的第一个字母
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaCreateCommand.Sort">
+            <summary>
+            权重排序
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaQueryCommand">
+            <summary>
+            省市区域查询命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaQueryCommand.CityId">
+            <summary>
+            城市Id
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaQueryPagedCommand">
+            <summary>
+            省市区域查询命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaQueryPagedCommand.Keyword">
+            <summary>
+            搜索关键字
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaQueryTreeCommand">
+            <summary>
+            省市区域查询命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaQueryTreeCommand.CityId">
+            <summary>
+            城市Id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaQueryTreeCommand.Level">
+            <summary>
+            行政区域等级 0-全部 1-到市级 2-到县级 3-到街道
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaUpdateCommand">
+            <summary>
+            省市区域更新命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaUpdateCommand.ParentId">
+            <summary>
+            上级区域Id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaUpdateCommand.Level">
+            <summary>
+            行政区域等级 1-省 2-市 3-区县 4-街道镇
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaUpdateCommand.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaUpdateCommand.WholeName">
+            <summary>
+            完整名称
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaUpdateCommand.Lon">
+            <summary>
+            本区域经度
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaUpdateCommand.Lat">
+            <summary>
+            本区域维度
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaUpdateCommand.CityCode">
+            <summary>
+            电话区号
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaUpdateCommand.ZipCode">
+            <summary>
+            邮政编码
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaUpdateCommand.AreaCode">
+            <summary>
+            行政区划代码
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaUpdateCommand.PinYin">
+            <summary>
+            名称全拼
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaUpdateCommand.SimplePy">
+            <summary>
+            首字母简拼
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaUpdateCommand.PerPinYin">
+            <summary>
+            区域名称拼音的第一个字母
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaUpdateCommand.Sort">
+            <summary>
+            权重排序
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaDto">
+            <summary>
+            导航列表
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaDto.ParentId">
+            <summary>
+            上级区域Id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaDto.Level">
+            <summary>
+            行政区域等级 1-省 2-市 3-区县 4-街道镇
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaDto.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaDto.WholeName">
+            <summary>
+            完整名称
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaDto.Lon">
+            <summary>
+            本区域经度
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaDto.Lat">
+            <summary>
+            本区域维度
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaDto.CityCode">
+            <summary>
+            电话区号
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaDto.ZipCode">
+            <summary>
+            邮政编码
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaDto.AreaCode">
+            <summary>
+            行政区划代码
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaDto.PinYin">
+            <summary>
+            名称全拼
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaDto.SimplePy">
+            <summary>
+            首字母简拼
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaDto.PerPinYin">
+            <summary>
+            区域名称拼音的第一个字母
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaDto.Sort">
+            <summary>
+            权重排序
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaTreeDto">
+            <summary>
+            导航列表
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.DbService.Basics.ChinaArea.ChinaAreaTreeDto.Childs">
+            <summary>
+            下级城市
+            </summary>
+        </member>
         <member name="T:XUCore.Template.FreeSql.DbService.Events.UserCreateEvent">
             <summary>
             用户账号创建事件
