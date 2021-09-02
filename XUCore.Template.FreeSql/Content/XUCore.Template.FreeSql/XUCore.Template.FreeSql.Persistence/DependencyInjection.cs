@@ -3,7 +3,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using XUCore.Configs;
-using XUCore.Ddd.Domain;
 using XUCore.Extensions;
 using XUCore.NetCore.FreeSql;
 using XUCore.NetCore.FreeSql.Entity;
@@ -16,7 +15,6 @@ namespace XUCore.Template.FreeSql.Persistence
     {
         public static IServiceCollection AddDbContext(this IServiceCollection services, IConfiguration configuration)
         {
-            //services.AddScoped<IdleBusUnitOfWorkManager>();
             services.AddFreeSqlUnitOfWorkManager();
 
             var connection = configuration.GetSection<ConnectionSettings>("ConnectionSettings");
@@ -97,7 +95,7 @@ namespace XUCore.Template.FreeSql.Persistence
             }
 
             //添加IdleBus单例（管理租户用）
-            //services.AddSingleton(new IdleBus<IFreeSql>(connection.IdleTime > 0 ? TimeSpan.FromMinutes(connection.IdleTime) : TimeSpan.MaxValue));
+            services.AddSingleton(new AspectCoreIdleBus { IBus = new IdleBus<IFreeSql>(connection.IdleTime > 0 ? TimeSpan.FromMinutes(connection.IdleTime) : TimeSpan.MaxValue) });
 
             return services;
         }

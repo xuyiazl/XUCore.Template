@@ -59,10 +59,13 @@ namespace XUCore.Template.FreeSql.Applaction.Login
             // 生成 刷新token
             var refreshToken = JWTEncryption.GenerateRefreshToken(accessToken);
 
-            // 设置 Swagger 自动登录
-            Web.HttpContext.SigninToSwagger(accessToken);
-            // 设置刷新 token
-            Web.HttpContext.Response.Headers["x-access-token"] = refreshToken;
+            if (Web.HttpContext != null)
+            {
+                // 设置 Swagger 自动登录
+                Web.HttpContext.SigninToSwagger(accessToken);
+                // 设置刷新 token
+                Web.HttpContext.Response.Headers["x-access-token"] = refreshToken;
+            }
 
             user.SetToken(userDto.Id.ToString(), accessToken);
 

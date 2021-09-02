@@ -23,6 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - 业务应用", "1 - 业
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - 数据服务", "2 - 数据服务", "{E8C4238C-6E36-4B50-BB42-FCD0F19F7836}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUCore.Template.FreeSql.Backstage", "XUCore.Template.FreeSql.Backstage\XUCore.Template.FreeSql.Backstage.csproj", "{BD36F8BF-3D23-4C39-A6B7-448FEA116B2A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{C33E11C6-3E0D-46D3-AB69-4D14DCD5E440}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C33E11C6-3E0D-46D3-AB69-4D14DCD5E440}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C33E11C6-3E0D-46D3-AB69-4D14DCD5E440}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD36F8BF-3D23-4C39-A6B7-448FEA116B2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD36F8BF-3D23-4C39-A6B7-448FEA116B2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD36F8BF-3D23-4C39-A6B7-448FEA116B2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD36F8BF-3D23-4C39-A6B7-448FEA116B2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,6 +67,7 @@ Global
 		{C33E11C6-3E0D-46D3-AB69-4D14DCD5E440} = {E8C4238C-6E36-4B50-BB42-FCD0F19F7836}
 		{7251B058-3606-4641-9720-52C6D19E94F8} = {07BD89B7-6CB1-40FE-8D1E-D4DFEA0503C5}
 		{E8C4238C-6E36-4B50-BB42-FCD0F19F7836} = {07BD89B7-6CB1-40FE-8D1E-D4DFEA0503C5}
+		{BD36F8BF-3D23-4C39-A6B7-448FEA116B2A} = {A5D27F7D-1F4A-42F0-9A19-764A4927BF1D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {353AC975-67DD-46D9-9811-B2288C18FEE9}
