@@ -43,9 +43,8 @@ namespace XUCore.Template.Easy.Applaction.Login
         /// <param name="request"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        [HttpPost("/api/[controller]")]
         [AllowAnonymous]
-        public async Task<Result<LoginTokenDto>> LoginAsync([Required][FromBody] AdminUserLoginCommand request, CancellationToken cancellationToken)
+        public async Task<Result<LoginTokenDto>> PostAsync([Required][FromBody] AdminUserLoginCommand request, CancellationToken cancellationToken)
         {
             var userDto = await adminUserAppService.LoginAsync(request, cancellationToken);
 
@@ -90,8 +89,7 @@ namespace XUCore.Template.Easy.Applaction.Login
         /// </summary>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        [HttpPost("/api/[controller]/Out")]
-        public async Task LoginOutAsync(CancellationToken cancellationToken)
+        public async Task PostOutAsync(CancellationToken cancellationToken)
         {
             user.RemoveToken();
 
@@ -109,7 +107,6 @@ namespace XUCore.Template.Easy.Applaction.Login
         /// <param name="onlyCode"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        [HttpGet("/api/[controller]/Permission/Exists")]
         public async Task<Result<bool>> GetPermissionExistsAsync([Required] long adminId, [Required] string onlyCode, CancellationToken cancellationToken = default)
         {
             var res = await permissionService.ExistsAsync(adminId, onlyCode, cancellationToken);
@@ -122,7 +119,6 @@ namespace XUCore.Template.Easy.Applaction.Login
         /// <param name="adminId"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        [HttpGet("/api/[controller]/Permission/Menu")]
         public async Task<Result<IList<PermissionMenuTreeDto>>> GetPermissionMenusAsync([Required] long adminId, CancellationToken cancellationToken = default)
         {
             var res = await permissionService.GetMenusAsync(adminId, cancellationToken);
@@ -135,7 +131,6 @@ namespace XUCore.Template.Easy.Applaction.Login
         /// <param name="adminId"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        [HttpGet("/api/[controller]/Permission/Express")]
         public async Task<Result<IList<PermissionMenuDto>>> GetPermissionMenuExpressAsync([Required] long adminId, CancellationToken cancellationToken = default)
         {
             var res = await permissionService.GetMenuExpressAsync(adminId, cancellationToken);

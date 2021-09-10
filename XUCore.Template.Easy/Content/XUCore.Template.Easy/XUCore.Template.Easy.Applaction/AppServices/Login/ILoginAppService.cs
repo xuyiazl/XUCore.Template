@@ -20,7 +20,7 @@ namespace XUCore.Template.Easy.Applaction.Login
         /// <param name="command"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<Result<LoginTokenDto>> LoginAsync(AdminUserLoginCommand command, CancellationToken cancellationToken);
+        Task<Result<LoginTokenDto>> PostAsync(AdminUserLoginCommand command, CancellationToken cancellationToken);
         /// <summary>
         /// 验证Token
         /// </summary>
@@ -33,7 +33,7 @@ namespace XUCore.Template.Easy.Applaction.Login
         /// </summary>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task LoginOutAsync(CancellationToken cancellationToken);
+        Task PostOutAsync(CancellationToken cancellationToken);
 
         #endregion
 

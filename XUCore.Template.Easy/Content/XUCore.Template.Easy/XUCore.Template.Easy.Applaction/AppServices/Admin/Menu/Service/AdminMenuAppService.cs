@@ -129,8 +129,7 @@ namespace XUCore.Template.Easy.Applaction.Admin
         /// </summary>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        [HttpGet("/api/[controller]/Tree")]
-        public async Task<Result<IList<AdminMenuTreeDto>>> GetListByTreeAsync(CancellationToken cancellationToken = default)
+        public async Task<Result<IList<AdminMenuTreeDto>>> GetTreeAsync(CancellationToken cancellationToken = default)
         {
             var list = await db.GetListAsync<AdminMenuEntity>(orderby: "Weight desc", cancellationToken: cancellationToken);
 

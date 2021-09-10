@@ -27,6 +27,6 @@ namespace XUCore.Template.Easy.Applaction.Admin
         /// </summary>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<Result<IList<AdminMenuTreeDto>>> GetListByTreeAsync(CancellationToken cancellationToken = default);
+        Task<Result<IList<AdminMenuTreeDto>>> GetTreeAsync(CancellationToken cancellationToken = default);
     }
 }

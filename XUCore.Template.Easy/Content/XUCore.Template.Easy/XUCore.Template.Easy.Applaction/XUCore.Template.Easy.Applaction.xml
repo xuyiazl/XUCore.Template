@@ -239,7 +239,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.Easy.Applaction.Admin.IAdminMenuAppService.GetListByTreeAsync(System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.Easy.Applaction.Admin.IAdminMenuAppService.GetTreeAsync(System.Threading.CancellationToken)">
             <summary>
             获取导航树形结构
             </summary>
@@ -285,7 +285,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.Easy.Applaction.Admin.AdminMenuAppService.GetListByTreeAsync(System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.Easy.Applaction.Admin.AdminMenuAppService.GetTreeAsync(System.Threading.CancellationToken)">
             <summary>
             获取导航树形结构
             </summary>
@@ -929,7 +929,7 @@
             管理员登录接口
             </summary>
         </member>
-        <member name="M:XUCore.Template.Easy.Applaction.Login.ILoginAppService.LoginAsync(XUCore.Template.Easy.Applaction.Login.AdminUserLoginCommand,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.Easy.Applaction.Login.ILoginAppService.PostAsync(XUCore.Template.Easy.Applaction.Login.AdminUserLoginCommand,System.Threading.CancellationToken)">
             <summary>
             管理员登录
             </summary>
@@ -944,7 +944,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.Easy.Applaction.Login.ILoginAppService.LoginOutAsync(System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.Easy.Applaction.Login.ILoginAppService.PostOutAsync(System.Threading.CancellationToken)">
             <summary>
             退出登录
             </summary>
@@ -981,7 +981,7 @@
             登录接口
             </summary>
         </member>
-        <member name="M:XUCore.Template.Easy.Applaction.Login.LoginAppService.LoginAsync(XUCore.Template.Easy.Applaction.Login.AdminUserLoginCommand,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.Easy.Applaction.Login.LoginAppService.PostAsync(XUCore.Template.Easy.Applaction.Login.AdminUserLoginCommand,System.Threading.CancellationToken)">
             <summary>
             管理员登录
             </summary>
@@ -996,7 +996,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.Easy.Applaction.Login.LoginAppService.LoginOutAsync(System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.Easy.Applaction.Login.LoginAppService.PostOutAsync(System.Threading.CancellationToken)">
             <summary>
             退出登录
             </summary>
@@ -1078,7 +1078,7 @@
             文件上传服务
             </summary>
         </member>
-        <member name="M:XUCore.Template.Easy.Applaction.Upload.UploadAppService.UploadFile(Microsoft.AspNetCore.Http.IFormFile,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.Easy.Applaction.Upload.UploadAppService.File(Microsoft.AspNetCore.Http.IFormFile,System.Threading.CancellationToken)">
             <summary>
             上传文件
             </summary>
@@ -1086,7 +1086,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.Easy.Applaction.Upload.UploadAppService.UploadImage(Microsoft.AspNetCore.Http.IFormFile,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.Easy.Applaction.Upload.UploadAppService.Image(Microsoft.AspNetCore.Http.IFormFile,System.Threading.CancellationToken)">
             <summary>
             上传图片
             </summary>
@@ -1094,7 +1094,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.Easy.Applaction.Upload.UploadAppService.UploadImage(XUCore.Template.Easy.Applaction.Upload.Base64Command,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.Easy.Applaction.Upload.UploadAppService.Base64(XUCore.Template.Easy.Applaction.Upload.Base64Command,System.Threading.CancellationToken)">
             <summary>
             上传图片
             </summary>

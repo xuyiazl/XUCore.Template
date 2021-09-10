@@ -11,8 +11,8 @@ namespace XUCore.Template.EasyLayer.Applaction.Upload
     /// </summary>
     public interface IUploadAppService : IAppService
     {
-        Task<Result<XUCore.Files.FileInfo>> UploadFile(IFormFile formFile, CancellationToken cancellationToken);
-        Task<Result<ImageFileInfo>> UploadImage(IFormFile formFile, CancellationToken cancellationToken);
-        Task<Result<ImageFileInfo>> UploadImage(Base64Command request, CancellationToken cancellationToken);
+        Task<Result<XUCore.Files.FileInfo>> File(IFormFile formFile, CancellationToken cancellationToken);
+        Task<Result<ImageFileInfo>> Image(IFormFile formFile, CancellationToken cancellationToken);
+        Task<Result<ImageFileInfo>> Base64(Base64Command request, CancellationToken cancellationToken);
     }
 }
