@@ -43,9 +43,8 @@ namespace XUCore.Template.FreeSql.Applaction.Login
         /// <param name="request"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        [HttpPost("/api/[controller]")]
         [AllowAnonymous]
-        public async Task<Result<LoginTokenDto>> LoginAsync([Required][FromBody] UserLoginCommand request, CancellationToken cancellationToken)
+        public async Task<Result<LoginTokenDto>> PostAsync([Required][FromBody] UserLoginCommand request, CancellationToken cancellationToken)
         {
             var userDto = await userService.LoginAsync(request, cancellationToken);
 
@@ -93,8 +92,7 @@ namespace XUCore.Template.FreeSql.Applaction.Login
         /// </summary>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        [HttpPost("/api/[controller]/Out")]
-        public async Task LoginOutAsync(CancellationToken cancellationToken)
+        public async Task PostOutAsync(CancellationToken cancellationToken)
         {
             user.RemoveToken();
 
@@ -112,7 +110,6 @@ namespace XUCore.Template.FreeSql.Applaction.Login
         /// <param name="onlyCode"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        [HttpGet("/api/[controller]/Permission/Exists")]
         public async Task<Result<bool>> GetPermissionExistsAsync([Required] long userId, [Required] string onlyCode, CancellationToken cancellationToken = default)
         {
             var res = await permissionService.ExistsAsync(userId, onlyCode, cancellationToken);
@@ -125,7 +122,6 @@ namespace XUCore.Template.FreeSql.Applaction.Login
         /// <param name="userId"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        [HttpGet("/api/[controller]/Permission/Menu")]
         public async Task<Result<IList<PermissionMenuTreeDto>>> GetPermissionMenusAsync([Required] long userId, CancellationToken cancellationToken = default)
         {
             var res = await permissionService.GetMenusAsync(userId, cancellationToken);
@@ -138,7 +134,6 @@ namespace XUCore.Template.FreeSql.Applaction.Login
         /// <param name="userId"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        [HttpGet("/api/[controller]/Permission/Express")]
         public async Task<Result<IList<PermissionMenuDto>>> GetPermissionMenuExpressAsync([Required] long userId, CancellationToken cancellationToken = default)
         {
             var res = await permissionService.GetMenuExpressAsync(userId, cancellationToken);

@@ -22,7 +22,7 @@ namespace XUCore.Template.FreeSql.Applaction.Login
         /// <param name="request"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<Result<LoginTokenDto>> LoginAsync(UserLoginCommand request, CancellationToken cancellationToken);
+        Task<Result<LoginTokenDto>> PostAsync(UserLoginCommand request, CancellationToken cancellationToken);
         /// <summary>
         /// 验证Token
         /// </summary>
@@ -34,7 +34,7 @@ namespace XUCore.Template.FreeSql.Applaction.Login
         /// </summary>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task LoginOutAsync(CancellationToken cancellationToken);
+        Task PostOutAsync(CancellationToken cancellationToken);
         #endregion
 
         #region [ 登录后的权限获取 ]

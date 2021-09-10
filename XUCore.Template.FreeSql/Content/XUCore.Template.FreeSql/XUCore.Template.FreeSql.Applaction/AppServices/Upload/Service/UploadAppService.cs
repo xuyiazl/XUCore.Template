@@ -35,8 +35,7 @@ namespace XUCore.Template.FreeSql.Applaction.Upload
         /// <param name="formFile"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        [HttpPost("/api/[Controller]/File")]
-        public async Task<Result<XUCore.Files.FileInfo>> UploadFile([Required] IFormFile formFile, CancellationToken cancellationToken)
+        public async Task<Result<XUCore.Files.FileInfo>> File([Required] IFormFile formFile, CancellationToken cancellationToken)
         {
             var param = new SingleFileUploadParam()
             {
@@ -59,8 +58,7 @@ namespace XUCore.Template.FreeSql.Applaction.Upload
         /// <param name="formFile"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        [HttpPost("/api/[Controller]/Image")]
-        public async Task<Result<ImageFileInfo>> UploadImage([Required] IFormFile formFile, CancellationToken cancellationToken)
+        public async Task<Result<ImageFileInfo>> Image([Required] IFormFile formFile, CancellationToken cancellationToken)
         {
             var param = new SingleImageUploadParam()
             {
@@ -104,8 +102,7 @@ namespace XUCore.Template.FreeSql.Applaction.Upload
         /// <param name="request"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        [HttpPost("/api/[Controller]/Base64")]
-        public async Task<Result<ImageFileInfo>> UploadImage([Required][FromBody] Base64Command request, CancellationToken cancellationToken)
+        public async Task<Result<ImageFileInfo>> Base64([Required][FromBody] Base64Command request, CancellationToken cancellationToken)
         {
             var param = new SingleImageBase64UploadParam()
             {
