@@ -86,7 +86,7 @@ namespace XUCore.Template.FreeSql.Persistence
                     switch (multiDb.Name)
                     {
                         case nameof(MySqlDb):
-                            services.AddSingleton(new AspectCoreFreeSql { Orm = CreateMultiDbBuilder(multiDb).Build<MySqlDb>() });
+                            services.AddSingleton(new AspectCoreFreeSql<MySqlDb> { Orm = CreateMultiDbBuilder(multiDb).Build<MySqlDb>() });
                             break;
                         default:
                             break;
