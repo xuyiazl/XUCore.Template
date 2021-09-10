@@ -1,0 +1,387 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>XUCore.Template.EasyFreeSql.Persistence</name>
+    </assembly>
+    <members>
+        <member name="F:XUCore.Template.EasyFreeSql.Persistence.DbHelper.TimeOffset">
+            <summary>
+            偏移时间
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.EasyFreeSql.Persistence.DbHelper.CreateDatabaseAsync(XUCore.Template.EasyFreeSql.Core.ConnectionSettings)">
+            <summary>
+            创建数据库
+            </summary>
+            <param name="dbConfig"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.EasyFreeSql.Persistence.DbHelper.GetEntityTypes">
+            <summary>
+            获得指定程序集表实体
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.EasyFreeSql.Persistence.DbHelper.ConfigEntity(IFreeSql)">
+            <summary>
+            配置实体
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.EasyFreeSql.Persistence.DbHelper.AuditValue(FreeSql.Aop.AuditValueEventArgs,System.TimeSpan,XUCore.Template.EasyFreeSql.Core.IUserInfo)">
+            <summary>
+            审计数据
+            </summary>
+            <param name="e"></param>
+            <param name="timeOffset"></param>
+            <param name="user"></param>
+        </member>
+        <member name="M:XUCore.Template.EasyFreeSql.Persistence.DbHelper.SyncStructure(IFreeSql,System.String,XUCore.Template.EasyFreeSql.Core.ConnectionSettings)">
+            <summary>
+            同步结构
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.EasyFreeSql.Persistence.DbHelper.SyncData(IFreeSql)">
+            <summary>
+            同步基础数据
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="T:XUCore.Template.EasyFreeSql.Persistence.MySqlDb">
+            <summary>
+            多数据库命名
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.EasyFreeSql.Persistence.DependencyInjection.CreateMultiDbBuilder(XUCore.Template.EasyFreeSql.Core.MultiDb)">
+            <summary>
+            创建多数据库构建器
+            </summary>
+            <param name="multiDb"></param>
+            <returns></returns>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.ChinaAreaEntity.ParentId">
+            <summary>
+            上级区域Id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.ChinaAreaEntity.Childs">
+            <summary>
+            下级城市
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.ChinaAreaEntity.Level">
+            <summary>
+            行政区域等级 1-省 2-市 3-区县 4-街道镇
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.ChinaAreaEntity.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.ChinaAreaEntity.WholeName">
+            <summary>
+            完整名称
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.ChinaAreaEntity.Lon">
+            <summary>
+            本区域经度
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.ChinaAreaEntity.Lat">
+            <summary>
+            本区域维度
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.ChinaAreaEntity.CityCode">
+            <summary>
+            电话区号
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.ChinaAreaEntity.ZipCode">
+            <summary>
+            邮政编码
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.ChinaAreaEntity.AreaCode">
+            <summary>
+            行政区划代码
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.ChinaAreaEntity.PinYin">
+            <summary>
+            名称全拼
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.ChinaAreaEntity.SimplePy">
+            <summary>
+            首字母简拼
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.ChinaAreaEntity.PerPinYin">
+            <summary>
+            区域名称拼音的第一个字母
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.ChinaAreaEntity.Sort">
+            <summary>
+            权重排序
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.EasyFreeSql.Persistence.Entities.DualEntity">
+            <summary>
+            系统表，用于查询系统函数
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.DualEntity.Id">
+            <summary>
+            主键Id
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.EasyFreeSql.Persistence.Entities.User.MenuEntity">
+            <summary>
+            权限导航表
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.MenuEntity.ParentId">
+            <summary>
+            导航父级id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.MenuEntity.Parent">
+            <summary>
+            上级
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.MenuEntity.Childs">
+            <summary>
+            子菜单
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.MenuEntity.Name">
+            <summary>
+            名字
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.MenuEntity.Icon">
+            <summary>
+            图标样式
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.MenuEntity.Url">
+            <summary>
+            链接地址
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.MenuEntity.OnlyCode">
+            <summary>
+            唯一代码（权限使用）
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.MenuEntity.IsMenu">
+            <summary>
+            是否是导航
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.MenuEntity.Sort">
+            <summary>
+            排序权重
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.MenuEntity.IsExpress">
+            <summary>
+            是否是快捷导航
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.MenuEntity.Enabled">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.MenuEntity.RoleMenus">
+            <summary>
+            角色导航关联列表
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.EasyFreeSql.Persistence.Entities.User.RoleEntity">
+            <summary>
+            角色表
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.RoleEntity.Name">
+            <summary>
+            角色名
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.RoleEntity.Enabled">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.RoleEntity.Sort">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.RoleEntity.RoleMenus">
+            <summary>
+            角色导航关联列表
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.RoleEntity.UserRoles">
+            <summary>
+            用户角色关联列表
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.EasyFreeSql.Persistence.Entities.User.RoleMenuEntity">
+            <summary>
+            角色导航关联表
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.RoleMenuEntity.RoleId">
+            <summary>
+            角色id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.RoleMenuEntity.MenuId">
+            <summary>
+            导航id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.RoleMenuEntity.Menus">
+            <summary>
+            对应关联的导航
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.RoleMenuEntity.Role">
+            <summary>
+            对应关联的角色
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.EasyFreeSql.Persistence.Entities.User.UserEntity">
+            <summary>
+            用户表
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.UserEntity.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.UserEntity.Mobile">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.UserEntity.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.UserEntity.Name">
+            <summary>
+            名字
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.UserEntity.Picture">
+            <summary>
+            头像
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.UserEntity.Location">
+            <summary>
+            所在位置
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.UserEntity.Position">
+            <summary>
+            职位
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.UserEntity.Company">
+            <summary>
+            公司
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.UserEntity.LoginCount">
+            <summary>
+            登录次数
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.UserEntity.LoginLastTime">
+            <summary>
+            最后登录时间
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.UserEntity.LoginLastIp">
+            <summary>
+            最后登录id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.UserEntity.Enabled">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="F:XUCore.Template.EasyFreeSql.Persistence.Entities.User.UserEntity.UserRoles">
+            <summary>
+            对应用户角色关联
+            </summary>
+        </member>
+        <member name="F:XUCore.Template.EasyFreeSql.Persistence.Entities.User.UserEntity.LoginRecords">
+            <summary>
+            对应登录记录关联
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.EasyFreeSql.Persistence.Entities.User.UserLoginRecordEntity">
+            <summary>
+            登录记录表
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.UserLoginRecordEntity.UserId">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.UserLoginRecordEntity.LoginWay">
+            <summary>
+            登录方式
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.UserLoginRecordEntity.LoginIp">
+            <summary>
+            登录ip
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.UserLoginRecordEntity.User">
+            <summary>
+            对应用户
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.EasyFreeSql.Persistence.Entities.User.UserRoleEntity">
+            <summary>
+            用户角色关联表
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.UserRoleEntity.UserId">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.UserRoleEntity.RoleId">
+            <summary>
+            角色id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.UserRoleEntity.User">
+            <summary>
+            对应用户
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.User.UserRoleEntity.Role">
+            <summary>
+            对应角色
+            </summary>
+        </member>
+    </members>
+</doc>

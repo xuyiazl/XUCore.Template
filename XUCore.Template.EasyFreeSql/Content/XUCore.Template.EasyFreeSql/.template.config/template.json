@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "XUCore",
+  "classifications": [ "XUCore.Template.EasyFreeSql" ],
+  "name": "XUCore Template Easy FreeSql",
+  "identity": "XUCore.Template.EasyFreeSql",
+  "groupIdentity": "XUCore.Template.EasyFreeSql",
+  "shortName": "XUCore.Template.EasyFreeSql",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "XUCore.Template.EasyFreeSql",
+  "preferNameDirectory": true
+}

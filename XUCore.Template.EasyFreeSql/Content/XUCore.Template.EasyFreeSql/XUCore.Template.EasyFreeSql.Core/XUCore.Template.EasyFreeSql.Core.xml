@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>XUCore.Template.EasyFreeSql.Core</name>
+    </assembly>
+    <members>
+        <member name="T:XUCore.Template.EasyFreeSql.Core.ConnectionSettings">
+            <summary>
+            数据库配置
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Core.ConnectionSettings.Type">
+            <summary>
+            数据库类型
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Core.ConnectionSettings.ConnectionString">
+            <summary>
+            数据库字符串
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Core.ConnectionSettings.IdleTime">
+            <summary>
+            空闲时间(分)
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Core.ConnectionSettings.GenerateData">
+            <summary>
+            生成数据
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Core.ConnectionSettings.SyncStructure">
+            <summary>
+            同步结构
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Core.ConnectionSettings.SyncData">
+            <summary>
+            同步数据
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Core.ConnectionSettings.CreateDb">
+            <summary>
+            建库
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Core.ConnectionSettings.CreateDbConnectionString">
+            <summary>
+            建库连接字符串
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Core.ConnectionSettings.CreateDbSql">
+            <summary>
+            建库脚本
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Core.ConnectionSettings.MonitorCommand">
+            <summary>
+            监听所有操作
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Core.ConnectionSettings.Curd">
+            <summary>
+            监听Curd操作
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Core.ConnectionSettings.Dbs">
+            <summary>
+            多数据库
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.EasyFreeSql.Core.MultiDb">
+            <summary>
+            多数据库
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Core.MultiDb.Name">
+            <summary>
+            数据库命名
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Core.MultiDb.Type">
+            <summary>
+            数据库类型
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Core.MultiDb.ConnectionString">
+            <summary>
+            数据库字符串
+            </summary>
+        </member>
+        <member name="F:XUCore.Template.EasyFreeSql.Core.Enums.AccountMode.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="F:XUCore.Template.EasyFreeSql.Core.Enums.AccountMode.Mobile">
+            <summary>
+            手机号码
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Core.DtoBase`1.Id">
+            <summary>
+            主键Id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Core.DtoKeyBase`1.Id">
+            <summary>
+            主键Id
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.EasyFreeSql.Core.SubCode">
+            <summary>
+            业务代码
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.EasyFreeSql.Core.RestFull">
+            <summary>
+            标准化返回
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.EasyFreeSql.Core.RestFull.Success``1(XUCore.Template.EasyFreeSql.Core.SubCode,System.String,``0)">
+            <summary>
+            返回成功消息
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="subCode"></param>
+            <param name="message"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.EasyFreeSql.Core.RestFull.Fail``1(XUCore.Template.EasyFreeSql.Core.SubCode,System.String,``0)">
+            <summary>
+            返回失败消息
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="subCode"></param>
+            <param name="message"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

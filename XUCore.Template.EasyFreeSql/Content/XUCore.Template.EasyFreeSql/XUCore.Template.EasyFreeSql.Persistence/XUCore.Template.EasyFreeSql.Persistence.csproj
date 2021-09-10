@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DocumentationFile>XUCore.Template.EasyFreeSql.Persistence.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Remove="Tenant\**" />
+		<EmbeddedResource Remove="Tenant\**" />
+		<None Remove="Tenant\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\XUCore.Template.EasyFreeSql.Core\XUCore.Template.EasyFreeSql.Core.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="XUCore.Template.EasyFreeSql.Persistence.xml">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+</Project>
