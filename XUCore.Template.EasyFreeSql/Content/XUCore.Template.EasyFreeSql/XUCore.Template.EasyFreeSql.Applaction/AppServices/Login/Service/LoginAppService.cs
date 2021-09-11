@@ -27,13 +27,11 @@ namespace XUCore.Template.EasyFreeSql.Applaction.Login
     public class LoginAppService : AppService<UserEntity>, ILoginAppService
     {
         private readonly IPermissionService permissionService;
-        private readonly IUserAppService userService;
         private readonly IUserInfo user;
 
         public LoginAppService(IServiceProvider serviceProvider) : base(serviceProvider)
         {
             this.permissionService = serviceProvider.GetService<IPermissionService>();
-            this.userService = serviceProvider.GetService<IUserAppService>();
             this.user = serviceProvider.GetService<IUserInfo>();
         }
 
