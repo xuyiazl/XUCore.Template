@@ -469,11 +469,6 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="T:XUCore.Template.EasyFreeSql.Applaction.Upload.IUploadAppService">
-            <summary>
-            文件上传
-            </summary>
-        </member>
         <member name="T:XUCore.Template.EasyFreeSql.Applaction.Upload.UploadAppService">
             <summary>
             文件上传

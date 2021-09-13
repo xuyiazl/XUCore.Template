@@ -113,14 +113,14 @@ namespace XUCore.Template.EasyFreeSql.Persistence
         {
             if (e.Property.GetCustomAttribute<ServerTimeAttribute>(false) != null
                    && (e.Column.CsType == typeof(DateTime) || e.Column.CsType == typeof(DateTime?))
-                   && (e.Value == null || (DateTime)e.Value == default || (DateTime?)e.Value == default))
+                   && (e.Value.IsNull() || (DateTime)e.Value == default || (DateTime?)e.Value == default))
             {
                 e.Value = DateTime.Now.Subtract(timeOffset);
             }
 
             if (e.Column.CsType == typeof(long)
             && e.Property.GetCustomAttribute<SnowflakeAttribute>(false) is SnowflakeAttribute snowflakeAttribute
-            && snowflakeAttribute.Enable && (e.Value == null || (long)e.Value == default || (long?)e.Value == default))
+            && snowflakeAttribute.Enable && e.Value.IsNull())
             {
                 e.Value = Id.SnowflakeId;
             }
@@ -131,24 +131,18 @@ namespace XUCore.Template.EasyFreeSql.Persistence
                 switch (e.Property.Name)
                 {
                     case nameof(EntityAdd.CreatedAtUserId):
-                        if (e.Value == null || (long)e.Value == default || (long?)e.Value == default)
-                        {
-                            e.Value = user?.Id;
-                        }
+                        if (e.Value.IsNull())
+                            e.Value = user.GetId<long>();
                         break;
 
                     case nameof(EntityAdd.CreatedAtUserName):
-                        if (e.Value == null || e.Value.IsNull())
-                        {
+                        if (e.Value.IsNull())
                             e.Value = user?.UserName;
-                        }
                         break;
 
                     case nameof(EntityAdd.CreatedAt):
-                        if (e.Value == null || e.Value.IsNull())
-                        {
+                        if (e.Value.IsNull())
                             e.Value = DateTime.Now.Subtract(timeOffset);
-                        }
                         break;
                 }
             }
@@ -157,18 +151,18 @@ namespace XUCore.Template.EasyFreeSql.Persistence
                 switch (e.Property.Name)
                 {
                     case nameof(EntityUpdate.ModifiedAtUserId):
-                        e.Value = user?.Id;
+                        if (e.Value.IsNull())
+                            e.Value = user.GetId<long>();
                         break;
 
                     case nameof(EntityUpdate.ModifiedAtUserName):
-                        e.Value = user?.UserName;
+                        if (e.Value.IsNull())
+                            e.Value = user?.UserName;
                         break;
 
                     case nameof(EntityUpdate.ModifiedAt):
-                        if (e.Value == null || e.Value.IsNull())
-                        {
+                        if (e.Value.IsNull())
                             e.Value = DateTime.Now.Subtract(timeOffset);
-                        }
                         break;
                 }
             }

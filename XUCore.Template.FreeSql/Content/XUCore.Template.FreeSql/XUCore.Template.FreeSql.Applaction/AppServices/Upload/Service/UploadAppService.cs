@@ -16,7 +16,7 @@ namespace XUCore.Template.FreeSql.Applaction.Upload
     /// 文件上传
     /// </summary>
     [ApiExplorerSettings(GroupName = ApiGroup.Admin)]
-    public class UploadAppService : AppService, IUploadAppService
+    public class UploadAppService : AppService
     {
         private readonly IOssFactory _ossFactory;
         /// <summary>

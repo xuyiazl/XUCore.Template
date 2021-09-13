@@ -19,7 +19,7 @@ namespace XUCore.Template.EasyFreeSql.Applaction.Upload
     /// 文件上传
     /// </summary>
     [ApiExplorerSettings(GroupName = ApiGroup.Admin)]
-    public class UploadAppService : AppService<UserEntity>, IUploadAppService
+    public class UploadAppService : AppService<UserEntity>
     {
         private readonly IOssFactory _ossFactory;
         /// <summary>
