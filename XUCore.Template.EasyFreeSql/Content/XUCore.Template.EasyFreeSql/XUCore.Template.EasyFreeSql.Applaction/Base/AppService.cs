@@ -20,14 +20,14 @@ namespace XUCore.Template.EasyFreeSql.Applaction
     [MessagePackResponseContentType]
     public class AppService<TEntity> : IAppService where TEntity : class
     {
-        protected readonly FreeSqlUnitOfWorkManager muowm;
+        protected readonly FreeSqlUnitOfWorkManager unitOfWork;
         protected readonly IBaseRepository<TEntity> repo;
         protected readonly IMapper mapper;
         protected readonly IUserInfo user;
         public AppService(IServiceProvider serviceProvider)
         {
-            this.muowm = serviceProvider.GetService<FreeSqlUnitOfWorkManager>();
-            this.repo = muowm.Orm.GetRepository<TEntity>();
+            this.unitOfWork = serviceProvider.GetService<FreeSqlUnitOfWorkManager>();
+            this.repo = unitOfWork.Orm.GetRepository<TEntity>();
             this.mapper = serviceProvider.GetService<IMapper>();
             this.user = serviceProvider.GetService<IUserInfo>();
         }

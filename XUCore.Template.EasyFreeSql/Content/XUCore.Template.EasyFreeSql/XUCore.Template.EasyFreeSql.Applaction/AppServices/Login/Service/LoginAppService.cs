@@ -79,7 +79,7 @@ namespace XUCore.Template.EasyFreeSql.Applaction.Login
             userEntity.LoginLastTime = DateTime.Now;
             userEntity.LoginLastIp = Web.IP;
 
-            await muowm.Orm.Update<UserEntity>(userEntity.Id).Set(c => new UserEntity()
+            await unitOfWork.Orm.Update<UserEntity>(userEntity.Id).Set(c => new UserEntity()
             {
                 LoginCount = userEntity.LoginCount,
                 LoginLastTime = userEntity.LoginLastTime,
@@ -87,7 +87,7 @@ namespace XUCore.Template.EasyFreeSql.Applaction.Login
             })
                 .ExecuteAffrowsAsync(cancellationToken);
 
-            await muowm.Orm.Insert(new UserLoginRecordEntity
+            await unitOfWork.Orm.Insert(new UserLoginRecordEntity
             {
                 UserId = user.GetId<long>(),
                 LoginIp = userEntity.LoginLastIp,

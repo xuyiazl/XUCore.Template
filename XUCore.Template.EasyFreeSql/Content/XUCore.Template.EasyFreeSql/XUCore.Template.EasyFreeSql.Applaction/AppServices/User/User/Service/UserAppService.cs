@@ -86,7 +86,7 @@ namespace XUCore.Template.EasyFreeSql.Applaction.User.User
 
             if (res != null)
             {
-                await muowm.Orm.Insert<UserRoleEntity>(entity.UserRoles).ExecuteAffrowsAsync();
+                await unitOfWork.Orm.Insert<UserRoleEntity>(entity.UserRoles).ExecuteAffrowsAsync();
 
                 return RestFull.Success(data: res.Id);
             }
@@ -132,7 +132,7 @@ namespace XUCore.Template.EasyFreeSql.Applaction.User.User
             if (!entity.Password.Equals(request.OldPassword))
                 Failure.Error("旧密码错误");
 
-            var res = await muowm.Orm.Update<UserEntity>(request.Id).Set(c => new UserEntity { Password = request.NewPassword }).ExecuteAffrowsAsync(cancellationToken);
+            var res = await unitOfWork.Orm.Update<UserEntity>(request.Id).Set(c => new UserEntity { Password = request.NewPassword }).ExecuteAffrowsAsync(cancellationToken);
 
             if (res > 0)
                 return RestFull.Success(data: res);
@@ -153,19 +153,19 @@ namespace XUCore.Template.EasyFreeSql.Applaction.User.User
             switch (field.ToLower())
             {
                 case "name":
-                    res = await muowm.Orm.Update<UserEntity>(id).Set(c => new UserEntity() { Name = value, ModifiedAtUserId = user.GetId<long>(), ModifiedAtUserName = user.UserName }).ExecuteAffrowsAsync(cancellationToken);
+                    res = await unitOfWork.Orm.Update<UserEntity>(id).Set(c => new UserEntity() { Name = value, ModifiedAtUserId = user.GetId<long>(), ModifiedAtUserName = user.UserName }).ExecuteAffrowsAsync(cancellationToken);
                     break;
                 case "position":
-                    res = await muowm.Orm.Update<UserEntity>(id).Set(c => new UserEntity() { Position = value, ModifiedAtUserId = user.GetId<long>(), ModifiedAtUserName = user.UserName }).ExecuteAffrowsAsync(cancellationToken);
+                    res = await unitOfWork.Orm.Update<UserEntity>(id).Set(c => new UserEntity() { Position = value, ModifiedAtUserId = user.GetId<long>(), ModifiedAtUserName = user.UserName }).ExecuteAffrowsAsync(cancellationToken);
                     break;
                 case "location":
-                    res = await muowm.Orm.Update<UserEntity>(id).Set(c => new UserEntity() { Location = value, ModifiedAtUserId = user.GetId<long>(), ModifiedAtUserName = user.UserName }).ExecuteAffrowsAsync(cancellationToken);
+                    res = await unitOfWork.Orm.Update<UserEntity>(id).Set(c => new UserEntity() { Location = value, ModifiedAtUserId = user.GetId<long>(), ModifiedAtUserName = user.UserName }).ExecuteAffrowsAsync(cancellationToken);
                     break;
                 case "company":
-                    res = await muowm.Orm.Update<UserEntity>(id).Set(c => new UserEntity() { Company = value, ModifiedAtUserId = user.GetId<long>(), ModifiedAtUserName = user.UserName }).ExecuteAffrowsAsync(cancellationToken);
+                    res = await unitOfWork.Orm.Update<UserEntity>(id).Set(c => new UserEntity() { Company = value, ModifiedAtUserId = user.GetId<long>(), ModifiedAtUserName = user.UserName }).ExecuteAffrowsAsync(cancellationToken);
                     break;
                 case "picture":
-                    res = await muowm.Orm.Update<UserEntity>(id).Set(c => new UserEntity() { Picture = value, ModifiedAtUserId = user.GetId<long>(), ModifiedAtUserName = user.UserName }).ExecuteAffrowsAsync(cancellationToken);
+                    res = await unitOfWork.Orm.Update<UserEntity>(id).Set(c => new UserEntity() { Picture = value, ModifiedAtUserId = user.GetId<long>(), ModifiedAtUserName = user.UserName }).ExecuteAffrowsAsync(cancellationToken);
                     break;
             }
             if (res > 0)
@@ -182,7 +182,7 @@ namespace XUCore.Template.EasyFreeSql.Applaction.User.User
         /// <returns></returns>
         public async Task<Result<int>> UpdateEnabledAsync([Required][FromQuery] long[] ids, [Required][FromQuery] bool enabled, CancellationToken cancellationToken = default)
         {
-            var res = await muowm.Orm
+            var res = await unitOfWork.Orm
                 .Update<UserEntity>(ids)
                 .Set(c => new UserEntity()
                 {
@@ -205,14 +205,14 @@ namespace XUCore.Template.EasyFreeSql.Applaction.User.User
         /// <returns></returns>
         public async Task<Result<int>> DeleteAsync([Required][FromQuery] long[] ids, CancellationToken cancellationToken = default)
         {
-            var res = await muowm.Orm.Delete<UserEntity>(ids).ExecuteAffrowsAsync(cancellationToken);
+            var res = await unitOfWork.Orm.Delete<UserEntity>(ids).ExecuteAffrowsAsync(cancellationToken);
 
             if (res > 0)
             {
                 //删除关联的导航
-                await muowm.Orm.Delete<UserLoginRecordEntity>().Where(c => ids.Contains(c.UserId)).ExecuteAffrowsAsync(cancellationToken);
+                await unitOfWork.Orm.Delete<UserLoginRecordEntity>().Where(c => ids.Contains(c.UserId)).ExecuteAffrowsAsync(cancellationToken);
                 //删除用户关联的角色
-                await muowm.Orm.Delete<UserRoleEntity>().Where(c => ids.Contains(c.UserId)).ExecuteAffrowsAsync(cancellationToken);
+                await unitOfWork.Orm.Delete<UserRoleEntity>().Where(c => ids.Contains(c.UserId)).ExecuteAffrowsAsync(cancellationToken);
 
                 return RestFull.Success(data: res);
             }
@@ -326,7 +326,7 @@ namespace XUCore.Template.EasyFreeSql.Applaction.User.User
         public async Task<Result<int>> CreateRelevanceRoleAsync([Required][FromBody] UserRelevanceRoleCommand request, CancellationToken cancellationToken = default)
         {
             //先清空用户的角色，确保没有冗余的数据
-            await muowm.Orm.Delete<UserRoleEntity>().Where(c => c.UserId == request.UserId).ExecuteAffrowsAsync(cancellationToken);
+            await unitOfWork.Orm.Delete<UserRoleEntity>().Where(c => c.UserId == request.UserId).ExecuteAffrowsAsync(cancellationToken);
 
             var userRoles = Array.ConvertAll(request.RoleIds, roleid => new UserRoleEntity
             {
@@ -337,7 +337,7 @@ namespace XUCore.Template.EasyFreeSql.Applaction.User.User
             var res = 0;
             //添加角色
             if (userRoles.Length > 0)
-                res = await muowm.Orm.Insert(userRoles).ExecuteAffrowsAsync(cancellationToken);
+                res = await unitOfWork.Orm.Insert(userRoles).ExecuteAffrowsAsync(cancellationToken);
 
             if (res > 0)
                 return RestFull.Success(data: res);
@@ -352,7 +352,7 @@ namespace XUCore.Template.EasyFreeSql.Applaction.User.User
         /// <returns></returns>
         public async Task<Result<List<long>>> GetRelevanceRoleKeysAsync([Required] long userId, CancellationToken cancellationToken = default)
         {
-            var res = await muowm.Orm.Select<UserRoleEntity>().Where(c => c.UserId == userId).OrderBy(c => c.RoleId).ToListAsync(c => c.RoleId, cancellationToken);
+            var res = await unitOfWork.Orm.Select<UserRoleEntity>().Where(c => c.UserId == userId).OrderBy(c => c.RoleId).ToListAsync(c => c.RoleId, cancellationToken);
 
             return RestFull.Success(data: res);
         }
@@ -369,7 +369,7 @@ namespace XUCore.Template.EasyFreeSql.Applaction.User.User
         /// <returns></returns>
         public async Task<Result<List<UserLoginRecordDto>>> GetRecordListAsync([Required][FromQuery] UserLoginRecordQueryCommand request, CancellationToken cancellationToken = default)
         {
-            var res = await muowm.Orm.Select<UserLoginRecordEntity>()
+            var res = await unitOfWork.Orm.Select<UserLoginRecordEntity>()
                    .Where(c => c.UserId == request.userId)
                    .OrderByDescending(c => c.CreatedAt)
                    .Take(request.Limit)
@@ -396,7 +396,7 @@ namespace XUCore.Template.EasyFreeSql.Applaction.User.User
         /// <returns></returns>
         public async Task<Result<PagedModel<UserLoginRecordDto>>> GetRecordPageAsync([Required][FromQuery] UserLoginRecordQueryPagedCommand request, CancellationToken cancellationToken = default)
         {
-            var res = await muowm.Orm
+            var res = await unitOfWork.Orm
                   .Select<UserLoginRecordEntity>()
                   .WhereIf(request.Keyword.NotEmpty(), c => c.User.Name.Contains(request.Keyword) || c.User.Mobile.Contains(request.Keyword) || c.User.UserName.Contains(request.Keyword))
                   .OrderByDescending(c => c.CreatedAt)

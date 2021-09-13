@@ -20,7 +20,7 @@ namespace XUCore.Template.EasyFreeSql.Applaction.User.Permission
         [CacheMethod(Key = CacheKey.AuthUser, ParamterKey = "{0}", Seconds = CacheTime.Min5)]
         public async Task<IList<MenuEntity>> GetAllAsync(long userId, CancellationToken cancellationToken)
         {
-            var res = await muowm.Orm
+            var res = await unitOfWork.Orm
                    .Select<UserRoleEntity, RoleMenuEntity, MenuEntity>()
                    .LeftJoin((userRole, roleMenu, menu) => userRole.RoleId == roleMenu.RoleId)
                    .LeftJoin((userRole, roleMenu, menu) => roleMenu.MenuId == menu.Id)

@@ -68,7 +68,7 @@ namespace XUCore.Template.EasyFreeSql.Applaction.Basics
         /// <returns></returns>
         public async Task<Result<int>> DeleteAsync([Required][FromQuery] long[] ids, CancellationToken cancellationToken = default)
         {
-            var res = await muowm.Orm.Delete<ChinaAreaEntity>(ids).ExecuteAffrowsAsync(cancellationToken);
+            var res = await unitOfWork.Orm.Delete<ChinaAreaEntity>(ids).ExecuteAffrowsAsync(cancellationToken);
 
             if (res > 0)
                 return RestFull.Success(data: res);

@@ -78,19 +78,19 @@ namespace XUCore.Template.EasyFreeSql.Applaction.User.Menu
             switch (field.ToLower())
             {
                 case "name":
-                    res = await muowm.Orm.Update<MenuEntity>(id).Set(c => new MenuEntity() { Name = value, ModifiedAtUserId = user.GetId<long>(), ModifiedAtUserName = user.UserName }).ExecuteAffrowsAsync(cancellationToken);
+                    res = await unitOfWork.Orm.Update<MenuEntity>(id).Set(c => new MenuEntity() { Name = value, ModifiedAtUserId = user.GetId<long>(), ModifiedAtUserName = user.UserName }).ExecuteAffrowsAsync(cancellationToken);
                     break;
                 case "icon":
-                    res = await muowm.Orm.Update<MenuEntity>(id).Set(c => new MenuEntity() { Icon = value, ModifiedAtUserId = user.GetId<long>(), ModifiedAtUserName = user.UserName }).ExecuteAffrowsAsync(cancellationToken);
+                    res = await unitOfWork.Orm.Update<MenuEntity>(id).Set(c => new MenuEntity() { Icon = value, ModifiedAtUserId = user.GetId<long>(), ModifiedAtUserName = user.UserName }).ExecuteAffrowsAsync(cancellationToken);
                     break;
                 case "url":
-                    res = await muowm.Orm.Update<MenuEntity>(id).Set(c => new MenuEntity() { Url = value, ModifiedAtUserId = user.GetId<long>(), ModifiedAtUserName = user.UserName }).ExecuteAffrowsAsync(cancellationToken);
+                    res = await unitOfWork.Orm.Update<MenuEntity>(id).Set(c => new MenuEntity() { Url = value, ModifiedAtUserId = user.GetId<long>(), ModifiedAtUserName = user.UserName }).ExecuteAffrowsAsync(cancellationToken);
                     break;
                 case "onlycode":
-                    res = await muowm.Orm.Update<MenuEntity>(id).Set(c => new MenuEntity() { OnlyCode = value, ModifiedAtUserId = user.GetId<long>(), ModifiedAtUserName = user.UserName }).ExecuteAffrowsAsync(cancellationToken);
+                    res = await unitOfWork.Orm.Update<MenuEntity>(id).Set(c => new MenuEntity() { OnlyCode = value, ModifiedAtUserId = user.GetId<long>(), ModifiedAtUserName = user.UserName }).ExecuteAffrowsAsync(cancellationToken);
                     break;
                 case "sort":
-                    res = await muowm.Orm.Update<MenuEntity>(id).Set(c => new MenuEntity() { Sort = value.ToInt(), ModifiedAtUserId = user.GetId<long>(), ModifiedAtUserName = user.UserName }).ExecuteAffrowsAsync(cancellationToken);
+                    res = await unitOfWork.Orm.Update<MenuEntity>(id).Set(c => new MenuEntity() { Sort = value.ToInt(), ModifiedAtUserId = user.GetId<long>(), ModifiedAtUserName = user.UserName }).ExecuteAffrowsAsync(cancellationToken);
                     break;
             }
 
@@ -108,7 +108,7 @@ namespace XUCore.Template.EasyFreeSql.Applaction.User.Menu
         /// <returns></returns>
         public async Task<Result<int>> UpdateEnabledAsync([Required][FromQuery] long[] ids, [Required][FromQuery] bool enabled, CancellationToken cancellationToken = default)
         {
-            var res = await muowm.Orm
+            var res = await unitOfWork.Orm
                 .Update<MenuEntity>(ids)
                 .Set(c => new MenuEntity()
                 {
@@ -131,11 +131,11 @@ namespace XUCore.Template.EasyFreeSql.Applaction.User.Menu
         /// <returns></returns>
         public async Task<Result<int>> DeleteAsync([Required][FromQuery] long[] ids, CancellationToken cancellationToken = default)
         {
-            var res = await muowm.Orm.Delete<MenuEntity>(ids).ExecuteAffrowsAsync(cancellationToken);
+            var res = await unitOfWork.Orm.Delete<MenuEntity>(ids).ExecuteAffrowsAsync(cancellationToken);
 
             if (res > 0)
             {
-                await muowm.Orm.Delete<RoleMenuEntity>().Where(c => ids.Contains(c.MenuId)).ExecuteAffrowsAsync(cancellationToken);
+                await unitOfWork.Orm.Delete<RoleMenuEntity>().Where(c => ids.Contains(c.MenuId)).ExecuteAffrowsAsync(cancellationToken);
             }
 
             if (res > 0)
