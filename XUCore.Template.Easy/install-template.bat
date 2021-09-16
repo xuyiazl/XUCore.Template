@@ -1,6 +1,6 @@
 @echo off
 
-set Version=1.1.6
+set Version=1.1.7
 
 echo %Version%
 

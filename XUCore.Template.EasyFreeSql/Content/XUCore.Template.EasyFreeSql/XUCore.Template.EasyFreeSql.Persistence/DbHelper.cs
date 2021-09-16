@@ -118,12 +118,12 @@ namespace XUCore.Template.EasyFreeSql.Persistence
                 e.Value = DateTime.Now.Subtract(timeOffset);
             }
 
-            if (e.Column.CsType == typeof(long)
-            && e.Property.GetCustomAttribute<SnowflakeAttribute>(false) is SnowflakeAttribute snowflakeAttribute
-            && snowflakeAttribute.Enable && e.Value.IsNull())
-            {
-                e.Value = Id.SnowflakeId;
-            }
+            //if (e.Column.CsType == typeof(long)
+            //&& e.Property.GetCustomAttribute<SnowflakeAttribute>(false) is SnowflakeAttribute snowflakeAttribute
+            //&& snowflakeAttribute.Enable && e.Value.IsNull())
+            //{
+            //    e.Value = Id.SnowflakeId;
+            //}
 
 
             if (e.AuditValueType == AuditValueType.Insert)
