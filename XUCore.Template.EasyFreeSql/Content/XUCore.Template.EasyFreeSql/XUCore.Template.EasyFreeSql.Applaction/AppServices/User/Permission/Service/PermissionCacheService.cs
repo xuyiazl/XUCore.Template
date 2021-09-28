@@ -1,20 +1,22 @@
-﻿using System;
+﻿using AutoMapper;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using XUCore.NetCore.AspectCore.Cache;
-using XUCore.NetCore.DynamicWebApi;
+using XUCore.NetCore.FreeSql.Curd;
 using XUCore.Template.EasyFreeSql.Core;
 using XUCore.Template.EasyFreeSql.Persistence.Entities.User;
 
 namespace XUCore.Template.EasyFreeSql.Applaction.User.Permission
 {
-    [NonDynamicWebApi]
-    public class PermissionCacheService : AppService<MenuEntity>, IPermissionCacheService
+    public class PermissionCacheService : IPermissionCacheService
     {
-        public PermissionCacheService(IServiceProvider serviceProvider) : base(serviceProvider)
+        protected readonly FreeSqlUnitOfWorkManager unitOfWork;
+        public PermissionCacheService(IServiceProvider serviceProvider)
         {
-
+            this.unitOfWork = serviceProvider.GetService<FreeSqlUnitOfWorkManager>();
         }
 
         [CacheMethod(Key = CacheKey.AuthUser, ParamterKey = "{0}", Seconds = CacheTime.Min5)]

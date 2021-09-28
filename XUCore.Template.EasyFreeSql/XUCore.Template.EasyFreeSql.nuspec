@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
 	<metadata>
 		<id>XUCore.Template.EasyFreeSql</id>
-		<version>0.0.3</version>
+		<version>0.0.4</version>
 		<description>基于FreeSql的单层应用快速开发项目模板，生成WebApi项目。</description>
 		<authors>XUCore</authors>
 		<copyright>Copyright © XUCore 2020</copyright>

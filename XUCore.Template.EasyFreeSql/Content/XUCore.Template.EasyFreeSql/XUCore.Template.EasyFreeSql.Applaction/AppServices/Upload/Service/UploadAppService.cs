@@ -7,11 +7,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using XUCore.Helpers;
 using XUCore.NetCore;
+using XUCore.NetCore.DynamicWebApi;
 using XUCore.NetCore.Oss;
 using XUCore.NetCore.Uploads;
 using XUCore.NetCore.Uploads.Params;
 using XUCore.Template.EasyFreeSql.Core;
-using XUCore.Template.EasyFreeSql.Persistence.Entities.User;
 
 namespace XUCore.Template.EasyFreeSql.Applaction.Upload
 {
@@ -19,7 +19,8 @@ namespace XUCore.Template.EasyFreeSql.Applaction.Upload
     /// 文件上传
     /// </summary>
     [ApiExplorerSettings(GroupName = ApiGroup.Admin)]
-    public class UploadAppService : AppService<UserEntity>
+    [DynamicWebApi]
+    public class UploadAppService : IDynamicWebApi
     {
         private readonly IOssFactory _ossFactory;
         /// <summary>
@@ -27,7 +28,7 @@ namespace XUCore.Template.EasyFreeSql.Applaction.Upload
         /// </summary>
         private IFileUploadService _fileUploadService;
 
-        public UploadAppService(IServiceProvider serviceProvider, IFileUploadService fileUploadService, IOssFactory ossFactory) : base(serviceProvider)
+        public UploadAppService(IServiceProvider serviceProvider)
         {
             _fileUploadService = serviceProvider.GetService<IFileUploadService>();
             _ossFactory = serviceProvider.GetService<IOssFactory>();

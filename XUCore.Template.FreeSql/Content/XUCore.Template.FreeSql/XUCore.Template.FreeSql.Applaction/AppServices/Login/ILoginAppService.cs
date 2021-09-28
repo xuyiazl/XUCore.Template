@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using XUCore.Ddd.Domain;
 using XUCore.NetCore;
-using XUCore.Paging;
-using XUCore.Template.FreeSql.DbService.User.User;
 using XUCore.Template.FreeSql.DbService.Auth.Permission;
+using XUCore.Template.FreeSql.DbService.User.User;
 
 namespace XUCore.Template.FreeSql.Applaction.Login
 {
     /// <summary>
     /// 用户登录接口
     /// </summary>
-    public interface ILoginAppService : IAppService
+    public interface ILoginAppService : IScoped
     {
 
         #region [ 登录 ]

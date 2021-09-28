@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Threading;
 using System.Threading.Tasks;
 using XUCore.NetCore;
+using XUCore.NetCore.DynamicWebApi;
 using XUCore.Paging;
 using XUCore.Template.FreeSql.Core;
 using XUCore.Template.FreeSql.DbService.Auth.Role;
@@ -16,7 +17,8 @@ namespace XUCore.Template.FreeSql.Applaction.User
     /// 用户角色管理
     /// </summary>
     [ApiExplorerSettings(GroupName = ApiGroup.Admin)]
-    public class RoleAppService : AppService, IRoleAppService
+    [DynamicWebApi]
+    public class RoleAppService : IRoleAppService, IDynamicWebApi
     {
         private readonly IRoleService roleService;
 

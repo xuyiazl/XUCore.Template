@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Threading;
 using System.Threading.Tasks;
 using XUCore.NetCore;
+using XUCore.NetCore.DynamicWebApi;
 using XUCore.Template.FreeSql.Core;
 using XUCore.Template.FreeSql.DbService.Auth.Menu;
 
@@ -15,7 +16,8 @@ namespace XUCore.Template.FreeSql.Applaction.User
     /// 用户导航管理
     /// </summary>
     [ApiExplorerSettings(GroupName = ApiGroup.Admin)]
-    public class MenuAppService : AppService, IMenuAppService
+    [DynamicWebApi]
+    public class MenuAppService : IMenuAppService, IDynamicWebApi
     {
         private readonly IMenuService menuService;
 

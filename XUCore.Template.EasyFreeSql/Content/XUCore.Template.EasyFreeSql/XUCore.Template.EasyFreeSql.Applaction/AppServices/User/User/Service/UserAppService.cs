@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,15 @@ using XUCore.Ddd.Domain.Exceptions;
 using XUCore.Extensions;
 using XUCore.Helpers;
 using XUCore.NetCore;
+using XUCore.NetCore.DynamicWebApi;
 using XUCore.NetCore.FreeSql;
 using XUCore.Paging;
 using XUCore.Template.EasyFreeSql.Core;
 using XUCore.Template.EasyFreeSql.Core.Enums;
 using XUCore.Template.EasyFreeSql.Persistence.Entities.User;
+using XUCore.NetCore.FreeSql.Curd;
+using FreeSql;
+using AutoMapper;
 
 namespace XUCore.Template.EasyFreeSql.Applaction.User.User
 {
@@ -22,11 +27,19 @@ namespace XUCore.Template.EasyFreeSql.Applaction.User.User
     /// 用户管理
     /// </summary>
     [ApiExplorerSettings(GroupName = ApiGroup.Admin)]
-    public class UserAppService : AppService<UserEntity>, IUserAppService
+    [DynamicWebApi]
+    public class UserAppService : IUserAppService, IDynamicWebApi
     {
-        public UserAppService(IServiceProvider serviceProvider) : base(serviceProvider)
+        protected readonly FreeSqlUnitOfWorkManager unitOfWork;
+        protected readonly IBaseRepository<UserEntity> repo;
+        protected readonly IMapper mapper;
+        protected readonly IUserInfo user;
+        public UserAppService(IServiceProvider serviceProvider)
         {
-
+            this.unitOfWork = serviceProvider.GetService<FreeSqlUnitOfWorkManager>();
+            this.repo = unitOfWork.Orm.GetRepository<UserEntity>();
+            this.mapper = serviceProvider.GetService<IMapper>();
+            this.user = serviceProvider.GetService<IUserInfo>();
         }
 
         /// <summary>

@@ -9,7 +9,6 @@ using XUCore.Template.EasyFreeSql.Persistence.Entities.User;
 
 namespace XUCore.Template.EasyFreeSql.Applaction.User.Permission
 {
-    [NonDynamicWebApi]
     public class PermissionService : IPermissionService
     {
         private readonly IMapper mapper;

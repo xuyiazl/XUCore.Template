@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Threading;
 using System.Threading.Tasks;
 using XUCore.NetCore;
+using XUCore.NetCore.DynamicWebApi;
 using XUCore.Template.FreeSql.Core;
 using XUCore.Template.FreeSql.DbService.Basics.ChinaArea;
 
@@ -15,7 +16,8 @@ namespace XUCore.Template.FreeSql.Applaction.Basics
     /// 城市区域管理
     /// </summary>
     [ApiExplorerSettings(GroupName = ApiGroup.Admin)]
-    public class ChinaAreaAppService : AppService, IChinaAreaAppService
+    [DynamicWebApi]
+    public class ChinaAreaAppService : IChinaAreaAppService, IDynamicWebApi
     {
         private readonly IChinaAreaService chinaAreaService;
 

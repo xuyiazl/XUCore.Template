@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Threading;
 using System.Threading.Tasks;
 using XUCore.NetCore;
+using XUCore.NetCore.DynamicWebApi;
 using XUCore.Paging;
 using XUCore.Template.FreeSql.Core;
 using XUCore.Template.FreeSql.Core.Enums;
@@ -18,7 +19,8 @@ namespace XUCore.Template.FreeSql.Applaction.User
     /// 用户管理
     /// </summary>
     [ApiExplorerSettings(GroupName = ApiGroup.Admin)]
-    public class UserAppService : AppService, IUserAppService
+    [DynamicWebApi]
+    public class UserAppService : IUserAppService, IDynamicWebApi
     {
         private readonly IUserService userService;
 

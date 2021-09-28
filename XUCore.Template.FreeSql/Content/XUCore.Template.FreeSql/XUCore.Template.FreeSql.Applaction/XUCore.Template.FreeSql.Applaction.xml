@@ -792,12 +792,12 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="T:XUCore.Template.FreeSql.Applaction.Filters.ApiErrorAttribute">
+        <member name="T:XUCore.Template.FreeSql.Applaction.Filters.ApiExceptionFilter">
             <summary>
             API错误日志过滤器
             </summary>
         </member>
-        <member name="M:XUCore.Template.FreeSql.Applaction.Filters.ApiErrorAttribute.OnException(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext)">
+        <member name="M:XUCore.Template.FreeSql.Applaction.Filters.ApiExceptionFilter.OnException(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext)">
             <summary>
             异常处理
             </summary>

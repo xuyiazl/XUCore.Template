@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using XUCore.Ddd.Domain;
 using XUCore.NetCore;
 using XUCore.Template.EasyFreeSql.Applaction.User.Permission;
 using XUCore.Template.EasyFreeSql.Applaction.User.User;
@@ -10,7 +11,7 @@ namespace XUCore.Template.EasyFreeSql.Applaction.Login
     /// <summary>
     /// 用户登录接口
     /// </summary>
-    public interface ILoginAppService : IAppService
+    public interface ILoginAppService : IScoped
     {
 
         #region [ 登录 ]

@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using FreeSql;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,7 +10,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using XUCore.Extensions;
 using XUCore.NetCore;
+using XUCore.NetCore.DynamicWebApi;
 using XUCore.NetCore.FreeSql;
+using XUCore.NetCore.FreeSql.Curd;
 using XUCore.Paging;
 using XUCore.Template.EasyFreeSql.Core;
 using XUCore.Template.EasyFreeSql.Persistence.Entities.User;
@@ -18,11 +23,19 @@ namespace XUCore.Template.EasyFreeSql.Applaction.User.Role
     /// 用户角色管理
     /// </summary>
     [ApiExplorerSettings(GroupName = ApiGroup.Admin)]
-    public class RoleAppService : AppService<RoleEntity>, IRoleAppService
+    [DynamicWebApi]
+    public class RoleAppService : IRoleAppService, IDynamicWebApi
     {
-        public RoleAppService(IServiceProvider serviceProvider) : base(serviceProvider)
+        protected readonly FreeSqlUnitOfWorkManager unitOfWork;
+        protected readonly IBaseRepository<RoleEntity> repo;
+        protected readonly IMapper mapper;
+        protected readonly IUserInfo user;
+        public RoleAppService(IServiceProvider serviceProvider)
         {
-
+            this.unitOfWork = serviceProvider.GetService<FreeSqlUnitOfWorkManager>();
+            this.repo = unitOfWork.Orm.GetRepository<RoleEntity>();
+            this.mapper = serviceProvider.GetService<IMapper>();
+            this.user = serviceProvider.GetService<IUserInfo>();
         }
 
         /// <summary>

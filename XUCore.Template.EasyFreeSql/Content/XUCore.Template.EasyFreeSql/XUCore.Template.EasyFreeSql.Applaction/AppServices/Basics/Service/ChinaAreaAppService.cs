@@ -1,10 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using FreeSql;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Threading;
 using System.Threading.Tasks;
 using XUCore.NetCore;
+using XUCore.NetCore.DynamicWebApi;
+using XUCore.NetCore.FreeSql.Curd;
 using XUCore.Template.EasyFreeSql.Core;
 using XUCore.Template.EasyFreeSql.Persistence.Entities;
 
@@ -14,10 +19,19 @@ namespace XUCore.Template.EasyFreeSql.Applaction.Basics
     /// 城市区域管理
     /// </summary>
     [ApiExplorerSettings(GroupName = ApiGroup.Admin)]
-    public class ChinaAreaAppService : AppService<ChinaAreaEntity>, IChinaAreaAppService
+    [DynamicWebApi]
+    public class ChinaAreaAppService : IChinaAreaAppService, IDynamicWebApi
     {
-        public ChinaAreaAppService(IServiceProvider serviceProvider) : base(serviceProvider)
+        protected readonly FreeSqlUnitOfWorkManager unitOfWork;
+        protected readonly IBaseRepository<ChinaAreaEntity> repo;
+        protected readonly IMapper mapper;
+        protected readonly IUserInfo user;
+        public ChinaAreaAppService(IServiceProvider serviceProvider)
         {
+            this.unitOfWork = serviceProvider.GetService<FreeSqlUnitOfWorkManager>();
+            this.repo = unitOfWork.Orm.GetRepository<ChinaAreaEntity>();
+            this.mapper = serviceProvider.GetService<IMapper>();
+            this.user = serviceProvider.GetService<IUserInfo>();
         }
 
         /// <summary>

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using XUCore.Ddd.Domain;
 using XUCore.NetCore;
 using XUCore.Template.FreeSql.DbService.Basics.ChinaArea;
 
@@ -9,7 +10,7 @@ namespace XUCore.Template.FreeSql.Applaction.Basics
     /// <summary>
     /// 城市区域管理
     /// </summary>
-    public interface IChinaAreaAppService : IAppService
+    public interface IChinaAreaAppService : IScoped
     {
         /// <summary>
         /// 创建城市区域

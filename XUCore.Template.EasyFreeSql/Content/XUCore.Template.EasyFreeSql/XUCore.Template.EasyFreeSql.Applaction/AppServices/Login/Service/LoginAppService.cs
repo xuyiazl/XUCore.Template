@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using FreeSql;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -11,6 +13,8 @@ using XUCore.Ddd.Domain.Exceptions;
 using XUCore.Helpers;
 using XUCore.NetCore;
 using XUCore.NetCore.Authorization.JwtBearer;
+using XUCore.NetCore.DynamicWebApi;
+using XUCore.NetCore.FreeSql.Curd;
 using XUCore.NetCore.Swagger;
 using XUCore.Serializer;
 using XUCore.Template.EasyFreeSql.Applaction.User.Permission;
@@ -24,15 +28,21 @@ namespace XUCore.Template.EasyFreeSql.Applaction.Login
     /// 用户登录接口
     /// </summary>
     [ApiExplorerSettings(GroupName = ApiGroup.Admin)]
-    public class LoginAppService : AppService<UserEntity>, ILoginAppService
+    [DynamicWebApi]
+    public class LoginAppService : ILoginAppService, IDynamicWebApi
     {
-        private readonly IPermissionService permissionService;
-        private readonly IUserInfo user;
-
-        public LoginAppService(IServiceProvider serviceProvider) : base(serviceProvider)
+        protected readonly FreeSqlUnitOfWorkManager unitOfWork;
+        protected readonly IBaseRepository<UserEntity> repo;
+        protected readonly IMapper mapper;
+        protected readonly IUserInfo user;
+        protected readonly IPermissionService permissionService;
+        public LoginAppService(IServiceProvider serviceProvider)
         {
-            this.permissionService = serviceProvider.GetService<IPermissionService>();
+            this.unitOfWork = serviceProvider.GetService<FreeSqlUnitOfWorkManager>();
+            this.repo = unitOfWork.Orm.GetRepository<UserEntity>();
+            this.mapper = serviceProvider.GetService<IMapper>();
             this.user = serviceProvider.GetService<IUserInfo>();
+            this.permissionService = serviceProvider.GetService<IPermissionService>();
         }
 
         #region [ 登录 ]
@@ -92,8 +102,7 @@ namespace XUCore.Template.EasyFreeSql.Applaction.Login
                 UserId = user.GetId<long>(),
                 LoginIp = userEntity.LoginLastIp,
                 LoginWay = loginWay
-            })
-                .ExecuteAffrowsAsync(cancellationToken);
+            }).ExecuteAffrowsAsync(cancellationToken);
 
             // 生成 token
             var accessToken = JWTEncryption.Encrypt(new Dictionary<string, object>

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using XUCore.Ddd.Domain;
 using XUCore.NetCore;
 using XUCore.Paging;
 
@@ -9,7 +10,7 @@ namespace XUCore.Template.EasyFreeSql.Applaction.User.Role
     /// <summary>
     /// 用户角色管理
     /// </summary>
-    public interface IRoleAppService : IAppService
+    public interface IRoleAppService : IScoped
     {
         /// <summary>
         /// 创建角色

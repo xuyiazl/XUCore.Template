@@ -61,7 +61,7 @@ namespace XUCore.Template.FreeSql.Persistence
         {
             List<string> assemblyNames = new List<string>()
             {
-                "XUCore.Template.EasyFreeSql.Persistence"
+                "XUCore.Template.FreeSql.Persistence"
             };
 
             List<Type> entityTypes = new List<Type>();
