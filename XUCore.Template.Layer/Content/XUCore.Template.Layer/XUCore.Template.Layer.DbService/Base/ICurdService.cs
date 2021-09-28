@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using XUCore.Ddd.Domain;
 using XUCore.Ddd.Domain.Commands;
 using XUCore.NetCore.Data;
 using XUCore.Template.Layer.Core.Enums;
@@ -9,7 +10,7 @@ namespace XUCore.Template.Layer.DbService
 {
     public interface ICurdService<TKey, TEntity, TDto, TCreateCommand, TUpdateCommand, TListCommand, TPageCommand> :
         ICurdServiceProvider<TKey, TEntity, TDto, TCreateCommand, TUpdateCommand, TListCommand, TPageCommand>,
-        IDbService
+        IScoped
             where TKey : struct
             where TDto : class, new()
             where TEntity : BaseEntity<TKey>, new()

@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
+using XUCore.Ddd.Domain;
 using XUCore.NetCore.AspectCore.Cache;
 using XUCore.NetCore.Authorization.JwtBearer;
 using XUCore.NetCore.DynamicWebApi;
@@ -35,24 +36,9 @@ namespace XUCore.Template.EasyLayer.Applaction
 
             services.AddAutoMapper(typeof(MappingProfile));
 
-            services.AddMediatR(typeof(IAppService), typeof(IDbService));
+            services.AddMediatR(typeof(IAppService), typeof(ICurdService<,,,,,,>));
 
-            services.Scan(scan =>
-                scan.FromAssemblyOf<IAppService>()
-                .AddClasses(impl => impl.AssignableTo(typeof(IAppService)))
-                .AsImplementedInterfaces()
-                .WithScopedLifetime()
-            );
-
-            services.Scan(scan =>
-                scan.FromAssemblyOf<IDbService>()
-                .AddClasses(impl => impl.AssignableTo(typeof(IDbService)))
-                .AsImplementedInterfaces()
-                .WithScopedLifetime()
-            );
-
-            // 注册用户信息
-            services.AddSingleton<IUserInfo, UserInfo>();
+            services.AddScanLifetime();
 
             // 注入redis插件
             //services.AddRedisService().AddJsonRedisSerializer();

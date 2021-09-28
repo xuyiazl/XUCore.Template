@@ -22,6 +22,8 @@ using XUCore.Serializer;
 using XUCore.Template.Layer.Core;
 using XUCore.Template.Layer.DbService;
 using XUCore.NetCore.Swagger;
+using XUCore.Ddd.Domain;
+using XUCore.Template.Layer.Applaction.Admin;
 
 namespace XUCore.Template.Layer.Applaction
 {
@@ -37,24 +39,9 @@ namespace XUCore.Template.Layer.Applaction
 
             services.AddAutoMapper(typeof(MappingProfile));
 
-            services.AddMediatR(typeof(IAppService), typeof(IDbService));
+            services.AddMediatR(typeof(IAdminAppService), typeof(ICurdService<,,,,,,>));
 
-            services.Scan(scan =>
-                scan.FromAssemblyOf<IAppService>()
-                .AddClasses(impl => impl.AssignableTo(typeof(IAppService)))
-                .AsImplementedInterfaces()
-                .WithScopedLifetime()
-            );
-
-            services.Scan(scan =>
-                scan.FromAssemblyOf<IDbService>()
-                .AddClasses(impl => impl.AssignableTo(typeof(IDbService)))
-                .AsImplementedInterfaces()
-                .WithScopedLifetime()
-            );
-
-            // 注册用户信息
-            services.AddSingleton<IUserInfo, UserInfo>();
+            services.AddScanLifetime();
 
             // 注入redis插件
             //services.AddRedisService().AddJsonRedisSerializer();
@@ -101,7 +88,7 @@ namespace XUCore.Template.Layer.Applaction
                 {
                     opt.ValidatorOptions.CascadeMode = FluentValidation.CascadeMode.Stop;
                     opt.DisableDataAnnotationsValidation = false;
-                    opt.RegisterValidatorsFromAssemblyContaining(typeof(IDbService));
+                    opt.RegisterValidatorsFromAssemblyContaining(typeof(ICurdService<,,,,,,>));
                 });
 
             // 统一返回验证的信息

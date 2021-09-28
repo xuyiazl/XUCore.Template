@@ -24,7 +24,7 @@ namespace XUCore.Template.Layer.DbService
     /// <typeparam name="TPageCommand">分页命令</typeparam>
     public abstract class CurdService<TKey, TEntity, TDto, TCreateCommand, TUpdateCommand, TListCommand, TPageCommand> :
         CurdServiceProvider<TKey, TEntity, TDto, TCreateCommand, TUpdateCommand, TListCommand, TPageCommand>,
-        ICurdService<TKey, TEntity, TDto, TCreateCommand, TUpdateCommand, TListCommand, TPageCommand>, IDbService
+        ICurdService<TKey, TEntity, TDto, TCreateCommand, TUpdateCommand, TListCommand, TPageCommand>
             where TKey : struct
             where TDto : class, new()
             where TEntity : BaseEntity<TKey>, new()

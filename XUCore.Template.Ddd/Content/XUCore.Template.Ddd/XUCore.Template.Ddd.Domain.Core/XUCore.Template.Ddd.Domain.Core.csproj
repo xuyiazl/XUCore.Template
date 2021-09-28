@@ -9,7 +9,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="XUCoreApp" Version="5.3.7" />
+		<PackageReference Include="XUCoreApp" Version="5.3.8" />
 	</ItemGroup>
 
 

@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using XUCore.NetCore.DynamicWebApi;
-using XUCore.NetCore.Filters;
+using XUCore.Ddd.Domain;
 
 namespace XUCore.Template.Ddd.Applaction.Common.Interfaces
 {
     [DynamicWebApi]
-    public interface IAppService : IDynamicWebApi
+    public interface IAppService : IDynamicWebApi, IScoped
     {
 
     }

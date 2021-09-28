@@ -9,6 +9,7 @@ using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
+using XUCore.Ddd.Domain;
 using XUCore.NetCore.AspectCore.Cache;
 using XUCore.NetCore.Authorization.JwtBearer;
 using XUCore.NetCore.DynamicWebApi;
@@ -35,16 +36,7 @@ namespace XUCore.Template.Easy.Applaction
 
             services.AddMediatR(typeof(IAppService));
 
-            services.Scan(scan =>
-                scan
-                    .FromAssemblyOf<IAppService>()
-                    .AddClasses(impl => impl.AssignableTo(typeof(IAppService)))
-                    .AsImplementedInterfaces()
-                    .WithScopedLifetime()
-            );
-
-            // 注册用户信息
-            services.AddSingleton<IUserInfo, UserInfo>();
+            services.AddScanLifetime();
 
             // 注入redis插件
             //services.AddRedisService().AddJsonRedisSerializer();

@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using XUCore.Ddd.Domain;
 using XUCore.Ddd.Domain.Commands;
 using XUCore.Extensions;
 using XUCore.NetCore.Data;
@@ -24,7 +25,7 @@ namespace XUCore.Template.EasyLayer.DbService
     /// <typeparam name="TPageCommand">分页命令</typeparam>
     public abstract class CurdService<TKey, TEntity, TDto, TCreateCommand, TUpdateCommand, TListCommand, TPageCommand> :
         CurdServiceProvider<TKey, TEntity, TDto, TCreateCommand, TUpdateCommand, TListCommand, TPageCommand>,
-        ICurdService<TKey, TEntity, TDto, TCreateCommand, TUpdateCommand, TListCommand, TPageCommand>, IDbService
+        ICurdService<TKey, TEntity, TDto, TCreateCommand, TUpdateCommand, TListCommand, TPageCommand>
             where TKey : struct
             where TDto : class, new()
             where TEntity : BaseEntity<TKey>, new()

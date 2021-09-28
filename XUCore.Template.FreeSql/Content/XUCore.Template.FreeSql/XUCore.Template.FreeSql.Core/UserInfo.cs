@@ -7,7 +7,7 @@ using XUCore.Ddd.Domain;
 
 namespace XUCore.Template.FreeSql.Core
 {
-    public interface IUserInfo : IUser
+    public interface IUserInfo : IUser, IScoped
     {
 
     }

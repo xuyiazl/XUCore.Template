@@ -9,13 +9,6 @@ namespace XUCore.Template.Ddd.Applaction
     {
         public static IServiceCollection AddApplication(this IServiceCollection services, IWebHostEnvironment environment, string project = "api")
         {
-            services.Scan(scan =>
-                scan.FromAssemblyOf<IAppService>()
-                .AddClasses(impl => impl.AssignableTo(typeof(IAppService)))
-                .AsImplementedInterfaces()
-                .WithScopedLifetime()
-            );
-
             return services;
         }
 

@@ -5,10 +5,11 @@ using XUCore.NetCore.FreeSql.Curd;
 using XUCore.Paging;
 using XUCore.Template.FreeSql.Core.Enums;
 using XUCore.Template.FreeSql.Persistence.Entities.User;
+using XUCore.Ddd.Domain;
 
 namespace XUCore.Template.FreeSql.DbService.User.User
 {
-    public interface IUserService : ICurdService<long, UserEntity, UserDto, UserCreateCommand, UserUpdateInfoCommand, UserQueryCommand, UserQueryPagedCommand>, IDbService
+    public interface IUserService : ICurdService<long, UserEntity, UserDto, UserCreateCommand, UserUpdateInfoCommand, UserQueryCommand, UserQueryPagedCommand>, IScoped
     {
         Task<bool> AnyByAccountAsync(AccountMode accountMode, string account, long notId, CancellationToken cancellationToken);
         Task<UserDto> GetByAccountAsync(AccountMode accountMode, string account, CancellationToken cancellationToken);

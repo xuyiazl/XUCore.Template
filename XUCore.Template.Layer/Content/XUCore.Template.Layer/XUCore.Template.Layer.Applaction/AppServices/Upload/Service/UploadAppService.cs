@@ -13,7 +13,7 @@ namespace XUCore.Template.Layer.Applaction.Upload
     /// <summary>
     /// 文件上传
     /// </summary>
-    public class UploadAppService : AppService, IUploadAppService
+    public class UploadAppService : IUploadAppService
     {
         private readonly IOssFactory _ossFactory;
         /// <summary>

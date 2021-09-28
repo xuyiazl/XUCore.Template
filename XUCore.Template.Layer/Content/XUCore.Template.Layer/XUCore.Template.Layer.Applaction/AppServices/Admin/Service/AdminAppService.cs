@@ -16,7 +16,7 @@ namespace XUCore.Template.Layer.Applaction.Admin
     /// <summary>
     /// 管理员管理
     /// </summary>
-    public class AdminAppService : AppService, IAdminAppService
+    public class AdminAppService : IAdminAppService
     {
         private readonly IAdminMenuService adminMenuService;
         private readonly IAdminRoleService adminRoleService;

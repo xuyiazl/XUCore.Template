@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using XUCore.Ddd.Domain;
 using XUCore.NetCore;
 using XUCore.NetCore.Uploads.Params;
 
@@ -9,7 +10,7 @@ namespace XUCore.Template.Layer.Applaction.Upload
     /// <summary>
     /// 文件上传
     /// </summary>
-    public interface IUploadAppService : IAppService
+    public interface IUploadAppService : IScoped
     {
         Task<Result<XUCore.Files.FileInfo>> UploadFile(IFormFile formFile, CancellationToken cancellationToken);
         Task<Result<ImageFileInfo>> UploadImage(IFormFile formFile, CancellationToken cancellationToken);

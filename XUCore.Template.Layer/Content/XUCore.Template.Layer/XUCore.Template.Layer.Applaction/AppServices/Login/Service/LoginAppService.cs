@@ -18,7 +18,7 @@ namespace XUCore.Template.Layer.Applaction.Login
     /// <summary>
     /// 管理员登录接口
     /// </summary>
-    public class LoginAppService : AppService, ILoginAppService
+    public class LoginAppService : ILoginAppService
     {
         private readonly IPermissionService permissionService;
         private readonly IAdminUserService adminUserService;

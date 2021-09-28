@@ -11,6 +11,7 @@ using System;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
+using XUCore.Ddd.Domain;
 using XUCore.NetCore.AspectCore.Cache;
 using XUCore.NetCore.Authorization.JwtBearer;
 using XUCore.NetCore.DynamicWebApi;
@@ -22,6 +23,7 @@ using XUCore.NetCore.Swagger;
 using XUCore.Serializer;
 using XUCore.Template.FreeSql.Core;
 using XUCore.Template.FreeSql.DbService;
+using XUCore.Template.FreeSql.DbService.User.User;
 
 namespace XUCore.Template.FreeSql.Applaction
 {
@@ -33,27 +35,11 @@ namespace XUCore.Template.FreeSql.Applaction
         {
             services.AddSingleton(HtmlEncoder.Create(UnicodeRanges.All));
 
-
             services.AddAutoMapper(typeof(MappingProfile));
 
-            services.AddMediatR(typeof(IAppService), typeof(IDbService));
+            services.AddMediatR(typeof(IAppService), typeof(IUserService));
 
-            services.Scan(scan =>
-                scan.FromAssemblyOf<IAppService>()
-                .AddClasses(impl => impl.AssignableTo(typeof(IAppService)))
-                .AsImplementedInterfaces()
-                .WithScopedLifetime()
-            );
-
-            services.Scan(scan =>
-                scan.FromAssemblyOf<IDbService>()
-                .AddClasses(impl => impl.AssignableTo(typeof(IDbService)))
-                .AsImplementedInterfaces()
-                .WithScopedLifetime()
-            );
-
-            // 注册用户信息
-            services.AddSingleton<IUserInfo, UserInfo>();
+            services.AddScanLifetime();
 
             // 注册redis插件
             //services.AddRedisService().AddJsonRedisSerializer();

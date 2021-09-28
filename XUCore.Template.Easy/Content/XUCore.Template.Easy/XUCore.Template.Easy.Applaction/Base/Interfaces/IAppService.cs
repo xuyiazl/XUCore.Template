@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XUCore.Ddd.Domain;
 using XUCore.NetCore.DynamicWebApi;
 
 namespace XUCore.Template.Easy.Applaction
 {
     [DynamicWebApi]
-    public interface IAppService : IDynamicWebApi
+    public interface IAppService : IDynamicWebApi, IScoped
     {
 
     }

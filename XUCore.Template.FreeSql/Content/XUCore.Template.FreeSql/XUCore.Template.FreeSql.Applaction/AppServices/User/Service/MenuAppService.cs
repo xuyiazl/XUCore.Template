@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -7,12 +6,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Threading;
 using System.Threading.Tasks;
 using XUCore.NetCore;
-using XUCore.Paging;
 using XUCore.Template.FreeSql.Core;
-using XUCore.Template.FreeSql.Core.Enums;
 using XUCore.Template.FreeSql.DbService.Auth.Menu;
-using XUCore.Template.FreeSql.DbService.Auth.Role;
-using XUCore.Template.FreeSql.DbService.User.User;
 
 namespace XUCore.Template.FreeSql.Applaction.User
 {
