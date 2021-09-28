@@ -82,17 +82,19 @@ namespace XUCore.Template.FreeSql.Applaction
                         opts.Filters.Add<CommandValidationActionFilter>();
                         opts.Filters.Add<ApiElapsedTimeActionFilter>();
                     })
-                    //如果需要messagepack格式的输出  在接口处可以增加标签 ： [MessagePackResponseContentType]
-                    //.AddMessagePackFormatters(options =>
-                    //{
-                    //    options.JsonSerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Local;
-                    //    options.JsonSerializerSettings.ContractResolver = new LimitPropsContractResolver();
+                    //如果需要messagepack格式的输出（默认大写，于前端来决定大小写输出）  在接口处可以增加标签来限定入口格式 ： [MessagePackResponseContentType]
+                    //客户端接入指南：
+                    //https://github.com/xuyiazl/XUCore.NetCore/tree/net5/src/XUCore.NetCore/MessagePack#heavy_check_mark-%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%8E%A5%E5%85%A5
+                    .AddMessagePackFormatters(options =>
+                    {
+                        options.JsonSerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Local;
+                        options.JsonSerializerSettings.ContractResolver = new LimitPropsContractResolver();
 
-                    //    //默认设置MessageagePack的日期序列化格式为时间戳，对外输出一致为时间戳的日期，不需要我们自己去序列化，自动操作。
-                    //    //C#实体内仍旧保持DateTime。跨语言MessageagePack没有DateTime类型。
-                    //    options.FormatterResolver = MessagePackSerializerResolver.UnixDateTimeFormatter;
-                    //    options.Options = MessagePackSerializerResolver.UnixDateTimeOptions;
-                    //})
+                        //默认设置MessageagePack的日期序列化格式为时间戳，对外输出一致为时间戳的日期，不需要我们自己去序列化，自动操作。
+                        //C#实体内仍旧保持DateTime。跨语言MessageagePack没有DateTime类型。
+                        options.FormatterResolver = MessagePackSerializerResolver.UnixDateTimeFormatter;
+                        options.Options = MessagePackSerializerResolver.UnixDateTimeOptions;
+                    })
                     .AddFluentValidation(opt =>
                     {
                         opt.ValidatorOptions.CascadeMode = FluentValidation.CascadeMode.Stop;
