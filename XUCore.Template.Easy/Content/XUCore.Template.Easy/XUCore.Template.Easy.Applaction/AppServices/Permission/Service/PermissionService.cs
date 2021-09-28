@@ -3,13 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using XUCore.NetCore.DynamicWebApi;
-using XUCore.Template.Easy.Persistence;
 using XUCore.Template.Easy.Persistence.Entities.Admin;
 
 namespace XUCore.Template.Easy.Applaction.Permission
 {
-    [NonDynamicWebApi]
     public class PermissionService : IPermissionService
     {
         private readonly IMapper mapper;

@@ -1,18 +1,15 @@
-﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using XUCore.NetCore.AspectCore.Cache;
-using XUCore.NetCore.DynamicWebApi;
 using XUCore.Template.Easy.Core;
 using XUCore.Template.Easy.Persistence;
 using XUCore.Template.Easy.Persistence.Entities.Admin;
 
 namespace XUCore.Template.Easy.Applaction.Permission
 {
-    [NonDynamicWebApi]
     public class PermissionCacheService : IPermissionCacheService
     {
         private readonly IDefaultDbRepository<AdminMenuEntity> db;

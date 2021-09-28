@@ -9,7 +9,7 @@ using XUCore.Template.Easy.Persistence.Entities;
 
 namespace XUCore.Template.Easy.Applaction
 {
-    public interface ICurdAppService<TKey, TEntity, TDto, TCreateCommand, TUpdateCommand, TListCommand, TPageCommand> : IAppService
+    public interface ICurdAppService<TKey, TEntity, TDto, TCreateCommand, TUpdateCommand, TListCommand, TPageCommand>
             where TKey : struct
             where TDto : class, new()
             where TEntity : BaseEntity<TKey>, new()

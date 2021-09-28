@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Threading;
 using System.Threading.Tasks;
 using XUCore.NetCore;
+using XUCore.NetCore.DynamicWebApi;
 using XUCore.Paging;
 using XUCore.Template.EasyLayer.Core;
 using XUCore.Template.EasyLayer.Core.Enums;
@@ -17,7 +18,8 @@ namespace XUCore.Template.EasyLayer.Applaction.Admin
     /// 角色管理
     /// </summary>
     [ApiExplorerSettings(GroupName = ApiGroup.Admin)]
-    public class RoleAppService : AppService, IRoleAppService
+    [DynamicWebApi]
+    public class RoleAppService : IRoleAppService, IDynamicWebApi
     {
         private readonly IAdminRoleService adminRoleService;
 

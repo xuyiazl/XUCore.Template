@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using XUCore.Ddd.Domain;
 using XUCore.NetCore;
 using XUCore.Paging;
 using XUCore.Template.Easy.Applaction.Login;
@@ -12,7 +13,9 @@ namespace XUCore.Template.Easy.Applaction.Admin
     /// <summary>
     /// 管理员
     /// </summary>
-    public interface IAdminUserAppService : ICurdAppService<long, AdminUserEntity, AdminUserDto, AdminUserCreateCommand, AdminUserUpdateInfoCommand, AdminUserQueryCommand, AdminUserQueryPagedCommand>
+    public interface IAdminUserAppService :
+        ICurdAppService<long, AdminUserEntity, AdminUserDto, AdminUserCreateCommand, AdminUserUpdateInfoCommand, AdminUserQueryCommand, AdminUserQueryPagedCommand>,
+        IScoped
     {
         #region [ 账号管理 ]
 

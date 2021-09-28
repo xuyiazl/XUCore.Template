@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using XUCore.Ddd.Domain;
 using XUCore.NetCore;
 using XUCore.Template.Easy.Core.Enums;
 using XUCore.Template.Easy.Persistence.Entities.Admin;
@@ -10,8 +11,9 @@ namespace XUCore.Template.Easy.Applaction.Admin
     /// <summary>
     /// 菜单管理
     /// </summary>
-    public interface IAdminMenuAppService : ICurdAppService<long, AdminMenuEntity, AdminMenuDto, AdminMenuCreateCommand, AdminMenuUpdateCommand, AdminMenuQueryCommand, AdminMenuQueryPagedCommand>, 
-        IAppService
+    public interface IAdminMenuAppService :
+        ICurdAppService<long, AdminMenuEntity, AdminMenuDto, AdminMenuCreateCommand, AdminMenuUpdateCommand, AdminMenuQueryCommand, AdminMenuQueryPagedCommand>,
+        IScoped
     {
         /// <summary>
         /// 更新导航指定字段内容

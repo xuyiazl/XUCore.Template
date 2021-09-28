@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using XUCore.Ddd.Domain;
 using XUCore.NetCore;
 using XUCore.Template.Easy.Applaction.Permission;
 
@@ -9,7 +10,7 @@ namespace XUCore.Template.Easy.Applaction.Login
     /// <summary>
     /// 管理员登录接口
     /// </summary>
-    public interface ILoginAppService : IAppService
+    public interface ILoginAppService : IScoped
     {
 
         #region [ 登录 ]

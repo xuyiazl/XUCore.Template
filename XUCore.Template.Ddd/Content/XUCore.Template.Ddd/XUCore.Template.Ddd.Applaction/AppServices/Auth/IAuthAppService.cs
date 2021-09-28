@@ -1,19 +1,19 @@
-﻿using XUCore.Template.Ddd.Applaction.Common.Interfaces;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using XUCore.Ddd.Domain;
+using XUCore.NetCore;
+using XUCore.Paging;
 using XUCore.Template.Ddd.Domain.Auth.Menu;
 using XUCore.Template.Ddd.Domain.Auth.Role;
 using XUCore.Template.Ddd.Domain.User.User;
-using XUCore.NetCore;
-using XUCore.Paging;
 
 namespace XUCore.Template.Ddd.Applaction.AppServices.User
 {
     /// <summary>
     /// 权限管理
     /// </summary>
-    public interface IAuthAppService : IAppService
+    public interface IAuthAppService : IScoped
     {
         #region [ 账号&角色 关联操作 ]
 

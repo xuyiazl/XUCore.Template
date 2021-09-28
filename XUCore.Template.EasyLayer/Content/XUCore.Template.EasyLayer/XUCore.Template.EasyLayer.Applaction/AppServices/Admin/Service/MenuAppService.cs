@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Threading;
 using System.Threading.Tasks;
 using XUCore.NetCore;
+using XUCore.NetCore.DynamicWebApi;
 using XUCore.Template.EasyLayer.Core;
 using XUCore.Template.EasyLayer.Core.Enums;
 using XUCore.Template.EasyLayer.DbService.Admin.AdminMenu;
@@ -16,7 +17,8 @@ namespace XUCore.Template.EasyLayer.Applaction.Admin
     /// 用户导航管理
     /// </summary>
     [ApiExplorerSettings(GroupName = ApiGroup.Admin)]
-    public class MenuAppService : AppService, IMenuAppService
+    [DynamicWebApi]
+    public class MenuAppService : IMenuAppService, IDynamicWebApi
     {
         private readonly IAdminMenuService adminMenuService;
 

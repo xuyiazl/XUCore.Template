@@ -15,6 +15,7 @@ using XUCore.Ddd.Domain.Exceptions;
 using XUCore.Extensions;
 using XUCore.Helpers;
 using XUCore.NetCore;
+using XUCore.NetCore.DynamicWebApi;
 using XUCore.Paging;
 using XUCore.Template.Easy.Applaction.Login;
 using XUCore.Template.Easy.Core;
@@ -28,8 +29,10 @@ namespace XUCore.Template.Easy.Applaction.Admin
     /// 管理员
     /// </summary>
     [ApiExplorerSettings(GroupName = ApiGroup.Admin)]
-    public class AdminUserAppService : CurdAppService<long, AdminUserEntity, AdminUserDto, AdminUserCreateCommand, AdminUserUpdateInfoCommand, AdminUserQueryCommand, AdminUserQueryPagedCommand>
-        , IAdminUserAppService
+    [DynamicWebApi]
+    public class AdminUserAppService : CurdAppService<long, AdminUserEntity, AdminUserDto, AdminUserCreateCommand, AdminUserUpdateInfoCommand, AdminUserQueryCommand, AdminUserQueryPagedCommand>,
+        IAdminUserAppService,
+        IDynamicWebApi
     {
         private readonly IMediator mediator;
         private readonly IDefaultDbRepository<AdminUserRoleEntity> userRole;

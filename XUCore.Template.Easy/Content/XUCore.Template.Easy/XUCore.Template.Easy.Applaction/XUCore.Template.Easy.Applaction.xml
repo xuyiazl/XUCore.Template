@@ -1063,11 +1063,6 @@
             子集导航
             </summary>
         </member>
-        <member name="T:XUCore.Template.Easy.Applaction.Upload.IUploadAppService">
-            <summary>
-            文件上传
-            </summary>
-        </member>
         <member name="T:XUCore.Template.Easy.Applaction.Upload.UploadAppService">
             <summary>
             文件上传
@@ -1193,12 +1188,12 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="T:XUCore.Template.Easy.Applaction.Filters.ApiErrorAttribute">
+        <member name="T:XUCore.Template.Easy.Applaction.Filters.ApiExceptionFilter">
             <summary>
             API错误日志过滤器
             </summary>
         </member>
-        <member name="M:XUCore.Template.Easy.Applaction.Filters.ApiErrorAttribute.OnException(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext)">
+        <member name="M:XUCore.Template.Easy.Applaction.Filters.ApiExceptionFilter.OnException(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext)">
             <summary>
             异常处理
             </summary>

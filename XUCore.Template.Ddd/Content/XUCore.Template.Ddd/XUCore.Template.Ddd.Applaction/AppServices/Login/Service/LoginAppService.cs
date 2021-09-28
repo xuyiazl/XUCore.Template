@@ -8,6 +8,7 @@ using XUCore.Ddd.Domain.Bus;
 using XUCore.Helpers;
 using XUCore.NetCore;
 using XUCore.NetCore.Authorization.JwtBearer;
+using XUCore.NetCore.DynamicWebApi;
 using XUCore.NetCore.Swagger;
 using XUCore.Paging;
 using XUCore.Serializer;
@@ -17,7 +18,6 @@ using XUCore.Template.Ddd.Domain.Core;
 using XUCore.Template.Ddd.Domain.User.LoginRecord;
 using XUCore.Template.Ddd.Domain.User.User;
 using XUCore.Template.Ddd.Infrastructure;
-using XUCore.Template.Ddd.Infrastructure.Authorization;
 
 namespace XUCore.Template.Ddd.Applaction.AppServices.Login
 {
@@ -25,7 +25,8 @@ namespace XUCore.Template.Ddd.Applaction.AppServices.Login
     /// 用户登录接口
     /// </summary>
     [ApiExplorerSettings(GroupName = ApiGroup.User)]
-    public class LoginAppService : AppService, ILoginAppService
+    [DynamicWebApi]
+    public class LoginAppService : AppService, ILoginAppService, IDynamicWebApi
     {
         private readonly IUserInfo userInfo;
 

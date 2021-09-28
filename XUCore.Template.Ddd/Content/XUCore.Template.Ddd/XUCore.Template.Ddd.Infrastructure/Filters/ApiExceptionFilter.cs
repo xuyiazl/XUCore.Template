@@ -9,24 +9,23 @@ using System.Linq;
 using XUCore.Ddd.Domain.Exceptions;
 using XUCore.Extensions;
 using XUCore.Helpers;
-using XUCore.Template.Ddd.Domain.Core;
 using XUCore.NetCore;
 using XUCore.NetCore.Extensions;
 using XUCore.NetCore.Properties;
+using XUCore.Template.Ddd.Domain.Core;
 
 namespace XUCore.Template.Ddd.Infrastructure.Filters
 {
     /// <summary>
     /// API错误日志过滤器
     /// </summary>
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
-    public class ApiErrorAttribute : ExceptionFilterAttribute
+    public class ApiExceptionFilter : IExceptionFilter
     {
         /// <summary>
         /// 异常处理
         /// </summary>
         /// <param name="context">异常上下文</param>
-        public override void OnException(ExceptionContext context)
+        public void OnException(ExceptionContext context)
         {
             if (context == null)
                 return;
@@ -51,7 +50,7 @@ namespace XUCore.Template.Ddd.Infrastructure.Filters
             }
             else
             {
-                var logger = context.HttpContext.RequestServices.GetService<ILogger<ApiErrorAttribute>>();
+                var logger = context.HttpContext.RequestServices.GetService<ILogger<ApiExceptionFilter>>();
 
                 if (logger.IsEnabled(LogLevel.Error))
                 {

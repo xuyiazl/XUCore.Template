@@ -668,11 +668,6 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="T:XUCore.Template.EasyLayer.Applaction.Upload.IUploadAppService">
-            <summary>
-            文件上传
-            </summary>
-        </member>
         <member name="T:XUCore.Template.EasyLayer.Applaction.Upload.UploadAppService">
             <summary>
             文件上传
@@ -707,12 +702,12 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="T:XUCore.Template.EasyLayer.Applaction.Filters.ApiErrorAttribute">
+        <member name="T:XUCore.Template.EasyLayer.Applaction.Filters.ApiExceptionFilter">
             <summary>
             API错误日志过滤器
             </summary>
         </member>
-        <member name="M:XUCore.Template.EasyLayer.Applaction.Filters.ApiErrorAttribute.OnException(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext)">
+        <member name="M:XUCore.Template.EasyLayer.Applaction.Filters.ApiExceptionFilter.OnException(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext)">
             <summary>
             异常处理
             </summary>

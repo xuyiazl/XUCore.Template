@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using XUCore.Ddd.Domain.Bus;
 using XUCore.NetCore;
+using XUCore.NetCore.DynamicWebApi;
 using XUCore.Paging;
 using XUCore.Template.Ddd.Applaction.Common;
 using XUCore.Template.Ddd.Domain.Auth.Menu;
@@ -18,7 +19,8 @@ namespace XUCore.Template.Ddd.Applaction.AppServices.User
     /// 权限管理
     /// </summary>
     [ApiExplorerSettings(GroupName = ApiGroup.User)]
-    public class AuthAppService : AppService, IAuthAppService
+    [DynamicWebApi]
+    public class AuthAppService : AppService, IAuthAppService, IDynamicWebApi
     {
         public AuthAppService(IMediatorHandler bus) : base(bus) { }
 

@@ -1,6 +1,5 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using XUCore.Ddd.Domain;
 using XUCore.Ddd.Domain.Commands;
 using XUCore.NetCore.Data;
 using XUCore.Template.EasyLayer.Core.Enums;
@@ -9,8 +8,7 @@ using XUCore.Template.EasyLayer.Persistence.Entities;
 namespace XUCore.Template.EasyLayer.DbService
 {
     public interface ICurdService<TKey, TEntity, TDto, TCreateCommand, TUpdateCommand, TListCommand, TPageCommand> :
-        ICurdServiceProvider<TKey, TEntity, TDto, TCreateCommand, TUpdateCommand, TListCommand, TPageCommand>,
-        IScoped
+        ICurdServiceProvider<TKey, TEntity, TDto, TCreateCommand, TUpdateCommand, TListCommand, TPageCommand>
             where TKey : struct
             where TDto : class, new()
             where TEntity : BaseEntity<TKey>, new()

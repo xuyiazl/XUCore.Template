@@ -6,18 +6,19 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Newtonsoft.Json;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
 using XUCore.Ddd.Domain;
+using XUCore.Ddd.Domain.Filters;
 using XUCore.NetCore.AspectCore.Cache;
 using XUCore.NetCore.Authorization.JwtBearer;
 using XUCore.NetCore.DynamicWebApi;
 using XUCore.NetCore.Extensions;
-using XUCore.NetCore.MessagePack;
+using XUCore.NetCore.Filters;
 using XUCore.NetCore.Oss;
 using XUCore.NetCore.Swagger;
-using XUCore.Serializer;
+using XUCore.Template.Easy.Applaction.Admin;
+using XUCore.Template.Easy.Applaction.Filters;
 using XUCore.Template.Easy.Core;
 
 namespace XUCore.Template.Easy.Applaction
@@ -34,7 +35,7 @@ namespace XUCore.Template.Easy.Applaction
 
             services.AddAutoMapper(typeof(MappingProfile));
 
-            services.AddMediatR(typeof(IAppService));
+            services.AddMediatR(typeof(AdminUserCreateEvent));
 
             services.AddScanLifetime();
 
@@ -57,9 +58,7 @@ namespace XUCore.Template.Easy.Applaction
             services.AddCors(options =>
                 options.AddPolicy(policyName, builder =>
                 {
-                    builder.AllowAnyHeader();
-                    builder.AllowAnyOrigin();
-                    builder.AllowAnyMethod();
+                    builder.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod();
                 })
             );
 
@@ -67,17 +66,23 @@ namespace XUCore.Template.Easy.Applaction
             services.AddJwt<JwtHandler>(enableGlobalAuthorize: true);//enableGlobalAuthorize: true
 
             services
-                .AddControllers()
-                .AddMessagePackFormatters(options =>
+                .AddControllers(opts =>
                 {
-                    options.JsonSerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Local;
-                    options.JsonSerializerSettings.ContractResolver = new LimitPropsContractResolver();
-
-                    //默认设置MessageagePack的日期序列化格式为时间戳，对外输出一致为时间戳的日期，不需要我们自己去序列化，自动操作。
-                    //C#实体内仍旧保持DateTime。跨语言MessageagePack没有DateTime类型。
-                    options.FormatterResolver = MessagePackSerializerResolver.UnixDateTimeFormatter;
-                    options.Options = MessagePackSerializerResolver.UnixDateTimeOptions;
+                    opts.Filters.Add<ApiExceptionFilter>();
+                    opts.Filters.Add<CommandValidationActionFilter>();
+                    opts.Filters.Add<ApiElapsedTimeActionFilter>();
                 })
+                //如果需要messagepack格式的输出  在接口处可以增加标签 ： [MessagePackResponseContentType]
+                //.AddMessagePackFormatters(options =>
+                //{
+                //    options.JsonSerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Local;
+                //    options.JsonSerializerSettings.ContractResolver = new LimitPropsContractResolver();
+
+                //    //默认设置MessageagePack的日期序列化格式为时间戳，对外输出一致为时间戳的日期，不需要我们自己去序列化，自动操作。
+                //    //C#实体内仍旧保持DateTime。跨语言MessageagePack没有DateTime类型。
+                //    options.FormatterResolver = MessagePackSerializerResolver.UnixDateTimeFormatter;
+                //    options.Options = MessagePackSerializerResolver.UnixDateTimeOptions;
+                //})
                 .AddFluentValidation(opt =>
                 {
                     opt.ValidatorOptions.CascadeMode = FluentValidation.CascadeMode.Stop;

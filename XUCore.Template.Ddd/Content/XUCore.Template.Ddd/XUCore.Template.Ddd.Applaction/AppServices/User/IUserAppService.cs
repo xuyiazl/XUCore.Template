@@ -1,16 +1,16 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using XUCore.Template.Ddd.Applaction.Common.Interfaces;
-using XUCore.Template.Ddd.Domain.User.User;
+using XUCore.Ddd.Domain;
 using XUCore.NetCore;
 using XUCore.Paging;
+using XUCore.Template.Ddd.Domain.User.User;
 
 namespace XUCore.Template.Ddd.Applaction.AppServices.User
 {
     /// <summary>
     /// 用户管理
     /// </summary>
-    public interface IUserAppService : IAppService
+    public interface IUserAppService : IScoped
     {
         /// <summary>
         /// 创建用户账号

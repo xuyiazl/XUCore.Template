@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Newtonsoft.Json;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
 using XUCore.Ddd.Domain;
@@ -14,14 +13,14 @@ using XUCore.NetCore.AspectCore.Cache;
 using XUCore.NetCore.Authorization.JwtBearer;
 using XUCore.NetCore.DynamicWebApi;
 using XUCore.NetCore.Extensions;
-using XUCore.NetCore.MessagePack;
+using XUCore.NetCore.Filters;
 using XUCore.NetCore.Oss;
 using XUCore.NetCore.Redis;
-using XUCore.Serializer;
 using XUCore.Template.Ddd.Domain.Core.Mappings;
 using XUCore.Template.Ddd.Domain.Notifications;
 using XUCore.Template.Ddd.Infrastructure.Authorization;
 using XUCore.Template.Ddd.Infrastructure.Events;
+using XUCore.Template.Ddd.Infrastructure.Filters;
 
 namespace XUCore.Template.Ddd.Infrastructure
 {
@@ -76,7 +75,11 @@ namespace XUCore.Template.Ddd.Infrastructure
 
             if (project.Equals("api"))
             {
-                mvcBuilder = services.AddControllers();
+                mvcBuilder = services.AddControllers(opts =>
+                {
+                    opts.Filters.Add<ApiExceptionFilter>();
+                    opts.Filters.Add<ApiElapsedTimeActionFilter>();
+                });
 
                 services.AddDynamicWebApi(opt =>
                 {
@@ -87,17 +90,7 @@ namespace XUCore.Template.Ddd.Infrastructure
                 services.AddCors(options =>
                     options.AddPolicy(policyName, builder =>
                     {
-                        builder
-                            .AllowAnyHeader()
-                            .AllowAnyOrigin()
-                            .AllowAnyMethod();
-
-                        //builder.AllowCredentials(); 
-                        /*
-                            该方法不能和AllowAnyOrigin 同时使用，否则会触发异常：
-                            The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. 
-                            Configure the CORS policy by listing individual origins if credentials needs to be supported
-                        */
+                        builder.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod();
                     })
                 );
 
@@ -105,21 +98,25 @@ namespace XUCore.Template.Ddd.Infrastructure
             }
             else
             {
-                mvcBuilder = services.AddControllersWithViews();
+                mvcBuilder = services.AddControllersWithViews(opts =>
+                {
+                    opts.Filters.Add<ApiExceptionFilter>();
+                    opts.Filters.Add<ApiElapsedTimeActionFilter>();
+                });
             }
 
             mvcBuilder
-                .AddMessagePackFormatters(options =>
-                {
-                    options.JsonSerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Local;
-                    options.JsonSerializerSettings.ContractResolver = new LimitPropsContractResolver();
+                //如果需要messagepack格式的输出  在接口处可以增加标签 ： [MessagePackResponseContentType]
+                //.AddMessagePackFormatters(options =>
+                //{
+                //    options.JsonSerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Local;
+                //    options.JsonSerializerSettings.ContractResolver = new LimitPropsContractResolver();
 
-                    //默认设置MessageagePack的日期序列化格式为时间戳，对外输出一致为时间戳的日期，不需要我们自己去序列化，自动操作。
-                    //C#实体内仍旧保持DateTime。跨语言MessageagePack没有DateTime类型。
-                    options.FormatterResolver = MessagePackSerializerResolver.UnixDateTimeFormatter;
-                    options.Options = MessagePackSerializerResolver.UnixDateTimeOptions;
-
-                })
+                //    //默认设置MessageagePack的日期序列化格式为时间戳，对外输出一致为时间戳的日期，不需要我们自己去序列化，自动操作。
+                //    //C#实体内仍旧保持DateTime。跨语言MessageagePack没有DateTime类型。
+                //    options.FormatterResolver = MessagePackSerializerResolver.UnixDateTimeFormatter;
+                //    options.Options = MessagePackSerializerResolver.UnixDateTimeOptions;
+                //})
                 .AddFluentValidation(opt =>
                 {
                     opt.ValidatorOptions.CascadeMode = FluentValidation.CascadeMode.Stop;

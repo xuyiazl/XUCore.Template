@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using XUCore.Ddd.Domain.Bus;
 using XUCore.Helpers;
 using XUCore.NetCore;
+using XUCore.NetCore.DynamicWebApi;
 using XUCore.NetCore.Oss;
 using XUCore.NetCore.Uploads;
 using XUCore.NetCore.Uploads.Params;
@@ -19,7 +20,8 @@ namespace XUCore.Template.Ddd.Applaction.AppServices.Upload
     /// 文件上传
     /// </summary>
     [ApiExplorerSettings(GroupName = ApiGroup.File)]
-    public class UploadAppService : AppService, IUploadAppService
+    [DynamicWebApi]
+    public class UploadAppService : AppService, IDynamicWebApi
     {
         private readonly IOssFactory _ossFactory;
         /// <summary>

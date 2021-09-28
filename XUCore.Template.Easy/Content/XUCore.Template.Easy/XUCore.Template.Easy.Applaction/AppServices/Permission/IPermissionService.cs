@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using XUCore.Template.Easy.Applaction;
+using XUCore.Ddd.Domain;
 
 namespace XUCore.Template.Easy.Applaction.Permission
 {
-    public interface IPermissionService : IAppService
+    public interface IPermissionService : IScoped
     {
         Task<bool> ExistsAsync(long adminId, string onlyCode, CancellationToken cancellationToken);
         Task<IList<PermissionMenuDto>> GetMenuExpressAsync(long adminId, CancellationToken cancellationToken);

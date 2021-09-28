@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using XUCore.Ddd.Domain;
 using XUCore.NetCore;
 using XUCore.Template.EasyLayer.Core.Enums;
 using XUCore.Template.EasyLayer.DbService.Admin.AdminMenu;
@@ -10,7 +11,7 @@ namespace XUCore.Template.EasyLayer.Applaction.Admin
     /// <summary>
     /// 用户导航管理
     /// </summary>
-    public interface IMenuAppService : IAppService
+    public interface IMenuAppService : IScoped
     {
         /// <summary>
         /// 创建导航

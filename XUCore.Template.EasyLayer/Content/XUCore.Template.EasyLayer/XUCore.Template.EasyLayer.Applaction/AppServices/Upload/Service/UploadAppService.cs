@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using XUCore.Helpers;
 using XUCore.NetCore;
+using XUCore.NetCore.DynamicWebApi;
 using XUCore.NetCore.Oss;
 using XUCore.NetCore.Uploads;
 using XUCore.NetCore.Uploads.Params;
@@ -16,7 +17,8 @@ namespace XUCore.Template.EasyLayer.Applaction.Upload
     /// 文件上传
     /// </summary>
     [ApiExplorerSettings(GroupName = ApiGroup.Admin)]
-    public class UploadAppService : AppService, IUploadAppService
+    [DynamicWebApi]
+    public class UploadAppService : IDynamicWebApi
     {
         private readonly IOssFactory _ossFactory;
         /// <summary>

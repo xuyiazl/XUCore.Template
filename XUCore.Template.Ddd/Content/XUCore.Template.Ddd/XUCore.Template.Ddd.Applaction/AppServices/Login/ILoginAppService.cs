@@ -1,20 +1,20 @@
-﻿using XUCore.Template.Ddd.Applaction.Common.Interfaces;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using XUCore.Ddd.Domain;
+using XUCore.NetCore;
+using XUCore.Paging;
 using XUCore.Template.Ddd.Domain.Auth.Permission;
 using XUCore.Template.Ddd.Domain.User.LoginRecord;
 using XUCore.Template.Ddd.Domain.User.User;
-using XUCore.NetCore;
-using XUCore.Paging;
 
 namespace XUCore.Template.Ddd.Applaction.AppServices.Login
 {
     /// <summary>
     /// 用户登录接口
     /// </summary>
-    public interface ILoginAppService : IAppService
+    public interface ILoginAppService : IScoped
     {
         #region [ 登录 ]
 

@@ -1,6 +1,4 @@
 ﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,13 +8,10 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using XUCore.Ddd.Domain.Exceptions;
 using XUCore.Extensions;
-using XUCore.Helpers;
 using XUCore.NetCore;
-using XUCore.NetCore.AspectCore.Cache;
+using XUCore.NetCore.DynamicWebApi;
 using XUCore.Paging;
-using XUCore.Template.Easy.Applaction.Permission;
 using XUCore.Template.Easy.Core;
 using XUCore.Template.Easy.Core.Enums;
 using XUCore.Template.Easy.Persistence;
@@ -28,8 +23,10 @@ namespace XUCore.Template.Easy.Applaction.Admin
     /// 角色管理
     /// </summary>
     [ApiExplorerSettings(GroupName = ApiGroup.Admin)]
+    [DynamicWebApi]
     public class AdminRoleAppService : CurdAppService<long, AdminRoleEntity, AdminRoleDto, AdminRoleCreateCommand, AdminRoleUpdateCommand, AdminRoleQueryCommand, AdminRoleQueryPagedCommand>,
-        IAdminRoleAppService
+        IAdminRoleAppService,
+        IDynamicWebApi
     {
         private readonly IDefaultDbRepository<AdminUserRoleEntity> userRole;
         private readonly IDefaultDbRepository<AdminRoleMenuEntity> roleMenu;

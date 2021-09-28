@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using XUCore.Ddd.Domain;
 using XUCore.NetCore;
 using XUCore.Paging;
 using XUCore.Template.EasyLayer.Core.Enums;
@@ -11,7 +12,7 @@ namespace XUCore.Template.EasyLayer.Applaction.Admin
     /// <summary>
     /// 用户管理
     /// </summary>
-    public interface IUserAppService : IAppService
+    public interface IUserAppService : IScoped
     {
 
         #region [ 账号管理 ]

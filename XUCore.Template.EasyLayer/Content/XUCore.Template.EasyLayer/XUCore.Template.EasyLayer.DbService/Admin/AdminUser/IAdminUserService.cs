@@ -1,13 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using XUCore.Ddd.Domain;
 using XUCore.Paging;
 using XUCore.Template.EasyLayer.Core.Enums;
 using XUCore.Template.EasyLayer.Persistence.Entities.Admin;
 
 namespace XUCore.Template.EasyLayer.DbService.Admin.AdminUser
 {
-    public interface IAdminUserService : ICurdService<long, AdminUserEntity, AdminUserDto, AdminUserCreateCommand, AdminUserUpdateInfoCommand, AdminUserQueryCommand, AdminUserQueryPagedCommand>
+    public interface IAdminUserService :
+        ICurdService<long, AdminUserEntity, AdminUserDto, AdminUserCreateCommand, AdminUserUpdateInfoCommand, AdminUserQueryCommand, AdminUserQueryPagedCommand>,
+        IScoped
     {
         Task<bool> AnyByAccountAsync(AccountMode accountMode, string account, long notId, CancellationToken cancellationToken);
         Task<AdminUserDto> GetByAccountAsync(AccountMode accountMode, string account, CancellationToken cancellationToken);

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using XUCore.Ddd.Domain;
 using XUCore.NetCore;
 using XUCore.Template.Easy.Persistence.Entities.Admin;
 
@@ -10,7 +11,7 @@ namespace XUCore.Template.Easy.Applaction.Admin
     /// 角色管理
     /// </summary>
     public interface IAdminRoleAppService : ICurdAppService<long, AdminRoleEntity, AdminRoleDto, AdminRoleCreateCommand, AdminRoleUpdateCommand, AdminRoleQueryCommand, AdminRoleQueryPagedCommand>,
-        IAppService
+        IScoped
     {
         /// <summary>
         /// 更新角色指定字段内容

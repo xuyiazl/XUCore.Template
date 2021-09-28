@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using XUCore.Ddd.Domain;
 using XUCore.NetCore;
 using XUCore.Paging;
 using XUCore.Template.EasyLayer.DbService.Admin.AdminUser;
@@ -11,7 +12,7 @@ namespace XUCore.Template.EasyLayer.Applaction.Login
     /// <summary>
     /// 管理员登录接口
     /// </summary>
-    public interface ILoginAppService : IAppService
+    public interface ILoginAppService : IScoped
     {
 
         #region [ 登录 ]

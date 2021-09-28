@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using XUCore.Ddd.Domain.Bus;
 using XUCore.NetCore;
+using XUCore.NetCore.DynamicWebApi;
 using XUCore.Paging;
 using XUCore.Template.Ddd.Applaction.Common;
 using XUCore.Template.Ddd.Domain.Core;
@@ -15,7 +16,8 @@ namespace XUCore.Template.Ddd.Applaction.AppServices.User
     /// 用户管理
     /// </summary>
     [ApiExplorerSettings(GroupName = ApiGroup.User)]
-    public class UserAppService : AppService, IUserAppService
+    [DynamicWebApi]
+    public class UserAppService : AppService, IUserAppService, IDynamicWebApi
     {
         public UserAppService(IMediatorHandler bus) : base(bus) { }
 

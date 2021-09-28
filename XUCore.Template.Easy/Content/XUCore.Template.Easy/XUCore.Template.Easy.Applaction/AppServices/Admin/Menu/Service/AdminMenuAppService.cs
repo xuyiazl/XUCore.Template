@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using XUCore.Extensions;
 using XUCore.NetCore;
+using XUCore.NetCore.DynamicWebApi;
 using XUCore.Paging;
 using XUCore.Template.Easy.Core;
 using XUCore.Template.Easy.Core.Enums;
@@ -23,8 +23,10 @@ namespace XUCore.Template.Easy.Applaction.Admin
     /// 菜单管理
     /// </summary>
     [ApiExplorerSettings(GroupName = ApiGroup.Admin)]
+    [DynamicWebApi]
     public class AdminMenuAppService : CurdAppService<long, AdminMenuEntity, AdminMenuDto, AdminMenuCreateCommand, AdminMenuUpdateCommand, AdminMenuQueryCommand, AdminMenuQueryPagedCommand>,
-        IAdminMenuAppService
+        IAdminMenuAppService,
+        IDynamicWebApi
     {
         private readonly IDefaultDbRepository<AdminRoleMenuEntity> roleMenu;
         public AdminMenuAppService(IServiceProvider serviceProvider, IDefaultDbRepository<AdminMenuEntity> db, IMapper mapper) : base(db, mapper)

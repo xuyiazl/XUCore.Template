@@ -10,9 +10,9 @@ using XUCore.Ddd.Domain;
 using XUCore.Helpers;
 using XUCore.NetCore;
 using XUCore.NetCore.Authorization.JwtBearer;
+using XUCore.NetCore.DynamicWebApi;
 using XUCore.NetCore.Swagger;
 using XUCore.Serializer;
-using XUCore.Template.EasyLayer.Applaction.Admin;
 using XUCore.Template.EasyLayer.Core;
 using XUCore.Template.EasyLayer.DbService.Admin.AdminUser;
 using XUCore.Template.EasyLayer.DbService.Admin.Permission;
@@ -23,7 +23,8 @@ namespace XUCore.Template.EasyLayer.Applaction.Login
     /// 管理员登录接口
     /// </summary>
     [ApiExplorerSettings(GroupName = ApiGroup.Admin)]
-    public class LoginAppService : AppService, ILoginAppService
+    [DynamicWebApi]
+    public class LoginAppService : ILoginAppService, IDynamicWebApi
     {
         private readonly IPermissionService permissionService;
         private readonly IAdminUserService adminUserService;
