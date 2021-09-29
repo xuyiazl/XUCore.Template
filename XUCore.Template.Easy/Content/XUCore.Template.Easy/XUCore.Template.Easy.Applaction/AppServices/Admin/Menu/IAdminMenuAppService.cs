@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using XUCore.Ddd.Domain;
 using XUCore.NetCore;
-using XUCore.Template.Easy.Core.Enums;
 using XUCore.Template.Easy.Persistence.Entities.Admin;
 
 namespace XUCore.Template.Easy.Applaction.Admin

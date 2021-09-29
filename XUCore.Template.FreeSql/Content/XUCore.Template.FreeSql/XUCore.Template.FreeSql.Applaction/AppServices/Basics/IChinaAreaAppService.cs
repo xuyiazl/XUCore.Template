@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using XUCore.Ddd.Domain;
 using XUCore.NetCore;
 using XUCore.Template.FreeSql.DbService.Basics.ChinaArea;
 

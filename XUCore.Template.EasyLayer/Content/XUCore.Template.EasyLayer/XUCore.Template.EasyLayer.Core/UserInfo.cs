@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using XUCore.Ddd.Domain;
+using XUCore.NetCore;
 
 namespace XUCore.Template.EasyLayer.Core
 {

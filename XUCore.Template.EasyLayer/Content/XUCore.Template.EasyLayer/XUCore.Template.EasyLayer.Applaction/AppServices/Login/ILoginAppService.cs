@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using XUCore.Ddd.Domain;
 using XUCore.NetCore;
-using XUCore.Paging;
 using XUCore.Template.EasyLayer.DbService.Admin.AdminUser;
 using XUCore.Template.EasyLayer.DbService.Admin.Permission;
 

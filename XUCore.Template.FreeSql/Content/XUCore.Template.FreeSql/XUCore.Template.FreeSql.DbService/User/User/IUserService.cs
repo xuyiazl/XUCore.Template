@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using XUCore.NetCore;
 using XUCore.NetCore.FreeSql.Curd;
 using XUCore.Paging;
 using XUCore.Template.FreeSql.Core.Enums;
 using XUCore.Template.FreeSql.Persistence.Entities.User;
-using XUCore.Ddd.Domain;
 
 namespace XUCore.Template.FreeSql.DbService.User.User
 {

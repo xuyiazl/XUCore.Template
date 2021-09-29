@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using XUCore.Ddd.Domain;
+using XUCore.NetCore;
 using XUCore.NetCore.FreeSql.Curd;
 using XUCore.Template.FreeSql.Persistence.Entities.User;
 
