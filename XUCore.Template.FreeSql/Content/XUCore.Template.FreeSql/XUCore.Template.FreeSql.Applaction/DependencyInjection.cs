@@ -7,8 +7,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
-using System;
-using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
 using XUCore.Ddd.Domain;
@@ -25,9 +23,7 @@ using XUCore.NetCore.Swagger;
 using XUCore.Serializer;
 using XUCore.Template.FreeSql.Applaction.Filters;
 using XUCore.Template.FreeSql.Core;
-using XUCore.Template.FreeSql.DbService;
 using XUCore.Template.FreeSql.DbService.Events;
-using XUCore.Template.FreeSql.DbService.User.User;
 
 namespace XUCore.Template.FreeSql.Applaction
 {
