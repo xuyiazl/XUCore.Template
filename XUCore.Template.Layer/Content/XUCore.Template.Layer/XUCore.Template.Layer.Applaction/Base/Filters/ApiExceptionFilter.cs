@@ -14,19 +14,18 @@ using XUCore.NetCore.Extensions;
 using XUCore.NetCore.Properties;
 using XUCore.Template.Layer.Core;
 
-namespace XUCore.Template.Layer.WebApi.Controller.Filters
+namespace XUCore.Template.Layer.Applaction.Filters
 {
     /// <summary>
     /// API错误日志过滤器
     /// </summary>
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
-    public class ApiErrorAttribute : ExceptionFilterAttribute
+    public class ApiExceptionFilter : IExceptionFilter
     {
         /// <summary>
         /// 异常处理
         /// </summary>
         /// <param name="context">异常上下文</param>
-        public override void OnException(ExceptionContext context)
+        public void OnException(ExceptionContext context)
         {
             if (context == null)
                 return;
@@ -51,7 +50,7 @@ namespace XUCore.Template.Layer.WebApi.Controller.Filters
             }
             else
             {
-                var logger = context.HttpContext.RequestServices.GetService<ILogger<ApiErrorAttribute>>();
+                var logger = context.HttpContext.RequestServices.GetService<ILogger<ApiExceptionFilter>>();
 
                 if (logger.IsEnabled(LogLevel.Error))
                 {

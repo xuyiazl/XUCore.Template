@@ -9,8 +9,7 @@ using XUCore.Template.Layer.Persistence.Entities;
 namespace XUCore.Template.Layer.DbService
 {
     public interface ICurdService<TKey, TEntity, TDto, TCreateCommand, TUpdateCommand, TListCommand, TPageCommand> :
-        ICurdServiceProvider<TKey, TEntity, TDto, TCreateCommand, TUpdateCommand, TListCommand, TPageCommand>,
-        IScoped
+        ICurdServiceProvider<TKey, TEntity, TDto, TCreateCommand, TUpdateCommand, TListCommand, TPageCommand>
             where TKey : struct
             where TDto : class, new()
             where TEntity : BaseEntity<TKey>, new()

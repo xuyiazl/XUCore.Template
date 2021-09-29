@@ -675,6 +675,17 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
+        <member name="T:XUCore.Template.Layer.Applaction.Filters.ApiExceptionFilter">
+            <summary>
+            API错误日志过滤器
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.Layer.Applaction.Filters.ApiExceptionFilter.OnException(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext)">
+            <summary>
+            异常处理
+            </summary>
+            <param name="context">异常上下文</param>
+        </member>
         <member name="T:XUCore.Template.Layer.Applaction.JwtHandler">
             <summary>
             JWT 授权自定义处理程序

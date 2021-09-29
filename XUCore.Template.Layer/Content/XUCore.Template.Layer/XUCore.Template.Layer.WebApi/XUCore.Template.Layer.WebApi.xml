@@ -285,17 +285,6 @@
             日志
             </summary>
         </member>
-        <member name="T:XUCore.Template.Layer.WebApi.Controller.Filters.ApiErrorAttribute">
-            <summary>
-            API错误日志过滤器
-            </summary>
-        </member>
-        <member name="M:XUCore.Template.Layer.WebApi.Controller.Filters.ApiErrorAttribute.OnException(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext)">
-            <summary>
-            异常处理
-            </summary>
-            <param name="context">异常上下文</param>
-        </member>
         <member name="T:XUCore.Template.Layer.WebApi.Controller.LoginController">
             <summary>
             管理员登录接口

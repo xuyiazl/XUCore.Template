@@ -12,18 +12,20 @@ using Newtonsoft.Json;
 using System.Linq;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
+using XUCore.Ddd.Domain;
 using XUCore.Extensions;
 using XUCore.NetCore.AspectCore.Cache;
 using XUCore.NetCore.Authorization.JwtBearer;
 using XUCore.NetCore.Extensions;
+using XUCore.NetCore.Filters;
 using XUCore.NetCore.MessagePack;
 using XUCore.NetCore.Oss;
+using XUCore.NetCore.Swagger;
 using XUCore.Serializer;
+using XUCore.Template.Layer.Applaction.Admin;
+using XUCore.Template.Layer.Applaction.Filters;
 using XUCore.Template.Layer.Core;
 using XUCore.Template.Layer.DbService;
-using XUCore.NetCore.Swagger;
-using XUCore.Ddd.Domain;
-using XUCore.Template.Layer.Applaction.Admin;
 
 namespace XUCore.Template.Layer.Applaction
 {
@@ -62,9 +64,7 @@ namespace XUCore.Template.Layer.Applaction
             services.AddCors(options =>
                 options.AddPolicy(policyName, builder =>
                 {
-                    builder.AllowAnyHeader();
-                    builder.AllowAnyOrigin();
-                    builder.AllowAnyMethod();
+                    builder.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod();
                 })
             );
 
@@ -72,7 +72,11 @@ namespace XUCore.Template.Layer.Applaction
             services.AddJwt<JwtHandler>(enableGlobalAuthorize: true);//enableGlobalAuthorize: true
 
             services
-                .AddControllers()
+                .AddControllers(opts =>
+                {
+                    opts.Filters.Add<ApiExceptionFilter>();
+                    opts.Filters.Add<ApiElapsedTimeActionFilter>();
+                })
                 //如果需要messagepack格式的输出（默认大写，于前端来决定大小写输出）  在接口处可以增加标签来限定入口格式 ： [MessagePackResponseContentType]
                 //客户端接入指南：
                 //https://github.com/xuyiazl/XUCore.NetCore/tree/net5/src/XUCore.NetCore/MessagePack#heavy_check_mark-%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%8E%A5%E5%85%A5
