@@ -33,7 +33,6 @@ namespace XUCore.Template.FreeSql.Applaction.User
         /// <param name="request"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        [HttpPost]
         public async Task<Result<long>> CreateAsync([Required][FromBody] RoleCreateCommand request, CancellationToken cancellationToken = default)
         {
             var res = await roleService.CreateAsync(request, cancellationToken);
@@ -49,7 +48,6 @@ namespace XUCore.Template.FreeSql.Applaction.User
         /// <param name="request"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        [HttpPut]
         public async Task<Result<int>> UpdateAsync([Required][FromBody] RoleUpdateCommand request, CancellationToken cancellationToken = default)
         {
             var res = await roleService.UpdateAsync(request, cancellationToken);
@@ -98,7 +96,6 @@ namespace XUCore.Template.FreeSql.Applaction.User
         /// <param name="ids"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        [HttpDelete]
         public async Task<Result<int>> DeleteAsync([Required][FromQuery] long[] ids, CancellationToken cancellationToken = default)
         {
             var res = await roleService.DeleteAsync(ids, cancellationToken);

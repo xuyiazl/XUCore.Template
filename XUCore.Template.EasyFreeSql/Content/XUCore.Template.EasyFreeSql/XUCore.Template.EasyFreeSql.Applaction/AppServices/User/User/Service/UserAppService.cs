@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.DependencyInjection;
+﻿using AutoMapper;
+using FreeSql;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -13,13 +15,11 @@ using XUCore.Helpers;
 using XUCore.NetCore;
 using XUCore.NetCore.DynamicWebApi;
 using XUCore.NetCore.FreeSql;
+using XUCore.NetCore.FreeSql.Curd;
 using XUCore.Paging;
 using XUCore.Template.EasyFreeSql.Core;
 using XUCore.Template.EasyFreeSql.Core.Enums;
 using XUCore.Template.EasyFreeSql.Persistence.Entities.User;
-using XUCore.NetCore.FreeSql.Curd;
-using FreeSql;
-using AutoMapper;
 
 namespace XUCore.Template.EasyFreeSql.Applaction.User.User
 {
@@ -52,7 +52,6 @@ namespace XUCore.Template.EasyFreeSql.Applaction.User.User
         /// </remarks>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        [HttpPost]
         [AllowAnonymous]
         public async Task<Result<long>> CreateInitAccountAsync(CancellationToken cancellationToken = default)
         {
@@ -162,25 +161,32 @@ namespace XUCore.Template.EasyFreeSql.Applaction.User.User
         /// <returns></returns>
         public async Task<Result<int>> UpdateFieldAsync([Required][FromQuery] long id, [Required][FromQuery] string field, [FromQuery] string value, CancellationToken cancellationToken = default)
         {
-            var res = 0;
+            var entity = await repo.Select.WhereDynamic(id).ToOneAsync(cancellationToken);
+
+            if (entity.IsNull())
+                Failure.Error("没有找到该记录");
+
             switch (field.ToLower())
             {
                 case "name":
-                    res = await unitOfWork.Orm.Update<UserEntity>(id).Set(c => new UserEntity() { Name = value, ModifiedAtUserId = user.GetId<long>(), ModifiedAtUserName = user.UserName }).ExecuteAffrowsAsync(cancellationToken);
+                    entity.Name = value;
                     break;
                 case "position":
-                    res = await unitOfWork.Orm.Update<UserEntity>(id).Set(c => new UserEntity() { Position = value, ModifiedAtUserId = user.GetId<long>(), ModifiedAtUserName = user.UserName }).ExecuteAffrowsAsync(cancellationToken);
+                    entity.Position = value;
                     break;
                 case "location":
-                    res = await unitOfWork.Orm.Update<UserEntity>(id).Set(c => new UserEntity() { Location = value, ModifiedAtUserId = user.GetId<long>(), ModifiedAtUserName = user.UserName }).ExecuteAffrowsAsync(cancellationToken);
+                    entity.Location = value;
                     break;
                 case "company":
-                    res = await unitOfWork.Orm.Update<UserEntity>(id).Set(c => new UserEntity() { Company = value, ModifiedAtUserId = user.GetId<long>(), ModifiedAtUserName = user.UserName }).ExecuteAffrowsAsync(cancellationToken);
+                    entity.Company = value;
                     break;
                 case "picture":
-                    res = await unitOfWork.Orm.Update<UserEntity>(id).Set(c => new UserEntity() { Picture = value, ModifiedAtUserId = user.GetId<long>(), ModifiedAtUserName = user.UserName }).ExecuteAffrowsAsync(cancellationToken);
+                    entity.Picture = value;
                     break;
             }
+
+            var res = await repo.UpdateAsync(entity, cancellationToken);
+
             if (res > 0)
                 return RestFull.Success(data: res);
             else
@@ -195,15 +201,11 @@ namespace XUCore.Template.EasyFreeSql.Applaction.User.User
         /// <returns></returns>
         public async Task<Result<int>> UpdateEnabledAsync([Required][FromQuery] long[] ids, [Required][FromQuery] bool enabled, CancellationToken cancellationToken = default)
         {
-            var res = await unitOfWork.Orm
-                .Update<UserEntity>(ids)
-                .Set(c => new UserEntity()
-                {
-                    Enabled = enabled,
-                    ModifiedAtUserId = user.GetId<long>(),
-                    ModifiedAtUserName = user.UserName
-                })
-                .ExecuteAffrowsAsync(cancellationToken);
+            var list = await repo.Select.Where(c => ids.Contains(c.Id)).ToListAsync<UserEntity>(cancellationToken);
+
+            list.ForEach(c => c.Enabled = enabled);
+
+            var res = await repo.UpdateAsync(list, cancellationToken);
 
             if (res > 0)
                 return RestFull.Success(data: res);

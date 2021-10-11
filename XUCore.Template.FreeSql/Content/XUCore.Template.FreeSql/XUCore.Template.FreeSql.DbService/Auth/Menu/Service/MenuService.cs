@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using XUCore.Ddd.Domain.Exceptions;
 using XUCore.Extensions;
 using XUCore.NetCore.FreeSql;
 using XUCore.NetCore.FreeSql.Curd;
@@ -24,20 +25,31 @@ namespace XUCore.Template.FreeSql.DbService.Auth.Menu
 
         public async Task<int> UpdateAsync(long id, string field, string value, CancellationToken cancellationToken)
         {
+            var entity = await repo.Select.WhereDynamic(id).ToOneAsync(cancellationToken);
+
+            if (entity.IsNull())
+                Failure.Error("没有找到该记录");
+
             switch (field.ToLower())
             {
                 case "name":
-                    return await freeSql.Update<MenuEntity>(id).Set(c => new MenuEntity() { Name = value, ModifiedAtUserId = User.GetId<long>(), ModifiedAtUserName = User.UserName }).ExecuteAffrowsAsync(cancellationToken);
+                    entity.Name = value;
+                    break;
                 case "icon":
-                    return await freeSql.Update<MenuEntity>(id).Set(c => new MenuEntity() { Icon = value, ModifiedAtUserId = User.GetId<long>(), ModifiedAtUserName = User.UserName }).ExecuteAffrowsAsync(cancellationToken);
+                    entity.Icon = value;
+                    break;
                 case "url":
-                    return await freeSql.Update<MenuEntity>(id).Set(c => new MenuEntity() { Url = value, ModifiedAtUserId = User.GetId<long>(), ModifiedAtUserName = User.UserName }).ExecuteAffrowsAsync(cancellationToken);
+                    entity.Url = value;
+                    break;
                 case "onlycode":
-                    return await freeSql.Update<MenuEntity>(id).Set(c => new MenuEntity() { OnlyCode = value, ModifiedAtUserId = User.GetId<long>(), ModifiedAtUserName = User.UserName }).ExecuteAffrowsAsync(cancellationToken);
+                    entity.OnlyCode = value;
+                    break;
                 case "sort":
-                    return await freeSql.Update<MenuEntity>(id).Set(c => new MenuEntity() { Sort = value.ToInt(), ModifiedAtUserId = User.GetId<long>(), ModifiedAtUserName = User.UserName }).ExecuteAffrowsAsync(cancellationToken);
+                    entity.Sort = value.ToInt();
+                    break;
             }
-            return 0;
+
+            return await repo.UpdateAsync(entity, cancellationToken);
         }
         /// <summary>
         /// 更新状态
@@ -48,15 +60,11 @@ namespace XUCore.Template.FreeSql.DbService.Auth.Menu
         /// <returns></returns>
         public async Task<int> UpdateAsync(long[] ids, bool enabled, CancellationToken cancellationToken)
         {
-            return await freeSql
-                .Update<MenuEntity>(ids)
-                .Set(c => new MenuEntity()
-                {
-                    Enabled = enabled,
-                    ModifiedAtUserId = User.GetId<long>(),
-                    ModifiedAtUserName = User.UserName
-                })
-                .ExecuteAffrowsAsync(cancellationToken);
+            var list = await repo.Select.Where(c => ids.Contains(c.Id)).ToListAsync<MenuEntity>(cancellationToken);
+
+            list.ForEach(c => c.Enabled = enabled);
+
+            return await repo.UpdateAsync(list, cancellationToken);
         }
 
         public override async Task<int> DeleteAsync(long[] ids, CancellationToken cancellationToken)

@@ -17,7 +17,7 @@ using XUCore.Template.FreeSql.Persistence.Entities.User;
 
 namespace XUCore.Template.FreeSql.DbService.User.User
 {
-    public class UserService : FreeSqlCurdService<long,UserEntity, UserDto, UserCreateCommand, UserUpdateInfoCommand, UserQueryCommand, UserQueryPagedCommand>,
+    public class UserService : FreeSqlCurdService<long, UserEntity, UserDto, UserCreateCommand, UserUpdateInfoCommand, UserQueryCommand, UserQueryPagedCommand>,
         IUserService
     {
         public UserService(IServiceProvider serviceProvider, FreeSqlUnitOfWorkManager muowm, IMapper mapper, IUserInfo user) : base(muowm, mapper, user)
@@ -69,20 +69,31 @@ namespace XUCore.Template.FreeSql.DbService.User.User
 
         public async Task<int> UpdateAsync(long id, string field, string value, CancellationToken cancellationToken)
         {
+            var entity = await repo.Select.WhereDynamic(id).ToOneAsync(cancellationToken);
+
+            if (entity.IsNull())
+                Failure.Error("没有找到该记录");
+
             switch (field.ToLower())
             {
                 case "name":
-                    return await freeSql.Update<UserEntity>(id).Set(c => new UserEntity() { Name = value, ModifiedAtUserId = User.GetId<long>(), ModifiedAtUserName = User.UserName }).ExecuteAffrowsAsync(cancellationToken);
+                    entity.Name = value;
+                    break;
                 case "position":
-                    return await freeSql.Update<UserEntity>(id).Set(c => new UserEntity() { Position = value, ModifiedAtUserId = User.GetId<long>(), ModifiedAtUserName = User.UserName }).ExecuteAffrowsAsync(cancellationToken);
+                    entity.Position = value;
+                    break;
                 case "location":
-                    return await freeSql.Update<UserEntity>(id).Set(c => new UserEntity() { Location = value, ModifiedAtUserId = User.GetId<long>(), ModifiedAtUserName = User.UserName }).ExecuteAffrowsAsync(cancellationToken);
+                    entity.Location = value;
+                    break;
                 case "company":
-                    return await freeSql.Update<UserEntity>(id).Set(c => new UserEntity() { Company = value, ModifiedAtUserId = User.GetId<long>(), ModifiedAtUserName = User.UserName }).ExecuteAffrowsAsync(cancellationToken);
+                    entity.Company = value;
+                    break;
                 case "picture":
-                    return await freeSql.Update<UserEntity>(id).Set(c => new UserEntity() { Picture = value, ModifiedAtUserId = User.GetId<long>(), ModifiedAtUserName = User.UserName }).ExecuteAffrowsAsync(cancellationToken);
+                    entity.Picture = value;
+                    break;
             }
-            return 0;
+
+            return await repo.UpdateAsync(entity, cancellationToken);
         }
         /// <summary>
         /// 更新状态
@@ -93,15 +104,11 @@ namespace XUCore.Template.FreeSql.DbService.User.User
         /// <returns></returns>
         public async Task<int> UpdateAsync(long[] ids, bool enabled, CancellationToken cancellationToken)
         {
-            return await freeSql
-                .Update<UserEntity>(ids)
-                .Set(c => new UserEntity()
-                {
-                    Enabled = enabled,
-                    ModifiedAtUserId = User.GetId<long>(),
-                    ModifiedAtUserName = User.UserName
-                })
-                .ExecuteAffrowsAsync(cancellationToken);
+            var list = await repo.Select.Where(c => ids.Contains(c.Id)).ToListAsync<UserEntity>(cancellationToken);
+
+            list.ForEach(c => c.Enabled = enabled);
+
+            return await repo.UpdateAsync(list, cancellationToken);
         }
 
         public override async Task<int> DeleteAsync(long[] ids, CancellationToken cancellationToken)

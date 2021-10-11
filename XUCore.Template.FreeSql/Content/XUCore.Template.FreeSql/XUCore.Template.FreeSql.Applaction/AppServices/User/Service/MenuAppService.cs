@@ -32,7 +32,6 @@ namespace XUCore.Template.FreeSql.Applaction.User
         /// <param name="request"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        [HttpPost]
         public async Task<Result<long>> CreateAsync([Required][FromBody] MenuCreateCommand request, CancellationToken cancellationToken = default)
         {
             var res = await menuService.CreateAsync(request, cancellationToken);
@@ -48,7 +47,6 @@ namespace XUCore.Template.FreeSql.Applaction.User
         /// <param name="request"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        [HttpPut]
         public async Task<Result<int>> UpdateAsync([Required][FromBody] MenuUpdateCommand request, CancellationToken cancellationToken = default)
         {
             var res = await menuService.UpdateAsync(request, cancellationToken);
@@ -97,7 +95,6 @@ namespace XUCore.Template.FreeSql.Applaction.User
         /// <param name="ids"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        [HttpDelete]
         public async Task<Result<int>> DeleteAsync([Required][FromQuery] long[] ids, CancellationToken cancellationToken = default)
         {
             var res = await menuService.DeleteAsync(ids, cancellationToken);

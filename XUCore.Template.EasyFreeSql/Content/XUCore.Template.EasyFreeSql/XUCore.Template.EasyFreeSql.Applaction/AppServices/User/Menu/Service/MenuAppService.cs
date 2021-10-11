@@ -8,6 +8,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using XUCore.Ddd.Domain.Exceptions;
 using XUCore.Extensions;
 using XUCore.NetCore;
 using XUCore.NetCore.DynamicWebApi;
@@ -88,25 +89,31 @@ namespace XUCore.Template.EasyFreeSql.Applaction.User.Menu
         /// <returns></returns>
         public async Task<Result<int>> UpdateFieldAsync([Required][FromQuery] long id, [Required][FromQuery] string field, [FromQuery] string value, CancellationToken cancellationToken = default)
         {
-            var res = 0;
+            var entity = await repo.Select.WhereDynamic(id).ToOneAsync(cancellationToken);
+
+            if (entity.IsNull())
+                Failure.Error("没有找到该记录");
+
             switch (field.ToLower())
             {
                 case "name":
-                    res = await unitOfWork.Orm.Update<MenuEntity>(id).Set(c => new MenuEntity() { Name = value, ModifiedAtUserId = user.GetId<long>(), ModifiedAtUserName = user.UserName }).ExecuteAffrowsAsync(cancellationToken);
+                    entity.Name = value;
                     break;
                 case "icon":
-                    res = await unitOfWork.Orm.Update<MenuEntity>(id).Set(c => new MenuEntity() { Icon = value, ModifiedAtUserId = user.GetId<long>(), ModifiedAtUserName = user.UserName }).ExecuteAffrowsAsync(cancellationToken);
+                    entity.Icon = value;
                     break;
                 case "url":
-                    res = await unitOfWork.Orm.Update<MenuEntity>(id).Set(c => new MenuEntity() { Url = value, ModifiedAtUserId = user.GetId<long>(), ModifiedAtUserName = user.UserName }).ExecuteAffrowsAsync(cancellationToken);
+                    entity.Url = value;
                     break;
                 case "onlycode":
-                    res = await unitOfWork.Orm.Update<MenuEntity>(id).Set(c => new MenuEntity() { OnlyCode = value, ModifiedAtUserId = user.GetId<long>(), ModifiedAtUserName = user.UserName }).ExecuteAffrowsAsync(cancellationToken);
+                    entity.OnlyCode = value;
                     break;
                 case "sort":
-                    res = await unitOfWork.Orm.Update<MenuEntity>(id).Set(c => new MenuEntity() { Sort = value.ToInt(), ModifiedAtUserId = user.GetId<long>(), ModifiedAtUserName = user.UserName }).ExecuteAffrowsAsync(cancellationToken);
+                    entity.Sort = value.ToInt();
                     break;
             }
+
+            var res = await repo.UpdateAsync(entity, cancellationToken);
 
             if (res > 0)
                 return RestFull.Success(data: res);
@@ -122,15 +129,11 @@ namespace XUCore.Template.EasyFreeSql.Applaction.User.Menu
         /// <returns></returns>
         public async Task<Result<int>> UpdateEnabledAsync([Required][FromQuery] long[] ids, [Required][FromQuery] bool enabled, CancellationToken cancellationToken = default)
         {
-            var res = await unitOfWork.Orm
-                .Update<MenuEntity>(ids)
-                .Set(c => new MenuEntity()
-                {
-                    Enabled = enabled,
-                    ModifiedAtUserId = user.GetId<long>(),
-                    ModifiedAtUserName = user.UserName
-                })
-                .ExecuteAffrowsAsync(cancellationToken);
+            var list = await repo.Select.Where(c => ids.Contains(c.Id)).ToListAsync<MenuEntity>(cancellationToken);
+
+            list.ForEach(c => c.Enabled = enabled);
+
+            var res = await repo.UpdateAsync(list, cancellationToken);
 
             if (res > 0)
                 return RestFull.Success(data: res);

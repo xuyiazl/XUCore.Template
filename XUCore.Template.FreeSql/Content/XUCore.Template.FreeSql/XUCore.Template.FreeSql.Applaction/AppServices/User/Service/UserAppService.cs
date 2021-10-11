@@ -39,7 +39,6 @@ namespace XUCore.Template.FreeSql.Applaction.User
         /// </remarks>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        [HttpPost]
         [AllowAnonymous]
         public async Task<Result<long>> CreateInitAccountAsync(CancellationToken cancellationToken = default)
         {
@@ -67,7 +66,6 @@ namespace XUCore.Template.FreeSql.Applaction.User
         /// <param name="request"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        [HttpPost]
         public async Task<Result<long>> CreateAsync([Required][FromBody] UserCreateCommand request, CancellationToken cancellationToken = default)
         {
             var res = await userService.CreateAsync(request, cancellationToken);
@@ -83,7 +81,6 @@ namespace XUCore.Template.FreeSql.Applaction.User
         /// <param name="request"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        [HttpPut]
         public async Task<Result<int>> UpdateAsync([Required][FromBody] UserUpdateInfoCommand request, CancellationToken cancellationToken = default)
         {
             var res = await userService.UpdateAsync(request, cancellationToken);
@@ -147,7 +144,6 @@ namespace XUCore.Template.FreeSql.Applaction.User
         /// <param name="ids"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        [HttpDelete]
         public async Task<Result<int>> DeleteAsync([Required][FromQuery] long[] ids, CancellationToken cancellationToken = default)
         {
             var res = await userService.DeleteAsync(ids, cancellationToken);
