@@ -5,7 +5,6 @@ using System.ComponentModel.DataAnnotations;
 using XUCore.Ddd.Domain.Commands;
 using XUCore.Ddd.Domain.Exceptions;
 using XUCore.Helpers;
-using XUCore.NetCore.Data;
 using XUCore.Template.FreeSql.Core;
 using XUCore.Template.FreeSql.Core.Enums;
 using XUCore.Template.FreeSql.Persistence.Entities.User;

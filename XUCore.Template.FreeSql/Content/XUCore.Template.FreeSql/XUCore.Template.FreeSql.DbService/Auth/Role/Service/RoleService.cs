@@ -23,7 +23,7 @@ namespace XUCore.Template.FreeSql.DbService.Auth.Role
 
         }
 
-        public override async Task<long> CreateAsync(RoleCreateCommand request, CancellationToken cancellationToken)
+        public override async Task<RoleEntity> CreateAsync(RoleCreateCommand request, CancellationToken cancellationToken)
         {
             var entity = mapper.Map<RoleCreateCommand, RoleEntity>(request);
 
@@ -45,10 +45,10 @@ namespace XUCore.Template.FreeSql.DbService.Auth.Role
 
                 CreatedAction?.Invoke(entity);
 
-                return res.Id;
+                return res;
             }
 
-            return 0;
+            return default;
         }
 
         public override async Task<int> UpdateAsync(RoleUpdateCommand request, CancellationToken cancellationToken)

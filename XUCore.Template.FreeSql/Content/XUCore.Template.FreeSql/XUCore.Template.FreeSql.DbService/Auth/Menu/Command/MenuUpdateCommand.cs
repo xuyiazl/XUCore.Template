@@ -4,9 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using XUCore.Ddd.Domain.Commands;
 using XUCore.Ddd.Domain.Exceptions;
 using XUCore.Extensions;
-using XUCore.NetCore.Data;
 using XUCore.Template.FreeSql.Core;
-using XUCore.Template.FreeSql.Core.Enums;
 using XUCore.Template.FreeSql.Persistence.Entities.User;
 
 namespace XUCore.Template.FreeSql.DbService.Auth.Menu

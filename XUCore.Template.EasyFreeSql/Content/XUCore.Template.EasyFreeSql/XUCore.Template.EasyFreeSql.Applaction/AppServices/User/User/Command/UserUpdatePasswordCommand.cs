@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations;
 using XUCore.Ddd.Domain.Commands;
 using XUCore.Ddd.Domain.Exceptions;
 using XUCore.Extensions;
-using XUCore.NetCore.Data;
 
 namespace XUCore.Template.EasyFreeSql.Applaction.User.User
 {

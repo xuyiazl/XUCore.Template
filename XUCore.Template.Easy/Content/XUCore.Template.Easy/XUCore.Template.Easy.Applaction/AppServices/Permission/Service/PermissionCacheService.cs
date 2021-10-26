@@ -18,7 +18,7 @@ namespace XUCore.Template.Easy.Applaction.Permission
             this.db = db;
         }
 
-        [CacheMethod(Key = CacheKey.AuthUser, ParamterKey = "{0}", Seconds = CacheTime.Min5)]
+        [AspectCache(HashKey = CacheKey.AuthUser, Key = "{0}", Seconds = CacheTime.Min5)]
         public async Task<IList<AdminMenuEntity>> GetAllAsync(long adminId, CancellationToken cancellationToken)
         {
             var res =

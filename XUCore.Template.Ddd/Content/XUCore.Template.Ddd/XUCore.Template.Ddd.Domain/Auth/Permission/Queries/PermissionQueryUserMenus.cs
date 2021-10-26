@@ -33,7 +33,7 @@ namespace XUCore.Template.Ddd.Domain.Auth.Permission
                 this.db = db;
             }
 
-            [CacheMethod(Key = CacheKey.UserAuth, ParamterKey = "{0}", Seconds = CacheTime.Min3)]
+            [AspectCache(HashKey = CacheKey.UserAuth, Key = "{0}", Seconds = CacheTime.Min3)]
             public override async Task<IList<MenuEntity>> Handle(PermissionQueryUserMenus request, CancellationToken cancellationToken)
             {
                 var res =

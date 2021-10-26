@@ -9,9 +9,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="XUCoreApp" Version="5.4.0" />
+		<PackageReference Include="XUCore" Version="5.5.0" />
+		<PackageReference Include="XUCore.NetCore" Version="5.5.0" />
+		<PackageReference Include="XUCore.NetCore.Data" Version="5.5.0" />
+		<PackageReference Include="XUCore.NetCore.Redis" Version="5.5.0" />
 	</ItemGroup>
-
 
 	<ItemGroup>
 	  <None Update="XUCore.Template.Ddd.Domain.Core.xml">

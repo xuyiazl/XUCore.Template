@@ -25,7 +25,7 @@ namespace XUCore.Template.FreeSql.DbService.User.User
 
         }
 
-        public override async Task<long> CreateAsync(UserCreateCommand request, CancellationToken cancellationToken)
+        public override async Task<UserEntity> CreateAsync(UserCreateCommand request, CancellationToken cancellationToken)
         {
             var entity = mapper.Map<UserCreateCommand, UserEntity>(request);
 
@@ -48,10 +48,10 @@ namespace XUCore.Template.FreeSql.DbService.User.User
 
                 CreatedAction?.Invoke(entity);
 
-                return res.Id;
+                return res;
             }
 
-            return 0;
+            return default;
         }
 
         public async Task<int> UpdateAsync(UserUpdatePasswordCommand request, CancellationToken cancellationToken)

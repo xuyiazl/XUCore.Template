@@ -22,7 +22,7 @@ dotnet new -u XUCore.Template.Layer
 
 ```bash
 
-dotnet new --install XUCore.Template.Layer::1.2.0
+dotnet new --install XUCore.Template.Layer::1.3.0
 
 ```
 

@@ -60,15 +60,14 @@ namespace XUCore.Template.Ddd.Infrastructure
             // 注入redis插件
             services.AddRedisService().AddJsonRedisSerializer();
 
-            //// 注入缓存拦截器（Redis分布式缓存）
-            //services.AddCacheService<RedisCacheService>((option) =>
-            //{
-            //    option.RedisRead = "cache-read";
-            //    option.RedisWrite = "cache-write";
-            //});
-
             // 注入缓存拦截器（内存缓存）
-            services.AddCacheService<MemoryCacheService>();
+            services.AddCacheInterceptor(opt =>
+            {
+                opt.CacheMode = CacheMode.Memory;
+                opt.RedisRead = "cache-read";
+                opt.RedisWrite = "cache-write";
+            });
+
             // 注入内存缓存
             services.AddCacheManager();
 

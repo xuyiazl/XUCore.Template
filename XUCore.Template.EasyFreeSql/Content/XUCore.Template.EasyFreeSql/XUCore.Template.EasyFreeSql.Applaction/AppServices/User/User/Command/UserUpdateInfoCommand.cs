@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations;
 using XUCore.Ddd.Domain.Commands;
 using XUCore.Ddd.Domain.Exceptions;
 using XUCore.Extensions;
-using XUCore.NetCore.Data;
 using XUCore.Template.EasyFreeSql.Core;
 using XUCore.Template.EasyFreeSql.Persistence.Entities.User;
 

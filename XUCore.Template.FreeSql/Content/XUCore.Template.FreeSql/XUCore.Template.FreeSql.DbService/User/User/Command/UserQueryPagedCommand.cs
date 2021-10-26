@@ -2,8 +2,6 @@
 using System.ComponentModel.DataAnnotations;
 using XUCore.Ddd.Domain.Commands;
 using XUCore.Ddd.Domain.Exceptions;
-using XUCore.NetCore.Data;
-using XUCore.Template.FreeSql.Core.Enums;
 
 namespace XUCore.Template.FreeSql.DbService.User.User
 {

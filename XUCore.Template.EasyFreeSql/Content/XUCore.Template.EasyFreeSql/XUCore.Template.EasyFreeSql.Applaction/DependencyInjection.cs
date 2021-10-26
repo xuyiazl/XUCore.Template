@@ -44,17 +44,17 @@ namespace XUCore.Template.EasyFreeSql.Applaction
             // 注册redis插件
             //services.AddRedisService().AddJsonRedisSerializer();
 
-            //// 注册缓存拦截器（Redis分布式缓存）
-            //services.AddCacheService<RedisCacheService>((option) =>
-            //{
-            //    option.RedisRead = "cache-read";
-            //    option.RedisWrite = "cache-write";
-            //});
-
             // 注册缓存拦截器（内存缓存）
-            services.AddCacheService<MemoryCacheService>();
+            services.AddCacheInterceptor(opt =>
+            {
+                opt.CacheMode = CacheMode.Memory;
+                opt.RedisRead = "cache-read";
+                opt.RedisWrite = "cache-write";
+            });
+
             // 注册内存缓存
             services.AddCacheManager();
+
             // 注册Quartz服务
             services.AddEasyQuartzService();
 
@@ -100,6 +100,9 @@ namespace XUCore.Template.EasyFreeSql.Applaction
                 // 注册动态API
                 services.AddDynamicWebApi();
 
+                // 注册上传服务
+                services.AddUploadService();
+
                 var env = services.BuildServiceProvider().GetService<IWebHostEnvironment>();
 
                 services.AddMiniSwagger(swaggerGenAction: opt =>
@@ -122,9 +125,6 @@ namespace XUCore.Template.EasyFreeSql.Applaction
                     //options.DocInclusionPredicate((docName, description) => true);
                 });
             }
-
-            // 注册上传服务
-            services.AddUploadService();
 
             // 注册OSS上传服务（阿里Oss）
             services.AddOssClient(

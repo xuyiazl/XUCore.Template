@@ -37,10 +37,10 @@ namespace XUCore.Template.FreeSql.Applaction.User
         {
             var res = await roleService.CreateAsync(request, cancellationToken);
 
-            if (res > 0)
-                return RestFull.Success(data: res);
+            if (res != null)
+                return RestFull.Success(data: res.Id);
             else
-                return RestFull.Fail(data: res);
+                return RestFull.Fail(data: 0L);
         }
         /// <summary>
         /// 更新角色信息

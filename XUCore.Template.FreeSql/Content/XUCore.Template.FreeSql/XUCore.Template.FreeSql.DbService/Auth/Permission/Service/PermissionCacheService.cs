@@ -11,7 +11,7 @@ using XUCore.Template.FreeSql.Persistence.Entities.User;
 
 namespace XUCore.Template.FreeSql.DbService.Auth.Permission
 {
-    public class PermissionCacheService : FreeSqlCurdService<long,MenuEntity, MenuDto, MenuCreateCommand, MenuUpdateCommand, MenuQueryCommand, MenuQueryPagedCommand>,
+    public class PermissionCacheService : FreeSqlCurdService<long, MenuEntity, MenuDto, MenuCreateCommand, MenuUpdateCommand, MenuQueryCommand, MenuQueryPagedCommand>,
         IPermissionCacheService
     {
         public PermissionCacheService(IServiceProvider serviceProvider, FreeSqlUnitOfWorkManager muowm, IMapper mapper, IUserInfo user) : base(muowm, mapper, user)
@@ -19,7 +19,7 @@ namespace XUCore.Template.FreeSql.DbService.Auth.Permission
 
         }
 
-        [CacheMethod(Key = CacheKey.AuthUser, ParamterKey = "{0}", Seconds = CacheTime.Min5)]
+        [AspectCache(HashKey = CacheKey.AuthUser, Key = "{0}", Seconds = CacheTime.Min5)]
         public async Task<IList<MenuEntity>> GetAllAsync(long userId, CancellationToken cancellationToken)
         {
             var res = await freeSql
