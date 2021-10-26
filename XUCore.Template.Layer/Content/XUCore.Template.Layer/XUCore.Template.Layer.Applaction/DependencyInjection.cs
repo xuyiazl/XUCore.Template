@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
 using XUCore.Extensions;
+using XUCore.Helpers;
 using XUCore.NetCore;
 using XUCore.NetCore.AspectCore.Cache;
 using XUCore.NetCore.Authorization.JwtBearer;
@@ -43,7 +44,7 @@ namespace XUCore.Template.Layer.Applaction
 
             services.AddMediatR(typeof(IAdminAppService), typeof(ICurdService<,,,,,,>));
 
-            services.AddScanLifetime();
+            services.AddScanLifetime(scan => scan.FromAssemblies(Reflection.GetCurrentProjectAssemblies("XUCore.Template.Layer")));
 
             // 注入redis插件
             //services.AddRedisService().AddJsonRedisSerializer();

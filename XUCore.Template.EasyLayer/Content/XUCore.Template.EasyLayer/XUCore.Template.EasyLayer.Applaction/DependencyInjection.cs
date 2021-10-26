@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
 using XUCore.Ddd.Domain.Filters;
+using XUCore.Helpers;
 using XUCore.NetCore;
 using XUCore.NetCore.AspectCore.Cache;
 using XUCore.NetCore.Authorization.JwtBearer;
@@ -40,7 +41,7 @@ namespace XUCore.Template.EasyLayer.Applaction
 
             services.AddMediatR(typeof(AdminUserCreateEvent));
 
-            services.AddScanLifetime();
+            services.AddScanLifetime(scan => scan.FromAssemblies(Reflection.GetCurrentProjectAssemblies("XUCore.Template.EasyLayer")));
 
             // 注入redis插件
             //services.AddRedisService().AddJsonRedisSerializer();

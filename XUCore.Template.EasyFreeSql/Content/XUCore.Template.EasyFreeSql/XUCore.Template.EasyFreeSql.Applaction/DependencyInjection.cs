@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
 using XUCore.Ddd.Domain.Filters;
+using XUCore.Helpers;
 using XUCore.NetCore;
 using XUCore.NetCore.AspectCore.Cache;
 using XUCore.NetCore.Authorization.JwtBearer;
@@ -39,7 +40,7 @@ namespace XUCore.Template.EasyFreeSql.Applaction
 
             services.AddMediatR(typeof(UserCreateEvent));
 
-            services.AddScanLifetime();
+            services.AddScanLifetime(scan => scan.FromAssemblies(Reflection.GetCurrentProjectAssemblies("XUCore.Template.EasyFreeSql")));
 
             // 注册redis插件
             //services.AddRedisService().AddJsonRedisSerializer();

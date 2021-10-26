@@ -10,6 +10,7 @@ using System.Text.Encodings.Web;
 using System.Text.Unicode;
 using XUCore.Ddd.Domain;
 using XUCore.Ddd.Domain.Bus;
+using XUCore.Helpers;
 using XUCore.NetCore;
 using XUCore.NetCore.AspectCore.Cache;
 using XUCore.NetCore.Authorization.JwtBearer;
@@ -55,7 +56,7 @@ namespace XUCore.Template.Ddd.Infrastructure
             // 注入 基础设施层 - 事件溯源
             services.AddEventStore<SqlEventStoreService>();
 
-            services.AddScanLifetime();
+            services.AddScanLifetime(scan => scan.FromAssemblies(Reflection.GetCurrentProjectAssemblies("XUCore.Template.Ddd")));
 
             // 注入redis插件
             services.AddRedisService().AddJsonRedisSerializer();
