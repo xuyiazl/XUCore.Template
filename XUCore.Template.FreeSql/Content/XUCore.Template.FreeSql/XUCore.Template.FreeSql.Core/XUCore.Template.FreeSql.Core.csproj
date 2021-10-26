@@ -9,10 +9,10 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="XUCore" Version="5.5.0" />
-		<PackageReference Include="XUCore.NetCore" Version="5.5.0" />
-		<PackageReference Include="XUCore.NetCore.FreeSql" Version="5.5.0" />
-		<PackageReference Include="XUCore.NetCore.Redis" Version="5.5.0" />
+		<PackageReference Include="XUCore" Version="5.5.1" />
+		<PackageReference Include="XUCore.NetCore" Version="5.5.1" />
+		<PackageReference Include="XUCore.NetCore.FreeSql" Version="5.5.1" />
+		<PackageReference Include="XUCore.NetCore.Redis" Version="5.5.1" />
 	</ItemGroup>
 
 	<ItemGroup>

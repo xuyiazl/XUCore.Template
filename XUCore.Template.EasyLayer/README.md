@@ -22,7 +22,7 @@ dotnet new -u XUCore.Template.EasyLayer
 
 ```bash
 
-dotnet new --install XUCore.Template.EasyLayer::1.3.0
+dotnet new --install XUCore.Template.EasyLayer::1.3.1
 
 ```
 
