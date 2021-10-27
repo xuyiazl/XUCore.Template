@@ -4,12 +4,97 @@
         <name>XUCore.Template.EasyFreeSql.Persistence</name>
     </assembly>
     <members>
+        <member name="T:XUCore.Template.EasyFreeSql.Persistence.ConnectionSettings">
+            <summary>
+            数据库配置
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.ConnectionSettings.Type">
+            <summary>
+            数据库类型
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.ConnectionSettings.ConnectionString">
+            <summary>
+            数据库字符串
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.ConnectionSettings.IdleTime">
+            <summary>
+            空闲时间(分)
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.ConnectionSettings.GenerateData">
+            <summary>
+            生成数据
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.ConnectionSettings.SyncStructure">
+            <summary>
+            同步结构
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.ConnectionSettings.SyncData">
+            <summary>
+            同步数据
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.ConnectionSettings.CreateDb">
+            <summary>
+            建库
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.ConnectionSettings.CreateDbConnectionString">
+            <summary>
+            建库连接字符串
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.ConnectionSettings.CreateDbSql">
+            <summary>
+            建库脚本
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.ConnectionSettings.MonitorCommand">
+            <summary>
+            监听所有操作
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.ConnectionSettings.Curd">
+            <summary>
+            监听Curd操作
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.ConnectionSettings.Dbs">
+            <summary>
+            多数据库
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.EasyFreeSql.Persistence.MultiDb">
+            <summary>
+            多数据库
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.MultiDb.Name">
+            <summary>
+            数据库命名
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.MultiDb.Type">
+            <summary>
+            数据库类型
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Persistence.MultiDb.ConnectionString">
+            <summary>
+            数据库字符串
+            </summary>
+        </member>
         <member name="F:XUCore.Template.EasyFreeSql.Persistence.DbHelper.TimeOffset">
             <summary>
             偏移时间
             </summary>
         </member>
-        <member name="M:XUCore.Template.EasyFreeSql.Persistence.DbHelper.CreateDatabaseAsync(XUCore.Template.EasyFreeSql.Core.ConnectionSettings)">
+        <member name="M:XUCore.Template.EasyFreeSql.Persistence.DbHelper.CreateDatabaseAsync(XUCore.Template.EasyFreeSql.Persistence.ConnectionSettings)">
             <summary>
             创建数据库
             </summary>
@@ -35,7 +120,7 @@
             <param name="timeOffset"></param>
             <param name="user"></param>
         </member>
-        <member name="M:XUCore.Template.EasyFreeSql.Persistence.DbHelper.SyncStructure(IFreeSql,System.String,XUCore.Template.EasyFreeSql.Core.ConnectionSettings)">
+        <member name="M:XUCore.Template.EasyFreeSql.Persistence.DbHelper.SyncStructure(IFreeSql,System.String,XUCore.Template.EasyFreeSql.Persistence.ConnectionSettings)">
             <summary>
             同步结构
             </summary>
@@ -51,7 +136,7 @@
             多数据库命名
             </summary>
         </member>
-        <member name="M:XUCore.Template.EasyFreeSql.Persistence.DependencyInjection.CreateMultiDbBuilder(XUCore.Template.EasyFreeSql.Core.MultiDb)">
+        <member name="M:XUCore.Template.EasyFreeSql.Persistence.DependencyInjection.CreateMultiDbBuilder(XUCore.Template.EasyFreeSql.Persistence.MultiDb)">
             <summary>
             创建多数据库构建器
             </summary>

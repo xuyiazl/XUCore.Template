@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace XUCore.Template.FreeSql.Core
+namespace XUCore.Template.FreeSql.Persistence
 {
     /// <summary>
     /// 数据库配置

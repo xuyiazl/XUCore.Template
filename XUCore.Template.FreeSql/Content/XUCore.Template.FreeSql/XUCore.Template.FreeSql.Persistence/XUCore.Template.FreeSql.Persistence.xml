@@ -4,12 +4,97 @@
         <name>XUCore.Template.FreeSql.Persistence</name>
     </assembly>
     <members>
+        <member name="T:XUCore.Template.FreeSql.Persistence.ConnectionSettings">
+            <summary>
+            数据库配置
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.Persistence.ConnectionSettings.Type">
+            <summary>
+            数据库类型
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.Persistence.ConnectionSettings.ConnectionString">
+            <summary>
+            数据库字符串
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.Persistence.ConnectionSettings.IdleTime">
+            <summary>
+            空闲时间(分)
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.Persistence.ConnectionSettings.GenerateData">
+            <summary>
+            生成数据
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.Persistence.ConnectionSettings.SyncStructure">
+            <summary>
+            同步结构
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.Persistence.ConnectionSettings.SyncData">
+            <summary>
+            同步数据
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.Persistence.ConnectionSettings.CreateDb">
+            <summary>
+            建库
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.Persistence.ConnectionSettings.CreateDbConnectionString">
+            <summary>
+            建库连接字符串
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.Persistence.ConnectionSettings.CreateDbSql">
+            <summary>
+            建库脚本
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.Persistence.ConnectionSettings.MonitorCommand">
+            <summary>
+            监听所有操作
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.Persistence.ConnectionSettings.Curd">
+            <summary>
+            监听Curd操作
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.Persistence.ConnectionSettings.Dbs">
+            <summary>
+            多数据库
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.FreeSql.Persistence.MultiDb">
+            <summary>
+            多数据库
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.Persistence.MultiDb.Name">
+            <summary>
+            数据库命名
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.Persistence.MultiDb.Type">
+            <summary>
+            数据库类型
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.FreeSql.Persistence.MultiDb.ConnectionString">
+            <summary>
+            数据库字符串
+            </summary>
+        </member>
         <member name="F:XUCore.Template.FreeSql.Persistence.DbHelper.TimeOffset">
             <summary>
             偏移时间
             </summary>
         </member>
-        <member name="M:XUCore.Template.FreeSql.Persistence.DbHelper.CreateDatabaseAsync(XUCore.Template.FreeSql.Core.ConnectionSettings)">
+        <member name="M:XUCore.Template.FreeSql.Persistence.DbHelper.CreateDatabaseAsync(XUCore.Template.FreeSql.Persistence.ConnectionSettings)">
             <summary>
             创建数据库
             </summary>
@@ -35,7 +120,7 @@
             <param name="timeOffset"></param>
             <param name="user"></param>
         </member>
-        <member name="M:XUCore.Template.FreeSql.Persistence.DbHelper.SyncStructure(IFreeSql,System.String,XUCore.Template.FreeSql.Core.ConnectionSettings)">
+        <member name="M:XUCore.Template.FreeSql.Persistence.DbHelper.SyncStructure(IFreeSql,System.String,XUCore.Template.FreeSql.Persistence.ConnectionSettings)">
             <summary>
             同步结构
             </summary>
@@ -51,7 +136,7 @@
             多数据库命名
             </summary>
         </member>
-        <member name="M:XUCore.Template.FreeSql.Persistence.DependencyInjection.CreateMultiDbBuilder(XUCore.Template.FreeSql.Core.MultiDb)">
+        <member name="M:XUCore.Template.FreeSql.Persistence.DependencyInjection.CreateMultiDbBuilder(XUCore.Template.FreeSql.Persistence.MultiDb)">
             <summary>
             创建多数据库构建器
             </summary>

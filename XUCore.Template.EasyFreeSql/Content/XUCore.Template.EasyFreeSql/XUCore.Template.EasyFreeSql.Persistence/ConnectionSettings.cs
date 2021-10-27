@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace XUCore.Template.EasyFreeSql.Core
+namespace XUCore.Template.EasyFreeSql.Persistence
 {
     /// <summary>
     /// 数据库配置
