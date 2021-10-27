@@ -4,9 +4,9 @@ using FreeSql.DataAnnotations;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using XUCore.Ddd.Domain;
 using XUCore.Extensions;
 using XUCore.Helpers;
 using XUCore.IO;
@@ -15,6 +15,7 @@ using XUCore.NetCore.FreeSql.Entity;
 using XUCore.Serializer;
 using XUCore.Template.EasyFreeSql.Core;
 using XUCore.Template.EasyFreeSql.Persistence.Entities;
+using XUCore.Template.EasyFreeSql.Persistence.Entities.User;
 
 namespace XUCore.Template.EasyFreeSql.Persistence
 {
@@ -225,6 +226,196 @@ namespace XUCore.Template.EasyFreeSql.Persistence
                 }
                 else
                     Console.WriteLine($"初始化数据：省份城市数据已存在，无需同步...");
+            }
+            {
+                var repo = db.GetRepository<MenuEntity>();
+                if (!repo.Select.Any())
+                {
+                    var menus = new List<MenuEntity>();
+                    menus.Add(new MenuEntity
+                    {
+                        Name = "系统设置",
+                        Icon = "fa fa-cogs text-danger",
+                        Url = "#",
+                        OnlyCode = "sys",
+                        Sort = 99,
+                        IsMenu = true,
+                        IsExpress = false,
+                        Enabled = true,
+                        Childs = new List<MenuEntity>
+                    {
+                        new MenuEntity {
+                            Name = "导航设置",
+                            Icon = "fa fa-chain text-primary",
+                            Url = "/admin/sys/admin/menu/list",
+                            OnlyCode = "sys-menus",
+                            Sort = 99,
+                            IsMenu = true,
+                            IsExpress = false,
+                            Enabled = true,
+                            Childs = new List<MenuEntity>{
+                                new MenuEntity {Name = "添加",Url = "#",OnlyCode = "sys-menus-add",Sort = 9,IsMenu = false,IsExpress = false,Enabled = true},
+                                new MenuEntity {Name = "修改",Url = "#",OnlyCode = "sys-menus-edit",Sort = 8,IsMenu = false,IsExpress = false,Enabled = true},
+                                new MenuEntity {Name = "删除",Url = "#",OnlyCode = "sys-menus-delete",Sort = 7,IsMenu = false,IsExpress = false,Enabled = true},
+                                new MenuEntity {Name = "列表",Url = "#",OnlyCode = "sys-menus-list",Sort = 6,IsMenu = false,IsExpress = false,Enabled = true}
+                            }
+                        },
+                        new MenuEntity {
+                            Name = "角色管理",
+                            Icon = "icon-lock text-danger",
+                            Url = "/admin/sys/admin/role/list",
+                            OnlyCode = "sys-role",
+                            Sort = 99,
+                            IsMenu = true,
+                            IsExpress = false,
+                            Enabled = true,
+                            Childs = new List<MenuEntity>{
+                                new MenuEntity {Name = "添加",Url = "#",OnlyCode = "sys-role-add",Sort = 9,IsMenu = false,IsExpress = false,Enabled = true},
+                                new MenuEntity {Name = "修改",Url = "#",OnlyCode = "sys-role-edit",Sort = 8,IsMenu = false,IsExpress = false,Enabled = true},
+                                new MenuEntity {Name = "删除",Url = "#",OnlyCode = "sys-role-delete",Sort = 7,IsMenu = false,IsExpress = false,Enabled = true},
+                                new MenuEntity {Name = "列表",Url = "#",OnlyCode = "sys-role-list",Sort = 6,IsMenu = false,IsExpress = false,Enabled = true}
+                            }
+                        },
+                        new MenuEntity {
+                            Name = "帐号管理",
+                            Icon = "icon-users text-success",
+                            Url = "/admin/sys/admin/user/list",
+                            OnlyCode = "sys-admin",
+                            Sort = 99,
+                            IsMenu = true,
+                            IsExpress = false,
+                            Enabled = true,
+                            Childs = new List<MenuEntity>{
+                                new MenuEntity {Name = "添加",Url = "#",OnlyCode = "sys-admin-add",Sort = 9,IsMenu = false,IsExpress = false,Enabled = true},
+                                new MenuEntity {Name = "修改",Url = "#",OnlyCode = "sys-admin-edit",Sort = 8,IsMenu = false,IsExpress = false,Enabled = true},
+                                new MenuEntity {Name = "删除",Url = "#",OnlyCode = "sys-admin-delete",Sort = 7,IsMenu = false,IsExpress = false,Enabled = true},
+                                new MenuEntity {Name = "列表",Url = "#",OnlyCode = "sys-admin-list",Sort = 6,IsMenu = false,IsExpress = false,Enabled = true},
+                                new MenuEntity {Name = "禁止登录",Url = "#",OnlyCode = "sys-admin-login",Sort = 5,IsMenu = false,IsExpress = false,Enabled = true},
+                                new MenuEntity {Name = "授权",Url = "#",OnlyCode = "sys-admin-accredit",Sort = 4,IsMenu = false,IsExpress = false,Enabled = true}
+                            }
+                        },
+                        new MenuEntity {
+                            Name = "登录记录",
+                            Icon = "fa fa-eye text-dark",
+                            Url = "/admin/sys/admin/record",
+                            OnlyCode = "sys-loginrecord",
+                            Sort = 99,
+                            IsMenu = true,
+                            IsExpress = false,
+                            Enabled = true
+                        },
+                        new MenuEntity {
+                            Name = "公告管理",
+                            Icon = "fa fa-bullhorn text-success",
+                            Url = "/admin/sys/admin/notices/list",
+                            OnlyCode = "sys-notice",
+                            Sort = 99,
+                            IsMenu = true,
+                            IsExpress = false,
+                            Enabled = true,
+                            Childs = new List<MenuEntity>{
+                                new MenuEntity {Name = "添加",Url = "#",OnlyCode = "sys-notice-add",Sort = 9,IsMenu = false,IsExpress = false,Enabled = true},
+                                new MenuEntity {Name = "修改",Url = "#",OnlyCode = "sys-notice-edit",Sort = 8,IsMenu = false,IsExpress = false,Enabled = true},
+                                new MenuEntity {Name = "删除",Url = "#",OnlyCode = "sys-notice-delete",Sort = 7,IsMenu = false,IsExpress = false,Enabled = true},
+                                new MenuEntity {Name = "列表",Url = "#",OnlyCode = "sys-notice-list",Sort = 6,IsMenu = false,IsExpress = false,Enabled = true}
+                            }
+                        }
+                    }
+                    });
+                    menus.Add(new MenuEntity
+                    {
+                        Name = "内容管理",
+                        Icon = "fa fa-book text-success",
+                        Url = "#",
+                        OnlyCode = "content",
+                        Sort = 98,
+                        IsMenu = true,
+                        IsExpress = false,
+                        Enabled = true,
+                        Childs = new List<MenuEntity>
+                    {
+                        new MenuEntity {
+                            Name = "文章管理",
+                            Icon = "fa fa-folder-open-o text-warning",
+                            Url = "/admin/articles/list",
+                            OnlyCode = "content-article",
+                            Sort = 99,
+                            IsMenu = true,
+                            IsExpress = false,
+                            Enabled = true,
+                            Childs = new List<MenuEntity>{
+                                new MenuEntity {Name = "添加",Url = "#",OnlyCode = "content-article-add",Sort = 9,IsMenu = false,IsExpress = false,Enabled = true},
+                                new MenuEntity {Name = "修改",Url = "#",OnlyCode = "content-article-edit",Sort = 8,IsMenu = false,IsExpress = false,Enabled = true},
+                                new MenuEntity {Name = "删除",Url = "#",OnlyCode = "content-article-delete",Sort = 7,IsMenu = false,IsExpress = false,Enabled = true},
+                                new MenuEntity {Name = "列表",Url = "#",OnlyCode = "content-article-list",Sort = 6,IsMenu = false,IsExpress = false,Enabled = true}
+                            }
+                        }
+                    }
+                    });
+
+                    Action<MenuEntity> recursionMenu = null;
+                    recursionMenu = menu =>
+                    {
+                        if (menu.Childs == null) return;
+
+                        foreach (var child in menu.Childs)
+                        {
+                            child.ParentId = menu.Id;
+
+                            repo.Insert(child);
+
+                            recursionMenu(child);
+                        }
+                    };
+
+                    foreach (var menu in menus)
+                    {
+                        repo.Insert(menu);
+                        recursionMenu(menu);
+                    }
+                }
+            }
+            {
+                var repo = db.GetRepository<RoleEntity>();
+                if (!repo.Select.Any())
+                {
+                    var roleMenuRepo = db.GetRepository<RoleMenuEntity>();
+                    var role = new RoleEntity
+                    {
+                        Enabled = true,
+                        IsDeleted = false,
+                        Name = "超级管理员"
+                    };
+                    repo.Insert(role);
+                    var roleMenus = db.Select<MenuEntity>().ToList().Select(c => new RoleMenuEntity { RoleId = role.Id, MenuId = c.Id }).ToList();
+                    roleMenuRepo.Insert(roleMenus);
+                }
+            }
+            {
+                var repo = db.GetRepository<UserEntity>();
+                if (!repo.Select.Any())
+                {
+                    var userRoleRepo = db.GetRepository<UserRoleEntity>();
+                    var user = new UserEntity
+                    {
+                        Name = "管理员",
+                        UserName = "admin",
+                        Mobile = "13500000000",
+                        Password = Encrypt.Md5By32("123456"),
+                        Company = "后台超级管理员",
+                        Enabled = true,
+                        IsDeleted = false,
+                        Location = "",
+                        LoginCount = 0,
+                        LoginLastIp = "",
+                        LoginLastTime = DateTime.Now,
+                        Picture = "",
+                        Position = ""
+                    };
+                    repo.Insert(user);
+                    var userRoles = db.Select<RoleEntity>().ToList().Select(c => new UserRoleEntity { UserId = user.Id, RoleId = c.Id }).ToList();
+                    userRoleRepo.Insert(userRoles);
+                }
             }
         }
     }
