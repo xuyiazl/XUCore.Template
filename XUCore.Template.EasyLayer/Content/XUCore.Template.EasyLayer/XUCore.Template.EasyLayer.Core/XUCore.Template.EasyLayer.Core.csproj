@@ -4,7 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+  <PropertyGroup>
     <DocumentationFile>XUCore.Template.EasyLayer.Core.xml</DocumentationFile>
   </PropertyGroup>
 
@@ -15,9 +15,4 @@
 		<PackageReference Include="XUCore.NetCore.Redis" Version="5.5.1" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <None Update="XUCore.Template.EasyLayer.Core.xml">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	</ItemGroup>
 </Project>

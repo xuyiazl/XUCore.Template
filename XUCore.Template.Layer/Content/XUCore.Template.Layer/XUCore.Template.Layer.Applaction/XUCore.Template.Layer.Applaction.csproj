@@ -4,7 +4,7 @@
 		<TargetFramework>net5.0</TargetFramework>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	<PropertyGroup>
 		<DocumentationFile>XUCore.Template.Layer.Applaction.xml</DocumentationFile>
 	</PropertyGroup>
 
@@ -12,9 +12,4 @@
 		<ProjectReference Include="..\XUCore.Template.Layer.DbService\XUCore.Template.Layer.DbService.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-		<None Update="XUCore.Template.Layer.Applaction.xml">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-	</ItemGroup>
 </Project>

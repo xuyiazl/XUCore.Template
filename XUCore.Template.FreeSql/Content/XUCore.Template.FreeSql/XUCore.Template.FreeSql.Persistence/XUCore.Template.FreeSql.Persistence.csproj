@@ -4,7 +4,7 @@
 		<TargetFramework>net5.0</TargetFramework>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	<PropertyGroup>
 		<DocumentationFile>XUCore.Template.FreeSql.Persistence.xml</DocumentationFile>
 	</PropertyGroup>
 
@@ -17,10 +17,5 @@
 	<ItemGroup>
 		<ProjectReference Include="..\XUCore.Template.FreeSql.Core\XUCore.Template.FreeSql.Core.csproj" />
 	</ItemGroup>
-
-	<ItemGroup>
-		<None Update="XUCore.Template.FreeSql.Persistence.xml">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-	</ItemGroup>
+	
 </Project>

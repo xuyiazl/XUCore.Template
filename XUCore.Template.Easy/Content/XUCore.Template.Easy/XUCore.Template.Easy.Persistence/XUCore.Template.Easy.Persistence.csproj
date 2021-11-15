@@ -4,7 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+  <PropertyGroup>
     <DocumentationFile>XUCore.Template.Easy.Persistence.xml</DocumentationFile>
   </PropertyGroup>
 
@@ -23,9 +23,4 @@
 	  <ProjectReference Include="..\XUCore.Template.Easy.Core\XUCore.Template.Easy.Core.csproj" />
 	</ItemGroup>
 	
-	<ItemGroup>
-	  <None Update="XUCore.Template.Easy.Persistence.xml">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	</ItemGroup>
 </Project>
