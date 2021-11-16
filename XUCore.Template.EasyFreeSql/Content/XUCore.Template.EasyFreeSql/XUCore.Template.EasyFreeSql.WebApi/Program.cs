@@ -1,75 +1,25 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System.IO;
-using System.Security.Authentication;
-using System.Text;
-using System.Threading;
+
 using XUCore.NetCore.AspectCore.Cache;
 using XUCore.NetCore.Extensions;
+using XUCore.Template.EasyFreeSql.Applaction;
+using XUCore.Template.EasyFreeSql.Persistence;
 
-namespace XUCore.Template.EasyFreeSql.WebApi
-{
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            //解决中文乱码问题
-            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+var builder = WebApplication.CreateBuilder(args);
 
-            //linux系统上开启最小工作线程
-            ThreadPool.SetMinThreads(250, 250);
+builder.WebHost
+    .UseRealIp(); //"X-Real-IP";
 
-            CreateHostBuilder(args).Build().Run();
-        }
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-          Host.CreateDefaultBuilder(args)
-               .ConfigureAppConfiguration((hostingContext, _config) =>
-               {
-                   //显示设置当前程序运行目录
-                   _config.SetBasePath(Directory.GetCurrentDirectory());
-                   //_config.AddJsonFile("hosting.json", optional: true);
-                   _config.AddJsonFile("appsettings.json", optional: true);
-                   _config.AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", optional: true);
-                   _config.AddEnvironmentVariables(prefix: "PREFIX_");
-                   _config.AddCommandLine(args);
-               })
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder
-                      .UseRealIp() //"X-Real-IP"
-                      .UseContentRoot(Directory.GetCurrentDirectory())
-                      //.UseIISIntegration()
-                      .UseKestrel(options =>
-                      {
-                          //options.AddServerHeader = false;
-                          ////是否允许请求同步操作
-                          //options.AllowSynchronousIO = true;
-                          //options.ApplicationSchedulingMode = SchedulingMode.ThreadPool;
-                          //配置https,将pfx证书丢到bin目录下面,同时针对配置文件进行密码处理
-                          //net 客户端请求服务https的时候可能会触发ssl握手失败问题，在发起请求的时候加入：
-                          //System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-                          options.ConfigureHttpsDefaults(s =>
-                          {
-                              s.SslProtocols =
-                                SslProtocols.Tls |
-                                SslProtocols.Tls11 |
-                                SslProtocols.Tls12;
-                          });
-                      })
+builder.Host.UseInterceptorHostBuilder();
 
-                      .ConfigureLogging((hostingContext, builder) =>
-                      {
-                          builder.ClearProviders();
-                          builder.SetMinimumLevel(LogLevel.Trace);
-                          builder.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
-                          builder.AddConsole();
-                          builder.AddDebug();
-                      })
-                      .UseStartup<Startup>();
-                })
-                .UseInterceptorHostBuilder()
-                ;
-    }
-}
+// Add services to the container.
+
+builder.Services.AddApplication(builder.Configuration, builder.Environment);
+builder.Services.AddDbContext(builder.Configuration);
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+
+app.UseApplication(app.Environment);
+
+app.Run();

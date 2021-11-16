@@ -26,7 +26,7 @@ namespace XUCore.Template.FreeSql.Applaction.User
 
         public UserAppService(IServiceProvider serviceProvider)
         {
-            this.userService = serviceProvider.GetService<IUserService>();
+            this.userService = serviceProvider.GetRequiredService<IUserService>();
         }
 
         /// <summary>

@@ -1,6 +1,6 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 
 #更换阿里源
 ADD ["sources.list", "/etc/apt/"]
@@ -24,7 +24,7 @@ CMD rm /etc/localtime && ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 #
 #dotnet build -c Release
 #
-#3、本地发布（实际发布到当前项目的 bin/Release/net5.0/publish/ 目录）
+#3、本地发布（实际发布到当前项目的 bin/Release/net6.0/publish/ 目录）
 #
 #dotnet publish -c Release
 #
@@ -36,7 +36,7 @@ EXPOSE 80
 
 WORKDIR app
 #项目设置里面将所有需要输出的xml文件输出到同一个doc目录下面
-ADD ./bin/Release/net5.0/publish/ /app/
+ADD ./bin/Release/net6.0/publish/ /app/
 ENTRYPOINT ["dotnet","/app/XUCore.Template.EasyFreeSql.WebApi.dll","--environment","Development"]
 
 #以下部分为NetCore自动生成，【弃用】
@@ -44,7 +44,7 @@ ENTRYPOINT ["dotnet","/app/XUCore.Template.EasyFreeSql.WebApi.dll","--environmen
 #WORKDIR /app
 #EXPOSE 80
 #
-#FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
+#FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 #
 #WORKDIR /src
 #COPY ["XUCore.Template.EasyFreeSql.WebApi/XUCore.Template.EasyFreeSql.WebApi.csproj", "XUCore.Template.EasyFreeSql.WebApi/"]

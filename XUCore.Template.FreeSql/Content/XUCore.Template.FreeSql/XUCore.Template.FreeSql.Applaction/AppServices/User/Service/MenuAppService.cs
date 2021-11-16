@@ -23,7 +23,7 @@ namespace XUCore.Template.FreeSql.Applaction.User
 
         public MenuAppService(IServiceProvider serviceProvider)
         {
-            this.menuService = serviceProvider.GetService<IMenuService>();
+            this.menuService = serviceProvider.GetRequiredService<IMenuService>();
         }
 
         /// <summary>

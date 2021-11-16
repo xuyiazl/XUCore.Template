@@ -38,11 +38,11 @@ namespace XUCore.Template.EasyFreeSql.Applaction.Login
         protected readonly IPermissionService permissionService;
         public LoginAppService(IServiceProvider serviceProvider)
         {
-            this.unitOfWork = serviceProvider.GetService<FreeSqlUnitOfWorkManager>();
+            this.unitOfWork = serviceProvider.GetRequiredService<FreeSqlUnitOfWorkManager>();
             this.repo = unitOfWork.Orm.GetRepository<UserEntity>();
-            this.mapper = serviceProvider.GetService<IMapper>();
-            this.user = serviceProvider.GetService<IUserInfo>();
-            this.permissionService = serviceProvider.GetService<IPermissionService>();
+            this.mapper = serviceProvider.GetRequiredService<IMapper>();
+            this.user = serviceProvider.GetRequiredService<IUserInfo>();
+            this.permissionService = serviceProvider.GetRequiredService<IPermissionService>();
         }
 
         #region [ 登录 ]
@@ -137,6 +137,8 @@ namespace XUCore.Template.EasyFreeSql.Applaction.Login
         [HttpGet]
         public async Task<Result<string>> VerifyTokenAsync(CancellationToken cancellationToken)
         {
+            await Task.CompletedTask;
+
             return RestFull.Success(data: new
             {
                 user.Id,

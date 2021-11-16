@@ -1,18 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
   <PropertyGroup>
     <DocumentationFile>XUCore.Template.FreeSql.Core.xml</DocumentationFile>
   </PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="XUCore" Version="5.5.1" />
-		<PackageReference Include="XUCore.NetCore" Version="5.5.1" />
-		<PackageReference Include="XUCore.NetCore.FreeSql" Version="5.5.1" />
-		<PackageReference Include="XUCore.NetCore.Redis" Version="5.5.1" />
+		<PackageReference Include="XUCore" Version="6.0.0" />
+		<PackageReference Include="XUCore.NetCore" Version="6.0.0" />
+		<PackageReference Include="XUCore.NetCore.FreeSql" Version="6.0.0" />
+		<PackageReference Include="XUCore.NetCore.Redis" Version="6.0.0" />
 	</ItemGroup>
 
 </Project>

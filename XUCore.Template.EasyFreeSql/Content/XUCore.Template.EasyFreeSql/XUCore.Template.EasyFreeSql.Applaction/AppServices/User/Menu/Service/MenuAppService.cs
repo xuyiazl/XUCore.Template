@@ -33,10 +33,10 @@ namespace XUCore.Template.EasyFreeSql.Applaction.User.Menu
         protected readonly IUserInfo user;
         public MenuAppService(IServiceProvider serviceProvider)
         {
-            this.unitOfWork = serviceProvider.GetService<FreeSqlUnitOfWorkManager>();
+            this.unitOfWork = serviceProvider.GetRequiredService<FreeSqlUnitOfWorkManager>();
             this.repo = unitOfWork.Orm.GetRepository<MenuEntity>();
-            this.mapper = serviceProvider.GetService<IMapper>();
-            this.user = serviceProvider.GetService<IUserInfo>();
+            this.mapper = serviceProvider.GetRequiredService<IMapper>();
+            this.user = serviceProvider.GetRequiredService<IUserInfo>();
         }
 
         /// <summary>

@@ -2,11 +2,7 @@
 using FreeSql;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Threading;
-using System.Threading.Tasks;
 using XUCore.NetCore;
 using XUCore.NetCore.DynamicWebApi;
 using XUCore.NetCore.FreeSql.Curd;
@@ -28,10 +24,10 @@ namespace XUCore.Template.EasyFreeSql.Applaction.Basics
         protected readonly IUserInfo user;
         public ChinaAreaAppService(IServiceProvider serviceProvider)
         {
-            this.unitOfWork = serviceProvider.GetService<FreeSqlUnitOfWorkManager>();
+            this.unitOfWork = serviceProvider.GetRequiredService<FreeSqlUnitOfWorkManager>();
             this.repo = unitOfWork.Orm.GetRepository<ChinaAreaEntity>();
-            this.mapper = serviceProvider.GetService<IMapper>();
-            this.user = serviceProvider.GetService<IUserInfo>();
+            this.mapper = serviceProvider.GetRequiredService<IMapper>();
+            this.user = serviceProvider.GetRequiredService<IUserInfo>();
         }
 
         /// <summary>
@@ -113,10 +109,10 @@ namespace XUCore.Template.EasyFreeSql.Applaction.Basics
             var select = repo.Select
                 .Where(c => c.Id == request.CityId);
 
-            var res = select
+            var res = await select
                       .AsTreeCte(level: request.Level < 1 ? -1 : request.Level)
                       .OrderByDescending(c => c.Sort)
-                      .ToTreeList();
+                      .ToTreeListAsync(cancellationToken);
 
             var tree = mapper.Map<List<ChinaAreaEntity>, List<ChinaAreaTreeDto>>(res);
 

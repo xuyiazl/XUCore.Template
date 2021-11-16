@@ -34,6 +34,11 @@ namespace XUCore.Template.FreeSql.DbService.Basics.ChinaArea
             return res;
         }
 
+        public override Task<ChinaAreaDto> GetByIdAsync(long id, CancellationToken cancellationToken)
+        {
+            return base.GetByIdAsync(id, cancellationToken);
+        }
+
         public override async Task<IList<ChinaAreaDto>> GetListAsync(ChinaAreaQueryCommand request, CancellationToken cancellationToken)
         {
             var select = repo.Select
@@ -63,10 +68,10 @@ namespace XUCore.Template.FreeSql.DbService.Basics.ChinaArea
             var select = repo.Select
                 .Where(c => c.Id == request.CityId);
 
-            var res = select
+            var res = await select
                       .AsTreeCte(level: request.Level < 1 ? -1 : request.Level)
                       .OrderByDescending(c => c.Sort)
-                      .ToTreeList();
+                      .ToTreeListAsync(cancellationToken);
 
             var tree = mapper.Map<IList<ChinaAreaEntity>, IList<ChinaAreaTreeDto>>(res);
 

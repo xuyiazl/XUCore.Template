@@ -36,10 +36,10 @@ namespace XUCore.Template.EasyFreeSql.Applaction.User.User
         protected readonly IUserInfo user;
         public UserAppService(IServiceProvider serviceProvider)
         {
-            this.unitOfWork = serviceProvider.GetService<FreeSqlUnitOfWorkManager>();
+            this.unitOfWork = serviceProvider.GetRequiredService<FreeSqlUnitOfWorkManager>();
             this.repo = unitOfWork.Orm.GetRepository<UserEntity>();
-            this.mapper = serviceProvider.GetService<IMapper>();
-            this.user = serviceProvider.GetService<IUserInfo>();
+            this.mapper = serviceProvider.GetRequiredService<IMapper>();
+            this.user = serviceProvider.GetRequiredService<IUserInfo>();
         }
 
         /// <summary>

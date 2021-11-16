@@ -30,8 +30,8 @@ namespace XUCore.Template.EasyFreeSql.Applaction.Upload
 
         public UploadAppService(IServiceProvider serviceProvider)
         {
-            _fileUploadService = serviceProvider.GetService<IFileUploadService>();
-            _ossFactory = serviceProvider.GetService<IOssFactory>();
+            _fileUploadService = serviceProvider.GetRequiredService<IFileUploadService>();
+            _ossFactory = serviceProvider.GetRequiredService<IOssFactory>();
         }
         /// <summary>
         /// 上传文件

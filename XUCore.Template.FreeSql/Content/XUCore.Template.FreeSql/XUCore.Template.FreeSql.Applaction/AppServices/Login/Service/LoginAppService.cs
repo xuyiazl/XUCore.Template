@@ -32,9 +32,9 @@ namespace XUCore.Template.FreeSql.Applaction.Login
 
         public LoginAppService(IServiceProvider serviceProvider)
         {
-            this.permissionService = serviceProvider.GetService<IPermissionService>();
-            this.userService = serviceProvider.GetService<IUserService>();
-            this.user = serviceProvider.GetService<IUserInfo>();
+            this.permissionService = serviceProvider.GetRequiredService<IPermissionService>();
+            this.userService = serviceProvider.GetRequiredService<IUserService>();
+            this.user = serviceProvider.GetRequiredService<IUserInfo>();
         }
 
         #region [ 登录 ]

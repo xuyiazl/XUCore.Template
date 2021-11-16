@@ -16,7 +16,7 @@ namespace XUCore.Template.EasyFreeSql.Applaction.User.Permission
         protected readonly FreeSqlUnitOfWorkManager unitOfWork;
         public PermissionCacheService(IServiceProvider serviceProvider)
         {
-            this.unitOfWork = serviceProvider.GetService<FreeSqlUnitOfWorkManager>();
+            this.unitOfWork = serviceProvider.GetRequiredService<FreeSqlUnitOfWorkManager>();
         }
 
         [AspectCache(HashKey = CacheKey.AuthUser, Key = "{0}", Seconds = CacheTime.Min5)]

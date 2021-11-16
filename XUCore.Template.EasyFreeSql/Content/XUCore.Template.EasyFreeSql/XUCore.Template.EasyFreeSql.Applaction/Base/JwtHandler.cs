@@ -22,7 +22,7 @@ namespace XUCore.Template.EasyFreeSql.Applaction
         public JwtHandler(IServiceProvider serviceProvider)
         {
             this.serviceProvider = serviceProvider;
-            this.user = serviceProvider.GetService<IUserInfo>();
+            this.user = serviceProvider.GetRequiredService<IUserInfo>();
         }
         /// <summary>
         /// 重写 Handler 添加自动刷新收取逻辑
@@ -34,7 +34,7 @@ namespace XUCore.Template.EasyFreeSql.Applaction
             string url = context.GetCurrentHttpContext().Request.GetRefererUrlAddress();
             if (url.Contains("xx.com")) //if (url.Contains("localhost"))
             {
-                var isAuthenticated = context.User.Identity.IsAuthenticated;
+                //var isAuthenticated = context.User.Identity.IsAuthenticated;
                 var pendingRequirements = context.PendingRequirements;
                 foreach (var requirement in pendingRequirements)
                 {
@@ -45,11 +45,11 @@ namespace XUCore.Template.EasyFreeSql.Applaction
             else
             {
 
-                // 验证登录保存的token，如果不一致则是被其他人踢掉，或者退出登录了，需要重新登录
-                var token = JWTEncryption.GetJwtBearerToken(context.GetCurrentHttpContext());
+                //// 验证登录保存的token，如果不一致则是被其他人踢掉，或者退出登录了，需要重新登录
+                //var token = JWTEncryption.GetJwtBearerToken(context.GetCurrentHttpContext());
 
-                if (!user.VaildToken(token))
-                    context.Fail();
+                //if (!user.VaildToken(token))
+                //    context.Fail();
 
 
                 // 自动刷新 token
@@ -72,7 +72,7 @@ namespace XUCore.Template.EasyFreeSql.Applaction
             var securityDefineAttribute = httpContext.GetMetadata<SecurityDefineAttribute>();
             if (securityDefineAttribute == null) return true;
 
-            var permissionService = serviceProvider.GetService<IPermissionService>();
+            var permissionService = serviceProvider.GetRequiredService<IPermissionService>();
             // 检查授权
             return await permissionService.ExistsAsync(user.GetId<long>(), securityDefineAttribute.ResourceId, CancellationToken.None);
         }

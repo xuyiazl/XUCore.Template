@@ -211,21 +211,24 @@ namespace XUCore.Template.FreeSql.Persistence
         /// <param name="db"></param>
         public static void SyncData(IFreeSql db)
         {
-            var initData = $"{Directory.GetCurrentDirectory()}\\InitData";
+            var initData = Path.Combine(Directory.GetCurrentDirectory(), "InitData");
             {
-                var any = db.Select<ChinaAreaEntity>().Any();
-                if (!any)
+                if (Directory.Exists(initData))
                 {
-                    var data = FileHelper.ReadAllTextAsync($"{initData}\\sys_china_area.json").GetAwaiter().GetResult();
+                    var any = db.Select<ChinaAreaEntity>().Any();
+                    if (!any)
+                    {
+                        var data = FileHelper.ReadAllTextAsync(Path.Combine(initData, "sys_china_area.json")).GetAwaiter().GetResult();
 
-                    var list = data.ToObject<List<ChinaAreaEntity>>();
+                        var list = data.ToObject<List<ChinaAreaEntity>>();
 
-                    var res = db.Insert(list).ExecuteAffrows();
+                        var res = db.Insert(list).ExecuteAffrows();
 
-                    Console.WriteLine($"初始化数据：省份城市数据 {res} 条...");
+                        Console.WriteLine($"初始化数据：省份城市数据 {res} 条...");
+                    }
+                    else
+                        Console.WriteLine($"初始化数据：省份城市数据已存在，无需同步...");
                 }
-                else
-                    Console.WriteLine($"初始化数据：省份城市数据已存在，无需同步...");
             }
             {
                 var repo = db.GetRepository<MenuEntity>();

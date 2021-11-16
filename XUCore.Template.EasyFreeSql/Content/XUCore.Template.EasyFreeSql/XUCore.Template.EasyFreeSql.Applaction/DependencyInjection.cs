@@ -32,7 +32,7 @@ namespace XUCore.Template.EasyFreeSql.Applaction
     {
         const string policyName = "CorsPolicy";
 
-        public static IServiceCollection AddApplication(this IServiceCollection services, IConfiguration configuration, string serviceMode = "api")
+        public static IServiceCollection AddApplication(this IServiceCollection services, IConfiguration configuration, IHostEnvironment environment, string serviceMode = "api")
         {
             services.AddSingleton(HtmlEncoder.Create(UnicodeRanges.All));
 
@@ -104,14 +104,12 @@ namespace XUCore.Template.EasyFreeSql.Applaction
                 // 注册上传服务
                 services.AddUploadService();
 
-                var env = services.BuildServiceProvider().GetService<IWebHostEnvironment>();
-
                 services.AddMiniSwagger(swaggerGenAction: opt =>
                 {
                     opt.SwaggerDoc(ApiGroup.Admin, new OpenApiInfo
                     {
                         Version = ApiGroup.Admin,
-                        Title = $"用户后台API - {env.EnvironmentName}",
+                        Title = $"用户后台API - {environment.EnvironmentName}",
                         Description = "用户后台API"
                     });
 

@@ -23,7 +23,7 @@ namespace XUCore.Template.FreeSql.Applaction.Basics
 
         public ChinaAreaAppService(IServiceProvider serviceProvider)
         {
-            this.chinaAreaService = serviceProvider.GetService<IChinaAreaService>();
+            this.chinaAreaService = serviceProvider.GetRequiredService<IChinaAreaService>();
         }
 
         /// <summary>

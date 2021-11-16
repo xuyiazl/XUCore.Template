@@ -22,7 +22,7 @@ dotnet new -u XUCore.Template.EasyFreeSql
 
 ```bash
 
-dotnet new --install XUCore.Template.EasyFreeSql::1.3.3
+dotnet new --install XUCore.Template.EasyFreeSql::6.0.0
 
 ```
 

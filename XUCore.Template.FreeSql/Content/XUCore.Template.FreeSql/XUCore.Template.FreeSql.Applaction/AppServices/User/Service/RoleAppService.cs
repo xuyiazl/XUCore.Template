@@ -24,7 +24,7 @@ namespace XUCore.Template.FreeSql.Applaction.User
 
         public RoleAppService(IServiceProvider serviceProvider)
         {
-            this.roleService = serviceProvider.GetService<IRoleService>();
+            this.roleService = serviceProvider.GetRequiredService<IRoleService>();
         }
 
         /// <summary>
