@@ -1,15 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel.DataAnnotations;
-using System.Threading;
-using System.Threading.Tasks;
-using XUCore.Helpers;
-using XUCore.NetCore;
-using XUCore.NetCore.DynamicWebApi;
-using XUCore.NetCore.Oss;
-using XUCore.NetCore.Uploads;
-using XUCore.NetCore.Uploads.Params;
-using XUCore.Template.FreeSql.Core;
+﻿using XUCore.Template.FreeSql.Core;
 
 namespace XUCore.Template.FreeSql.Applaction.Upload
 {

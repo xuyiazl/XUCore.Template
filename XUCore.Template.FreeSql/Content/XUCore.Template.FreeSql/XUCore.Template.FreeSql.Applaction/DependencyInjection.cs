@@ -1,28 +1,4 @@
-﻿using FluentValidation.AspNetCore;
-using MediatR;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
-using Newtonsoft.Json;
-using System.Text.Encodings.Web;
-using System.Text.Unicode;
-using XUCore.Ddd.Domain.Filters;
-using XUCore.Helpers;
-using XUCore.NetCore;
-using XUCore.NetCore.AspectCore.Cache;
-using XUCore.NetCore.Authorization.JwtBearer;
-using XUCore.NetCore.DynamicWebApi;
-using XUCore.NetCore.EasyQuartz;
-using XUCore.NetCore.Extensions;
-using XUCore.NetCore.Filters;
-using XUCore.NetCore.Formatter;
-using XUCore.NetCore.Oss;
-using XUCore.NetCore.Swagger;
-using XUCore.Serializer;
-using XUCore.Template.FreeSql.Applaction.Filters;
+﻿using XUCore.Template.FreeSql.Applaction.Filters;
 using XUCore.Template.FreeSql.Core;
 using XUCore.Template.FreeSql.DbService.Events;
 
@@ -104,6 +80,7 @@ namespace XUCore.Template.FreeSql.Applaction
                 // 注册上传服务
                 services.AddUploadService();
 
+                //services.AddEndpointsApiExplorer();
                 services.AddMiniSwagger(swaggerGenAction: opt =>
                 {
                     opt.SwaggerDoc(ApiGroup.Admin, new OpenApiInfo

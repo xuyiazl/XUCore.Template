@@ -1,17 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.Threading;
-using System.Threading.Tasks;
-using XUCore.Helpers;
-using XUCore.NetCore;
-using XUCore.NetCore.DynamicWebApi;
-using XUCore.NetCore.Oss;
-using XUCore.NetCore.Uploads;
-using XUCore.NetCore.Uploads.Params;
-using XUCore.Template.EasyFreeSql.Core;
+﻿using XUCore.Template.EasyFreeSql.Core;
 
 namespace XUCore.Template.EasyFreeSql.Applaction.Upload
 {

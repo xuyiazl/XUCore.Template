@@ -11,6 +11,26 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Using Include="AutoMapper"/>
+		<Using Include="Microsoft.EntityFrameworkCore"/>
+		<Using Include="FluentValidation"/>
+		<Using Include="MediatR"/>
+		<Using Include="System.ComponentModel.DataAnnotations"/>
+		
+		<Using Include="XUCore" />
+		<Using Include="XUCore.Extensions"/>
+		<Using Include="XUCore.Helpers"/>
+		<Using Include="XUCore.Paging" />
+		<Using Include="XUCore.NetCore" />
+		<Using Include="XUCore.NetCore.FreeSql" />
+		<Using Include="XUCore.NetCore.FreeSql.Curd" />
+		<Using Include="XUCore.NetCore.AspectCore.Cache"/>
+		<Using Include="XUCore.Ddd.Domain"/>
+		<Using Include="XUCore.Ddd.Domain.Exceptions"/>
+		<Using Include="XUCore.Ddd.Domain.Commands"/>
+	</ItemGroup>
+	
+	<ItemGroup>
 		<ProjectReference Include="..\XUCore.Template.FreeSql.Core\XUCore.Template.FreeSql.Core.csproj" />
 		<ProjectReference Include="..\XUCore.Template.FreeSql.Persistence\XUCore.Template.FreeSql.Persistence.csproj" />
 	</ItemGroup>

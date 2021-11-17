@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using XUCore.Ddd.Domain;
-using XUCore.NetCore;
-
-namespace XUCore.Template.EasyFreeSql.Core
+﻿namespace XUCore.Template.EasyFreeSql.Core
 {
     public interface IUserInfo : IUser, IScoped
     {

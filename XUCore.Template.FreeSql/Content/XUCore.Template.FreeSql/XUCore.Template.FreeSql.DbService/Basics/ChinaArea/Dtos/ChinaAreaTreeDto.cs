@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace XUCore.Template.FreeSql.DbService.Basics.ChinaArea
+﻿namespace XUCore.Template.FreeSql.DbService.Basics.ChinaArea
 {
     /// <summary>
     /// 导航列表

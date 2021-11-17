@@ -1,8 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using XUCore.Ddd.Domain.Commands;
-using XUCore.Ddd.Domain.Exceptions;
-
-namespace XUCore.Template.EasyFreeSql.Applaction.User.Menu
+﻿namespace XUCore.Template.EasyFreeSql.Applaction.User.Menu
 {
     /// <summary>
     /// 菜单查询命令

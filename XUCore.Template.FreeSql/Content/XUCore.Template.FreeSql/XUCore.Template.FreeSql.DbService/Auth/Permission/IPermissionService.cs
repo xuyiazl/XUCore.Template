@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using XUCore.NetCore;
-
-namespace XUCore.Template.FreeSql.DbService.Auth.Permission
+﻿namespace XUCore.Template.FreeSql.DbService.Auth.Permission
 {
     public interface IPermissionService : IScoped
     {

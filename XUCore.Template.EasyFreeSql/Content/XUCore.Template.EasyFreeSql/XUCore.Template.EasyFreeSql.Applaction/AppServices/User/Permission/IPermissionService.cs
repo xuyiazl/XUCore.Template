@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using XUCore.NetCore;
-
-namespace XUCore.Template.EasyFreeSql.Applaction.User.Permission
+﻿namespace XUCore.Template.EasyFreeSql.Applaction.User.Permission
 {
     public interface IPermissionService : IScoped
     {

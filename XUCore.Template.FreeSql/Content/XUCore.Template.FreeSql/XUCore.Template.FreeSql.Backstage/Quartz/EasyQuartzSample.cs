@@ -1,13 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using Quartz;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using XUCore.NetCore.EasyQuartz;
-
-namespace XUCore.Template.FreeSql.Backstage.Quartz
+﻿namespace XUCore.Template.FreeSql.Backstage.Quartz
 {
 
     [TriggerCron("0/5 * * * * ? *")]

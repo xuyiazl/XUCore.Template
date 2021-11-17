@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using XUCore.NetCore;
-using XUCore.Paging;
-using XUCore.Template.FreeSql.Core.Enums;
+﻿using XUCore.Template.FreeSql.Core.Enums;
 using XUCore.Template.FreeSql.DbService.User.User;
 
 namespace XUCore.Template.FreeSql.Applaction.User

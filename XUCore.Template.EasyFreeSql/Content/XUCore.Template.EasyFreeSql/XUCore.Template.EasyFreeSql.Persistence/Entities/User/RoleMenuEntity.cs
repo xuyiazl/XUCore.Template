@@ -1,7 +1,4 @@
-﻿using FreeSql.DataAnnotations;
-using XUCore.NetCore.FreeSql.Entity;
-
-namespace XUCore.Template.EasyFreeSql.Persistence.Entities.User
+﻿namespace XUCore.Template.EasyFreeSql.Persistence.Entities.User
 {
     /// <summary>
     /// 角色导航关联表

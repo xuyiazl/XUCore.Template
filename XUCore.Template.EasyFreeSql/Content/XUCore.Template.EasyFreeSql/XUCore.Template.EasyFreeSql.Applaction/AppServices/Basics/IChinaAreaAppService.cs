@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using XUCore.NetCore;
-
-namespace XUCore.Template.EasyFreeSql.Applaction.Basics
+﻿namespace XUCore.Template.EasyFreeSql.Applaction.Basics
 {
     /// <summary>
     /// 城市区域管理

@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using XUCore.NetCore;
-using XUCore.Template.FreeSql.DbService.Auth.Permission;
+﻿using XUCore.Template.FreeSql.DbService.Auth.Permission;
 using XUCore.Template.FreeSql.DbService.User.User;
 
 namespace XUCore.Template.FreeSql.Applaction.Login

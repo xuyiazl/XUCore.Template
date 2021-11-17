@@ -1,17 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using XUCore.Ddd.Domain.Exceptions;
-using XUCore.Extensions;
-using XUCore.Helpers;
-using XUCore.NetCore.FreeSql;
-using XUCore.NetCore.FreeSql.Curd;
-using XUCore.Paging;
-using XUCore.Template.FreeSql.Core;
+﻿using XUCore.Template.FreeSql.Core;
 using XUCore.Template.FreeSql.Core.Enums;
 using XUCore.Template.FreeSql.Persistence.Entities.User;
 

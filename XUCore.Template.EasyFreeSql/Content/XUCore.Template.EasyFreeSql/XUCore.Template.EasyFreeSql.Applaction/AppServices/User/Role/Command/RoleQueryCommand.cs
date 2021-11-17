@@ -1,8 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using XUCore.Ddd.Domain.Commands;
-using XUCore.Ddd.Domain.Exceptions;
-
-namespace XUCore.Template.EasyFreeSql.Applaction.User.Role
+﻿namespace XUCore.Template.EasyFreeSql.Applaction.User.Role
 {
     /// <summary>
     /// 角色查询命令

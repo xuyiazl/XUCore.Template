@@ -1,9 +1,4 @@
-﻿using FluentValidation;
-using System.ComponentModel.DataAnnotations;
-using XUCore.Ddd.Domain.Commands;
-using XUCore.Ddd.Domain.Exceptions;
-
-namespace XUCore.Template.FreeSql.DbService.Auth.Role
+﻿namespace XUCore.Template.FreeSql.DbService.Auth.Role
 {
     /// <summary>
     /// 角色查询命令

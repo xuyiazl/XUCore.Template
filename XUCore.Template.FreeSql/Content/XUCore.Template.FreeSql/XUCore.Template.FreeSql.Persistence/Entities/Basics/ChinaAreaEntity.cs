@@ -1,10 +1,4 @@
-﻿using FreeSql.DataAnnotations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using XUCore.NetCore.FreeSql.Entity;
+﻿using XUCore.NetCore.FreeSql.Entity;
 
 namespace XUCore.Template.FreeSql.Persistence.Entities
 {

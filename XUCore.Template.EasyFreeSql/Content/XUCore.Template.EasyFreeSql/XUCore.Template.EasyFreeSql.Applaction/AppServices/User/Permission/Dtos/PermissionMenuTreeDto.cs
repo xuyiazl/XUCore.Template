@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace XUCore.Template.EasyFreeSql.Applaction.User.Permission
+﻿namespace XUCore.Template.EasyFreeSql.Applaction.User.Permission
 {
     /// <summary>
     /// 权限导航

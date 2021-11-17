@@ -1,13 +1,4 @@
 ﻿
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using XUCore.NetCore.AspectCore.Cache;
-using XUCore.Template.EasyFreeSql.Applaction;
-using XUCore.Template.EasyFreeSql.Backstage;
-using XUCore.Template.EasyFreeSql.Persistence;
-
 var builder = Host.CreateDefaultBuilder(args);
 
 builder.ConfigureHostConfiguration(configHost =>

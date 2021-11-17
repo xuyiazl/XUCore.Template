@@ -1,12 +1,4 @@
-﻿using FreeSql;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using XUCore.Configs;
-using XUCore.Extensions;
-using XUCore.NetCore.FreeSql;
-using XUCore.NetCore.FreeSql.Entity;
-using XUCore.Template.EasyFreeSql.Core;
+﻿using XUCore.Template.EasyFreeSql.Core;
 using XUCore.Template.EasyFreeSql.Persistence.Entities;
 
 namespace XUCore.Template.EasyFreeSql.Persistence

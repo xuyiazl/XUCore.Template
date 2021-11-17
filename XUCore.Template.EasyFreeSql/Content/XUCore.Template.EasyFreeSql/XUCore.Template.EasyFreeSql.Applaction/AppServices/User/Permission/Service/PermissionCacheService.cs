@@ -1,12 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using XUCore.NetCore.AspectCore.Cache;
-using XUCore.NetCore.FreeSql.Curd;
-using XUCore.Template.EasyFreeSql.Core;
+﻿using XUCore.Template.EasyFreeSql.Core;
 using XUCore.Template.EasyFreeSql.Persistence.Entities.User;
 
 namespace XUCore.Template.EasyFreeSql.Applaction.User.Permission

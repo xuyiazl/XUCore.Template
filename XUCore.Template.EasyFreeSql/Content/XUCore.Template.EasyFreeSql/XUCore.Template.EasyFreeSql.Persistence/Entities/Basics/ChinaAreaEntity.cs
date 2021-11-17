@@ -1,12 +1,4 @@
-﻿using FreeSql.DataAnnotations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using XUCore.NetCore.FreeSql.Entity;
-
-namespace XUCore.Template.EasyFreeSql.Persistence.Entities
+﻿namespace XUCore.Template.EasyFreeSql.Persistence.Entities
 {
     [Table(Name = "sys_china_area")]
     public class ChinaAreaEntity : EntityFull

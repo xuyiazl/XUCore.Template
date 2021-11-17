@@ -1,8 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using XUCore.Ddd.Domain.Commands;
-using XUCore.Ddd.Domain.Exceptions;
-
-namespace XUCore.Template.EasyFreeSql.Applaction.Basics
+﻿namespace XUCore.Template.EasyFreeSql.Applaction.Basics
 {
     /// <summary>
     /// 省市区域查询命令

@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using XUCore.NetCore;
-using XUCore.Template.FreeSql.DbService.Basics.ChinaArea;
+﻿using XUCore.Template.FreeSql.DbService.Basics.ChinaArea;
 
 namespace XUCore.Template.FreeSql.Applaction.Basics
 {

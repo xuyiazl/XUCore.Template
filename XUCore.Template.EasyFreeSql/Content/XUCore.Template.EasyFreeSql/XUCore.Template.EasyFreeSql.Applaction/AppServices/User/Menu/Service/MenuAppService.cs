@@ -1,21 +1,4 @@
-﻿using AutoMapper;
-using FreeSql;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using XUCore.Ddd.Domain.Exceptions;
-using XUCore.Extensions;
-using XUCore.NetCore;
-using XUCore.NetCore.DynamicWebApi;
-using XUCore.NetCore.FreeSql;
-using XUCore.NetCore.FreeSql.Curd;
-using XUCore.Paging;
-using XUCore.Template.EasyFreeSql.Core;
+﻿using XUCore.Template.EasyFreeSql.Core;
 using XUCore.Template.EasyFreeSql.Persistence.Entities.User;
 
 namespace XUCore.Template.EasyFreeSql.Applaction.User.Menu

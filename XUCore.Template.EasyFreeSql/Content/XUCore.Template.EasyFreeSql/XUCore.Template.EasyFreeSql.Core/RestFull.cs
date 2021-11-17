@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using XUCore.Extensions;
-using XUCore.NetCore;
-
-namespace XUCore.Template.EasyFreeSql.Core
+﻿namespace XUCore.Template.EasyFreeSql.Core
 {
     /// <summary>
     /// 业务代码

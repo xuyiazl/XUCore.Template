@@ -1,9 +1,4 @@
 
-using XUCore.NetCore.AspectCore.Cache;
-using XUCore.NetCore.Extensions;
-using XUCore.Template.FreeSql.Applaction;
-using XUCore.Template.FreeSql.Persistence;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.WebHost

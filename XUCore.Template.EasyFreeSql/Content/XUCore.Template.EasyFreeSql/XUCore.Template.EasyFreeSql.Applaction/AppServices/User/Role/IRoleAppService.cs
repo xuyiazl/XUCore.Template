@@ -1,10 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using XUCore.NetCore;
-using XUCore.Paging;
-
-namespace XUCore.Template.EasyFreeSql.Applaction.User.Role
+﻿namespace XUCore.Template.EasyFreeSql.Applaction.User.Role
 {
     /// <summary>
     /// 用户角色管理

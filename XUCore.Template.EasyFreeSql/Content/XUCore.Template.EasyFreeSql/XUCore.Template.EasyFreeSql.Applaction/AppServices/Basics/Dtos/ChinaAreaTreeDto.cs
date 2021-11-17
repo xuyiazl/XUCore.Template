@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace XUCore.Template.EasyFreeSql.Applaction.Basics
+﻿namespace XUCore.Template.EasyFreeSql.Applaction.Basics
 {
     /// <summary>
     /// 导航列表

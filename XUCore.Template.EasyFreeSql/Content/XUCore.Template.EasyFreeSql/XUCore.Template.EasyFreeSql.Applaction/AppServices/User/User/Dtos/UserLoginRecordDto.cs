@@ -1,5 +1,4 @@
-﻿using System;
-using XUCore.Template.EasyFreeSql.Core;
+﻿using XUCore.Template.EasyFreeSql.Core;
 
 namespace XUCore.Template.EasyFreeSql.Applaction.User.User
 {

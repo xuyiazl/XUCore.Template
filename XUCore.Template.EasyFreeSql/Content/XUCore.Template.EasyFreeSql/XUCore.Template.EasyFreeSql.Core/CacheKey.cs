@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace XUCore.Template.EasyFreeSql.Core
+﻿namespace XUCore.Template.EasyFreeSql.Core
 {
     public class CacheKey
     {

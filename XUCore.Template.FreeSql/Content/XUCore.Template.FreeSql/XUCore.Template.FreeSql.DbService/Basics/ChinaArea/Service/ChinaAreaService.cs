@@ -1,15 +1,4 @@
-﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using XUCore.Extensions;
-using XUCore.NetCore.AspectCore.Cache;
-using XUCore.NetCore.FreeSql;
-using XUCore.NetCore.FreeSql.Curd;
-using XUCore.Paging;
-using XUCore.Template.FreeSql.Core;
+﻿using XUCore.Template.FreeSql.Core;
 using XUCore.Template.FreeSql.Persistence.Entities;
 
 namespace XUCore.Template.FreeSql.DbService.Basics.ChinaArea

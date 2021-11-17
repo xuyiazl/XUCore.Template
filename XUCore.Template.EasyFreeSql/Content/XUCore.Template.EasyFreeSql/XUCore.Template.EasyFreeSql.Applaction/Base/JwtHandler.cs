@@ -1,13 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-using XUCore.Helpers;
-using XUCore.NetCore.Authorization;
-using XUCore.NetCore.Authorization.JwtBearer;
-using XUCore.Template.EasyFreeSql.Applaction.User.Permission;
+﻿using XUCore.Template.EasyFreeSql.Applaction.User.Permission;
 using XUCore.Template.EasyFreeSql.Core;
 
 namespace XUCore.Template.EasyFreeSql.Applaction

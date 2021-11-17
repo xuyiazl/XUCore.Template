@@ -1,8 +1,4 @@
-﻿using FluentValidation;
-using XUCore.Ddd.Domain.Commands;
-using XUCore.Ddd.Domain.Exceptions;
-
-namespace XUCore.Template.EasyFreeSql.Applaction.Upload
+﻿namespace XUCore.Template.EasyFreeSql.Applaction.Upload
 {
     public class Base64Command : Command<bool>
     {

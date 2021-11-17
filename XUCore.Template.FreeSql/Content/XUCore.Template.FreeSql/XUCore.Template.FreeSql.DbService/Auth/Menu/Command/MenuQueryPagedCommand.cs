@@ -1,9 +1,4 @@
-﻿using FluentValidation;
-using System.ComponentModel.DataAnnotations;
-using XUCore.Ddd.Domain.Commands;
-using XUCore.Ddd.Domain.Exceptions;
-
-namespace XUCore.Template.FreeSql.DbService.Auth.Menu
+﻿namespace XUCore.Template.FreeSql.DbService.Auth.Menu
 {
     /// <summary>
     /// 菜单查询命令

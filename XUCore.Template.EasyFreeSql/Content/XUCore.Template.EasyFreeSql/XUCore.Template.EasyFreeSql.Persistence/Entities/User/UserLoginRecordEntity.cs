@@ -1,9 +1,4 @@
-﻿using FreeSql.DataAnnotations;
-using System;
-using XUCore.Ddd.Domain;
-using XUCore.NetCore.FreeSql.Entity;
-
-namespace XUCore.Template.EasyFreeSql.Persistence.Entities.User
+﻿namespace XUCore.Template.EasyFreeSql.Persistence.Entities.User
 {
     /// <summary>
     /// 登录记录表

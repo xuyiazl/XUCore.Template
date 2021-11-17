@@ -1,19 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Threading;
-using System.Threading.Tasks;
-using XUCore.Ddd.Domain;
-using XUCore.Helpers;
-using XUCore.NetCore;
-using XUCore.NetCore.Authorization.JwtBearer;
-using XUCore.NetCore.DynamicWebApi;
-using XUCore.NetCore.Swagger;
-using XUCore.Serializer;
-using XUCore.Template.FreeSql.Core;
+﻿using XUCore.Template.FreeSql.Core;
 using XUCore.Template.FreeSql.DbService.Auth.Permission;
 using XUCore.Template.FreeSql.DbService.User.User;
 

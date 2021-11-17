@@ -1,11 +1,4 @@
-﻿using AutoMapper;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using XUCore.Extensions;
-using XUCore.Template.FreeSql.Core;
-using XUCore.Template.FreeSql.Persistence.Entities.User;
+﻿using XUCore.Template.FreeSql.Persistence.Entities.User;
 
 namespace XUCore.Template.FreeSql.DbService.Auth.Permission
 {

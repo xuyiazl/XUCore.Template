@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace XUCore.Template.FreeSql.DbService.Auth.Menu
+﻿namespace XUCore.Template.FreeSql.DbService.Auth.Menu
 {
     /// <summary>
     /// 导航列表

@@ -1,9 +1,4 @@
 
-using XUCore.NetCore.AspectCore.Cache;
-using XUCore.NetCore.Extensions;
-using XUCore.Template.EasyFreeSql.Applaction;
-using XUCore.Template.EasyFreeSql.Persistence;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.WebHost

@@ -1,10 +1,4 @@
-﻿using FluentValidation;
-using System.ComponentModel.DataAnnotations;
-using XUCore.Ddd.Domain.Commands;
-using XUCore.Ddd.Domain.Exceptions;
-using XUCore.Template.FreeSql.Core.Enums;
-
-namespace XUCore.Template.FreeSql.DbService.User.User
+﻿namespace XUCore.Template.FreeSql.DbService.User.User
 {
     /// <summary>
     /// 用户查询

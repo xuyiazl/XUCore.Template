@@ -1,18 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using XUCore.Ddd.Domain.Exceptions;
-using XUCore.Extensions;
-using XUCore.Helpers;
-using XUCore.NetCore;
-using XUCore.NetCore.Extensions;
-using XUCore.NetCore.Properties;
-using XUCore.Template.FreeSql.Core;
+﻿using XUCore.Template.FreeSql.Core;
 
 namespace XUCore.Template.FreeSql.Applaction.Filters
 {
@@ -42,7 +28,7 @@ namespace XUCore.Template.FreeSql.Applaction.Filters
             }
             else if (context.Exception.IsFailure())
             {
-                var ex = context.Exception as ValidationException;
+                var ex = context.Exception as XUCore.Ddd.Domain.Exceptions.ValidationException;
 
                 var message = ex.Failures.Select(c => c.Value.Join("")).Join("");
 

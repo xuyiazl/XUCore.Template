@@ -1,12 +1,4 @@
-﻿using AutoMapper;
-using System;
-using System.Linq;
-using System.Reflection;
-using XUCore.Extensions;
-using XUCore.Helpers;
-using XUCore.Template.EasyFreeSql.Core.Enums;
-
-namespace XUCore.Template.EasyFreeSql.Core
+﻿namespace XUCore.Template.EasyFreeSql.Core
 {
     public interface IMapFrom<T>
     {

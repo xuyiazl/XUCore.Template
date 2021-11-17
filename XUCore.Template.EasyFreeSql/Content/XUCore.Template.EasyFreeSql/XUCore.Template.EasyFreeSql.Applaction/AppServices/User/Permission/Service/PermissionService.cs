@@ -1,11 +1,4 @@
-﻿using AutoMapper;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using XUCore.Extensions;
-using XUCore.NetCore.DynamicWebApi;
-using XUCore.Template.EasyFreeSql.Persistence.Entities.User;
+﻿using XUCore.Template.EasyFreeSql.Persistence.Entities.User;
 
 namespace XUCore.Template.EasyFreeSql.Applaction.User.Permission
 {

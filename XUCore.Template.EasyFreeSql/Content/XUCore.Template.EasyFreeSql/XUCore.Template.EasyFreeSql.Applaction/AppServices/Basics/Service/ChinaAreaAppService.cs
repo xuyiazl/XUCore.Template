@@ -1,12 +1,4 @@
-﻿using AutoMapper;
-using FreeSql;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
-using System.ComponentModel.DataAnnotations;
-using XUCore.NetCore;
-using XUCore.NetCore.DynamicWebApi;
-using XUCore.NetCore.FreeSql.Curd;
-using XUCore.Template.EasyFreeSql.Core;
+﻿using XUCore.Template.EasyFreeSql.Core;
 using XUCore.Template.EasyFreeSql.Persistence.Entities;
 
 namespace XUCore.Template.EasyFreeSql.Applaction.Basics

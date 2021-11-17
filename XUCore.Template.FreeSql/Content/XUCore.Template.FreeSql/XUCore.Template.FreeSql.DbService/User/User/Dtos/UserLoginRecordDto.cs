@@ -1,5 +1,4 @@
-﻿using System;
-using XUCore.Template.FreeSql.Core;
+﻿using XUCore.Template.FreeSql.Core;
 
 namespace XUCore.Template.FreeSql.DbService.User.User
 {

@@ -1,10 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using XUCore.NetCore;
-using XUCore.Paging;
-
-namespace XUCore.Template.EasyFreeSql.Applaction.User.Menu
+﻿namespace XUCore.Template.EasyFreeSql.Applaction.User.Menu
 {
     /// <summary>
     /// 用户导航管理

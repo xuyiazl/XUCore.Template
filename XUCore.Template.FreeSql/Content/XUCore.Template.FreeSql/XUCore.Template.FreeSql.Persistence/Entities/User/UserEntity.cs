@@ -1,8 +1,4 @@
-﻿
-using FreeSql.DataAnnotations;
-using System;
-using System.Collections.Generic;
-using XUCore.NetCore.FreeSql.Entity;
+﻿using XUCore.NetCore.FreeSql.Entity;
 
 namespace XUCore.Template.FreeSql.Persistence.Entities.User
 {

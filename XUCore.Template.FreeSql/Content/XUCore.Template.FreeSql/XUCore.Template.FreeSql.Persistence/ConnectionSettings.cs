@@ -1,11 +1,4 @@
-﻿using FreeSql;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace XUCore.Template.FreeSql.Persistence
+﻿namespace XUCore.Template.FreeSql.Persistence
 {
     /// <summary>
     /// 数据库配置

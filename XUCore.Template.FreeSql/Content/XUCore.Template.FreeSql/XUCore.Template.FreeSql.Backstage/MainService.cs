@@ -1,14 +1,4 @@
-﻿using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace XUCore.Template.FreeSql.Backstage
+﻿namespace XUCore.Template.FreeSql.Backstage
 {
     public class MainService : IHostedService
     {

@@ -1,19 +1,4 @@
-﻿using FreeSql;
-using FreeSql.Aop;
-using FreeSql.DataAnnotations;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
-using XUCore.Extensions;
-using XUCore.Helpers;
-using XUCore.IO;
-using XUCore.NetCore.FreeSql;
-using XUCore.NetCore.FreeSql.Entity;
-using XUCore.Serializer;
-using XUCore.Template.FreeSql.Core;
+﻿using XUCore.Template.FreeSql.Core;
 using XUCore.Template.FreeSql.Persistence.Entities;
 using XUCore.Template.FreeSql.Persistence.Entities.User;
 

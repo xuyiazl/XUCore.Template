@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace XUCore.Template.FreeSql.DbService.Auth.Permission
+﻿namespace XUCore.Template.FreeSql.DbService.Auth.Permission
 {
     /// <summary>
     /// 权限导航

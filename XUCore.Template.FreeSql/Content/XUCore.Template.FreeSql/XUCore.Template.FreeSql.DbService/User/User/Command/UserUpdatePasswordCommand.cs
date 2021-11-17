@@ -1,10 +1,4 @@
-﻿using FluentValidation;
-using System.ComponentModel.DataAnnotations;
-using XUCore.Ddd.Domain.Commands;
-using XUCore.Ddd.Domain.Exceptions;
-using XUCore.Extensions;
-
-namespace XUCore.Template.FreeSql.DbService.User.User
+﻿namespace XUCore.Template.FreeSql.DbService.User.User
 {
     /// <summary>
     /// 密码修改命令

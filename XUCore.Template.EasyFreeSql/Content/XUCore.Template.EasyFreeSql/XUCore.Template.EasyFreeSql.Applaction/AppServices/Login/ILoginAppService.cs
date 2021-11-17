@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using XUCore.NetCore;
-using XUCore.Template.EasyFreeSql.Applaction.User.Permission;
+﻿using XUCore.Template.EasyFreeSql.Applaction.User.Permission;
 using XUCore.Template.EasyFreeSql.Applaction.User.User;
 
 namespace XUCore.Template.EasyFreeSql.Applaction.Login

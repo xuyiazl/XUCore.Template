@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using XUCore.NetCore;
-using XUCore.Paging;
-using XUCore.Template.EasyFreeSql.Core.Enums;
+﻿using XUCore.Template.EasyFreeSql.Core.Enums;
 
 namespace XUCore.Template.EasyFreeSql.Applaction.User.User
 {

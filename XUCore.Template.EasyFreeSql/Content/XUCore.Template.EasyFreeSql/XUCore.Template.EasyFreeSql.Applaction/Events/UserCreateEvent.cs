@@ -1,7 +1,4 @@
-﻿using MediatR;
-using System.Threading;
-using System.Threading.Tasks;
-using XUCore.Template.EasyFreeSql.Persistence.Entities.User;
+﻿using XUCore.Template.EasyFreeSql.Persistence.Entities.User;
 
 namespace XUCore.Template.EasyFreeSql.Applaction.Events
 {

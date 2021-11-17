@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
 	  <OutputType>Exe</OutputType>
@@ -20,6 +20,24 @@
     </Content>
   </ItemGroup>
 
+	<ItemGroup>
+		<Using Include="Microsoft.AspNetCore.Builder" />
+		<Using Include="Microsoft.Extensions.Configuration" />
+		<Using Include="Microsoft.Extensions.DependencyInjection" />
+		<Using Include="Microsoft.Extensions.Hosting" />
+		<Using Include="Microsoft.Extensions.Logging" />
+
+		<Using Include="XUCore.NetCore" />
+		<Using Include="XUCore.NetCore.Extensions" />
+		<Using Include="XUCore.NetCore.AspectCore.Cache" />
+		<Using Include="XUCore.NetCore.EasyQuartz" />
+		<Using Include="Quartz" />
+		
+		<Using Include="XUCore.Template.EasyFreeSql.Applaction" />
+		<Using Include="XUCore.Template.EasyFreeSql.Persistence" />
+		<Using Include="XUCore.Template.EasyFreeSql.Backstage" />
+	</ItemGroup>
+	
   <ItemGroup>
     <ProjectReference Include="..\XUCore.Template.EasyFreeSql.Applaction\XUCore.Template.EasyFreeSql.Applaction.csproj" />
   </ItemGroup>

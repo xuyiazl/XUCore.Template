@@ -1,11 +1,4 @@
-﻿using FreeSql.DataAnnotations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace XUCore.Template.EasyFreeSql.Persistence.Entities
+﻿namespace XUCore.Template.EasyFreeSql.Persistence.Entities
 {
     /// <summary>
     /// 系统表，用于查询系统函数

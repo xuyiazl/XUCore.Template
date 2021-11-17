@@ -1,10 +1,4 @@
-﻿
-using FreeSql.DataAnnotations;
-using System;
-using System.Collections.Generic;
-using XUCore.NetCore.FreeSql.Entity;
-
-namespace XUCore.Template.EasyFreeSql.Persistence.Entities.User
+﻿namespace XUCore.Template.EasyFreeSql.Persistence.Entities.User
 {
     /// <summary>
     /// 角色表

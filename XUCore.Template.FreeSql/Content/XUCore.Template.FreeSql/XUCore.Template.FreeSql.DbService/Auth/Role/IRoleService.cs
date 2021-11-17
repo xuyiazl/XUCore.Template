@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using XUCore.NetCore;
-using XUCore.NetCore.FreeSql.Curd;
-using XUCore.Template.FreeSql.Persistence.Entities.User;
+﻿using XUCore.Template.FreeSql.Persistence.Entities.User;
 
 namespace XUCore.Template.FreeSql.DbService.Auth.Role
 {

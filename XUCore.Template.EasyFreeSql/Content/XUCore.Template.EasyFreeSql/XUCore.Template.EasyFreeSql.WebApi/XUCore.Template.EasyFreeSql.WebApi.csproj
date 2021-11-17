@@ -11,6 +11,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Using Include="XUCore.NetCore.AspectCore.Cache"/>
+		<Using Include="XUCore.NetCore.Extensions"/>
+		<Using Include="XUCore.Template.EasyFreeSql.Applaction"/>
+		<Using Include="XUCore.Template.EasyFreeSql.Persistence"/>
+	</ItemGroup>
+	
+	<ItemGroup>
 		<ProjectReference Include="..\XUCore.Template.EasyFreeSql.Applaction\XUCore.Template.EasyFreeSql.Applaction.csproj" />
 	</ItemGroup>
 
