@@ -89,6 +89,11 @@
             数据库字符串
             </summary>
         </member>
+        <member name="T:XUCore.Template.EasyFreeSql.Persistence.DbHelper">
+            <summary>
+            db helper
+            </summary>
+        </member>
         <member name="F:XUCore.Template.EasyFreeSql.Persistence.DbHelper.TimeOffset">
             <summary>
             偏移时间
@@ -142,6 +147,11 @@
             </summary>
             <param name="multiDb"></param>
             <returns></returns>
+        </member>
+        <member name="T:XUCore.Template.EasyFreeSql.Persistence.Entities.ChinaAreaEntity">
+            <summary>
+            城市区域
+            </summary>
         </member>
         <member name="P:XUCore.Template.EasyFreeSql.Persistence.Entities.ChinaAreaEntity.ParentId">
             <summary>

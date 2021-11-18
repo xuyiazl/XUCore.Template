@@ -1,5 +1,8 @@
 ﻿namespace XUCore.Template.EasyFreeSql.Persistence.Entities
 {
+    /// <summary>
+    /// 城市区域
+    /// </summary>
     [Table(Name = "sys_china_area")]
     public class ChinaAreaEntity : EntityFull
     {

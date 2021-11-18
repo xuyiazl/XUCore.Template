@@ -1201,6 +1201,21 @@
             搜索关键字
             </summary>
         </member>
+        <member name="M:XUCore.Template.EasyFreeSql.Applaction.User.User.UserLoginRecordQueryPagedCommand.IsVaild">
+            <summary>
+            验证
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.EasyFreeSql.Applaction.User.User.UserLoginRecordQueryPagedCommand.Validator">
+            <summary>
+            验证
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.EasyFreeSql.Applaction.User.User.UserLoginRecordQueryPagedCommand.Validator.#ctor">
+            <summary>
+            验证
+            </summary>
+        </member>
         <member name="T:XUCore.Template.EasyFreeSql.Applaction.User.User.UserQueryCommand">
             <summary>
             用户查询
@@ -1215,6 +1230,21 @@
             <summary>
             启用
             </summary>s
+        </member>
+        <member name="M:XUCore.Template.EasyFreeSql.Applaction.User.User.UserQueryCommand.IsVaild">
+            <summary>
+            验证
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.EasyFreeSql.Applaction.User.User.UserQueryCommand.Validator">
+            <summary>
+            验证
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.EasyFreeSql.Applaction.User.User.UserQueryCommand.Validator.#ctor">
+            <summary>
+            验证
+            </summary>
         </member>
         <member name="T:XUCore.Template.EasyFreeSql.Applaction.User.User.UserQueryPagedCommand">
             <summary>
@@ -1231,6 +1261,21 @@
             启用
             </summary>s
         </member>
+        <member name="M:XUCore.Template.EasyFreeSql.Applaction.User.User.UserQueryPagedCommand.IsVaild">
+            <summary>
+            验证
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.EasyFreeSql.Applaction.User.User.UserQueryPagedCommand.Validator">
+            <summary>
+            验证
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.EasyFreeSql.Applaction.User.User.UserQueryPagedCommand.Validator.#ctor">
+            <summary>
+            验证
+            </summary>
+        </member>
         <member name="T:XUCore.Template.EasyFreeSql.Applaction.User.User.UserRelevanceRoleCommand">
             <summary>
             关联角色命令
@@ -1244,6 +1289,21 @@
         <member name="P:XUCore.Template.EasyFreeSql.Applaction.User.User.UserRelevanceRoleCommand.RoleIds">
             <summary>
             角色id集合
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.EasyFreeSql.Applaction.User.User.UserRelevanceRoleCommand.IsVaild">
+            <summary>
+            验证
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.EasyFreeSql.Applaction.User.User.UserRelevanceRoleCommand.Validator">
+            <summary>
+            验证
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.EasyFreeSql.Applaction.User.User.UserRelevanceRoleCommand.Validator.#ctor">
+            <summary>
+            验证
             </summary>
         </member>
         <member name="T:XUCore.Template.EasyFreeSql.Applaction.User.User.UserUpdateInfoCommand">
@@ -1271,6 +1331,27 @@
             公司
             </summary>
         </member>
+        <member name="M:XUCore.Template.EasyFreeSql.Applaction.User.User.UserUpdateInfoCommand.IsVaild">
+            <summary>
+            验证
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.EasyFreeSql.Applaction.User.User.UserUpdateInfoCommand.Mapping(AutoMapper.Profile)">
+            <summary>
+            映射
+            </summary>
+            <param name="profile"></param>
+        </member>
+        <member name="T:XUCore.Template.EasyFreeSql.Applaction.User.User.UserUpdateInfoCommand.Validator">
+            <summary>
+            验证
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.EasyFreeSql.Applaction.User.User.UserUpdateInfoCommand.Validator.#ctor">
+            <summary>
+            验证
+            </summary>
+        </member>
         <member name="T:XUCore.Template.EasyFreeSql.Applaction.User.User.UserUpdatePasswordCommand">
             <summary>
             密码修改命令
@@ -1284,6 +1365,22 @@
         <member name="P:XUCore.Template.EasyFreeSql.Applaction.User.User.UserUpdatePasswordCommand.NewPassword">
             <summary>
             新密码
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.EasyFreeSql.Applaction.User.User.UserUpdatePasswordCommand.IsVaild">
+            <summary>
+            验证
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:XUCore.Template.EasyFreeSql.Applaction.User.User.UserUpdatePasswordCommand.Validator">
+            <summary>
+            验证
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.EasyFreeSql.Applaction.User.User.UserUpdatePasswordCommand.Validator.#ctor">
+            <summary>
+            验证
             </summary>
         </member>
         <member name="T:XUCore.Template.EasyFreeSql.Applaction.User.User.UserDto">
@@ -1499,6 +1596,32 @@
             用户管理
             </summary>
         </member>
+        <member name="F:XUCore.Template.EasyFreeSql.Applaction.User.User.UserAppService.unitOfWork">
+            <summary>
+            数据库工作单元
+            </summary>
+        </member>
+        <member name="F:XUCore.Template.EasyFreeSql.Applaction.User.User.UserAppService.repo">
+            <summary>
+            仓储
+            </summary>
+        </member>
+        <member name="F:XUCore.Template.EasyFreeSql.Applaction.User.User.UserAppService.mapper">
+            <summary>
+            mapper
+            </summary>
+        </member>
+        <member name="F:XUCore.Template.EasyFreeSql.Applaction.User.User.UserAppService.user">
+            <summary>
+            用户登录信息
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.EasyFreeSql.Applaction.User.User.UserAppService.#ctor(System.IServiceProvider)">
+            <summary>
+            用户管理
+            </summary>
+            <param name="serviceProvider"></param>
+        </member>
         <member name="M:XUCore.Template.EasyFreeSql.Applaction.User.User.UserAppService.CreateInitAccountAsync(System.Threading.CancellationToken)">
             <summary>
             创建初始账号
@@ -1629,6 +1752,16 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
+        <member name="T:XUCore.Template.EasyFreeSql.Applaction.ApiGroup">
+            <summary>
+            swagger api group
+            </summary>
+        </member>
+        <member name="F:XUCore.Template.EasyFreeSql.Applaction.ApiGroup.Admin">
+            <summary>
+            admin
+            </summary>
+        </member>
         <member name="T:XUCore.Template.EasyFreeSql.Applaction.Filters.ApiExceptionFilter">
             <summary>
             API错误日志过滤器
@@ -1645,6 +1778,12 @@
             JWT 授权自定义处理程序
             </summary>
         </member>
+        <member name="M:XUCore.Template.EasyFreeSql.Applaction.JwtHandler.#ctor(System.IServiceProvider)">
+            <summary>
+            JWT 授权自定义处理程序
+            </summary>
+            <param name="serviceProvider"></param>
+        </member>
         <member name="M:XUCore.Template.EasyFreeSql.Applaction.JwtHandler.HandleAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext)">
             <summary>
             重写 Handler 添加自动刷新收取逻辑
@@ -1660,12 +1799,57 @@
             <param name="httpContext"></param>
             <returns></returns>
         </member>
+        <member name="T:XUCore.Template.EasyFreeSql.Applaction.DependencyInjection">
+            <summary>
+            注册服务
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.EasyFreeSql.Applaction.DependencyInjection.AddApplication(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Hosting.IHostEnvironment,System.String)">
+            <summary>
+            注册应用层
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+            <param name="environment"></param>
+            <param name="serviceMode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.EasyFreeSql.Applaction.DependencyInjection.UseApplication(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            启用应用岑
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+            <returns></returns>
+        </member>
         <member name="T:XUCore.Template.EasyFreeSql.Applaction.Events.UserCreateEvent">
             <summary>
             用户账号创建事件
             </summary>
         </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Applaction.Events.UserCreateEvent.Id">
+            <summary>
+            用户Id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.EasyFreeSql.Applaction.Events.UserCreateEvent.User">
+            <summary>
+            用户实体
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.EasyFreeSql.Applaction.Events.UserCreateEvent.#ctor(System.Int64,XUCore.Template.EasyFreeSql.Persistence.Entities.User.UserEntity)">
+            <summary>
+            用户账号创建事件
+            </summary>
+            <param name="id"></param>
+            <param name="user"></param>
+        </member>
         <member name="T:XUCore.Template.EasyFreeSql.Applaction.Events.UserCreateEvent.Handler">
+            <summary>
+            事件通知操作
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.EasyFreeSql.Applaction.Events.UserCreateEvent.Handler.#ctor">
             <summary>
             事件通知操作
             </summary>

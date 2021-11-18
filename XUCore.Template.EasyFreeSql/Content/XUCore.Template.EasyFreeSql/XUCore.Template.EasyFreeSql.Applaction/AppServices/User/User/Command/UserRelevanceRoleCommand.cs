@@ -15,6 +15,9 @@
         /// </summary>
         public long[] RoleIds { get; set; }
 
+        /// <summary>
+        /// 验证
+        /// </summary>
         public override bool IsVaild()
         {
             ValidationResult = new Validator().Validate(this);
@@ -22,8 +25,14 @@
             return ValidationResult.ThrowValidation();
         }
 
+        /// <summary>
+        /// 验证
+        /// </summary>
         public class Validator : CommandValidator<UserRelevanceRoleCommand>
         {
+            /// <summary>
+            /// 验证
+            /// </summary>
             public Validator()
             {
                 RuleFor(x => x.UserId).NotEmpty().GreaterThan(0).WithName("UserId");

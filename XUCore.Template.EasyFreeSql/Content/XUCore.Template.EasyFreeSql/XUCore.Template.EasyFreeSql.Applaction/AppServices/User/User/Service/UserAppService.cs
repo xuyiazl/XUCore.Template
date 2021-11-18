@@ -11,10 +11,26 @@ namespace XUCore.Template.EasyFreeSql.Applaction.User.User
     [DynamicWebApi]
     public class UserAppService : IUserAppService, IDynamicWebApi
     {
+        /// <summary>
+        /// 数据库工作单元
+        /// </summary>
         protected readonly FreeSqlUnitOfWorkManager unitOfWork;
+        /// <summary>
+        /// 仓储
+        /// </summary>
         protected readonly IBaseRepository<UserEntity> repo;
+        /// <summary>
+        /// mapper
+        /// </summary>
         protected readonly IMapper mapper;
+        /// <summary>
+        /// 用户登录信息
+        /// </summary>
         protected readonly IUserInfo user;
+        /// <summary>
+        /// 用户管理
+        /// </summary>
+        /// <param name="serviceProvider"></param>
         public UserAppService(IServiceProvider serviceProvider)
         {
             this.unitOfWork = serviceProvider.GetRequiredService<FreeSqlUnitOfWorkManager>();
@@ -79,7 +95,7 @@ namespace XUCore.Template.EasyFreeSql.Applaction.User.User
 
             if (res != null)
             {
-                await unitOfWork.Orm.Insert<UserRoleEntity>(entity.UserRoles).ExecuteAffrowsAsync();
+                await unitOfWork.Orm.Insert<UserRoleEntity>(entity.UserRoles).ExecuteAffrowsAsync(cancellationToken);
 
                 return RestFull.Success(data: res.Id);
             }

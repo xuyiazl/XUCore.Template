@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
+		<Nullable>disable</Nullable>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -19,20 +19,20 @@
 	<ItemGroup>
 		<Using Include="FreeSql" />
 		<Using Include="FreeSql.DataAnnotations" />
-		<Using Include="FreeSql.Aop"/>
-		<Using Include="System.Reflection"/>
-		<Using Include="Microsoft.Extensions.Configuration"/>
-		<Using Include="Microsoft.Extensions.DependencyInjection"/>
+		<Using Include="FreeSql.Aop" />
+		<Using Include="System.Reflection" />
+		<Using Include="Microsoft.Extensions.Configuration" />
+		<Using Include="Microsoft.Extensions.DependencyInjection" />
 		
-		<Using Include="XUCore"/>
-		<Using Include="XUCore.Extensions"/>
-		<Using Include="XUCore.Helpers"/>
-		<Using Include="XUCore.IO"/>
-		<Using Include="XUCore.Serializer"/>
-		<Using Include="XUCore.Configs"/>
-		<Using Include="XUCore.NetCore"/>
-		<Using Include="XUCore.NetCore.FreeSql"/>
-		<Using Include="XUCore.NetCore.FreeSql.Entity"/>
+		<Using Include="XUCore" />
+		<Using Include="XUCore.Extensions" />
+		<Using Include="XUCore.Helpers" />
+		<Using Include="XUCore.IO" />
+		<Using Include="XUCore.Serializer" />
+		<Using Include="XUCore.Configs" />
+		<Using Include="XUCore.NetCore" />
+		<Using Include="XUCore.NetCore.FreeSql" />
+		<Using Include="XUCore.NetCore.FreeSql.Entity" />
 	</ItemGroup>
 	
 	<ItemGroup>

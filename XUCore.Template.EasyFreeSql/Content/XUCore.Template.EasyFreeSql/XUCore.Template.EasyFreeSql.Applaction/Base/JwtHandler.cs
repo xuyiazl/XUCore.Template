@@ -10,6 +10,10 @@ namespace XUCore.Template.EasyFreeSql.Applaction
     {
         private readonly IServiceProvider serviceProvider;
         private readonly IUserInfo user;
+        /// <summary>
+        /// JWT 授权自定义处理程序
+        /// </summary>
+        /// <param name="serviceProvider"></param>
         public JwtHandler(IServiceProvider serviceProvider)
         {
             this.serviceProvider = serviceProvider;

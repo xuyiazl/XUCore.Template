@@ -30,13 +30,19 @@ namespace XUCore.Template.EasyFreeSql.Applaction.User.User
         [Required]
         public string Company { get; set; }
 
+        /// <summary>
+        /// 验证
+        /// </summary>
         public override bool IsVaild()
         {
             ValidationResult = new Validator().Validate(this);
 
             return ValidationResult.ThrowValidation();
         }
-
+        /// <summary>
+        /// 映射
+        /// </summary>
+        /// <param name="profile"></param>
         public void Mapping(Profile profile) =>
             profile.CreateMap<UserUpdateInfoCommand, UserEntity>()
                 .ForMember(c => c.Location, c => c.MapFrom(s => s.Location.SafeString()))
@@ -44,8 +50,14 @@ namespace XUCore.Template.EasyFreeSql.Applaction.User.User
                 .ForMember(c => c.Company, c => c.MapFrom(s => s.Company.SafeString()))
             ;
 
+        /// <summary>
+        /// 验证
+        /// </summary>
         public class Validator : CommandIdValidator<UserUpdateInfoCommand, bool, long>
         {
+            /// <summary>
+            /// 验证
+            /// </summary>
             public Validator()
             {
                 AddIdValidator();

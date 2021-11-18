@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30804.86
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUCore.Template.FreeSql.WebApi", "XUCore.Template.FreeSql.WebApi\XUCore.Template.FreeSql.WebApi.csproj", "{B26D77EE-247D-4A61-8F93-7DC2B80728D3}"
 EndProject
@@ -23,7 +23,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - 业务应用", "1 - 业
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - 数据服务", "2 - 数据服务", "{E8C4238C-6E36-4B50-BB42-FCD0F19F7836}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUCore.Template.FreeSql.Backstage", "XUCore.Template.FreeSql.Backstage\XUCore.Template.FreeSql.Backstage.csproj", "{BD36F8BF-3D23-4C39-A6B7-448FEA116B2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUCore.Template.FreeSql.Backstage", "XUCore.Template.FreeSql.Backstage\XUCore.Template.FreeSql.Backstage.csproj", "{BD36F8BF-3D23-4C39-A6B7-448FEA116B2A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DEDCF4B5-B6FF-4E9B-AED0-0509FDC2A792}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

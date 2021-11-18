@@ -4,10 +4,20 @@ using XUCore.Template.EasyFreeSql.Core;
 
 namespace XUCore.Template.EasyFreeSql.Applaction
 {
+    /// <summary>
+    /// 注册服务
+    /// </summary>
     public static class DependencyInjection
     {
         const string policyName = "CorsPolicy";
-
+        /// <summary>
+        /// 注册应用层
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        /// <param name="environment"></param>
+        /// <param name="serviceMode"></param>
+        /// <returns></returns>
         public static IServiceCollection AddApplication(this IServiceCollection services, IConfiguration configuration, IHostEnvironment environment, string serviceMode = "api")
         {
             services.AddSingleton(HtmlEncoder.Create(UnicodeRanges.All));
@@ -119,7 +129,12 @@ namespace XUCore.Template.EasyFreeSql.Applaction
 
             return services;
         }
-
+        /// <summary>
+        /// 启用应用岑
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="env"></param>
+        /// <returns></returns>
         public static IApplicationBuilder UseApplication(this IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

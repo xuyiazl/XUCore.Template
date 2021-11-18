@@ -15,16 +15,24 @@
         /// </summary>
         [Required]
         public string NewPassword { get; set; }
-
+        /// <summary>
+        /// 验证
+        /// </summary>
+        /// <returns></returns>
         public override bool IsVaild()
         {
             ValidationResult = new Validator().Validate(this);
 
             return ValidationResult.ThrowValidation();
         }
-
+        /// <summary>
+        /// 验证
+        /// </summary>
         public class Validator : CommandIdValidator<UserUpdatePasswordCommand, bool, long>
         {
+            /// <summary>
+            /// 验证
+            /// </summary>
             public Validator()
             {
                 AddIdValidator();

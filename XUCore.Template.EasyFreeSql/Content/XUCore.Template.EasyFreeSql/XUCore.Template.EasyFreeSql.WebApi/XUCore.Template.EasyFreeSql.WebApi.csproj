@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
-		<Nullable>enable</Nullable>
+		<Nullable>disable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
 
@@ -11,10 +11,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Using Include="XUCore.NetCore.AspectCore.Cache"/>
-		<Using Include="XUCore.NetCore.Extensions"/>
-		<Using Include="XUCore.Template.EasyFreeSql.Applaction"/>
-		<Using Include="XUCore.Template.EasyFreeSql.Persistence"/>
+		<Using Include="XUCore.NetCore.AspectCore.Cache" />
+		<Using Include="XUCore.NetCore.Extensions" />
+		<Using Include="XUCore.Template.EasyFreeSql.Applaction" />
+		<Using Include="XUCore.Template.EasyFreeSql.Persistence" />
 	</ItemGroup>
 	
 	<ItemGroup>

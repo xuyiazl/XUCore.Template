@@ -1,23 +1,35 @@
 ﻿namespace XUCore.Template.FreeSql.Backstage
 {
+    /// <summary>
+    /// HostdService
+    /// </summary>
     public class MainService : IHostedService
     {
-        private readonly ILogger logger;
-        private readonly IServiceProvider serviceProvider;
-        public MainService(ILogger<MainService> logger, IServiceProvider serviceProvider)
+        /// <summary>
+        /// HostdService
+        /// </summary>
+        /// <param name="serviceProvider"></param>
+        public MainService(IServiceProvider serviceProvider)
         {
-            this.logger = logger;
-            this.serviceProvider = serviceProvider;
-        }
 
+        }
+        /// <summary>
+        /// 启动服务
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         public async Task StartAsync(CancellationToken cancellationToken)
         {
-
+            await Task.CompletedTask;
         }
-
+        /// <summary>
+        /// 停止服务
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         public async Task StopAsync(CancellationToken cancellationToken)
         {
-
+            await Task.CompletedTask;
         }
     }
 }

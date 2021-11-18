@@ -4,6 +4,9 @@ using XUCore.Template.EasyFreeSql.Persistence.Entities.User;
 
 namespace XUCore.Template.EasyFreeSql.Persistence
 {
+    /// <summary>
+    /// db helper
+    /// </summary>
     public class DbHelper
     {
         /// <summary>
@@ -45,12 +48,12 @@ namespace XUCore.Template.EasyFreeSql.Persistence
         /// <returns></returns>
         public static Type[] GetEntityTypes()
         {
-            List<string> assemblyNames = new List<string>()
+            var assemblyNames = new List<string>()
             {
                 "XUCore.Template.EasyFreeSql.Persistence"
             };
 
-            List<Type> entityTypes = new List<Type>();
+            var entityTypes = new List<Type>();
 
             foreach (var assemblyName in assemblyNames)
             {
@@ -219,18 +222,19 @@ namespace XUCore.Template.EasyFreeSql.Persistence
                 var repo = db.GetRepository<MenuEntity>();
                 if (!repo.Select.Any())
                 {
-                    var menus = new List<MenuEntity>();
-                    menus.Add(new MenuEntity
+                    var menus = new List<MenuEntity>
                     {
-                        Name = "系统设置",
-                        Icon = "fa fa-cogs text-danger",
-                        Url = "#",
-                        OnlyCode = "sys",
-                        Sort = 99,
-                        IsMenu = true,
-                        IsExpress = false,
-                        Enabled = true,
-                        Childs = new List<MenuEntity>
+                        new MenuEntity
+                        {
+                            Name = "系统设置",
+                            Icon = "fa fa-cogs text-danger",
+                            Url = "#",
+                            OnlyCode = "sys",
+                            Sort = 99,
+                            IsMenu = true,
+                            IsExpress = false,
+                            Enabled = true,
+                            Childs = new List<MenuEntity>
                     {
                         new MenuEntity {
                             Name = "导航设置",
@@ -309,18 +313,18 @@ namespace XUCore.Template.EasyFreeSql.Persistence
                             }
                         }
                     }
-                    });
-                    menus.Add(new MenuEntity
-                    {
-                        Name = "内容管理",
-                        Icon = "fa fa-book text-success",
-                        Url = "#",
-                        OnlyCode = "content",
-                        Sort = 98,
-                        IsMenu = true,
-                        IsExpress = false,
-                        Enabled = true,
-                        Childs = new List<MenuEntity>
+                        },
+                        new MenuEntity
+                        {
+                            Name = "内容管理",
+                            Icon = "fa fa-book text-success",
+                            Url = "#",
+                            OnlyCode = "content",
+                            Sort = 98,
+                            IsMenu = true,
+                            IsExpress = false,
+                            Enabled = true,
+                            Childs = new List<MenuEntity>
                     {
                         new MenuEntity {
                             Name = "文章管理",
@@ -339,10 +343,10 @@ namespace XUCore.Template.EasyFreeSql.Persistence
                             }
                         }
                     }
-                    });
+                        }
+                    };
 
-                    Action<MenuEntity> recursionMenu = null;
-                    recursionMenu = menu =>
+                    void recursionMenu(MenuEntity menu)
                     {
                         if (menu.Childs == null) return;
 
@@ -354,7 +358,7 @@ namespace XUCore.Template.EasyFreeSql.Persistence
 
                             recursionMenu(child);
                         }
-                    };
+                    }
 
                     foreach (var menu in menus)
                     {

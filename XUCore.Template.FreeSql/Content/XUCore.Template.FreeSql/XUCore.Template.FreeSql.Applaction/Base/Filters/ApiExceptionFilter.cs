@@ -36,7 +36,7 @@ namespace XUCore.Template.FreeSql.Applaction.Filters
             }
             else
             {
-                var logger = context.HttpContext.RequestServices.GetService<ILogger<ApiExceptionFilter>>();
+                var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<ApiExceptionFilter>>();
 
                 if (logger.IsEnabled(LogLevel.Error))
                 {

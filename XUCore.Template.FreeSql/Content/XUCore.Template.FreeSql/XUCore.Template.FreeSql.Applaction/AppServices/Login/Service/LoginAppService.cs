@@ -68,6 +68,8 @@ namespace XUCore.Template.FreeSql.Applaction.Login
         [HttpGet]
         public async Task<Result<string>> VerifyTokenAsync(CancellationToken cancellationToken)
         {
+            await Task.CompletedTask;
+
             return RestFull.Success(data: new
             {
                 user.Id,

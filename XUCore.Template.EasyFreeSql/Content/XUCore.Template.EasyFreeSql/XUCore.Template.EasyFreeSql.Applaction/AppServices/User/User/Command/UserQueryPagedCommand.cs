@@ -14,6 +14,9 @@
         /// </summary>s
 		public bool Enabled { get; set; } = true;
 
+        /// <summary>
+        /// 验证
+        /// </summary>
         public override bool IsVaild()
         {
             ValidationResult = new Validator().Validate(this);
@@ -21,8 +24,14 @@
             return ValidationResult.ThrowValidation();
         }
 
+        /// <summary>
+        /// 验证
+        /// </summary>
         public class Validator : CommandPageValidator<UserQueryPagedCommand, bool>
         {
+            /// <summary>
+            /// 验证
+            /// </summary>
             public Validator()
             {
                 AddPageVaildator();

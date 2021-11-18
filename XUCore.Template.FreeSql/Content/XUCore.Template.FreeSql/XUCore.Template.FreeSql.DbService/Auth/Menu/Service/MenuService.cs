@@ -108,7 +108,7 @@ namespace XUCore.Template.FreeSql.DbService.Auth.Menu
             //        r.Childs.AddRange(datalist);
             //    });
 
-            var res = repo.Select.OrderByDescending(c => c.Sort).OrderBy(c => c.CreatedAt).ToTreeList();
+            var res = await repo.Select.OrderByDescending(c => c.Sort).OrderBy(c => c.CreatedAt).ToTreeListAsync(cancellationToken);
 
             var tree = mapper.Map<IList<MenuEntity>, IList<MenuTreeDto>>(res);
 
