@@ -16,7 +16,7 @@ namespace XUCore.Template.FreeSql.Applaction
 
             services.AddMediatR(typeof(UserCreateEvent));
 
-            services.AddScanLifetime(scan => scan.FromAssemblies(Reflection.GetCurrentProjectAssemblies("XUCore.Template.FreeSql")));
+            services.AddScanLifetime("XUCore.Template.FreeSql");
 
             // 注册redis插件
             //services.AddRedisService().AddJsonRedisSerializer();
