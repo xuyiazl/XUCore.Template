@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<DocumentationFile>XUCore.Template.Ddd.Domain.Core.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Using Include="System.Reflection" />
+		<Using Include="System.ComponentModel" />
+		<Using Include="Microsoft.EntityFrameworkCore"/>
+
+		<Using Include="FluentValidation" />
+		<Using Include="AutoMapper" />
+		<Using Include="AutoMapper.QueryableExtensions" />
+
+		<Using Include="XUCore.Extensions" />
+		<Using Include="XUCore.Helpers" />
+		<Using Include="XUCore.Serializer" />
+		<Using Include="XUCore.Helpers" />
+		<Using Include="XUCore.NetCore" />
+		<Using Include="XUCore.Ddd.Domain" />
+		<Using Include="XUCore.NetCore.Data" />
+
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="XUCore" Version="6.0.2" />
+		<PackageReference Include="XUCore.NetCore" Version="6.0.2" />
+		<PackageReference Include="XUCore.NetCore.Data" Version="6.0.2" />
+		<PackageReference Include="XUCore.NetCore.Redis" Version="6.0.2" />
+	</ItemGroup>
+
+</Project>

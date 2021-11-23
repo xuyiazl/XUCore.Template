@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Using Include="Microsoft.AspNetCore.Authorization" />
+		<Using Include="Microsoft.AspNetCore.Http" />
+		<Using Include="Microsoft.Extensions.DependencyInjection" />
+		<Using Include="Microsoft.AspNetCore.Mvc" />
+		<Using Include="Microsoft.AspNetCore.Mvc.Filters" />
+		<Using Include="Microsoft.AspNetCore.Hosting"/>
+		<Using Include="Microsoft.Extensions.Logging" />
+		<Using Include="Microsoft.AspNetCore.Builder" />
+		<Using Include="Microsoft.Extensions.Configuration" />
+		<Using Include="Microsoft.Extensions.Hosting" />
+		<Using Include="Microsoft.OpenApi.Models" />
+
+		<Using Include="XUCore.Helpers" />
+		<Using Include="XUCore.Extensions" />
+		<Using Include="XUCore.Serializer" />
+		<Using Include="XUCore.NetCore" />
+		<Using Include="XUCore.NetCore.Swagger" />
+		<Using Include="XUCore.NetCore.Properties" />
+		<Using Include="XUCore.NetCore.Authorization" />
+		<Using Include="XUCore.NetCore.AspectCore.Cache" />
+		<Using Include="XUCore.NetCore.DynamicWebApi" />
+		<Using Include="XUCore.NetCore.Filters" />
+		<Using Include="XUCore.NetCore.Formatter" />
+		<Using Include="XUCore.NetCore.Oss" />
+		<Using Include="XUCore.NetCore.Redis" />
+		<Using Include="XUCore.Ddd.Domain" />
+
+		<Using Include="FluentValidation.AspNetCore" />
+		<Using Include="MediatR" />
+		<Using Include="Newtonsoft.Json" />
+		<Using Include="System.Text.Encodings.Web" />
+		<Using Include="System.Text.Unicode" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\XUCore.Template.Ddd.Persistence\XUCore.Template.Ddd.Persistence.csproj" />
+	</ItemGroup>
+
+</Project>

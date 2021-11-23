@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Using Include="Microsoft.EntityFrameworkCore" />
+		<Using Include="Microsoft.EntityFrameworkCore.Metadata.Builders"/>
+		<Using Include="Microsoft.EntityFrameworkCore.ChangeTracking"/>
+		<Using Include="Microsoft.EntityFrameworkCore.ValueGeneration"/>
+		<Using Include="Microsoft.AspNetCore.Builder" />
+		<Using Include="Microsoft.Extensions.Configuration" />
+		<Using Include="Microsoft.Extensions.DependencyInjection" />
+		<Using Include="System.Reflection" />
+		<Using Include="System.Linq.Expressions"/>
+		<Using Include="System.Diagnostics.CodeAnalysis"/>
+
+		<Using Include="AutoMapper" />
+
+		<Using Include="XUCore.Helpers" />
+		<Using Include="XUCore.NetCore" />
+		<Using Include="XUCore.NetCore.Data" />
+
+	</ItemGroup>
+	
+	<ItemGroup>
+		<ProjectReference Include="..\XUCore.Template.Ddd.Domain\XUCore.Template.Ddd.Domain.csproj" />
+	</ItemGroup>
+</Project>

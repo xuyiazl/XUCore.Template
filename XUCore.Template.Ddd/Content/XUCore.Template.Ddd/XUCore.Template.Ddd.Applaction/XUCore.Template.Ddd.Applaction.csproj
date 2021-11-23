@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<DocumentationFile>XUCore.Template.Ddd.Applaction.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Using Include="Microsoft.AspNetCore.Builder" />
+		<Using Include="Microsoft.AspNetCore.Hosting" />
+		<Using Include="Microsoft.Extensions.DependencyInjection" />
+		<Using Include="Microsoft.AspNetCore.Mvc" />
+		<Using Include="Microsoft.AspNetCore.Http"/>
+		<Using Include="Microsoft.AspNetCore.Authorization" />
+
+		<Using Include="System.ComponentModel.DataAnnotations"/>
+
+		<Using Include="FluentValidation"/>
+
+		<Using Include="XUCore.Helpers" />
+		<Using Include="XUCore.Serializer" />
+		<Using Include="XUCore.Helpers" />
+		<Using Include="XUCore.Paging" />
+		<Using Include="XUCore.NetCore" />
+		<Using Include="XUCore.NetCore.Authorization"/>
+		<Using Include="XUCore.NetCore.Swagger"/>
+		<Using Include="XUCore.NetCore.DynamicWebApi" />
+		<Using Include="XUCore.NetCore.AspectCore.Cache" />
+		<Using Include="XUCore.NetCore.Oss"/>
+		<Using Include="XUCore.NetCore.Uploads"/>
+		<Using Include="XUCore.Ddd.Domain" />
+
+		<Using Include="XUCore.Template.Ddd.Applaction" />
+		<Using Include="XUCore.Template.Ddd.Infrastructure" />
+		<Using Include="XUCore.Template.Ddd.Persistence" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<ProjectReference Include="..\XUCore.Template.Ddd.Domain\XUCore.Template.Ddd.Domain.csproj" />
+		<ProjectReference Include="..\XUCore.Template.Ddd.Infrastructure\XUCore.Template.Ddd.Infrastructure.csproj" />
+	</ItemGroup>
+</Project>
