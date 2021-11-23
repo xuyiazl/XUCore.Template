@@ -11,8 +11,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Using Include="XUCore.NetCore" />
 		<Using Include="XUCore.NetCore.AspectCore.Cache" />
-		<Using Include="XUCore.NetCore.Extensions" />
 		<Using Include="XUCore.Template.FreeSql.Applaction" />
 		<Using Include="XUCore.Template.FreeSql.Persistence" />
 	</ItemGroup>

@@ -28,7 +28,7 @@ namespace XUCore.Template.EasyFreeSql.Applaction.Filters
             }
             else if (context.Exception.IsFailure())
             {
-                var ex = context.Exception as XUCore.Ddd.Domain.Exceptions.ValidationException;
+                var ex = context.Exception as XUCore.Ddd.Domain.ValidationException;
 
                 var message = ex.Failures.Select(c => c.Value.Join("")).Join("");
 

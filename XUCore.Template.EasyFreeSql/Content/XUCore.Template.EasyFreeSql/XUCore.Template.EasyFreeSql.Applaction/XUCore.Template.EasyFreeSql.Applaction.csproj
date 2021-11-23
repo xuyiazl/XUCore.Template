@@ -11,8 +11,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Using Include="AutoMapper"/>
-		<Using Include="FluentValidation"/>
+		<Using Include="AutoMapper" />
+		<Using Include="FluentValidation" />
 		<Using Include="FluentValidation.AspNetCore" />
 		<Using Include="MediatR" />
 		<Using Include="Microsoft.AspNetCore.Builder" />
@@ -29,35 +29,29 @@
 		<Using Include="Newtonsoft.Json" />
 		<Using Include="System.Text.Encodings.Web" />
 		<Using Include="System.Text.Unicode" />
-		<Using Include="System.ComponentModel.DataAnnotations"/>
-		<Using Include="FreeSql"/>
-		<Using Include="XUCore.NetCore.FreeSql"/>
-		<Using Include="XUCore.NetCore.FreeSql.Curd"/>
+		<Using Include="System.ComponentModel.DataAnnotations" />
+		<Using Include="FreeSql" />
 		<Using Include="XUCore" />
 		<Using Include="XUCore.Extensions" />
 		<Using Include="XUCore.Serializer" />
-		<Using Include="XUCore.Paging"/>
+		<Using Include="XUCore.Paging" />
 		<Using Include="XUCore.Ddd.Domain" />
-		<Using Include="XUCore.Ddd.Domain.Filters" />
-		<Using Include="XUCore.Ddd.Domain.Exceptions" />
-		<Using Include="XUCore.Ddd.Domain.Commands"/>
 		<Using Include="XUCore.Helpers" />
 		<Using Include="XUCore.NetCore" />
+		<Using Include="XUCore.NetCore.FreeSql" />
+		<Using Include="XUCore.NetCore.FreeSql.Curd" />
 		<Using Include="XUCore.NetCore.Properties" />
+		<Using Include="XUCore.NetCore.Filters" />
 		<Using Include="XUCore.NetCore.AspectCore.Cache" />
 		<Using Include="XUCore.NetCore.Authorization" />
-		<Using Include="XUCore.NetCore.Authorization.JwtBearer" />
 		<Using Include="XUCore.NetCore.DynamicWebApi" />
 		<Using Include="XUCore.NetCore.EasyQuartz" />
-		<Using Include="XUCore.NetCore.Extensions" />
-		<Using Include="XUCore.NetCore.Filters" />
 		<Using Include="XUCore.NetCore.Formatter" />
 		<Using Include="XUCore.NetCore.Oss" />
 		<Using Include="XUCore.NetCore.Swagger" />
-		<Using Include="XUCore.NetCore.Uploads"/>
-		<Using Include="XUCore.NetCore.Uploads.Params"/>
+		<Using Include="XUCore.NetCore.Uploads" />
 	</ItemGroup>
-	
+
 	<ItemGroup>
 		<ProjectReference Include="..\XUCore.Template.EasyFreeSql.Persistence\XUCore.Template.EasyFreeSql.Persistence.csproj" />
 	</ItemGroup>
