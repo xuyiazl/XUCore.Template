@@ -1,17 +1,18 @@
 ﻿namespace XUCore.Template.EasyFreeSql.Backstage
 {
     /// <summary>
-    /// HostdService
+    /// WorkerService
     /// </summary>
-    public class MainService : IHostedService
+    public class WorkerService1 : IHostedService
     {
+        private readonly ILogger<WorkerService1> _logger;
         /// <summary>
-        /// HostdService
+        /// WorkerService
         /// </summary>
         /// <param name="serviceProvider"></param>
-        public MainService(IServiceProvider serviceProvider)
+        public WorkerService1(IServiceProvider serviceProvider)
         {
-
+            _logger = serviceProvider.GetRequiredService<ILogger<WorkerService1>>();
         }
         /// <summary>
         /// 启动服务
@@ -20,6 +21,8 @@
         /// <returns></returns>
         public async Task StartAsync(CancellationToken cancellationToken)
         {
+            _logger.LogInformation("Worker start at: {time}", DateTimeOffset.Now);
+
             await Task.CompletedTask;
         }
         /// <summary>
@@ -29,6 +32,8 @@
         /// <returns></returns>
         public async Task StopAsync(CancellationToken cancellationToken)
         {
+            _logger.LogInformation("Worker stop at: {time}", DateTimeOffset.Now);
+
             await Task.CompletedTask;
         }
     }

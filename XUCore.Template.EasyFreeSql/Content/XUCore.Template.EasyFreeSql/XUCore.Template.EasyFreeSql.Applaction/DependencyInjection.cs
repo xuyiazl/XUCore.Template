@@ -22,6 +22,8 @@ namespace XUCore.Template.EasyFreeSql.Applaction
         {
             services.AddSingleton(HtmlEncoder.Create(UnicodeRanges.All));
 
+            services.AddHttpContextAccessor();
+
             services.AddAutoMapper(typeof(MappingProfile));
 
             services.AddMediatR(typeof(UserCreateEvent));
