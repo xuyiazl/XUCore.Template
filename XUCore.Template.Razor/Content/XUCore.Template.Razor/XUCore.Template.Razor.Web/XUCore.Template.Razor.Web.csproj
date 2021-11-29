@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>disable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Using Include="XUCore" />
+		<Using Include="XUCore.Helpers" />
+		<Using Include="XUCore.Drawing" />
+		<Using Include="XUCore.Extensions" />
+		<Using Include="XUCore.Drawing" />
+		<Using Include="XUCore.Extensions" />
+		<Using Include="XUCore.Paging" />
+		<Using Include="XUCore.Webs" />
+		<Using Include="XUCore.NetCore" />
+		<Using Include="XUCore.NetCore.Uploads" />
+		<Using Include="XUCore.NetCore.AccessControl"/>
+		<Using Include="XUCore.NetCore.AspectCore.Cache" />
+
+		<Using Include="System.Web" />
+		<Using Include="System.Dynamic" />
+		<Using Include="Microsoft.AspNetCore.Authorization" />
+		<Using Include="Microsoft.AspNetCore.Mvc" />
+		<Using Include="Microsoft.AspNetCore.Mvc.RazorPages" />
+		<Using Include="Microsoft.AspNetCore.Mvc.Rendering"/>
+		
+		<Using Include="XUCore.Template.Razor.Applaction" />
+		<Using Include="XUCore.Template.Razor.Persistence" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\XUCore.Template.Razor.Applaction\XUCore.Template.Razor.Applaction.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Update="appsettings.Development.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Update="appsettings.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	</ItemGroup>
+
+</Project>

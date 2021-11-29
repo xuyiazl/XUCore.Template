@@ -1,0 +1,215 @@
+﻿
+$(function () {
+    "use strict";
+
+    var $table = $('#table');
+
+    var isMenuFormatter = function (value, row) {
+        if (value) {
+            return '<i class="fa fa-check text-success"></i>';
+        }
+    }
+    var columns = [
+        { field: 'state', checkbox: true, align: 'center', valign: 'middle' },
+        { field: 'operate', title: '操作', align: 'center', width: 40, formatter: operateFormatter },
+        { field: 'Name', title: '导航名称', sortable: false, align: 'left' },
+        {
+            field: 'Icon', title: '导航图标', sortable: false, align: 'left',
+            editable: {
+                type: 'text', title: '导航图标'
+            }
+        },
+        {
+            field: 'Url', title: '导航地址', sortable: false, align: 'left',
+            editable: {
+                type: 'text', title: '导航地址', validate: function (value) {
+                    value = $.trim(value);
+                    if (!value) return '必填项';
+                    return '';
+                }
+            }
+        },
+        {
+            field: 'OnlyCode', title: '唯一权限代码', sortable: false, align: 'left',
+            editable: {
+                type: 'text', title: '唯一权限代码', validate: function (value) {
+                    value = $.trim(value);
+                    if (!value) return '必填项';
+                    return '';
+                }
+            }
+        },
+        { field: 'IsMenu', title: '导航', sortable: false, align: 'center', formatter: isMenuFormatter },
+        { field: 'IsExpress', title: '快速', sortable: false, align: 'center', formatter: isMenuFormatter },
+        {
+            field: 'Weight', title: '权重', sortable: false, align: 'center', width: 40,
+            editable: {
+                type: 'text', title: '权重', placement: 'left', validate: function (value) {
+                    value = $.trim(value);
+                    if (value) {
+                        if (!/^([1-9]\d*|[0]{1,1})$/.test(value))
+                            return '只能输入整数!';
+                    }
+                }
+            }
+        },
+        {
+            field: 'IsEnabled', title: '是否发布', width: 40, sortable: true, align: 'center', formatter: function (value, row) {
+                if (value) {
+                    return '<i class="fa fa-check text-success"></i>';
+                }
+                return '';
+            }
+        },
+        { field: 'Status', title: '状态', width: 40, sortable: true, align: 'center', formatter: statusFormatter },
+        { field: 'Created_At', title: '发布日期', width: 140, sortable: true, align: 'center', formatter: formatterTime },
+        { field: 'Updated_At', title: '修改日期', width: 140, sortable: true, align: 'center', formatter: formatterTime },
+    ];
+    var contextMenuItem = function (row, $el) {
+        var item = $el.data('item');
+        switch (item) {
+            case 'edit':
+                window.parent.addTab({ id: 'admin-menu-update-' + row.Id, href: '/admin/sys/admin/menu/update/' + row.Id, icons: 'fa fa-plus-circle m-r-xs', text: '修改导航' + row.Id });
+                break;
+            case 'publish':
+                show.confirm(function () {
+                    putStatus(statusModel.show, false, row.Id)
+                });
+                break;
+            case 'trash':
+                show.confirm(function () {
+                    putStatus(statusModel.trash, false, row.Id)
+                });
+                break;
+            case 'soldout':
+                show.confirm(function () {
+                    putStatus(statusModel.soldout, false, row.Id)
+                });
+                break;
+            case 'delete':
+                show.confirm(function () {
+                    deleteRecords(false, row.Id)
+                });
+                break;
+        }
+    };
+    var editableSave = function (field, row, oldValue, $el) {
+        var update = function (field, value) {
+            $.ajax({
+                url: '?handler=UpdateField',
+                type: "PUT",
+                data: { id: row.Id, field: field, value: value },
+                success: function (result) {
+                    if (result.Code == 0) {
+                        $table.bootstrapTable('refresh', { silent: true });
+                    } else {
+                        show.error('操作提示', result.Message);
+                    }
+                }
+            });
+        }
+        switch (field) {
+            case 'Icon': update('Icon', row.Icon); break;
+            case 'Url': update('Url', row.Url); break;
+            case 'OnlyCode': update('OnlyCode', row.OnlyCode); break;
+            case 'Weight': update('Weight', row.Weight); break;
+        }
+    };
+
+    createTable($table, {
+        url: '?handler=MenuByList',
+        pagination: false,
+        columns: columns,
+        queryParams: function (params) {
+            params.status = $('input[type=radio][name=Status]:checked').val();
+            return params;
+        },
+        onContextMenuItem: contextMenuItem,
+        onEditableSave: editableSave
+    });
+
+
+    $('.btnRefresh').click(function () {
+        $table.bootstrapTable('refresh', { silent: true });
+        return false;
+    });
+    $('#statusContainer li').on('click.bs.dropdown', function () {
+        window.setTimeout(function () {
+            $table.bootstrapTable('refresh', { silent: true });
+        }, 50)
+    })
+
+    var putStatus = function (status, batch, id) {
+        var ids;
+        if (batch) {
+            ids = getSelections($table);
+            if (ids.length == 0) {
+                show.error('错误提示', '请选择要操作的数据');
+                return false;
+            }
+        } else {
+            ids = [id]
+        }
+        $.ajax({
+            url: '?handler=BatchStatus',
+            type: "PUT",
+            data: { ids: ids, status: status },
+            success: function (result) {
+                if (result.Code == 0) {
+                    $table.bootstrapTable('refresh', { silent: true });
+                } else {
+                    show.error('操作提示', result.Message);
+                }
+            }
+        });
+    }
+    var deleteRecords = function (batch, id) {
+        var ids;
+        if (batch) {
+            ids = getSelections($table);
+            if (ids.length == 0) {
+                show.error('错误提示', '请选择要永久删除的数据');
+                return false;
+            }
+        } else {
+            ids = [id]
+        }
+        $.ajax({
+            url: '?handler=BatchDelete',
+            type: "DELETE",
+            data: { ids: ids },
+            success: function (result) {
+                if (result.Code == 0) {
+                    $table.bootstrapTable('refresh', { silent: true });
+                } else {
+                    show.error('操作提示', result.Message);
+                }
+            }
+        });
+    }
+    $('#btnPublish').click(function () {
+        show.confirm(function () {
+            putStatus(statusModel.show, true)
+        });
+        return false;
+    });
+    $('#btnTrash').click(function () {
+        show.confirm(function () {
+            putStatus(statusModel.trash, true)
+        });
+        return false;
+    });
+    $('#btnSoldOut').click(function () {
+        show.confirm(function () {
+            putStatus(statusModel.soldout, true)
+        });
+        return false;
+    });
+
+    $('#btnDelete').click(function () {
+        show.confirm(function () {
+            deleteRecords(true)
+        });
+        return false;
+    });
+});
