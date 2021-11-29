@@ -266,7 +266,7 @@ namespace XUCore.Template.Razor.DbService.User.User
         public async Task<IList<UserLoginRecordDto>> GetRecordListAsync(UserLoginRecordQueryCommand request, CancellationToken cancellationToken)
         {
             var res = await freeSql.Select<UserLoginRecordEntity>()
-                .Where(c => c.UserId == request.userId)
+                .Where(c => c.UserId == request.UserId)
                 .OrderByDescending(c => c.CreatedAt)
                 .Take(request.Limit)
                 .ToListAsync(c => new UserLoginRecordDto

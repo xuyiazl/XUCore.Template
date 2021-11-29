@@ -8,7 +8,7 @@
         /// <summary>
         /// 用户id
         /// </summary>
-        public long userId { get; set; }
+        public long UserId { get; set; }
 
         public override bool IsVaild()
         {

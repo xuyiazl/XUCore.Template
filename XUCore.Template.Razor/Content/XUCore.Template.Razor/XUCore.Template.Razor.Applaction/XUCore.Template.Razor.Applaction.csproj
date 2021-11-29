@@ -36,6 +36,7 @@
 		
 		<Using Include="XUCore" />
 		<Using Include="XUCore.Configs"/>
+		<Using Include="XUCore.Drawing"/>
 		<Using Include="XUCore.Extensions" />
 		<Using Include="XUCore.Serializer" />
 		<Using Include="XUCore.Paging"/>

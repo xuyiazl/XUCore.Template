@@ -44,6 +44,8 @@ namespace XUCore.Template.Razor.Applaction
 
             var appSettings = services.BindSection<AppSettings>(configuration, "AppSettings");
 
+            Root.DomainUrl = appSettings.RootUrl;
+
             #region [ 注册登录Cookie ]
 
             //cookie写入需要注意浏览器的SameSiteMode，会随着浏览器版本不同，当前在IE和Edge无法登陆

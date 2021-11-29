@@ -1,0 +1,100 @@
+﻿@page
+@model Nigel.Web.Pages.Admin.Sys.Admin.CustomerModel
+
+@{
+    Layout = "~/Pages/Admin/Shared/_LayoutAdminiFrame.cshtml";
+}
+@section Scripts{
+    <script src="~/js/admin/sys/admin/customer.js"></script>
+}
+
+<section class="panel panel-default padder m-t padder-v text-sm" style="padding-top:0;">
+    <div class="table-responsive">
+        <div id="custom-toolbar">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="btn-group btn-group-sm" style="display:inline;">
+                        <div class="btn-group btn-group-sm">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-edit m-r-xs"></i>数据操作
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" id="btnPublish" asp-access asp-access-key="sys-customer-edit"><i class="fa fa-check m-r-xs"></i>批量发布</a></li>
+                                <li><a href="#" id="btnSoldOut" asp-access asp-access-key="sys-customer-edit"><i class="fa fa-eye-slash m-r-xs"></i>批量下架</a></li>
+                                <li><a href="#" id="btnTrash" asp-access asp-access-key="sys-customer-edit"><i class="fa fa-trash-o m-r-xs"></i>扔回收站</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#" id="btnDelete" asp-access asp-access-key="sys-customer-delete"><i class="fa fa-ban m-r-xs"></i>永久删除</a></li>
+                            </ul>
+                        </div>
+                        <a href="#" class="btn btn-default btnRefresh"><i class="fa fa-refresh m-r-xs"></i>刷新</a>
+                    </div>
+                    <div class="input-group input-group-sm" style="width: 350px; padding-left: 10px;">
+                        <div class="input-group-btn m-r" id="statusContainer">
+                            <button data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle">
+                                <span class="dropdown-label">全部数据</span>
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-select">
+                                @foreach (var item in XUCore.Helpers.Enum.GetDictionary<Nigel.Domain.Core.Enums.Status>())
+                                {
+                                    <li>
+                                        @Html.RadioButton("Status", item.Key)
+                                        <a href="#">@item.Value</a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="input-group-btn">
+                            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <span class="dropdown-label">姓名</span>
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-select text-sm">
+                                <li>
+                                    <input type="radio" value="Source" name="field" /><a href="#">来源</a>
+                                </li>
+                                <li>
+                                    <input type="radio" value="Name" name="field" checked="checked" /><a href="#">姓名</a>
+                                </li>
+                                <li>
+                                    <input type="radio" value="Mobile" name="field" /><a href="#">手机</a>
+                                </li>
+                                <li>
+                                    <input type="radio" value="Province" name="field" /><a href="#">省份</a>
+                                </li>
+                                <li>
+                                    <input type="radio" value="City" name="field" /><a href="#">城市</a>
+                                </li>
+                                <li>
+                                    <input type="radio" value="Operator" name="field" /><a href="#">运营商</a>
+                                </li>
+                                <li>
+                                    <input type="radio" value="CreateUser" name="field" /><a href="#">创建人</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <input type="text" id="search" class="form-control" placeholder="输入关键词后回车..." />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul id="context-menu" class="dropdown-menu text-sm">
+            <li data-item="publish" asp-access asp-access-key="sys-customer-edit">
+                <a href="#"><i class="fa fa-check m-r-xs"></i>发布数据</a>
+            </li>
+            <li data-item="soldout" asp-access asp-access-key="sys-customer-edit">
+                <a href="#"><i class="fa fa-eye-slash m-r-xs"></i>下架数据</a>
+            </li>
+            <li data-item="trash" asp-access asp-access-key="sys-customer-edit">
+                <a href="#"><i class="fa fa-trash-o m-r-xs"></i>扔回收站</a>
+            </li>
+            <li class="divider"></li>
+            <li data-item="delete" asp-access asp-access-key="sys-customer-delete">
+                <a href="#"><i class="fa fa-ban m-r-xs"></i>永久删除</a>
+            </li>
+        </ul>
+
+        <table id="table"></table>
+    </div>
+</section>

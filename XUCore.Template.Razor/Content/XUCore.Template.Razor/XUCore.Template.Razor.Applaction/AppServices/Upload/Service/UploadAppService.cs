@@ -47,38 +47,38 @@ namespace XUCore.Template.Razor.Applaction.Upload
         /// <summary>
         /// 上传图片
         /// </summary>
-        /// <param name="formFile"></param>
+        /// <param name="imgFile"></param>
+        /// <param name="cutorgin">是否裁剪原图 {cutorgin=true}</param>
+        /// <param name="autocutsize">自动适配裁剪尺寸最大宽高{800}</param>
+        /// <param name="thumbs">裁剪尺寸{300x300,200x200}</param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public async Task<ImageFileInfo> Image(IFormFile formFile, CancellationToken cancellationToken)
+        public async Task<(ImageFileInfo Info, string FullPath, string RootUrl)> Image(IFormFile imgFile, bool cutorgin, int autocutsize, string thumbs, CancellationToken cancellationToken)
         {
             var param = new SingleImageUploadParam()
             {
                 Request = Web.Request,
-                FormFile = formFile,
-                RootPath = Web.WebRootPath,
+                FormFile = imgFile,
+                RootPath = appSettings.LocalPath,
                 Module = "upload",
                 Group = "image",
-
-                //*******裁剪和等比缩放 二者取其一*******
-                //是否开自动裁剪原图（根据自定大小，自动对宽高裁剪）
-                //IsCutOriginal = true,
-                //AutoCutSize = 800,
-
-                //是否开启等比缩放原图（根据等比大小和压缩质量裁剪）
-                IsZoomOriginal = true,
-                Ratio = 50,
-                Quality = 100,
-
-                //ThumbCutMode = ThumbnailMode.Cut,
-                //Thumbs = new List<string> { "200x300", "400x200" },
+                IsCutOriginal = cutorgin,
+                AutoCutSize = autocutsize,
+                ThumbCutMode = ThumbnailMode.Cut,
+                Thumbs = thumbs.SafeString().Split(",", true).ToList()
             };
 
             var result = await fileUploadService.UploadImageAsync(param, cancellationToken);
 
-            result.Url = $"/{result.FullPath.Replace("\\", "/")}";
+            var fullPath = $"/{result.FullPath.Replace("\\", "/")}";
+            var rootUrl = Path.Combine(appSettings.RootUrl, fullPath);
 
-            return result;
+            result.Thumbs.ForEach(c =>
+            {
+                result.Thumbs[c.Key] = $"/{c.Value.Replace("\\", "/")}";
+            });
+
+            return (result, fullPath, rootUrl);
         }
         /// <summary>
         /// 上传图片
@@ -86,12 +86,12 @@ namespace XUCore.Template.Razor.Applaction.Upload
         /// <param name="request"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public async Task<ImageFileInfo> Base64([Required][FromBody] Base64Command request, CancellationToken cancellationToken)
+        public async Task<(ImageFileInfo Info, string FullPath, string RootUrl)> Base64([Required][FromBody] Base64Command request, CancellationToken cancellationToken)
         {
             var param = new SingleImageBase64UploadParam()
             {
                 Base64String = request.Base64,
-                RootPath = Web.WebRootPath,
+                RootPath = appSettings.LocalPath,
                 Module = "upload",
                 Group = "image",
 
@@ -102,7 +102,7 @@ namespace XUCore.Template.Razor.Applaction.Upload
 
                 //是否开启等比缩放原图（根据等比大小和压缩质量裁剪）
                 IsZoomOriginal = true,
-                Ratio = 50,
+                Ratio = 70,
                 Quality = 100,
 
                 //ThumbCutMode = ThumbnailMode.Cut,
@@ -111,9 +111,10 @@ namespace XUCore.Template.Razor.Applaction.Upload
 
             var result = await fileUploadService.UploadImageAsync(param, cancellationToken);
 
-            result.Url = $"/{result.FullPath.Replace("\\", "/")}";
+            string fullPath = $"/{result.FullPath.Replace("\\", "/")}";
+            var rootUrl = Path.Combine(appSettings.RootUrl, fullPath);
 
-            return result;
+            return (result, fullPath, rootUrl);
         }
     }
 }

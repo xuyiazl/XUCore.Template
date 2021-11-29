@@ -1,0 +1,80 @@
+﻿@page "{id}"
+@model Nigel.Web.Pages.Admin.Sys.Admin.Notices.UpdateModel
+
+@{
+    Layout = "~/Pages/Admin/Shared/_LayoutAdminiFrame.cshtml";
+}
+@section Scripts{
+    <script src="~/lib/tinymce/tinymce.min.js"></script>
+    <script src="~/lib/tinymce/langs/zh_CN.js"></script>
+    <script src="~/lib/tinymce/tinymce.init.js"></script>
+
+    <script type="text/javascript">
+    var id = @Model.Notice.Id;
+    </script>
+    <script src="~/js/admin/sys/admin/notices/update.js"></script>
+}
+
+<form id="data-form" class="form-horizontal m-t text-sm" data-parsley-validate="true">
+    <section class="panel panel-default">
+        <header class="panel-heading">
+            <strong>修改公告</strong>
+        </header>
+        <div class="panel-body">
+            <div class="form-group m-b-none">
+                @Html.LabelFor(c => c.Notice.Title, "公告标题", new { @class = "col-sm-1 control-label" })
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(c => c.Notice.Title, null, new { @class = "form-control input-sm", @data_parsley_maxlength = "50", @data_parsley_trigger = "change", @data_parsley_required = "true" })
+                    <div class="error"></div>
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-sm pull-in"></div>
+            <div class="form-group m-b-none">
+                @Html.LabelFor(c => c.Notice.LevelId, "公告等级", new { @class = "col-sm-1 control-label" })
+                <div class="col-sm-2">
+                    @Html.DropDownListFor(c => c.Notice.LevelId, Model.NoticeLevelSelectItems, "", new { @class = "chosen-select", @style = "width:100%;", @data_parsley_required = "true" })
+                    <div class="error"></div>
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-sm pull-in"></div>
+            <div class="form-group m-b-none">
+                @Html.LabelFor(c => c.Notice.Contents, "公告内容", new { @class = "col-sm-1 control-label" })
+                <div class="col-sm-10">
+                    @Html.TextAreaFor(c => c.Notice.Contents)
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-sm pull-in"></div>
+            <div class="form-group m-b-none">
+                @Html.LabelFor(c => c.Notice.Weight, "数据权重", new { @class = "col-sm-1 control-label" })
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(c => c.Notice.Weight, null, new { @type = "number", @class = "form-control input-sm", @data_parsley_min = "0", @data_parsley_max = "1000", @placeholder = "数字越大越靠前" })
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-sm pull-in"></div>
+            <div class="form-group m-b-none">
+                @Html.LabelFor(c => c.Notice.Status, "数据状态", new { @class = "col-sm-1 control-label" })
+                <div class="col-sm-2">
+                    @foreach (var item in XUCore.Helpers.Enum.GetDictionary<Nigel.Domain.Core.Enums.Status>(0))
+                    {
+                        <div class="radio i-checks inline">
+                            <label>
+                                @Html.RadioButtonFor(c => c.Notice.Status, (Nigel.Domain.Core.Enums.Status)item.Key);
+                                <i></i>
+                                @item.Value
+                            </label>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-sm pull-in"></div>
+            <div class="form-group m-b-none">
+                <label class="col-sm-2 control-label"></label>
+                <div class="col-sm-3">
+                    <a href="#" onclick="window.parent.closeTab('admin-notices-update-@Model.Notice.Id')" class="btn btn-default">关闭页面</a>
+                    <button type="submit" class="btn btn-primary m-l">保存数据</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>
+

@@ -1,0 +1,94 @@
+﻿@page "{id}"
+@model Nigel.Web.Pages.Admin.Sys.Base.Config.UpdateModel
+
+@{
+    Layout = "~/Pages/Admin/Shared/_LayoutAdminiFrame.cshtml";
+}
+@section Scripts{
+    <script type="text/javascript">
+    var id = @Model.Config.Id;
+    </script>
+    <script src="~/js/admin/sys/base/config/update.js"></script>
+}
+
+<form id="data-form" class="form-horizontal m-t text-sm" data-parsley-validate="true">
+    <section class="panel panel-default">
+        <header class="panel-heading">
+            <strong>修改配置</strong>
+        </header>
+        <div class="panel-body">
+            <div class="form-group m-b-none">
+                @Html.LabelFor(c => c.Config.Name, "配置名称", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(c => c.Config.Name, null, new { @class = "form-control input-sm", @data_parsley_maxlength = "30", @data_parsley_trigger = "change", @data_parsley_required = "true", @placeholder = "请输入配置名称" })
+                    <div class="error"></div>
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-sm pull-in"></div>
+            <div class="form-group m-b-none">
+                @Html.LabelFor(c => c.Config.ParentGuid, "上级配置", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(c => c.Config.ParentGuid, Model.DropDownTreeList, "", new { @class = "chosen-select", @style = "width:100%;" })
+                    <div class="error"></div>
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-sm pull-in"></div>
+            <div class="form-group m-b-none">
+                @Html.LabelFor(c => c.Config.Code, "配置编码", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(c => c.Config.Code, null, new { @class = "form-control input-sm", @data_parsley_maxlength = "50", @data_parsley_trigger = "change", @data_parsley_required = "true", @placeholder = "请输入编码" })
+                    <div class="error"></div>
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-sm pull-in"></div>
+            <div class="form-group m-b-none">
+                @Html.LabelFor(c => c.Config.ValueType, "配置值类型", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(c => c.Config.ValueType, null, new { @class = "form-control input-sm", @data_parsley_maxlength = "50", @data_parsley_trigger = "change", @data_parsley_required = "true", @placeholder = "请输入配置值类型，比如int、string、bool" })
+                    <div class="error"></div>
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-sm pull-in"></div>
+            <div class="form-group m-b-none">
+                @Html.LabelFor(c => c.Config.Value, "配置值", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-3">
+                    @Html.TextAreaFor(c => c.Config.Value, new { @class = "form-control input-sm", @style = "height:100px;", @data_parsley_maxlength = "1000", @data_parsley_trigger = "change", @data_parsley_required = "true", @placeholder = "请输入配置值" })
+                    <div class="error"></div>
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-sm pull-in"></div>
+            <div class="form-group m-b-none">
+                @Html.LabelFor(c => c.Config.Remark, "配置描述", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-3">
+                    @Html.TextAreaFor(c => c.Config.Remark, new { @class = "form-control input-sm", @style = "height:100px;", @data_parsley_maxlength = "200", @placeholder = "请输入配置描述" })
+                    <div class="error"></div>
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-sm pull-in"></div>
+            <div class="form-group m-b-none">
+                @Html.LabelFor(c => c.Config.Status, "数据状态", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-3">
+                    @foreach (var item in XUCore.Helpers.Enum.GetDictionary<Nigel.Domain.Core.Enums.Status>(0))
+                    {
+                        <div class="radio i-checks inline">
+                            <label>
+                                @Html.RadioButtonFor(c => c.Config.Status, (Nigel.Domain.Core.Enums.Status)item.Key);
+                                <i></i>
+                                @item.Value
+                            </label>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-sm pull-in"></div>
+            <div class="form-group m-b-none">
+                <label class="col-sm-2 control-label"></label>
+                <div class="col-sm-3">
+                    <a href="#" onclick="window.parent.closeTab('base-config-update-@Model.Config.Id')" class="btn btn-default">关闭页面</a>
+                    <button type="submit" class="btn btn-primary m-l">保存数据</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>
+

@@ -36,5 +36,17 @@ namespace XUCore.Template.Razor.DbService.User.User
         /// 头像
         /// </summary>
         public string Picture { get; set; }
+        /// <summary>
+        /// 登录次数
+        /// </summary>
+        public int LoginCount { get; set; }
+        /// <summary>
+        /// 最后登录时间
+        /// </summary>
+        public DateTime LoginLastTime { get; set; }
+        /// <summary>
+        /// 最后登录id
+        /// </summary>
+        public string LoginLastIp { get; set; }
     }
 }

@@ -1,0 +1,104 @@
+﻿@page "{id}"
+@model Nigel.Web.Pages.Admin.Sys.Base.Enums.UpdateModel
+
+@{
+    Layout = "~/Pages/Admin/Shared/_LayoutAdminiFrame.cshtml";
+}
+@section Scripts{
+    <script type="text/javascript">
+    var id = @Model.Enum.Id;
+    </script>
+    <script src="~/js/admin/sys/base/enum/update.js"></script>
+}
+
+<form id="data-form" class="form-horizontal m-t text-sm" data-parsley-validate="true">
+    <section class="panel panel-default">
+        <header class="panel-heading">
+            <strong>修改枚举</strong>
+        </header>
+        <div class="panel-body">
+            <div class="form-group m-b-none">
+                @Html.LabelFor(c => c.Enum.Name, "枚举名称", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(c => c.Enum.Name, null, new { @class = "form-control input-sm", @data_parsley_maxlength = "30", @data_parsley_trigger = "change", @data_parsley_required = "true", @placeholder = "请输入枚举名称" })
+                    <div class="error"></div>
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-sm pull-in"></div>
+            <div class="form-group m-b-none">
+                @Html.LabelFor(c => c.Enum.ParentGuid, "上级枚举", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(c => c.Enum.ParentGuid, Model.DropDownTreeList, "", new { @class = "chosen-select", @style = "width:100%;" })
+                    <div class="error"></div>
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-sm pull-in"></div>
+            <div class="form-group m-b-none">
+                @Html.LabelFor(c => c.Enum.Code, "分组编码", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(c => c.Enum.Code, null, new { @class = "form-control input-sm", @data_parsley_maxlength = "50", @data_parsley_trigger = "change", @data_parsley_required = "true", @placeholder = "请输入编码，可通过该编码分组，同组请保持一致" })
+                    <div class="error"></div>
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-sm pull-in"></div>
+            <div class="form-group m-b-none">
+                @Html.LabelFor(c => c.Enum.Value, "枚举值", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(c => c.Enum.Value, null, new { @type = "number", @class = "form-control input-sm", @data_parsley_min = "0", @data_parsley_max = "1000000", @placeholder = "请输入枚举值" })
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-sm pull-in"></div>
+            <div class="form-group m-b-none">
+                @Html.LabelFor(c => c.Enum.Css, "枚举样式", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-4">
+                    <div class="input-group input-group-sm">
+                        @Html.TextBoxFor(c => c.Enum.Css, "", new { @class = "form-control input-sm", @data_parsley_maxlength = "50" })
+                        <span class="input-group-btn">
+                            <a href="#" data-color="text-success" class="color btn btn-success btn-sm"> </a>
+                            <a href="#" data-color="text-primary" class="color btn btn-primary btn-sm"> </a>
+                            <a href="#" data-color="text-danger" class="color btn btn-danger btn-sm"> </a>
+                            <a href="#" data-color="text-dark" class="color btn btn-dark btn-sm"> </a>
+                            <a href="#" data-color="text-info" class="color btn btn-info btn-sm"> </a>
+                            <a href="#" data-color="text-warning" class="color btn btn-warning btn-sm"> </a>
+                            <a href="#" data-color="text-default" class="color btn btn-default btn-sm"> </a>
+                        </span>
+                    </div>
+                    <div class="error"></div>
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-sm pull-in"></div>
+            <div class="form-group m-b-none">
+                @Html.LabelFor(c => c.Enum.Remark, "枚举描述", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-3">
+                    @Html.TextAreaFor(c => c.Enum.Remark, new { @class = "form-control input-sm", @style = "height:100px;", @data_parsley_maxlength = "200", @placeholder = "请输入枚举描述" })
+                    <div class="error"></div>
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-sm pull-in"></div>
+            <div class="form-group m-b-none">
+                @Html.LabelFor(c => c.Enum.Status, "数据状态", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-3">
+                    @foreach (var item in XUCore.Helpers.Enum.GetDictionary<Nigel.Domain.Core.Enums.Status>(0))
+                    {
+                        <div class="radio i-checks inline">
+                            <label>
+                                @Html.RadioButtonFor(c => c.Enum.Status, (Nigel.Domain.Core.Enums.Status)item.Key);
+                                <i></i>
+                                @item.Value
+                            </label>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-sm pull-in"></div>
+            <div class="form-group m-b-none">
+                <label class="col-sm-2 control-label"></label>
+                <div class="col-sm-3">
+                    <a href="#" onclick="window.parent.closeTab('base-enum-update-@Model.Enum.Id')" class="btn btn-default">关闭页面</a>
+                    <button type="submit" class="btn btn-primary m-l">保存数据</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>
+

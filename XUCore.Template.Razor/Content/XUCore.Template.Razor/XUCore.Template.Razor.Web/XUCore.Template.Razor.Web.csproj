@@ -29,6 +29,7 @@
 		
 		<Using Include="XUCore.Template.Razor.Applaction" />
 		<Using Include="XUCore.Template.Razor.Persistence" />
+		<Using Include="XUCore.Template.Razor.Core" />
 	</ItemGroup>
 
 	<ItemGroup>

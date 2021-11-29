@@ -1,0 +1,124 @@
+﻿@page
+@model Nigel.Web.Pages.Admin.Sys.Admin.User.ListModel
+
+@{
+    Layout = "~/Pages/Admin/Shared/_LayoutAdminiFrame.cshtml";
+}
+@section Scripts{
+    <script src="~/js/admin/sys/admin/user/list.js"></script>
+}
+
+<section class="panel panel-default padder m-t text-sm">
+    <div class="table-responsive">
+        <div id="custom-toolbar">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="btn-group btn-group-sm" style="display:inline;">
+                        <a href="#" onclick="window.parent.addTab({ id: 'admin-user-add', href: '/admin/sys/admin/user/add', icons: 'fa fa-plus-circle m-r-xs', text: '新增账号' });" class="btn btn-default" asp-access asp-access-key="sys-admin-add"><i class="fa fa-plus-circle m-r-xs"></i>新增</a>
+                        <div class="btn-group btn-group-sm">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-edit m-r-xs"></i>数据操作
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" id="btnPublish" asp-access asp-access-key="sys-admin-edit"><i class="fa fa-check m-r-xs"></i>允许登录</a></li>
+                                <li><a href="#" id="btnSoldOut" asp-access asp-access-key="sys-admin-edit"><i class="fa fa-eye-slash m-r-xs"></i>禁止登录</a></li>
+                                <li><a href="#" id="btnTrash" asp-access asp-access-key="sys-admin-edit"><i class="fa fa-trash-o m-r-xs"></i>扔回收站</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#" id="btnDelete" asp-access asp-access-key="sys-admin-delete"><i class="fa fa-ban m-r-xs"></i>永久删除</a></li>
+                            </ul>
+                        </div>
+                        <a href="#" class="btn btn-default btnRefresh"><i class="fa fa-refresh m-r-xs"></i>刷新</a>
+                    </div>
+                    <div class="input-group input-group-sm" style="width: 250px; padding-left: 10px;">
+                        @*<div class="input-group-btn">
+                                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                    <span class="dropdown-label">姓名</span>
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-select text-sm">
+                                    <li>
+                                        <input type="radio" value="Name" name="field" checked="checked" /><a href="#">姓名</a>
+                                    </li>
+                                    <li>
+                                        <input type="radio" value="Mobile" name="field" /><a href="#">手机号码</a>
+                                    </li>
+                                    <li>
+                                        <input type="radio" value="UserName" name="field" /><a href="#">帐号</a>
+                                    </li>
+                                </ul>
+                            </div>*@
+                        <div class="input-group-btn m-r" id="statusContainer">
+                            <button data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle">
+                                <span class="dropdown-label">全部数据</span>
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-select">
+                                @foreach (var item in XUCore.Helpers.Enum.GetDictionary<Nigel.Domain.Core.Enums.Status>())
+                                {
+                                    <li>
+                                        @Html.RadioButton("Status", item.Key)
+                                        <a href="#">@item.Value</a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                        <input type="text" id="search" class="form-control" placeholder="输入关键词后回车..." />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul id="context-menu" class="dropdown-menu text-sm">
+            <li data-item="accredit" asp-access asp-access-key="sys-admin-accredit">
+                <a href="#"><i class="fa fa-edit m-r-xs"></i>账号授权</a>
+            </li>
+            <li class="divider"></li>
+            <li data-item="publish" asp-access asp-access-key="sys-admin-edit">
+                <a href="#"><i class="fa fa-check m-r-xs"></i>允许登录</a>
+            </li>
+            <li data-item="soldout" asp-access asp-access-key="sys-admin-edit">
+                <a href="#"><i class="fa fa-eye-slash m-r-xs"></i>禁止登录</a>
+            </li>
+            <li data-item="trash" asp-access asp-access-key="sys-admin-edit">
+                <a href="#"><i class="fa fa-trash-o m-r-xs"></i>扔回收站</a>
+            </li>
+            <li class="divider"></li>
+            <li data-item="delete" asp-access asp-access-key="sys-admin-delete">
+                <a href="#"><i class="fa fa-ban m-r-xs"></i>永久删除</a>
+            </li>
+        </ul>
+
+        <table id="table"></table>
+    </div>
+</section>
+
+
+<!-- Modal -->
+<div class="modal fade" id="role-modal" tabindex="-1" role="dialog" aria-labelledby="role-modalLabel">
+    <div class="modal-dialog" role="document" style="width:300px;">
+        <form id="role-form" class="form-horizontal" data-parsley-validate="true">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title"><i class="fa fa-bullhorn"></i>&nbsp;更改管理员权限</h4>
+                </div>
+                <div class="modal-body">
+                    @foreach (var item in Model.Roles)
+                    {
+                        <div class="checkbox i-checks">
+                            <label>
+                                <input type="checkbox" name="Roles" value="@item.Id" />
+                                <i></i>
+                                @Html.Raw(item.Name)
+                            </label>
+                        </div>
+                    }
+                </div>
+                <div class="modal-footer" style="margin-top: 0;">
+                    <a href="javascript:;" class="btn btn-default" data-dismiss="modal">关闭</a>
+                    <button type="submit" class="btn btn-primary">确认授权</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

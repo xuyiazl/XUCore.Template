@@ -108,5 +108,24 @@ namespace XUCore.Template.Razor.Applaction.User
         Task<IList<long>> GetRelevanceRoleKeysAsync(long userId, CancellationToken cancellationToken = default);
 
         #endregion
+
+        #region [ 登录记录 ]
+
+        /// <summary>
+        /// 获取最近登录记录
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        Task<IList<UserLoginRecordDto>> GetRecordListAsync(UserLoginRecordQueryCommand request, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// 获取所有登录记录分页
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        Task<PagedModel<UserLoginRecordDto>> GetRecordPageAsync(UserLoginRecordQueryPagedCommand request, CancellationToken cancellationToken = default);
+
+        #endregion
     }
 }
