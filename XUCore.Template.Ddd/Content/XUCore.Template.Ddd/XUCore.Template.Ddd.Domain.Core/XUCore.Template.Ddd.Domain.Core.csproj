@@ -13,7 +13,7 @@
 	<ItemGroup>
 		<Using Include="System.Reflection" />
 		<Using Include="System.ComponentModel" />
-		<Using Include="Microsoft.EntityFrameworkCore"/>
+		<Using Include="Microsoft.EntityFrameworkCore" />
 
 		<Using Include="FluentValidation" />
 		<Using Include="AutoMapper" />
@@ -30,10 +30,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="XUCore" Version="6.0.2" />
-		<PackageReference Include="XUCore.NetCore" Version="6.0.2" />
-		<PackageReference Include="XUCore.NetCore.Data" Version="6.0.2" />
-		<PackageReference Include="XUCore.NetCore.Redis" Version="6.0.2" />
+		<PackageReference Include="XUCore" Version="6.0.7" />
+		<PackageReference Include="XUCore.NetCore" Version="6.0.7" />
+		<PackageReference Include="XUCore.NetCore.Data" Version="6.0.7" />
+		<PackageReference Include="XUCore.NetCore.Redis" Version="6.0.7" />
 	</ItemGroup>
 
 </Project>
