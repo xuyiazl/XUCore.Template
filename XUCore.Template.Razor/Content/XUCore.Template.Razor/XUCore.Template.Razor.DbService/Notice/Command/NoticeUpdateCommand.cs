@@ -49,6 +49,7 @@ namespace XUCore.Template.Razor.DbService.Notice
                 AddIdValidator();
 
                 RuleFor(x => x.Title).NotEmpty().WithName("标题");
+                RuleFor(x => x.Status).IsInEnum().NotEqual(Status.Default).WithName("数据状态");
             }
         }
     }

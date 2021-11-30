@@ -35,6 +35,7 @@
 </script>
 }
 
+@Html.AntiForgeryToken()
 <form id="data-form" class="form-horizontal m-t text-sm" data-parsley-validate="true">
     <section class="panel panel-default">
         <header class="panel-heading">
@@ -45,10 +46,12 @@
                 <div class="col-sm-1">
                 </div>
                 <div class="col-sm-3">
-                    @Html.TextBoxFor(c => c.RoleDto.Name, null, new { @class = "form-control input-sm", @data_parsley_maxlength = "30", @data_parsley_trigger = "change", @data_parsley_required = "true", @placeholder = "请输入角色名称" })
+                    @Html.TextBoxFor(c => c.RoleDto.Name, null, new { @class = "form-control input-sm",
+                    @data_parsley_maxlength = "30", @data_parsley_trigger = "change", @data_parsley_required = "true",
+                    @placeholder = "请输入角色名称" })
                     <div class="error"></div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-8">
                     @foreach (var item in XUCore.Helpers.Enum.GetDictionary<Status>(0))
                     {
                         <div class="radio i-checks inline">
@@ -102,4 +105,3 @@
         </div>
     </section>
 </form>
-

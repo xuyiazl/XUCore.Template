@@ -860,3 +860,16 @@ function getDateDiff(dateStr) {
             return d_seconds + '秒前';
     }
 }
+
+
+var csrfSafeMethod = function (method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+    beforeSend: function (xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("RequestVerificationToken", $('input:hidden[name="__RequestVerificationToken"]').val());
+        }
+    }
+});

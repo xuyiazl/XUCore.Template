@@ -1,4 +1,5 @@
-﻿using XUCore.Template.Razor.Core;
+﻿using Microsoft.AspNetCore.Antiforgery;
+using XUCore.Template.Razor.Core;
 
 namespace XUCore.Template.Razor.Applaction
 {
@@ -34,12 +35,12 @@ namespace XUCore.Template.Razor.Applaction
                     options.Conventions.Add(new DefaultRouteRemovalPageRouteModelConvention(string.Empty));
                     options.Conventions.AddPageRoute("/admin/login", "");
                     //忽略XSRF验证
-                    options.Conventions.ConfigureFilter(new IgnoreAntiforgeryTokenAttribute());
+                    //options.Conventions.ConfigureFilter(new IgnoreAntiforgeryTokenAttribute());
                 })
                 //全局配置Json序列化处理  3.0默认移除了NewtonsoftJson，使用微软自己的json，继续使用NewtonsoftJson
                 .AddNewtonsoftJson(options =>
                 {
-                    //EF Core中默认为驼峰样式序列化处理key   
+                    //EF Core中默认为驼峰样式序列化处理key
                     //options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                     //使用默认方式，不更改元数据的key的大小写
                     options.SerializerSettings.ContractResolver = new DefaultContractResolver();

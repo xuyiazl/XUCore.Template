@@ -70,6 +70,7 @@ namespace XUCore.Template.Razor.DbService.Auth.Menu
                 RuleFor(x => x.Name).NotEmpty().MaximumLength(20).WithName("菜单名");
                 RuleFor(x => x.Url).NotEmpty().MaximumLength(50).WithName("Url");
                 RuleFor(x => x.OnlyCode).NotEmpty().MaximumLength(50).WithName("唯一代码");
+                RuleFor(x => x.Status).IsInEnum().NotEqual(Status.Default).WithName("数据状态");
             }
         }
     }

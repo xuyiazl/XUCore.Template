@@ -41,6 +41,7 @@ namespace XUCore.Template.Razor.DbService.Auth.Role
                 AddIdValidator();
 
                 RuleFor(x => x.Name).NotEmpty().MaximumLength(20).WithName("角色名");
+                RuleFor(x => x.Status).IsInEnum().NotEqual(Status.Default).WithName("数据状态");
             }
         }
     }

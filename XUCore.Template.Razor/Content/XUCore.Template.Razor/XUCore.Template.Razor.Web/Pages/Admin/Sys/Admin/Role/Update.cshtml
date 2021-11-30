@@ -36,6 +36,7 @@
 </script>
 }
 
+@Html.AntiForgeryToken()
 <form id="data-form" class="form-horizontal m-t text-sm" data-parsley-validate="true">
     <section class="panel panel-default">
         <header class="panel-heading">
@@ -46,10 +47,12 @@
                 <div class="col-sm-1">
                 </div>
                 <div class="col-sm-3">
-                    @Html.TextBoxFor(c => c.RoleDto.Name, null, new { @class = "form-control input-sm", @data_parsley_maxlength = "30", @data_parsley_trigger = "change", @data_parsley_required = "true", @placeholder = "请输入角色名称" })
+                    @Html.TextBoxFor(c => c.RoleDto.Name, null, new { @class = "form-control input-sm",
+                    @data_parsley_maxlength = "30", @data_parsley_trigger = "change", @data_parsley_required = "true",
+                    @placeholder = "请输入角色名称" })
                     <div class="error"></div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-8">
                     @foreach (var item in XUCore.Helpers.Enum.GetDictionary<Status>(0))
                     {
                         <div class="radio i-checks inline">
@@ -72,7 +75,8 @@
                     <div class="col-sm-11">
                         <div class="checkbox i-checks col-sm-2">
                             <label>
-                                <input type="checkbox" name="MenuKeys" value="@item.Id" @(Model.MenuKeys.Contains(item.Id) ? "checked=\"checked\"" : "") />
+                                <input type="checkbox" name="MenuKeys" value="@item.Id" @(Model.MenuKeys.Contains(item.Id) ?
+                                "checked=\"checked\"" : "") />
                                 <i></i>
                                 @Html.Raw(item.Name)
                             </label>
@@ -82,7 +86,8 @@
                             {
                                 <div class="checkbox i-checks col-sm-2">
                                     <label>
-                                        <input type="checkbox" name="MenuKeys" value="@child.Id" @(Model.MenuKeys.Contains(child.Id) ? "checked=\"checked\"" : "") />
+                                        <input type="checkbox" name="MenuKeys" value="@child.Id"
+                                    @(Model.MenuKeys.Contains(child.Id) ? "checked=\"checked\"" : "") />
                                         <i></i>
                                         @Html.Raw(child.Name)
                                     </label>
@@ -96,11 +101,11 @@
             <div class="form-group m-b-none">
                 <label class="col-sm-2 control-label"></label>
                 <div class="col-sm-3">
-                    <a href="#" onclick="window.parent.closeTab('admin-role-update-@Model.RoleDto.Id')" class="btn btn-default">关闭页面</a>
+                    <a href="#" onclick="window.parent.closeTab('admin-role-update-@Model.RoleDto.Id')"
+                        class="btn btn-default">关闭页面</a>
                     <button type="submit" class="btn btn-primary m-l">保存数据</button>
                 </div>
             </div>
         </div>
     </section>
 </form>
-
