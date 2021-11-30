@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>XUCore.Template.Razor.Core</name>
+    </assembly>
+    <members>
+        <member name="F:XUCore.Template.Razor.Core.Enums.AccountMode.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="F:XUCore.Template.Razor.Core.Enums.AccountMode.Mobile">
+            <summary>
+            手机号码
+            </summary>
+        </member>
+        <member name="F:XUCore.Template.Razor.Core.Enums.Status.Default">
+            <summary>
+            默认状态
+            </summary>
+        </member>
+        <member name="F:XUCore.Template.Razor.Core.Enums.Status.Show">
+            <summary>
+            正常显示
+            </summary>
+        </member>
+        <member name="F:XUCore.Template.Razor.Core.Enums.Status.SoldOut">
+            <summary>
+            数据下架（隐藏）
+            </summary>
+        </member>
+        <member name="F:XUCore.Template.Razor.Core.Enums.Status.Trash">
+            <summary>
+            数据已被删除，非物理删除（回收站）
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Razor.Core.DtoBase`1.Id">
+            <summary>
+            主键Id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Razor.Core.DtoBase`1.CreatedAtUserName">
+            <summary>
+            创建者
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Razor.Core.DtoBase`1.CreatedAt">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Razor.Core.DtoBase`1.ModifiedAtUserName">
+            <summary>
+            修改者
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Razor.Core.DtoBase`1.ModifiedAt">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Razor.Core.DtoKeyBase`1.Id">
+            <summary>
+            主键Id
+            </summary>
+        </member>
+    </members>
+</doc>

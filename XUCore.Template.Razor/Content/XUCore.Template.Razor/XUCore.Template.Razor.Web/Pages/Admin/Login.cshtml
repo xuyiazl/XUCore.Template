@@ -1,0 +1,38 @@
+﻿@page
+@model XUCore.Template.Razor.Web.Pages.Admin.LoginModel
+
+@{
+    ViewData["Title"] = "登录";
+    ViewData["BodyClass"] = "bg-primary dker";
+    Layout = "~/Pages/Admin/Shared/_LayoutAdmin.cshtml";
+}
+
+<section id="content" class="m-t-lg wrapper-md animated fadeInUp">
+    <div class="container aside-xl" style="margin-top:100px;">
+        <div class="navbar-brand block"><span class="h1 font-bold">后台管理</span></div>
+        <section class="m-b-lg">
+            <header class="wrapper text-center">
+                <strong>请输入账号密码登录</strong>
+            </header>
+            <form method="post" asp-page-handler="login" asp-route-ReturnUrl="@Model.ReturnUrl">
+                <div class="text text-danger" asp-validation-summary="All"></div>
+                <div class="form-group">
+                    @Html.TextBoxFor(c => c.Account, new { @class = "form-control rounded input-lg text-center no-border", @placeholder = "请输入账号" })
+                </div>
+                <div class="form-group">
+                    @Html.PasswordFor(c => c.Password, new { @class = "form-control rounded input-lg text-center no-border", @placeholder = "请输入密码" })
+                </div>
+                <button type="submit" class="btn btn-lg btn-warning lt b-white b-2x btn-block btn-rounded"><i class="icon-arrow-right pull-right"></i><span class="m-r-n-lg">登录</span></button>
+            </form>
+        </section>
+    </div>
+</section>
+
+<!-- footer -->
+<footer id="footer">
+    <div class="text-center padder">
+        <p>
+            <small>XUCore © 2021 · <a href="http://www.beian.miit.gov.cn">京ICP备xxx号</a> · 站长统计</small>
+        </p>
+    </div>
+</footer>

@@ -1,0 +1,54 @@
+﻿@page "{id}"
+@model XUCore.Template.Razor.Web.Pages.Admin.Sys.Admin.Notices.DetailModel
+
+@{
+    ViewData["Title"] = Model.NoticeDto.Title;
+    Layout = "~/Pages/Admin/Shared/_LayoutAdminiFrame.cshtml";
+}
+@section Scripts{
+<link href="~/lib/tinymce/prism.css" rel="stylesheet" />
+<script src="~/lib/tinymce/prism.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('pre').addClass("line-numbers").css("white-space", "pre-wrap");
+    });
+</script>
+}
+
+<section class="vbox">
+    <section class="hbox stretch">
+        <section id="content">
+            <section class="vbox">
+                <section class="scrollable padder">
+                    <div class="row m-t-lg m-b-lg">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6">
+                            <div class="blog-post text-black">
+                                <div class="post-item">
+                                    <div class="caption wrapper-lg">
+                                        <h2 class="post-title text-lg">
+                                            @{
+                                                var s = Utils.LevelSwap(Model.NoticeDto.LevelId);
+                                            }
+                                            <span class="@s.Css">【@s.Name】</span>@Model.NoticeDto.Title
+                                        </h2>
+                                        <div class="line line-dashed b-b line-lg pull-in"></div>
+                                        <div class="post-sum">
+                                            @Html.Raw(Model.NoticeDto.Contents)
+                                        </div>
+                                        <div class="line line-dashed b-b line-sm pull-in"></div>
+                                        <div class="text-muted">
+                                            <i class="fa fa-user icon-muted"></i> by <a href="#" class="m-r-sm">@Model.NoticeDto.CreatedAtUserName</a>
+                                            <i class="fa fa-clock-o icon-muted"></i> @XUCore.Timing.DateTimeHelper.DateStringFromNow(Model.NoticeDto.CreatedAt.Value, false, "${time}前")
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3"></div>
+                    </div>
+                </section>
+            </section>
+        </section>
+    </section>
+</section>

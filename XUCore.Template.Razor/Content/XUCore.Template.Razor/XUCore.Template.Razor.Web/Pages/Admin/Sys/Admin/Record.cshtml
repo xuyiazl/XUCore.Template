@@ -1,0 +1,79 @@
+﻿@page
+@model XUCore.Template.Razor.Web.Pages.Admin.Sys.Admin.RecordModel
+
+@{
+    Layout = "~/Pages/Admin/Shared/_LayoutAdminiFrame.cshtml";
+}
+@section Scripts{
+<script type="text/javascript">
+        $(function () {
+        "use strict";
+
+        var $table = $('#table');
+
+        createTable($table, {
+            columns: [
+                { field: 'UserName', title: '帐号', sortable: false, align: 'center' },
+                { field: 'Mobile', title: '手机', sortable: false, align: 'center' },
+                { field: 'Name', title: '姓名', sortable: false, align: 'center' },
+                { field: 'LoginWay', title: '登录方式', sortable: false, align: 'center' },
+                { field: 'LoginIp', title: '登录IP', sortable: false, align: 'center' },
+                { field: 'LoginTime', title: '登录时间', sortable: false, align: 'center', formatter: formatterTime }
+            ],
+            queryParams: function (params) {
+                params.field = $('input[type=radio][name=field]:checked').val();
+                params.search = $('#search').val();
+                return params;
+            },
+            url: '?handler=RecordList',
+            sortName: 'LoginTime',
+            sortOrder: 'desc'
+        });
+
+        $('.btnRefresh').click(function () {
+            $table.bootstrapTable('refresh', { silent: true });
+            return false;
+        });
+        $('#search').keyup(function () {
+            if (event.keyCode == 13) {
+                $table.bootstrapTable('refresh', { silent: true });
+            }
+        });
+    });
+</script>
+}
+
+<section class="panel panel-default padder m-t text-sm">
+    <div class="table-responsive">
+        <div id="custom-toolbar">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="btn-group btn-group-sm" style="display:inline;">
+                        <a href="#" class="btn btn-default btnRefresh"><i class="fa fa-refresh m-r-xs"></i>刷新</a>
+                    </div>
+                    <div class="input-group input-group-sm" style="width: 250px; padding-left: 10px;">
+                        @*<div class="input-group-btn">
+                            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <span class="dropdown-label">姓名</span>
+                            <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-select text-sm">
+                            <li>
+                            <input type="radio" value="Name" name="field" checked="checked" /><a href="#">姓名</a>
+                            </li>
+                            <li>
+                            <input type="radio" value="Mobile" name="field" /><a href="#">手机号码</a>
+                            </li>
+                            <li>
+                            <input type="radio" value="UserName" name="field" /><a href="#">帐号</a>
+                            </li>
+                            </ul>
+                            </div>*@
+                        <input type="text" id="search" class="form-control" placeholder="输入关键词后回车..." />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <table id="table"></table>
+    </div>
+</section>

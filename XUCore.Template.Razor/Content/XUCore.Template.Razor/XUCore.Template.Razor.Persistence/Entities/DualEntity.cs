@@ -1,0 +1,15 @@
+﻿namespace XUCore.Template.Razor.Persistence.Entities
+{
+    /// <summary>
+    /// 系统表，用于查询系统函数
+    /// </summary>
+	[Table(Name = "sys_dual")]
+    public class DualEntity
+    {
+        /// <summary>
+        /// 主键Id
+        /// </summary>
+        [Column(Position = 1, IsPrimary = true, IsNullable = false)]
+        public Guid Id { get; set; }
+    }
+}

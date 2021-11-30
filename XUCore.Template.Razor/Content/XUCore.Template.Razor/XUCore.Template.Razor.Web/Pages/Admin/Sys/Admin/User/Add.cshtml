@@ -1,0 +1,164 @@
+﻿@page
+@model XUCore.Template.Razor.Web.Pages.Admin.Sys.Admin.User.AddModel
+
+@{
+    Layout = "~/Pages/Admin/Shared/_LayoutAdminiFrame.cshtml";
+}
+@section Scripts{
+<script type="text/javascript">
+
+    $(function () {
+        window.Parsley.addValidator('existmobile', {
+            requirementType: 'string',
+            validateString: function (value, requirement) {
+                var response = false;
+                if (!/^1[0-9][0-9]\d{4,8}$/.test(value)) {
+                    response = false;
+                } else {
+                    var m_result = $.ajax({
+                        type: "GET",
+                        url: '?handler=UserExist',
+                        data: { field: 'mobile', value: value },
+                        async: false
+                    }).responseText;
+                    m_result = eval('(' + m_result + ')');
+                    response = m_result.Code == 0;
+                }
+                return response;
+            },
+            messages: {
+                'zh-cn': '手机号码不可用',
+            }
+        });
+        window.Parsley.addValidator('existusername', {
+            requirementType: 'string',
+            validateString: function (value, requirement) {
+                var m_result = $.ajax({
+                    type: "GET",
+                    url: '?handler=UserExist',
+                    data: { field: 'username', value: value },
+                    async: false
+                }).responseText;
+                m_result = eval('(' + m_result + ')');
+                return m_result.Code == 0;
+            },
+            messages: {
+                'zh-cn': '帐号不可用',
+            }
+        });
+
+        $('#data-form').parsleyForm({
+            submit: function (formData) {
+                $.ajax({
+                    url: '?handler=UserByAdd',
+                    type: "POST",
+                    data: formData,
+                    success: function (result) {
+                        if (result.Code == 0) {
+                            show.successConfirm('操作提示', result.Message, {
+                                confirm: { text: '确认', style: 'success' },
+                                back: {
+                                    text: '关闭页面', style: 'default', action: function () {
+                                        window.parent.closeTab('admin-user-add');
+                                    }
+                                },
+                            });
+                        } else {
+                            show.error('操作提示', result.Message);
+                        }
+                    }
+                });
+            }
+        });
+    });
+</script>
+}
+
+<form id="data-form" class="form-horizontal m-t text-sm" data-parsley-validate="true">
+    <section class="panel panel-default">
+        <header class="panel-heading">
+            <strong>添加管理员</strong>
+        </header>
+        <div class="panel-body">
+            <div class="form-group m-b-none">
+                @Html.LabelFor(c => c.UserDto.Name, "姓名", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(c => c.UserDto.Name, null, new { @class = "form-control input-sm", @data_parsley_maxlength = "30", @data_parsley_trigger = "change", @data_parsley_required = "true" })
+                    <div class="error"></div>
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-sm pull-in"></div>
+            <div class="form-group m-b-none">
+                @Html.LabelFor(c => c.UserDto.UserName, "登录账号", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(c => c.UserDto.UserName, null, new { @class = "form-control input-sm", @data_parsley_maxlength = "30", @data_parsley_trigger = "change", @data_parsley_required = "true", @data_parsley_existusername = "true" })
+                    <div class="error"></div>
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-sm pull-in"></div>
+            <div class="form-group m-b-none">
+                @Html.LabelFor(c => c.UserDto.Mobile, "手机号码", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(c => c.UserDto.Mobile, null, new { @class = "form-control input-sm", @data_parsley_maxlength = "30", @data_parsley_trigger = "change", @data_parsley_required = "true", @data_parsley_existmobile = "true" })
+                    <div class="error"></div>
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-sm pull-in"></div>
+            <div class="form-group m-b-none">
+                @Html.LabelFor(c => c.UserDto.Password, "登录密码", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(c => c.UserDto.Password, null, new { @class = "form-control input-sm", @data_parsley_maxlength = "30", @data_parsley_trigger = "change", @data_parsley_required = "true" })
+                    <div class="error"></div>
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-sm pull-in"></div>
+            <div class="form-group m-b-none">
+                @Html.LabelFor(c => c.UserDto.Location, "所在地", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(c => c.UserDto.Location, null, new { @class = "form-control input-sm", @data_parsley_maxlength = "30", @data_parsley_trigger = "change", @data_parsley_required = "true" })
+                    <div class="error"></div>
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-sm pull-in"></div>
+            <div class="form-group m-b-none">
+                @Html.LabelFor(c => c.UserDto.Position, "职位", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(c => c.UserDto.Position, null, new { @class = "form-control input-sm", @data_parsley_maxlength = "30", @data_parsley_trigger = "change", @data_parsley_required = "true" })
+                    <div class="error"></div>
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-sm pull-in"></div>
+            <div class="form-group m-b-none">
+                @Html.LabelFor(c => c.UserDto.Company, "公司", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(c => c.UserDto.Company, null, new { @class = "form-control input-sm", @data_parsley_maxlength = "30", @data_parsley_trigger = "change", @data_parsley_required = "true" })
+                    <div class="error"></div>
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-sm pull-in"></div>
+            <div class="form-group m-b-none">
+                @Html.LabelFor(c => c.UserDto.Name, "权限角色", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-3">
+                    @foreach (var item in XUCore.Helpers.Enum.GetDictionary<Status>(0))
+                    {
+                        <div class="radio i-checks inline">
+                            <label>
+                                @Html.RadioButtonFor(c => c.UserDto.Status, (Status)item.Key);
+                                <i></i>
+                                @item.Value
+                            </label>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-sm pull-in"></div>
+            <div class="form-group m-b-none">
+                <label class="col-sm-2 control-label"></label>
+                <div class="col-sm-3">
+                    <a href="#" onclick="window.parent.closeTab('admin-user-add')" class="btn btn-default">关闭页面</a>
+                    <button type="submit" class="btn btn-primary m-l">保存数据</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>

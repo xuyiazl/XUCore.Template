@@ -1,0 +1,103 @@
+﻿@using XUCore.Template.Razor.DbService.Auth.Permission
+
+<section class="scrollable">
+    <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railOpacity="0.2">
+        <!-- nav -->
+        <nav class="nav-primary hidden-xs">
+            @if (((IEnumerable<PermissionMenuDto>)Model.TopMenus).Count() > 0)
+            {
+                <ul class="nav bg clearfix">
+                    <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">快捷导航</li>
+                    @foreach (var menu in (IEnumerable<PermissionMenuDto>)Model.TopMenus)
+                    {
+                        <li class="text-sm">
+                            <a @(menu.Url == "#" ? "" : "data-nav") data-id="@menu.Id" data-icons="@menu.Icon" href="@menu.Url">
+                                @if (string.IsNullOrEmpty(menu.Icon))
+                                {
+                                    <i class="icon-screen-desktop icon"></i>
+                                }
+                                else
+                                {
+                                    <i class="@menu.Icon"></i>
+                                }
+                                <span class="font-bold">@menu.Name</span>
+                            </a>
+                        </li>
+                    }
+                    <li class="m-b hidden-nav-xs"></li>
+                </ul>
+            }
+            <ul class="nav" data-ride="collapse">
+                <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">导航列表</li>
+                @functions {
+                    public IEnumerable<PermissionMenuDto> FindMenus(long parentId)
+                    {
+                        return ((IEnumerable<PermissionMenuDto>)Model.Menus).Where(c => c.ParentId == parentId);
+                    }
+                }
+                @foreach (var menu in FindMenus(0))
+                {
+                    <li class="text-sm @(menu.OnlyCode == ViewData["OnlyCode"].SafeString()?"active":"")">
+                        <a @(menu.Url == "#" ? "" : "data-nav") data-id="@menu.Id" data-icons="@menu.Icon" href="@menu.Url" class="auto">
+                            <span class="pull-right text-muted">
+                                <i class="fa fa-angle-left text"></i>
+                                <i class="fa fa-angle-down text-active"></i>
+                            </span>
+                            @if (string.IsNullOrEmpty(menu.Icon))
+                            {
+                                <i class="icon-screen-desktop icon"></i>
+                            }
+                            else
+                            {
+                                <i class="@menu.Icon"></i>
+                            }
+                            <span>@menu.Name</span>
+                        </a>
+                        <ul class="nav dk text-sm dker">
+                            @foreach (var child in FindMenus(menu.Id))
+                            {
+                                <li class="@(child.OnlyCode == ViewData["SubOnlyCode"].SafeString()?"active":"")">
+                                    <a @(child.Url == "#" ? "" : "data-nav") data-id="@child.Id" data-icons="@child.Icon" href="@child.Url" class="auto">
+                                        <i class="fa fa-angle-right text-xs"></i>
+                                        <span>@child.Name</span>
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                }
+            </ul>
+        </nav>
+        <!-- / nav -->
+    </div>
+</section>
+<footer class="footer hidden-xs no-padder text-center-nav-xs">
+    <div class="bg hidden-xs ">
+        <div class="dropdown dropup wrapper-sm clearfix">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <span class="thumb-sm avatar pull-left m-l-xs">
+                    <img src="@Utils.Face(GlobalStatic.RootUrl,Model.User.Picture, 1)" class="dker" alt="...">
+                    <i class="on b-black"></i>
+                </span>
+                <span class="hidden-nav-xs clear">
+                    <span class="block m-l">
+                        <strong class="font-bold text-lt">@Model.User.Name</strong>
+                        <b class="caret"></b>
+                    </span>
+                    <span class="text-muted text-xs block m-l">@Model.User.Position</span>
+                </span>
+            </a>
+
+            <ul class="dropdown-menu animated fadeInRight aside text-left text-sm">
+                <li>
+                    <span class="arrow bottom hidden-nav-xs"></span>
+                    <a data-nav data-icons="fa fa-cog m-r-xs" data-id="info" href="/admin/sys/info"><i class="fa fa-cog m-r-xs"></i>账号设置</a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a href="/admin/login?handler=loginout"><i class="fa fa-sign-out m-r-xs"></i>退出登录</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</footer>
