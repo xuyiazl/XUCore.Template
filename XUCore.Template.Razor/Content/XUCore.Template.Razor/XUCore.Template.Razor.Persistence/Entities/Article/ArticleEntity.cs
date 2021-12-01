@@ -51,7 +51,6 @@ namespace XUCore.Template.Razor.Persistence.Entities
         /// <summary>
         /// 对应标签
         /// </summary>
-        [Navigate(ManyToMany = typeof(ArticleTagEntity))]
         public ICollection<ArticleTagEntity> TagNavs { get; set; }
     }
 }

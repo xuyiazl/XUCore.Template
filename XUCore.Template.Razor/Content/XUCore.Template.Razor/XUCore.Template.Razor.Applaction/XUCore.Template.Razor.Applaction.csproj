@@ -31,7 +31,7 @@
 		<Using Include="Microsoft.AspNetCore.Mvc.Rendering" />
 		<Using Include="Microsoft.Extensions.Logging" />
 		<Using Include="Newtonsoft.Json" />
-		<Using Include="Newtonsoft.Json.Serialization"/>
+		<Using Include="Newtonsoft.Json.Serialization" />
 		<Using Include="System.Text" />
 		<Using Include="System.Text.Encodings.Web" />
 		<Using Include="System.Text.Unicode" />

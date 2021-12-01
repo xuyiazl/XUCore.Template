@@ -238,11 +238,6 @@
             状态
             </summary>
         </member>
-        <member name="P:XUCore.Template.Razor.Persistence.Entities.CategoryEntity.Article">
-            <summary>
-            对应关联的文章
-            </summary>
-        </member>
         <member name="T:XUCore.Template.Razor.Persistence.Entities.TagEntity">
             <summary>
             文章标签
@@ -261,11 +256,6 @@
         <member name="P:XUCore.Template.Razor.Persistence.Entities.TagEntity.Status">
             <summary>
             状态
-            </summary>
-        </member>
-        <member name="P:XUCore.Template.Razor.Persistence.Entities.TagEntity.ArticleTags">
-            <summary>
-            文章标签关联列表
             </summary>
         </member>
         <member name="T:XUCore.Template.Razor.Persistence.Entities.Auth.MenuEntity">

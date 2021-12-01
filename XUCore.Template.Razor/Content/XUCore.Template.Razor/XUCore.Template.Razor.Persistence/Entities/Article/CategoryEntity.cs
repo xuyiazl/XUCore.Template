@@ -22,9 +22,5 @@ namespace XUCore.Template.Razor.Persistence.Entities
         /// 状态
         /// </summary>
 		public Status Status { get; set; }
-        /// <summary>
-        /// 对应关联的文章
-        /// </summary>
-        public ArticleEntity Article { get; set; }
     }
 }

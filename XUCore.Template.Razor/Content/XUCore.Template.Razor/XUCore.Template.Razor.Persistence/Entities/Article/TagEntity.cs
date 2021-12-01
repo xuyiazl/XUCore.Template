@@ -9,10 +9,6 @@ namespace XUCore.Template.Razor.Persistence.Entities
     [Index("idx_{tablename}_01", nameof(Name), true)]
     public partial class TagEntity : EntityFull
     {
-        public TagEntity()
-        {
-            ArticleTags = new List<ArticleTagEntity>();
-        }
         /// <summary>
         /// 标签名
         /// </summary>
@@ -26,10 +22,5 @@ namespace XUCore.Template.Razor.Persistence.Entities
         /// 状态
         /// </summary>
 		public Status Status { get; set; }
-        /// <summary>
-        /// 文章标签关联列表
-        /// </summary>
-        [Navigate(ManyToMany = typeof(ArticleTagEntity))]
-        public ICollection<ArticleTagEntity> ArticleTags { get; set; }
     }
 }

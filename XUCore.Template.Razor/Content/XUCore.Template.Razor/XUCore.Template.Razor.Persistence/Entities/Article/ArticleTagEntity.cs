@@ -19,10 +19,12 @@ namespace XUCore.Template.Razor.Persistence.Entities
         /// <summary>
         /// 对应关联的文章
         /// </summary>
+        [Navigate(ManyToMany = typeof(ArticleEntity))]
         public ArticleEntity Article { get; set; }
         /// <summary>
         /// 对应关联的标签
         /// </summary>
+        [Navigate(ManyToMany = typeof(TagEntity))]
         public TagEntity Tag { get; set; }
     }
 }

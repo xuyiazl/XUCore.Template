@@ -14,6 +14,432 @@
             资源权限验证，比如Controller控制器的API方法，或者View
             </summary>
         </member>
+        <member name="T:XUCore.Template.Razor.Applaction.Article.IArticleAppService">
+            <summary>
+            文章管理
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.IArticleAppService.CreateAsync(XUCore.Template.Razor.DbService.Article.ArticleCreateCommand,System.Threading.CancellationToken)">
+            <summary>
+            创建文章
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.IArticleAppService.UpdateAsync(XUCore.Template.Razor.DbService.Article.ArticleUpdateCommand,System.Threading.CancellationToken)">
+            <summary>
+            更新文章信息
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.IArticleAppService.UpdateFieldAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            更新文章指定字段内容
+            </summary>
+            <param name="id"></param>
+            <param name="field"></param>
+            <param name="value"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.IArticleAppService.UpdateStatusAsync(System.Int64[],XUCore.Template.Razor.Persistence.Enums.Status,System.Threading.CancellationToken)">
+            <summary>
+            更新状态
+            </summary>
+            <param name="ids"></param>
+            <param name="status"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.IArticleAppService.DeleteAsync(System.Int64[],System.Threading.CancellationToken)">
+            <summary>
+            删除文章（物理删除）
+            </summary>
+            <param name="ids"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.IArticleAppService.GetByIdAsync(System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            获取文章信息
+            </summary>
+            <param name="id"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.IArticleAppService.GetListAsync(XUCore.Template.Razor.DbService.Article.ArticleQueryCommand,System.Threading.CancellationToken)">
+            <summary>
+            获取文章列表
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.IArticleAppService.GetPagedListAsync(XUCore.Template.Razor.DbService.Article.ArticleQueryPagedCommand,System.Threading.CancellationToken)">
+            <summary>
+            获取文章分页
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:XUCore.Template.Razor.Applaction.Article.ICategoryAppService">
+            <summary>
+            目录管理
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.ICategoryAppService.CreateAsync(XUCore.Template.Razor.DbService.Article.CategoryCreateCommand,System.Threading.CancellationToken)">
+            <summary>
+            创建目录
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.ICategoryAppService.UpdateAsync(XUCore.Template.Razor.DbService.Article.CategoryUpdateCommand,System.Threading.CancellationToken)">
+            <summary>
+            更新目录信息
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.ICategoryAppService.UpdateFieldAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            更新目录指定字段内容
+            </summary>
+            <param name="id"></param>
+            <param name="field"></param>
+            <param name="value"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.ICategoryAppService.UpdateStatusAsync(System.Int64[],XUCore.Template.Razor.Persistence.Enums.Status,System.Threading.CancellationToken)">
+            <summary>
+            更新状态
+            </summary>
+            <param name="ids"></param>
+            <param name="status"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.ICategoryAppService.DeleteAsync(System.Int64[],System.Threading.CancellationToken)">
+            <summary>
+            删除目录（物理删除）
+            </summary>
+            <param name="ids"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.ICategoryAppService.GetByIdAsync(System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            获取目录信息
+            </summary>
+            <param name="id"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.ICategoryAppService.GetListAsync(XUCore.Template.Razor.DbService.Article.CategoryQueryCommand,System.Threading.CancellationToken)">
+            <summary>
+            获取目录列表
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.ICategoryAppService.GetPagedListAsync(XUCore.Template.Razor.DbService.Article.CategoryQueryPagedCommand,System.Threading.CancellationToken)">
+            <summary>
+            获取目录分页
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:XUCore.Template.Razor.Applaction.Article.ITagAppService">
+            <summary>
+            标签管理
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.ITagAppService.CreateAsync(XUCore.Template.Razor.DbService.Article.TagCreateCommand,System.Threading.CancellationToken)">
+            <summary>
+            创建标签
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.ITagAppService.UpdateAsync(XUCore.Template.Razor.DbService.Article.TagUpdateCommand,System.Threading.CancellationToken)">
+            <summary>
+            更新标签信息
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.ITagAppService.UpdateFieldAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            更新标签指定字段内容
+            </summary>
+            <param name="id"></param>
+            <param name="field"></param>
+            <param name="value"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.ITagAppService.UpdateStatusAsync(System.Int64[],XUCore.Template.Razor.Persistence.Enums.Status,System.Threading.CancellationToken)">
+            <summary>
+            更新状态
+            </summary>
+            <param name="ids"></param>
+            <param name="status"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.ITagAppService.DeleteAsync(System.Int64[],System.Threading.CancellationToken)">
+            <summary>
+            删除标签（物理删除）
+            </summary>
+            <param name="ids"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.ITagAppService.GetByIdAsync(System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            获取标签信息
+            </summary>
+            <param name="id"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.ITagAppService.GetListAsync(XUCore.Template.Razor.DbService.Article.TagQueryCommand,System.Threading.CancellationToken)">
+            <summary>
+            获取标签列表
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.ITagAppService.GetPagedListAsync(XUCore.Template.Razor.DbService.Article.TagQueryPagedCommand,System.Threading.CancellationToken)">
+            <summary>
+            获取标签分页
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:XUCore.Template.Razor.Applaction.Article.ArticleAppService">
+            <summary>
+            文章管理
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.ArticleAppService.CreateAsync(XUCore.Template.Razor.DbService.Article.ArticleCreateCommand,System.Threading.CancellationToken)">
+            <summary>
+            创建文章
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.ArticleAppService.UpdateAsync(XUCore.Template.Razor.DbService.Article.ArticleUpdateCommand,System.Threading.CancellationToken)">
+            <summary>
+            更新文章信息
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.ArticleAppService.UpdateFieldAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            更新文章指定字段内容
+            </summary>
+            <param name="id"></param>
+            <param name="field"></param>
+            <param name="value"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.ArticleAppService.UpdateStatusAsync(System.Int64[],XUCore.Template.Razor.Persistence.Enums.Status,System.Threading.CancellationToken)">
+            <summary>
+            更新状态
+            </summary>
+            <param name="ids"></param>
+            <param name="status"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.ArticleAppService.DeleteAsync(System.Int64[],System.Threading.CancellationToken)">
+            <summary>
+            删除文章（物理删除）
+            </summary>
+            <param name="ids"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.ArticleAppService.GetByIdAsync(System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            获取文章信息
+            </summary>
+            <param name="id"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.ArticleAppService.GetListAsync(XUCore.Template.Razor.DbService.Article.ArticleQueryCommand,System.Threading.CancellationToken)">
+            <summary>
+            获取文章列表
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.ArticleAppService.GetPagedListAsync(XUCore.Template.Razor.DbService.Article.ArticleQueryPagedCommand,System.Threading.CancellationToken)">
+            <summary>
+            获取文章分页
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:XUCore.Template.Razor.Applaction.Article.CategoryAppService">
+            <summary>
+            目录管理
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.CategoryAppService.CreateAsync(XUCore.Template.Razor.DbService.Article.CategoryCreateCommand,System.Threading.CancellationToken)">
+            <summary>
+            创建目录
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.CategoryAppService.UpdateAsync(XUCore.Template.Razor.DbService.Article.CategoryUpdateCommand,System.Threading.CancellationToken)">
+            <summary>
+            更新目录信息
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.CategoryAppService.UpdateFieldAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            更新目录指定字段内容
+            </summary>
+            <param name="id"></param>
+            <param name="field"></param>
+            <param name="value"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.CategoryAppService.UpdateStatusAsync(System.Int64[],XUCore.Template.Razor.Persistence.Enums.Status,System.Threading.CancellationToken)">
+            <summary>
+            更新状态
+            </summary>
+            <param name="ids"></param>
+            <param name="status"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.CategoryAppService.DeleteAsync(System.Int64[],System.Threading.CancellationToken)">
+            <summary>
+            删除目录（物理删除）
+            </summary>
+            <param name="ids"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.CategoryAppService.GetByIdAsync(System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            获取目录信息
+            </summary>
+            <param name="id"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.CategoryAppService.GetListAsync(XUCore.Template.Razor.DbService.Article.CategoryQueryCommand,System.Threading.CancellationToken)">
+            <summary>
+            获取目录列表
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.CategoryAppService.GetPagedListAsync(XUCore.Template.Razor.DbService.Article.CategoryQueryPagedCommand,System.Threading.CancellationToken)">
+            <summary>
+            获取目录分页
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:XUCore.Template.Razor.Applaction.Article.TagAppService">
+            <summary>
+            标签管理
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.TagAppService.CreateAsync(XUCore.Template.Razor.DbService.Article.TagCreateCommand,System.Threading.CancellationToken)">
+            <summary>
+            创建标签
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.TagAppService.UpdateAsync(XUCore.Template.Razor.DbService.Article.TagUpdateCommand,System.Threading.CancellationToken)">
+            <summary>
+            更新标签信息
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.TagAppService.UpdateFieldAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            更新标签指定字段内容
+            </summary>
+            <param name="id"></param>
+            <param name="field"></param>
+            <param name="value"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.TagAppService.UpdateStatusAsync(System.Int64[],XUCore.Template.Razor.Persistence.Enums.Status,System.Threading.CancellationToken)">
+            <summary>
+            更新状态
+            </summary>
+            <param name="ids"></param>
+            <param name="status"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.TagAppService.DeleteAsync(System.Int64[],System.Threading.CancellationToken)">
+            <summary>
+            删除标签（物理删除）
+            </summary>
+            <param name="ids"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.TagAppService.GetByIdAsync(System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            获取标签信息
+            </summary>
+            <param name="id"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.TagAppService.GetListAsync(XUCore.Template.Razor.DbService.Article.TagQueryCommand,System.Threading.CancellationToken)">
+            <summary>
+            获取标签列表
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.TagAppService.GetPagedListAsync(XUCore.Template.Razor.DbService.Article.TagQueryPagedCommand,System.Threading.CancellationToken)">
+            <summary>
+            获取标签分页
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
         <member name="T:XUCore.Template.Razor.Applaction.Login.ILoginAppService">
             <summary>
             用户登录接口
