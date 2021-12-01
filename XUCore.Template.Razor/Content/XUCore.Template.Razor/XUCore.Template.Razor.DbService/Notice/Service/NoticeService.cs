@@ -1,6 +1,6 @@
 ﻿using XUCore.Template.Razor.Core;
-using XUCore.Template.Razor.Core.Enums;
 using XUCore.Template.Razor.Persistence.Entities;
+using XUCore.Template.Razor.Persistence.Enums;
 
 namespace XUCore.Template.Razor.DbService.Notice
 {
@@ -45,7 +45,7 @@ namespace XUCore.Template.Razor.DbService.Notice
         /// <param name="status"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public async Task<int> UpdateAsync(long[] ids, Status status, CancellationToken cancellationToken)
+        public async Task<int> UpdateStatusAsync(long[] ids, Status status, CancellationToken cancellationToken)
         {
             var list = await repo.Select.Where(c => ids.Contains(c.Id)).ToListAsync<NoticeEntity>(cancellationToken);
 
@@ -58,6 +58,7 @@ namespace XUCore.Template.Razor.DbService.Notice
         {
             return await repo.Select.WhereDynamic(id).ToOneAsync<NoticeDto>(cancellationToken);
         }
+
         public override async Task<IList<NoticeDto>> GetListAsync(NoticeQueryCommand request, CancellationToken cancellationToken)
         {
             var select = repo.Select

@@ -20,7 +20,7 @@ namespace XUCore.Template.Razor.Web.Pages.Admin.Sys.Admin.Notices
 
         public async void OnGet(CancellationToken cancellationToken)
         {
-            NoticeDto = new NoticeDto();
+            NoticeDto = new NoticeDto { Status = Status.Show };
 
             NoticeLevelSelectItems = await noticeAppService.GetLevelSelectItemsCheck(0, cancellationToken);
         }

@@ -24,7 +24,7 @@ namespace XUCore.Template.Razor.Web.Pages.Admin
 
         public async Task OnGetAsync(CancellationToken cancellationToken)
         {
-            UserDto = await userAppService.GetAsync(userInfo.UserId, cancellationToken);
+            UserDto = await userAppService.GetByIdAsync(userInfo.UserId, cancellationToken);
 
             UserLoginRecords = await userAppService.GetRecordListAsync(new UserLoginRecordQueryCommand
             {

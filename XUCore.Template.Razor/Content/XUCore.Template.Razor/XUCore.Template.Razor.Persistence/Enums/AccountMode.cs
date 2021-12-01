@@ -1,4 +1,4 @@
-﻿namespace XUCore.Template.Razor.Core.Enums
+﻿namespace XUCore.Template.Razor.Persistence.Enums
 {
     public enum AccountMode
     {

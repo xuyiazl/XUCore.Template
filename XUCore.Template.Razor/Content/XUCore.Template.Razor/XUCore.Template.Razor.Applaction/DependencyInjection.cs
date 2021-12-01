@@ -58,6 +58,7 @@ namespace XUCore.Template.Razor.Applaction
             var appSettings = services.BindSection<AppSettings>(configuration, "AppSettings");
 
             GlobalStatic.RootUrl = appSettings.RootUrl;
+            GlobalStatic.WebSite = appSettings.WebSite;
 
             #region [ 注册登录Cookie ]
 

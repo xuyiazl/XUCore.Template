@@ -1,5 +1,5 @@
-﻿using XUCore.Template.Razor.Core.Enums;
-using XUCore.Template.Razor.Persistence.Entities;
+﻿using XUCore.Template.Razor.Persistence.Entities;
+using XUCore.Template.Razor.Persistence.Enums;
 
 namespace XUCore.Template.Razor.DbService.Notice
 {
@@ -21,6 +21,6 @@ namespace XUCore.Template.Razor.DbService.Notice
         /// <param name="status"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<int> UpdateAsync(long[] ids, Status status, CancellationToken cancellationToken);
+        Task<int> UpdateStatusAsync(long[] ids, Status status, CancellationToken cancellationToken);
     }
 }

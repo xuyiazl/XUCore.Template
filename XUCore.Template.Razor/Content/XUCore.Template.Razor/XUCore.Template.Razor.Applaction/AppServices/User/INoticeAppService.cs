@@ -1,5 +1,5 @@
-﻿using XUCore.Template.Razor.Core.Enums;
-using XUCore.Template.Razor.DbService.Notice;
+﻿using XUCore.Template.Razor.DbService.Notice;
+using XUCore.Template.Razor.Persistence.Enums;
 
 namespace XUCore.Template.Razor.Applaction.User
 {
@@ -39,7 +39,7 @@ namespace XUCore.Template.Razor.Applaction.User
         /// <param name="status"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<int> UpdateEnabledAsync(long[] ids, Status status, CancellationToken cancellationToken = default);
+        Task<int> UpdateStatusAsync(long[] ids, Status status, CancellationToken cancellationToken = default);
         /// <summary>
         /// 删除公告板（物理删除）
         /// </summary>
@@ -53,7 +53,7 @@ namespace XUCore.Template.Razor.Applaction.User
         /// <param name="id"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<NoticeDto> GetAsync(long id, CancellationToken cancellationToken = default);
+        Task<NoticeDto> GetByIdAsync(long id, CancellationToken cancellationToken = default);
         /// <summary>
         /// 获取公告板列表
         /// </summary>

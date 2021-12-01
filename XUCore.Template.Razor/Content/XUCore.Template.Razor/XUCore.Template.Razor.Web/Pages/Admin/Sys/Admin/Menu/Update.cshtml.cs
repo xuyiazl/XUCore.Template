@@ -24,7 +24,7 @@ namespace XUCore.Template.Razor.Web.Pages.Admin.Sys.Admin.Menu
 
             DropDownMenus = TreeUtils.AuthMenusSelectItems(entities);
 
-            MenuDto = await menuAppService.GetAsync(id, cancellationToken);
+            MenuDto = await menuAppService.GetByIdAsync(id, cancellationToken);
         }
 
         public async Task<IActionResult> OnPutMenuByUpdateRowAsync()

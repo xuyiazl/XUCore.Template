@@ -1,6 +1,6 @@
 ﻿using XUCore.Template.Razor.Core;
-using XUCore.Template.Razor.Core.Enums;
 using XUCore.Template.Razor.DbService.Auth.Role;
+using XUCore.Template.Razor.Persistence.Enums;
 
 namespace XUCore.Template.Razor.Applaction.User
 {
@@ -60,7 +60,7 @@ namespace XUCore.Template.Razor.Applaction.User
         /// <param name="status"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public async Task<int> UpdateEnabledAsync(long[] ids, Status status, CancellationToken cancellationToken = default)
+        public async Task<int> UpdateStatusAsync(long[] ids, Status status, CancellationToken cancellationToken = default)
         {
             return await roleService.UpdateAsync(ids, status, cancellationToken);
         }
@@ -80,7 +80,7 @@ namespace XUCore.Template.Razor.Applaction.User
         /// <param name="id"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public async Task<RoleDto> GetAsync(long id, CancellationToken cancellationToken = default)
+        public async Task<RoleDto> GetByIdAsync(long id, CancellationToken cancellationToken = default)
         {
             return await roleService.GetByIdAsync(id, cancellationToken);
         }

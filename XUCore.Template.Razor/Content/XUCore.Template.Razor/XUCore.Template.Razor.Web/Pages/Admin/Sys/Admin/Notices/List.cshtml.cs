@@ -1,5 +1,6 @@
 ﻿using XUCore.Template.Razor.Applaction.User;
 using XUCore.Template.Razor.DbService.Notice;
+using XUCore.Template.Razor.Persistence.Enums;
 
 namespace XUCore.Template.Razor.Web.Pages.Admin.Sys.Admin.Notices
 {
@@ -46,7 +47,7 @@ namespace XUCore.Template.Razor.Web.Pages.Admin.Sys.Admin.Notices
 
         public async Task<IActionResult> OnPutBatchStatusAsync([FromForm] long[] ids, [FromForm] Status status)
         {
-            var res = await noticeAppService.UpdateEnabledAsync(ids, status);
+            var res = await noticeAppService.UpdateStatusAsync(ids, status);
 
             if (res > 0)
                 return new Result(StateCode.Success, "", "操作成功");

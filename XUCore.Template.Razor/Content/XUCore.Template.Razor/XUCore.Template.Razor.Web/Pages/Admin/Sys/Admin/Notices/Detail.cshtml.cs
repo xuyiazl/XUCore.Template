@@ -16,7 +16,7 @@ namespace XUCore.Template.Razor.Web.Pages.Admin.Sys.Admin.Notices
 
         public async Task OnGetAsync(long id, CancellationToken cancellationToken)
         {
-            NoticeDto = await noticeAppService.GetAsync(id, cancellationToken);
+            NoticeDto = await noticeAppService.GetByIdAsync(id, cancellationToken);
         }
     }
 }

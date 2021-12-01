@@ -15,8 +15,11 @@
         private const string _userName = "_user_username_";
         private const string _name = "_user_name_";
         private const string _nickName = "_user_nickName_";
+
         private readonly string scheme = CookieAuthenticationDefaults.AuthenticationScheme;
+
         private readonly IHttpContextAccessor httpContextAccessor;
+
         public UserInfo(IServiceProvider serviceProvider) : base(serviceProvider)
         {
             httpContextAccessor = serviceProvider.GetRequiredService<IHttpContextAccessor>();
@@ -26,8 +29,8 @@
         {
             var claims = new List<Claim> {
                 new Claim(_userId, id.ToString()),
-                new Claim(userName,userName),
-                new Claim(name, name),
+                new Claim(_userName,userName),
+                new Claim(_name, name),
                 new Claim(_nickName, nickName)
             };
 

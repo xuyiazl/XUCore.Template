@@ -1,6 +1,5 @@
-﻿using XUCore.Template.Razor.Core;
-using XUCore.Template.Razor.Core.Enums;
-using XUCore.Template.Razor.DbService.Auth.Menu;
+﻿using XUCore.Template.Razor.DbService.Auth.Menu;
+using XUCore.Template.Razor.Persistence.Enums;
 
 namespace XUCore.Template.Razor.Applaction.User
 {
@@ -60,7 +59,7 @@ namespace XUCore.Template.Razor.Applaction.User
         /// <param name="status"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public async Task<int> UpdateEnabledAsync(long[] ids, Status status, CancellationToken cancellationToken = default)
+        public async Task<int> UpdateStatusAsync(long[] ids, Status status, CancellationToken cancellationToken = default)
         {
             return await menuService.UpdateAsync(ids, status, cancellationToken);
         }
@@ -80,7 +79,7 @@ namespace XUCore.Template.Razor.Applaction.User
         /// <param name="id"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public async Task<MenuDto> GetAsync(long id, CancellationToken cancellationToken = default)
+        public async Task<MenuDto> GetByIdAsync(long id, CancellationToken cancellationToken = default)
         {
             return await menuService.GetByIdAsync(id, cancellationToken);
         }

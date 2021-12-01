@@ -24,7 +24,7 @@ namespace XUCore.Template.Razor.Web.Components.Admin
 
             var topMenus = await loginAppService.GetPermissionMenuExpressAsync(userInfo.UserId, CancellationToken.None);
 
-            var user = await userAppService.GetAsync(userInfo.UserId, CancellationToken.None);
+            var user = await userAppService.GetByIdAsync(userInfo.UserId, CancellationToken.None);
 
             dynamic res = new ExpandoObject();
 

@@ -20,7 +20,7 @@ namespace XUCore.Template.Razor.Web.Pages.Admin.Sys.Admin.Menu
 
         public async Task OnGetAsync(CancellationToken cancellationToken)
         {
-            MenuDto = new MenuDto();
+            MenuDto = new MenuDto { Status = Status.Show };
 
             var entities = await menuAppService.GetListAsync(cancellationToken);
 

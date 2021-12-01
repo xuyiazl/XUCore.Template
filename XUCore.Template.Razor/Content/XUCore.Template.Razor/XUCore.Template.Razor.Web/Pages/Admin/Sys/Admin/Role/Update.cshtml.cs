@@ -23,7 +23,7 @@ namespace XUCore.Template.Razor.Web.Pages.Admin.Sys.Admin.Role
 
         public async Task OnGetAsync(int id, CancellationToken cancellationToken)
         {
-            RoleDto = await roleAppService.GetAsync(id, cancellationToken);
+            RoleDto = await roleAppService.GetByIdAsync(id, cancellationToken);
 
             Menus = await menuAppService.GetListAsync(new MenuQueryCommand { Status = Status.Show }, cancellationToken);
 

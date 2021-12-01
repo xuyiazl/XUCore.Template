@@ -17,7 +17,7 @@ namespace XUCore.Template.Razor.Web.Components.Admin
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var user = await userAppService.GetAsync(userInfo.UserId, CancellationToken.None);
+            var user = await userAppService.GetByIdAsync(userInfo.UserId, CancellationToken.None);
 
             dynamic res = new ExpandoObject();
 

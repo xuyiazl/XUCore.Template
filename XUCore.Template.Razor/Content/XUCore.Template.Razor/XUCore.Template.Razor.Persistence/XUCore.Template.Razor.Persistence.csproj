@@ -21,6 +21,7 @@
 		<Using Include="FreeSql.DataAnnotations" />
 		<Using Include="FreeSql.Aop" />
 		<Using Include="System.Reflection" />
+		<Using Include="System.ComponentModel" />
 		<Using Include="Microsoft.Extensions.Configuration" />
 		<Using Include="Microsoft.Extensions.DependencyInjection" />
 		

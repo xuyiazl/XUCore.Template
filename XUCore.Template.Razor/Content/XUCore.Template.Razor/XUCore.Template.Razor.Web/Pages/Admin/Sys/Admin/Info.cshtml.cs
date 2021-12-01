@@ -20,7 +20,7 @@ namespace XUCore.Template.Razor.Web.Pages.Admin.Sys.Admin
 
         public async Task OnGetAsync()
         {
-            UserDto = await userAppService.GetAsync(userInfo.UserId);
+            UserDto = await userAppService.GetByIdAsync(userInfo.UserId);
         }
 
         public async Task<IActionResult> OnPutUserUpdateInfoAsync()

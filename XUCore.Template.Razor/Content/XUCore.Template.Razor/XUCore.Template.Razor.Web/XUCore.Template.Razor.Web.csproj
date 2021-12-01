@@ -31,7 +31,7 @@
 		<Using Include="XUCore.Template.Razor.Applaction" />
 		<Using Include="XUCore.Template.Razor.Persistence" />
 		<Using Include="XUCore.Template.Razor.Core" />
-		<Using Include="XUCore.Template.Razor.Core.Enums" />
+		<Using Include="XUCore.Template.Razor.Persistence.Enums" />
 	</ItemGroup>
 
 	<ItemGroup>

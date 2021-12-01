@@ -13,11 +13,11 @@
 	<ItemGroup>
 		<Using Include="Microsoft.AspNetCore.Http" />
 		<Using Include="Microsoft.Extensions.DependencyInjection" />
-		<Using Include="Microsoft.AspNetCore.Authentication.Cookies"/>
+		<Using Include="Microsoft.AspNetCore.Authentication.Cookies" />
 		<Using Include="Microsoft.AspNetCore.Authorization" />
-		<Using Include="Microsoft.AspNetCore.Authentication"/>
+		<Using Include="Microsoft.AspNetCore.Authentication" />
 		<Using Include="System.ComponentModel" />
-		<Using Include="System.Security.Claims"/>
+		<Using Include="System.Security.Claims" />
 		<Using Include="AutoMapper" />
 		<Using Include="System.Reflection" />
 		<Using Include="XUCore" />

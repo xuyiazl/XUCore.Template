@@ -4,34 +4,24 @@
         <name>XUCore.Template.Razor.Core</name>
     </assembly>
     <members>
-        <member name="F:XUCore.Template.Razor.Core.Enums.AccountMode.UserName">
+        <member name="P:XUCore.Template.Razor.Core.WebSite.Title">
             <summary>
-            用户名
+            网站标题
             </summary>
         </member>
-        <member name="F:XUCore.Template.Razor.Core.Enums.AccountMode.Mobile">
+        <member name="P:XUCore.Template.Razor.Core.WebSite.SimpleTitle">
             <summary>
-            手机号码
+            网站标题简写
             </summary>
         </member>
-        <member name="F:XUCore.Template.Razor.Core.Enums.Status.Default">
+        <member name="P:XUCore.Template.Razor.Core.WebSite.Logo">
             <summary>
-            默认状态
+            网站Logo
             </summary>
         </member>
-        <member name="F:XUCore.Template.Razor.Core.Enums.Status.Show">
+        <member name="P:XUCore.Template.Razor.Core.WebSite.AQ">
             <summary>
-            正常显示
-            </summary>
-        </member>
-        <member name="F:XUCore.Template.Razor.Core.Enums.Status.SoldOut">
-            <summary>
-            数据下架（隐藏）
-            </summary>
-        </member>
-        <member name="F:XUCore.Template.Razor.Core.Enums.Status.Trash">
-            <summary>
-            数据已被删除，非物理删除（回收站）
+            备案号
             </summary>
         </member>
         <member name="P:XUCore.Template.Razor.Core.DtoBase`1.Id">

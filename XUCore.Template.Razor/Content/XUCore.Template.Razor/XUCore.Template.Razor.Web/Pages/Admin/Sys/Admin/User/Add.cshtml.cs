@@ -1,5 +1,4 @@
 ﻿using XUCore.Template.Razor.Applaction.User;
-using XUCore.Template.Razor.Core.Enums;
 using XUCore.Template.Razor.DbService.Auth.Role;
 using XUCore.Template.Razor.DbService.User.User;
 
@@ -24,7 +23,7 @@ namespace XUCore.Template.Razor.Web.Pages.Admin.Sys.Admin.User
 
         public async Task OnGetAsync(CancellationToken cancellationToken)
         {
-            UserDto = new UserFrom();
+            UserDto = new UserFrom { Status = Status.Show };
 
             Roles = await roleAppService.GetListAsync(new RoleQueryCommand { Status = Status.Show }, cancellationToken);
         }

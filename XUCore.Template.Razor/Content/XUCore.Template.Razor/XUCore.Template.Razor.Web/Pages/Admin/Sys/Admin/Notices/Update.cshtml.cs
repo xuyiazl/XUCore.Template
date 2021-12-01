@@ -20,7 +20,7 @@ namespace XUCore.Template.Razor.Web.Pages.Admin.Sys.Admin.Notices
 
         public async Task OnGetAsync(int id, CancellationToken cancellationToken)
         {
-            NoticeDto = await noticeAppService.GetAsync(id, cancellationToken);
+            NoticeDto = await noticeAppService.GetByIdAsync(id, cancellationToken);
 
             NoticeLevelSelectItems = await noticeAppService.GetLevelSelectItemsCheck(NoticeDto.LevelId, cancellationToken);
         }

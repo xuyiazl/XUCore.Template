@@ -1,5 +1,4 @@
 ﻿using XUCore.Template.Razor.Applaction.User;
-using XUCore.Template.Razor.Core.Enums;
 using XUCore.Template.Razor.DbService.Auth.Role;
 using XUCore.Template.Razor.DbService.User.User;
 
@@ -94,7 +93,7 @@ namespace XUCore.Template.Razor.Web.Pages.Admin.Sys.Admin.User
         }
         public async Task<IActionResult> OnPutBatchStatusAsync([FromForm] long[] ids, [FromForm] Status status)
         {
-            var res = await userAppService.UpdateEnabledAsync(ids, status);
+            var res = await userAppService.UpdateStatusAsync(ids, status);
 
             if (res > 0)
                 return new Result(StateCode.Success, "", "操作成功");

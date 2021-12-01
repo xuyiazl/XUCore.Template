@@ -1,6 +1,6 @@
 ﻿using XUCore.Template.Razor.Core;
-using XUCore.Template.Razor.Core.Enums;
 using XUCore.Template.Razor.Persistence.Entities.Auth;
+using XUCore.Template.Razor.Persistence.Enums;
 
 namespace XUCore.Template.Razor.DbService.Auth.Role
 {
