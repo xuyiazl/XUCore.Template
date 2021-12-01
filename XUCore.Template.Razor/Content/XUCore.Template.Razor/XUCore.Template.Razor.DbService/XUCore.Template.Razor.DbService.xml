@@ -159,6 +159,11 @@
             状态
             </summary>
         </member>
+        <member name="P:XUCore.Template.Razor.DbService.Article.ArticleDto.TagIds">
+            <summary>
+            标签集合Id
+            </summary>
+        </member>
         <member name="P:XUCore.Template.Razor.DbService.Article.ArticleDto.Tags">
             <summary>
             标签集合

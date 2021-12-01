@@ -8,11 +8,11 @@ namespace XUCore.Template.Razor.Applaction.Article
     /// </summary>
     public class TagAppService : ITagAppService
     {
-        private readonly ITagService TagService;
+        private readonly ITagService tagService;
 
         public TagAppService(IServiceProvider serviceProvider)
         {
-            this.TagService = serviceProvider.GetRequiredService<ITagService>();
+            this.tagService = serviceProvider.GetRequiredService<ITagService>();
         }
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace XUCore.Template.Razor.Applaction.Article
         /// <returns></returns>
         public async Task<long> CreateAsync(TagCreateCommand request, CancellationToken cancellationToken = default)
         {
-            var res = await TagService.CreateAsync(request, cancellationToken);
+            var res = await tagService.CreateAsync(request, cancellationToken);
 
             if (res != null)
                 return res.Id;
@@ -38,7 +38,7 @@ namespace XUCore.Template.Razor.Applaction.Article
         /// <returns></returns>
         public async Task<int> UpdateAsync(TagUpdateCommand request, CancellationToken cancellationToken = default)
         {
-            return await TagService.UpdateAsync(request, cancellationToken);
+            return await tagService.UpdateAsync(request, cancellationToken);
         }
         /// <summary>
         /// 更新标签指定字段内容
@@ -50,7 +50,7 @@ namespace XUCore.Template.Razor.Applaction.Article
         /// <returns></returns>
         public async Task<int> UpdateFieldAsync(long id, string field, string value, CancellationToken cancellationToken = default)
         {
-            return await TagService.UpdateAsync(id, field, value, cancellationToken);
+            return await tagService.UpdateAsync(id, field, value, cancellationToken);
         }
         /// <summary>
         /// 更新状态
@@ -61,7 +61,7 @@ namespace XUCore.Template.Razor.Applaction.Article
         /// <returns></returns>
         public async Task<int> UpdateStatusAsync(long[] ids, Status status, CancellationToken cancellationToken = default)
         {
-            return await TagService.UpdateStatusAsync(ids, status, cancellationToken);
+            return await tagService.UpdateStatusAsync(ids, status, cancellationToken);
         }
         /// <summary>
         /// 删除标签（物理删除）
@@ -71,7 +71,7 @@ namespace XUCore.Template.Razor.Applaction.Article
         /// <returns></returns>
         public async Task<int> DeleteAsync(long[] ids, CancellationToken cancellationToken = default)
         {
-            return await TagService.DeleteAsync(ids, cancellationToken);
+            return await tagService.DeleteAsync(ids, cancellationToken);
         }
         /// <summary>
         /// 获取标签信息
@@ -81,7 +81,42 @@ namespace XUCore.Template.Razor.Applaction.Article
         /// <returns></returns>
         public async Task<TagDto> GetByIdAsync(long id, CancellationToken cancellationToken = default)
         {
-            return await TagService.GetByIdAsync(id, cancellationToken);
+            return await tagService.GetByIdAsync(id, cancellationToken);
+        }
+        /// <summary>
+        /// 获取目录下拉菜单
+        /// </summary>
+        /// <param name="checkeId"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public async Task<IList<SelectListItem>> GetSelectItemsCheckAsync(long checkeId = 0, CancellationToken cancellationToken = default)
+        {
+            var list = await GetListAsync(new TagQueryCommand { Status = Status.Show }, cancellationToken);
+
+            return list.ForEach(item =>
+            {
+                if (checkeId == item.Id)
+                    return new SelectListItem { Value = item.Id.SafeString(), Text = item.Name, Selected = true };
+                else
+                    return new SelectListItem { Value = item.Id.SafeString(), Text = item.Name };
+            });
+        }
+        /// <summary>
+        /// 获取目录下拉菜单
+        /// </summary>
+        /// <param name="checkedArray"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public async Task<IList<SelectListItem>> GetSelectItemsCheckArrayAsync(long[] checkedArray = null, CancellationToken cancellationToken = default)
+        {
+            var list = await GetListAsync(new TagQueryCommand { Status = Status.Show }, cancellationToken);
+            return list.ForEach(item =>
+            {
+                if (checkedArray != null && checkedArray.Length > 0)
+                    return new SelectListItem { Value = item.Id.SafeString(), Text = item.Name, Selected = checkedArray.Contains(item.Id) };
+                else
+                    return new SelectListItem { Value = item.Id.SafeString(), Text = item.Name };
+            });
         }
         /// <summary>
         /// 获取标签列表
@@ -91,16 +126,17 @@ namespace XUCore.Template.Razor.Applaction.Article
         /// <returns></returns>
         public async Task<IList<TagDto>> GetListAsync(TagQueryCommand request, CancellationToken cancellationToken = default)
         {
-            return await TagService.GetListAsync(request, cancellationToken);
+            return await tagService.GetListAsync(request, cancellationToken);
         }
         /// <summary>
         /// 获取标签分页
         /// </summary>
+        /// <param name="request"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         public async Task<PagedModel<TagDto>> GetPagedListAsync(TagQueryPagedCommand request, CancellationToken cancellationToken = default)
         {
-            return await TagService.GetPagedListAsync(request, cancellationToken);
+            return await tagService.GetPagedListAsync(request, cancellationToken);
         }
     }
 }

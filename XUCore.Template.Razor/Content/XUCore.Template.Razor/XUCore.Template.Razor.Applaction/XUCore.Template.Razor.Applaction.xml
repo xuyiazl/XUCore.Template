@@ -141,6 +141,22 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.ICategoryAppService.GetSelectItemsCheckAsync(System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            获取目录下拉菜单
+            </summary>
+            <param name="checkeId"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.ICategoryAppService.GetSelectItemsCheckArrayAsync(System.Int64[],System.Threading.CancellationToken)">
+            <summary>
+            获取目录下拉菜单
+            </summary>
+            <param name="checkedArray"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
         <member name="M:XUCore.Template.Razor.Applaction.Article.ICategoryAppService.GetListAsync(XUCore.Template.Razor.DbService.Article.CategoryQueryCommand,System.Threading.CancellationToken)">
             <summary>
             获取目录列表
@@ -212,6 +228,22 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.ITagAppService.GetSelectItemsCheckAsync(System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            获取目录下拉菜单
+            </summary>
+            <param name="checkeId"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.ITagAppService.GetSelectItemsCheckArrayAsync(System.Int64[],System.Threading.CancellationToken)">
+            <summary>
+            获取目录下拉菜单
+            </summary>
+            <param name="checkedArray"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
         <member name="M:XUCore.Template.Razor.Applaction.Article.ITagAppService.GetListAsync(XUCore.Template.Razor.DbService.Article.TagQueryCommand,System.Threading.CancellationToken)">
             <summary>
             获取标签列表
@@ -224,6 +256,7 @@
             <summary>
             获取标签分页
             </summary>
+            <param name="request"></param>
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
@@ -354,6 +387,22 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.CategoryAppService.GetSelectItemsCheckAsync(System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            获取目录下拉菜单
+            </summary>
+            <param name="checkeId"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.CategoryAppService.GetSelectItemsCheckArrayAsync(System.Int64[],System.Threading.CancellationToken)">
+            <summary>
+            获取目录下拉菜单
+            </summary>
+            <param name="checkedArray"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
         <member name="M:XUCore.Template.Razor.Applaction.Article.CategoryAppService.GetListAsync(XUCore.Template.Razor.DbService.Article.CategoryQueryCommand,System.Threading.CancellationToken)">
             <summary>
             获取目录列表
@@ -425,6 +474,22 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.TagAppService.GetSelectItemsCheckAsync(System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            获取目录下拉菜单
+            </summary>
+            <param name="checkeId"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Razor.Applaction.Article.TagAppService.GetSelectItemsCheckArrayAsync(System.Int64[],System.Threading.CancellationToken)">
+            <summary>
+            获取目录下拉菜单
+            </summary>
+            <param name="checkedArray"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
         <member name="M:XUCore.Template.Razor.Applaction.Article.TagAppService.GetListAsync(XUCore.Template.Razor.DbService.Article.TagQueryCommand,System.Threading.CancellationToken)">
             <summary>
             获取标签列表
@@ -437,6 +502,7 @@
             <summary>
             获取标签分页
             </summary>
+            <param name="request"></param>
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>

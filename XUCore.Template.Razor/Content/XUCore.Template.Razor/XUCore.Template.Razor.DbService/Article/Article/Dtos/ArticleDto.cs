@@ -38,6 +38,10 @@ namespace XUCore.Template.Razor.DbService.Article
         /// </summary>
 		public Status Status { get; set; }
         /// <summary>
+        /// 标签集合Id
+        /// </summary>
+        public IList<long> TagIds { get; set; }
+        /// <summary>
         /// 标签集合
         /// </summary>
         public IList<TagSimpleDto> Tags { get; set; }

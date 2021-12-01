@@ -54,6 +54,20 @@ namespace XUCore.Template.Razor.Applaction.Article
         /// <returns></returns>
         Task<CategoryDto> GetByIdAsync(long id, CancellationToken cancellationToken = default);
         /// <summary>
+        /// 获取目录下拉菜单
+        /// </summary>
+        /// <param name="checkeId"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        Task<IList<SelectListItem>> GetSelectItemsCheckAsync(long checkeId = 0, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// 获取目录下拉菜单
+        /// </summary>
+        /// <param name="checkedArray"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        Task<IList<SelectListItem>> GetSelectItemsCheckArrayAsync(long[] checkedArray = null, CancellationToken cancellationToken = default);
+        /// <summary>
         /// 获取目录列表
         /// </summary>
         /// <param name="request"></param>

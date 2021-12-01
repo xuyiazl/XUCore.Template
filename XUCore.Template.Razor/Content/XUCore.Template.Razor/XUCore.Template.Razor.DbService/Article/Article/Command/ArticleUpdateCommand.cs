@@ -7,7 +7,7 @@ namespace XUCore.Template.Razor.DbService.Article
     /// <summary>
     /// 文章修改命令
     /// </summary>
-    public class ArticleUpdateCommand : UpdateCommand<long>, IMapFrom<TagEntity>
+    public class ArticleUpdateCommand : UpdateCommand<long>, IMapFrom<ArticleEntity>
     {
         /// <summary>
         /// 文章目录
@@ -49,7 +49,7 @@ namespace XUCore.Template.Razor.DbService.Article
         }
 
         public void Mapping(Profile profile) =>
-            profile.CreateMap<TagUpdateCommand, TagEntity>()
+            profile.CreateMap<ArticleUpdateCommand, ArticleEntity>()
             ;
 
         public class Validator : CommandIdValidator<ArticleUpdateCommand, bool, long>

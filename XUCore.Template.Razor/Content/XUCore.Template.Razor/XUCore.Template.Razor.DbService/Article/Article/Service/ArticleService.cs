@@ -138,6 +138,7 @@ namespace XUCore.Template.Razor.DbService.Article
 
             var navIds = res.TagNavs.Select(t => t.TagId).ToList();
 
+            dto.TagIds = navIds;
             dto.Tags = await freeSql.Select<TagEntity>().Where(c => navIds.Contains(c.Id)).ToListAsync<TagSimpleDto>(cancellationToken);
 
             return dto;

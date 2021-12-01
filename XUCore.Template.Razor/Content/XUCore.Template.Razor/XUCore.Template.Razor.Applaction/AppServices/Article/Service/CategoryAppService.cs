@@ -84,6 +84,41 @@ namespace XUCore.Template.Razor.Applaction.Article
             return await CategoryService.GetByIdAsync(id, cancellationToken);
         }
         /// <summary>
+        /// 获取目录下拉菜单
+        /// </summary>
+        /// <param name="checkeId"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public async Task<IList<SelectListItem>> GetSelectItemsCheckAsync(long checkeId = 0, CancellationToken cancellationToken = default)
+        {
+            var list = await GetListAsync(new CategoryQueryCommand { Status = Status.Show }, cancellationToken);
+
+            return list.ForEach(item =>
+            {
+                if (checkeId == item.Id)
+                    return new SelectListItem { Value = item.Id.SafeString(), Text = item.Name, Selected = true };
+                else
+                    return new SelectListItem { Value = item.Id.SafeString(), Text = item.Name };
+            });
+        }
+        /// <summary>
+        /// 获取目录下拉菜单
+        /// </summary>
+        /// <param name="checkedArray"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public async Task<IList<SelectListItem>> GetSelectItemsCheckArrayAsync(long[] checkedArray = null, CancellationToken cancellationToken = default)
+        {
+            var list = await GetListAsync(new CategoryQueryCommand { Status = Status.Show }, cancellationToken);
+            return list.ForEach(item =>
+            {
+                if (checkedArray != null && checkedArray.Length > 0)
+                    return new SelectListItem { Value = item.Id.SafeString(), Text = item.Name, Selected = checkedArray.Contains(item.Id) };
+                else
+                    return new SelectListItem { Value = item.Id.SafeString(), Text = item.Name };
+            });
+        }
+        /// <summary>
         /// 获取目录列表
         /// </summary>
         /// <param name="request"></param>
