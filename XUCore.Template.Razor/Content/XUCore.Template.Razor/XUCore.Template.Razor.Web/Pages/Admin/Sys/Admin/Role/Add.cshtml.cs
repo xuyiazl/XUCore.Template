@@ -24,6 +24,7 @@ namespace XUCore.Template.Razor.Web.Pages.Admin.Sys.Admin.Role
         {
             RoleDto = new RoleDto { Status = Status.Show };
             Menus = await menuAppService.GetListAsync(new MenuQueryCommand { Status = Status.Show }, cancellationToken);
+            Menus = TreeUtils.AuthMenusTree(Menus, true);
         }
 
         public async Task<IActionResult> OnPostRoleByAddAsync(long[] MenuKeys)
