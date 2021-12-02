@@ -82,6 +82,7 @@
             <summary>
             获取文章分页
             </summary>
+            <param name="request"></param>
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
@@ -169,6 +170,7 @@
             <summary>
             获取目录分页
             </summary>
+            <param name="request"></param>
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
@@ -328,6 +330,7 @@
             <summary>
             获取文章分页
             </summary>
+            <param name="request"></param>
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
@@ -415,6 +418,7 @@
             <summary>
             获取目录分页
             </summary>
+            <param name="request"></param>
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>

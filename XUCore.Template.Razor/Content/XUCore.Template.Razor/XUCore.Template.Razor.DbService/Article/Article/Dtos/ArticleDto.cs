@@ -46,7 +46,7 @@ namespace XUCore.Template.Razor.DbService.Article
         /// </summary>
         public IList<TagSimpleDto> Tags { get; set; }
 
-        public void Mapping(Profile profile) =>
+        public override void Mapping(Profile profile) =>
             profile.CreateMap<ArticleEntity, ArticleDto>()
                 .ForMember(c => c.CategoryName, c => c.MapFrom(s => s.Category.Name))
             ;

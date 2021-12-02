@@ -77,6 +77,7 @@ namespace XUCore.Template.Razor.Applaction.Article
         /// <summary>
         /// 获取目录分页
         /// </summary>
+        /// <param name="request"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         Task<PagedModel<CategoryDto>> GetPagedListAsync(CategoryQueryPagedCommand request, CancellationToken cancellationToken = default);
