@@ -13,7 +13,7 @@ namespace XUCore.Template.Razor.DbService.Auth.Permission
 
         }
 
-        [AspectCache(HashKey = CacheKey.AuthUser, Key = "{0}", Seconds = CacheTime.Min5)]
+        [AspectCache(HashKey = CacheKey.AuthUser, Key = "{0}", Seconds = CacheTime.Min1)]
         public async Task<IList<MenuEntity>> GetAllAsync(long userId, CancellationToken cancellationToken)
         {
             var res = await freeSql

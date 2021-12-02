@@ -4,7 +4,7 @@ using XUCore.Template.Razor.DbService.Article;
 namespace XUCore.Template.Razor.Web.Pages.Admin.Articles.Tag
 {
     [Authorize]
-    //[AccessControl(AccessKey = "base-category-list")]
+    [AccessControl(AccessKey = "content-article-list")]
     public class ListModel : PageModel
     {
         private readonly ITagAppService tagAppService;

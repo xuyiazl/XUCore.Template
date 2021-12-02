@@ -4,7 +4,7 @@ using XUCore.Template.Razor.DbService.Article;
 namespace XUCore.Template.Razor.Web.Pages.Admin.Articles.Tag
 {
     [Authorize]
-    //[AccessControl(AccessKey = "base-category-add")]
+    [AccessControl(AccessKey = "content-article-add")]
     public class AddModel : PageModel
     {
         private readonly ITagAppService tagAppService;
