@@ -221,12 +221,12 @@
                                     <a href="#" id="btnPublish"><i class="fa fa-check m-r-xs"></i>批量发布</a>
                                 </li>
                                 <li asp-access asp-access-key="content-article-edit">
-                                    < href="#" id="btnSoldOut"><i class="fa fa-eye-slash m-r-xs"></i>批量下架</a>
+                                    <a href="#" id="btnSoldOut"><i class="fa fa-eye-slash m-r-xs"></i>批量下架</a>
                                 </li>
                                 <li asp-access asp-access-key="content-article-edit">
                                     <a href="#" id="btnTrash"><i class="fa fa-trash-o m-r-xs"></i>扔回收站</a>
                                 </li>
-                                <li class="divider"></li>
+                                <li asp-access asp-access-key="content-article-delete" class="divider"></li>
                                 <li asp-access asp-access-key="content-article-delete">
                                     <a href="#" id="btnDelete"><i class="fa fa-ban m-r-xs"></i>永久删除</a>
                                 </li>
@@ -276,7 +276,7 @@
             <li data-item="edit" asp-access asp-access-key="content-article-edit">
                 <a href="#"><i class="fa fa-edit m-r-xs"></i>修改数据</a>
             </li>
-            <li class="divider"></li>
+            <li asp-access asp-access-key="content-article-edit" class="divider"></li>
             <li data-item="publish" asp-access asp-access-key="content-article-edit">
                 <a href="#"><i class="fa fa-check m-r-xs"></i>发布数据</a>
             </li>
@@ -286,7 +286,7 @@
             <li data-item="trash" asp-access asp-access-key="content-article-edit">
                 <a href="#"><i class="fa fa-trash-o m-r-xs"></i>扔回收站</a>
             </li>
-            <li class="divider"></li>
+            <li asp-access asp-access-key="content-article-delete" class="divider"></li>
             <li data-item="delete" asp-access asp-access-key="content-article-delete">
                 <a href="#"><i class="fa fa-ban m-r-xs"></i>永久删除</a>
             </li>
