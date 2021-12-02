@@ -47,8 +47,8 @@
             var item = $el.data('item');
             switch (item) {
                 case 'edit':
-                        window.parent.addTab({ id: 'article-update-' + row.Id, href: '/admin/articles/update/' + row.Id, icons: 'fa fa-plus-circle m-r-xs', text: '修改文章' + row.Id });
-                     break;
+                    window.parent.addTab({ id: 'article-update-' + row.Id, href: '/admin/articles/update/' + row.Id, icons: 'fa fa-plus-circle m-r-xs', text: '修改文章' + row.Id });
+                    break;
                 case 'publish':
                     show.confirm(function () {
                         putStatus(statusModel.show, false, row.Id)
@@ -207,18 +207,29 @@
             <div class="row">
                 <div class="col-sm-8">
                     <div class="btn-group btn-group-sm" style="display:inline;">
-                        <a href="#" onclick="window.parent.addTab({ id: 'article-add', href: '/admin/articles/add', icons: 'fa fa-plus-circle m-r-xs', text: '发布文章' });" class="btn btn-default" asp-access asp-access-key="content-article-add"><i class="fa fa-plus-circle m-r-xs"></i>发布文章</a>
+                        <a href="#"
+                            onclick="window.parent.addTab({ id: 'article-add', href: '/admin/articles/add', icons: 'fa fa-plus-circle m-r-xs', text: '发布文章' });"
+                            class="btn btn-default" asp-access asp-access-key="content-article-add"><i
+                                class="fa fa-plus-circle m-r-xs"></i>发布文章</a>
                         <div class="btn-group btn-group-sm">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-edit m-r-xs"></i>数据操作
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a href="#" id="btnPublish" asp-access asp-access-key="content-article-edit"><i class="fa fa-check m-r-xs"></i>批量发布</a></li>
-                                <li><a href="#" id="btnSoldOut" asp-access asp-access-key="content-article-edit"><i class="fa fa-eye-slash m-r-xs"></i>批量下架</a></li>
-                                <li><a href="#" id="btnTrash" asp-access asp-access-key="content-article-edit"><i class="fa fa-trash-o m-r-xs"></i>扔回收站</a></li>
+                                <li asp-access asp-access-key="content-article-edit">
+                                    <a href="#" id="btnPublish"><i class="fa fa-check m-r-xs"></i>批量发布</a>
+                                </li>
+                                <li asp-access asp-access-key="content-article-edit">
+                                    < href="#" id="btnSoldOut"><i class="fa fa-eye-slash m-r-xs"></i>批量下架</a>
+                                </li>
+                                <li asp-access asp-access-key="content-article-edit">
+                                    <a href="#" id="btnTrash"><i class="fa fa-trash-o m-r-xs"></i>扔回收站</a>
+                                </li>
                                 <li class="divider"></li>
-                                <li><a href="#" id="btnDelete" asp-access asp-access-key="content-article-delete"><i class="fa fa-ban m-r-xs"></i>永久删除</a></li>
+                                <li asp-access asp-access-key="content-article-delete">
+                                    <a href="#" id="btnDelete"><i class="fa fa-ban m-r-xs"></i>永久删除</a>
+                                </li>
                             </ul>
                         </div>
                         <a href="#" class="btn btn-default btnRefresh"><i class="fa fa-refresh m-r-xs"></i>刷新</a>

@@ -33,7 +33,7 @@
                     }
                 }
             },
-            
+
             { field: 'Status', title: '状态', width: 40, sortable: true, align: 'center', formatter: statusFormatter },
             { field: 'CreatedAtUserName', title: '发布人', width: 80, sortable: true, align: 'center' },
             { field: 'CreatedAt', title: '发布日期', width: 140, sortable: true, align: 'center', formatter: formatterTime },
@@ -207,18 +207,27 @@
             <div class="row">
                 <div class="col-sm-8">
                     <div class="btn-group btn-group-sm" style="display:inline;">
-                        <a href="/admin/articles/tag/add" class="btn btn-default" asp-access asp-access-key="content-article-add"><i class="fa fa-plus-circle m-r-xs"></i>新增</a>
+                        <a href="/admin/articles/tag/add" class="btn btn-default" asp-access
+                            asp-access-key="content-article-add"><i class="fa fa-plus-circle m-r-xs"></i>新增</a>
                         <div class="btn-group btn-group-sm">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-edit m-r-xs"></i>数据操作
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a href="#" id="btnPublish" asp-access asp-access-key="content-article-edit"><i class="fa fa-check m-r-xs"></i>批量发布</a></li>
-                                <li><a href="#" id="btnSoldOut" asp-access asp-access-key="content-article-edit"><i class="fa fa-eye-slash m-r-xs"></i>批量下架</a></li>
-                                <li><a href="#" id="btnTrash" asp-access asp-access-key="content-article-edit"><i class="fa fa-trash-o m-r-xs"></i>扔回收站</a></li>
+                                <li asp-access asp-access-key="content-article-edit">
+                                    <a href="#" id="btnPublish"><i class="fa fa-check m-r-xs"></i>批量发布</a>
+                                </li>
+                                <li asp-access asp-access-key="content-article-edit">
+                                    <a href="#" id="btnSoldOut"><i class="fa fa-eye-slash m-r-xs"></i>批量下架</a>
+                                </li>
+                                <li asp-access asp-access-key="content-article-edit">
+                                    <a href="#" id="btnTrash"><i class="fa fa-trash-o m-r-xs"></i>扔回收站</a>
+                                </li>
                                 <li class="divider"></li>
-                                <li><a href="#" id="btnDelete" asp-access asp-access-key="content-article-delete"><i class="fa fa-ban m-r-xs"></i>永久删除</a></li>
+                                <li asp-access asp-access-key="content-article-delete">
+                                    <a href="#" id="btnDelete"><i class="fa fa-ban m-r-xs"></i>永久删除</a>
+                                </li>
                             </ul>
                         </div>
                         <a href="#" class="btn btn-default btnRefresh"><i class="fa fa-refresh m-r-xs"></i>刷新</a>
@@ -267,4 +276,3 @@
         <table id="table"></table>
     </div>
 </section>
-
