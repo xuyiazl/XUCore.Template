@@ -1,8 +1,10 @@
 {
   "$schema": "http://json.schemastore.org/template",
   "author": "XUCore",
-  "classifications": [ "XUCore.Template.FreeSql" ],
-  "name": "XUCore Template FreeSql",
+  "classifications": [
+    "XUCore.Template.FreeSql"
+  ],
+  "name": "FreeSql Api 项目模板",
   "identity": "XUCore.Template.FreeSql",
   "groupIdentity": "XUCore.Template.FreeSql",
   "shortName": "XUCore.Template.FreeSql",
