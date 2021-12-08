@@ -43,13 +43,7 @@
     @await Component.InvokeAsync("_LayoutAdminHeader")
     <section>
         <section class="hbox stretch">
-            <!-- .aside -->
-            <aside class="bg-black dk aside hidden-print" id="nav">
-                <section class="vbox">
-                    @await Component.InvokeAsync("_LayoutAdminNav")
-                </section>
-            </aside>
-            <!-- /.aside -->
+            @await Component.InvokeAsync("_LayoutAdminNav")
             <section id="content">
                 <section class="vbox">
                     <section class="">
