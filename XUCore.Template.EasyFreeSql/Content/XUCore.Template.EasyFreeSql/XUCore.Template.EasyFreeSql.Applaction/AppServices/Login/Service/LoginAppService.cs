@@ -80,7 +80,7 @@ namespace XUCore.Template.EasyFreeSql.Applaction.Login
 
             await unitOfWork.Orm.Insert(new UserLoginRecordEntity
             {
-                UserId = user.GetId<long>(),
+                UserId = userEntity.Id,
                 LoginIp = userEntity.LoginLastIp,
                 LoginWay = loginWay
             }).ExecuteAffrowsAsync(cancellationToken);

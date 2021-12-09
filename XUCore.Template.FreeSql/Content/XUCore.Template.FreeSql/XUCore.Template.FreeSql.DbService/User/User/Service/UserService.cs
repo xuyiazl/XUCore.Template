@@ -163,7 +163,7 @@ namespace XUCore.Template.FreeSql.DbService.User.User
             await freeSql
                 .Insert(new UserLoginRecordEntity
                 {
-                    UserId = User.GetId<long>(),
+                    UserId = user.Id,
                     LoginIp = user.LoginLastIp,
                     LoginWay = loginWay
                 })
