@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="zh-cn" class="app">
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -56,6 +57,7 @@
     <script src="~/lib/jquery.core.js"></script>
     @RenderSection("Styles", required: false)
 </head>
+
 <body class="@ViewData["BodyClass"]">
     <section class="vbox">
         <section>
@@ -63,6 +65,7 @@
                 <section id="content">
                     <section class="vbox">
                         <section class="scrollable padder">
+                            @Html.AntiForgeryToken()
                             @RenderBody()
                         </section>
                     </section>
@@ -72,4 +75,5 @@
     </section>
     @RenderSection("Scripts", required: false)
 </body>
+
 </html>
