@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn" class="app">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/jPlayer/jplayer.flat.css" type="text/css" />
+    <link rel="stylesheet" href="~/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="~/css/animate.css" type="text/css" />
+    <link rel="stylesheet" href="~/css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="~/css/simple-line-icons.css" type="text/css" />
+    <link rel="stylesheet" href="~/css/font.css" type="text/css" />
+    <link rel="stylesheet" href="~/css/app.css" type="text/css" />
+    <link rel="stylesheet" href="~/lib/flavr/css/flavr.css" type="text/css" />
+    <link rel="stylesheet" href="~/lib/chosen/chosen.css" type="text/css" />
+    <!--[if lt IE 9]>
+      <script src="~/lib/ie/html5shiv.js"></script>
+      <script src="~/lib/ie/respond.min.js"></script>
+      <script src="~/lib/ie/excanvas.js"></script>
+    <![endif]-->
+    <script src="~/lib/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/lib/bootstrap.js"></script>
+    <script src="~/lib/icheck/icheck.min.js"></script>
+    <script src="~/lib/datepicker/bootstrap-datepicker.js"></script>
+    <script src="~/lib/chosen/chosen.jquery.min.js"></script>
+    <script src="~/lib/slider/bootstrap-slider.js"></script>
+    <script src="~/lib/sortable/jquery.sortable.js"></script>
+    <script src="~/lib/flavr/js/flavr.min.js"></script>
+    <!-- parsley -->
+    <link rel="stylesheet" href="~/lib/parsley/parsley.css" type="text/css" />
+    <script src="~/lib/parsley/parsley.min.js"></script>
+    <script src="~/lib/parsley/i18n/zh_cn.js"></script>
+    <!-- bootstrap-table -->
+    <link href="~/lib/datatable/bootstrap-table.css" rel="stylesheet" />
+    <script src="~/lib/datatable/bootstrap-table.min.js"></script>
+    <script src="~/lib/datatable/extensions/mobile/bootstrap-table-mobile.min.js"></script>
+    <script src="~/lib/datatable/extensions/contextmenu/bootstrap-table-contextmenu.min.js"></script>
+    <link href="~/lib/datatable/extensions/editable/css/bootstrap-editable.css" rel="stylesheet" />
+    <script src="~/lib/datatable/extensions/editable/bootstrap-editable.min.js"></script>
+    <script src="~/lib/datatable/extensions/editable/bootstrap-table-editable.js"></script>
+    <script src="~/lib/datatable/locale/bootstrap-table-zh-CN.min.js"></script>
+    <!--html5 upload-->
+    <script src="~/lib/jquery.html5uploadify.js"></script>
+    <!--图片裁剪上传-->
+    <link href="~/lib/cropper/cropper.min.css" rel="stylesheet" />
+    <script src="~/lib/cropper/cropper.min.js"></script>
+    <!-- App -->
+    <script src="~/lib/app.js"></script>
+    <script src="~/lib/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="~/lib/app.plugin.js"></script>
+    <!-- Core -->
+    <script src="~/lib/jquery.core.js"></script>
+    @RenderSection("Styles", required: false)
+</head>
+
+<body class="@ViewData["BodyClass"]">
+    <section class="vbox">
+        @await Component.InvokeAsync("_LayoutAdminHeader")
+        <section>
+            <section class="hbox stretch">
+                @await Component.InvokeAsync("_LayoutAdminNav")
+                <section id="content">
+                    <section class="vbox">
+                        <section class="scrollable padder">
+                            @Html.AntiForgeryToken()
+                            @RenderBody()
+                        </section>
+                    </section>
+                </section>
+            </section>
+        </section>
+    </section>
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>

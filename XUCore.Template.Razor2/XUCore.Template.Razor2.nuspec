@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+	<metadata>
+		<id>XUCore.Template.Razor2</id>
+		<version>6.0.0</version>
+		<description>Razor WebSite</description>
+		<authors>XUCore</authors>
+		<copyright>Copyright © XUCore 2020</copyright>
+		<projectUrl>https://github.com/xuyiazl/XUCore.Template</projectUrl>
+		<iconUrl>http://www.3624091.com/favicon.ico</iconUrl>
+		<packageTypes>
+			<packageType name="Template" />
+		</packageTypes>
+	</metadata>
+</package>

@@ -1,0 +1,86 @@
+﻿@page "{id}"
+@model XUCore.Template.Razor2.Web.Pages.Admin.Articles.Tag.UpdateModel
+
+@{
+    ViewData["Title"] = "修改标签";
+    ViewData["OnlyCode"] = "";
+    ViewData["SubOnlyCode"] = "";
+    Layout = "~/Pages/Admin/Shared/_LayoutAdminEmpty.cshtml";
+}
+@section Scripts{
+<script type="text/javascript">
+    $(function () {
+        $('#data-form').parsleyForm({
+            submit: function (formData) {
+                var id = @Model.TagDto.Id;
+                formData['TagDto.Id'] = id;
+                $.ajax({
+                    url: '?handler=UpdateRow',
+                    type: "PUT",
+                    data: formData,
+                    success: function (result) {
+                        if (result.Code == 0) {
+                            window.location = "/admin/articles/tag/list";
+                        } else {
+                            show.error('操作提示', result.Message);
+                        }
+                    }
+                });
+            }
+        });
+    });
+</script>
+}
+
+<ul class="breadcrumb m-t">
+    <li><a href="/admin/articles/tag/list"><i class="fa fa-list-ul"></i> 标签列表</a></li>
+    <li class="active">修改标签</li>
+</ul>
+<form id="data-form" class="form-horizontal m-t text-sm" data-parsley-validate="true">
+    <section class="panel panel-default">
+        <header class="panel-heading">
+            <strong>修改标签</strong>
+        </header>
+        <div class="panel-body">
+            <div class="form-group m-b-none">
+                @Html.LabelFor(c => c.TagDto.Name, "标签名称", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(c => c.TagDto.Name, null, new { @class = "form-control input-sm", @data_parsley_maxlength = "30", @data_parsley_trigger = "change", @data_parsley_required = "true", @placeholder = "请输入标签名称" })
+                    <div class="error"></div>
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-sm pull-in"></div>
+            <div class="form-group m-b-none">
+                @Html.LabelFor(c => c.TagDto.Weight, "数据权重", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(c => c.TagDto.Weight, null, new { @type = "number", @class = "form-control input-sm", @data_parsley_min = "0", @data_parsley_max = "1000", @placeholder = "数字越大越靠前" })
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-sm pull-in"></div>
+            <div class="form-group m-b-none">
+                @Html.LabelFor(c => c.TagDto.Status, "数据状态", new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-3">
+                    @foreach (var item in XUCore.Helpers.Enum.GetDictionary<Status>(0))
+                    {
+                        <div class="radio i-checks inline">
+                            <label>
+                                @Html.RadioButtonFor(c => c.TagDto.Status, (Status)item.Key);
+                                <i></i>
+                                @item.Value
+                            </label>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-sm pull-in"></div>
+            <div class="form-group m-b-none">
+                <label class="col-sm-2 control-label"></label>
+                <div class="col-sm-3">
+                    <a href="/admin/articles/tag/list" class="btn btn-default">返回列表</a>
+                    <button type="submit" class="btn btn-primary m-l">保存数据</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>
+

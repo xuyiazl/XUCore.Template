@@ -1,0 +1,301 @@
+﻿@page
+@model XUCore.Template.Razor2.Web.Pages.Admin.Sys.Admin.Menu.ListModel
+
+@{
+    ViewData["Title"] = "菜单管理";
+    ViewData["OnlyCode"] = "sys";
+    ViewData["SubOnlyCode"] = "sys-menus";
+    Layout = "~/Pages/Admin/Shared/_LayoutAdminDetail.cshtml";
+}
+@section Scripts{
+<script type="text/javascript">
+
+    $(function () {
+        "use strict";
+
+        var $table = $('#table');
+
+        var isMenuFormatter = function (value, row) {
+            if (value) {
+                return '<i class="fa fa-check text-success"></i>';
+            }
+        }
+        var columns = [
+            { field: 'state', checkbox: true, align: 'center', valign: 'middle' },
+            { field: 'operate', title: '操作', align: 'center', width: 40, formatter: operateFormatter },
+            { field: 'Name', title: '导航名称', sortable: false, align: 'left' },
+            {
+                field: 'Icon', title: '导航图标', sortable: false, align: 'left',
+                editable: {
+                    type: 'text', title: '导航图标'
+                }
+            },
+            {
+                field: 'Url', title: '导航地址', sortable: false, align: 'left',
+                editable: {
+                    type: 'text', title: '导航地址', validate: function (value) {
+                        value = $.trim(value);
+                        if (!value) return '必填项';
+                        return '';
+                    }
+                }
+            },
+            {
+                field: 'OnlyCode', title: '唯一权限代码', sortable: false, align: 'left',
+                editable: {
+                    type: 'text', title: '唯一权限代码', validate: function (value) {
+                        value = $.trim(value);
+                        if (!value) return '必填项';
+                        return '';
+                    }
+                }
+            },
+            { field: 'IsMenu', title: '导航', sortable: false, align: 'center', formatter: isMenuFormatter },
+            { field: 'IsExpress', title: '快速', sortable: false, align: 'center', formatter: isMenuFormatter },
+            {
+                field: 'Weight', title: '权重', sortable: false, align: 'center', width: 40,
+                editable: {
+                    type: 'text', title: '权重', placement: 'left', validate: function (value) {
+                        value = $.trim(value);
+                        if (value) {
+                            if (!/^([1-9]\d*|[0]{1,1})$/.test(value))
+                                return '只能输入整数!';
+                        }
+                    }
+                }
+            },
+            { field: 'Status', title: '状态', width: 40, sortable: false, align: 'center', formatter: statusFormatter },
+            { field: 'CreatedAtUserName', title: '发布人', sortable: false, align: 'center' },
+            { field: 'CreatedAt', title: '发布日期', width: 140, sortable: false, align: 'center', formatter: formatterTime },
+            { field: 'ModifiedAtUserName', title: '修改人', sortable: false, align: 'center' },
+            { field: 'ModifiedAt', title: '修改日期', width: 140, sortable: false, align: 'center', formatter: formatterTime },
+        ];
+        var contextMenuItem = function (row, $el) {
+            var item = $el.data('item');
+            switch (item) {
+                case 'edit':
+                    window.location = '/admin/sys/admin/menu/update/' + row.Id;
+                    break;
+                case 'publish':
+                    show.confirm(function () {
+                        putStatus(statusModel.show, false, row.Id)
+                    });
+                    break;
+                case 'trash':
+                    show.confirm(function () {
+                        putStatus(statusModel.trash, false, row.Id)
+                    });
+                    break;
+                case 'soldout':
+                    show.confirm(function () {
+                        putStatus(statusModel.soldout, false, row.Id)
+                    });
+                    break;
+                case 'delete':
+                    show.confirm(function () {
+                        deleteRecords(false, row.Id)
+                    });
+                    break;
+            }
+        };
+        var editableSave = function (field, row, oldValue, $el) {
+            var update = function (field, value) {
+                $.ajax({
+                    url: '?handler=UpdateField',
+                    type: "PUT",
+                    data: { id: row.Id, field: field, value: value },
+                    success: function (result) {
+                        if (result.Code == 0) {
+                            $table.bootstrapTable('refresh', { silent: true });
+                        } else {
+                            show.error('操作提示', result.Message);
+                        }
+                    }
+                });
+            }
+            switch (field) {
+                case 'Icon': update('Icon', row.Icon); break;
+                case 'Url': update('Url', row.Url); break;
+                case 'OnlyCode': update('OnlyCode', row.OnlyCode); break;
+                case 'Weight': update('Weight', row.Weight); break;
+            }
+        };
+
+        createTable($table, {
+            url: '?handler=MenuByList',
+            pagination: false,
+            columns: columns,
+            queryParams: function (params) {
+                params.status = $('input[type=radio][name=Status]:checked').val();
+                return params;
+            },
+            onContextMenuItem: contextMenuItem,
+            onEditableSave: editableSave
+        });
+
+
+        $('.btnRefresh').click(function () {
+            $table.bootstrapTable('refresh', { silent: true });
+            return false;
+        });
+        $('#statusContainer li').on('click.bs.dropdown', function () {
+            window.setTimeout(function () {
+                $table.bootstrapTable('refresh', { silent: true });
+            }, 50)
+        })
+
+        var putStatus = function (status, batch, id) {
+            var ids;
+            if (batch) {
+                ids = getSelections($table);
+                if (ids.length == 0) {
+                    show.error('错误提示', '请选择要操作的数据');
+                    return false;
+                }
+            } else {
+                ids = [id]
+            }
+            $.ajax({
+                url: '?handler=BatchStatus',
+                type: "PUT",
+                data: { ids: ids, status: status },
+                success: function (result) {
+                    if (result.Code == 0) {
+                        $table.bootstrapTable('refresh', { silent: true });
+                    } else {
+                        show.error('操作提示', result.Message);
+                    }
+                }
+            });
+        }
+        var deleteRecords = function (batch, id) {
+            var ids;
+            if (batch) {
+                ids = getSelections($table);
+                if (ids.length == 0) {
+                    show.error('错误提示', '请选择要永久删除的数据');
+                    return false;
+                }
+            } else {
+                ids = [id]
+            }
+            $.ajax({
+                url: '?handler=BatchDelete',
+                type: "DELETE",
+                data: { ids: ids },
+                success: function (result) {
+                    if (result.Code == 0) {
+                        $table.bootstrapTable('refresh', { silent: true });
+                    } else {
+                        show.error('操作提示', result.Message);
+                    }
+                }
+            });
+        }
+        $('#btnPublish').click(function () {
+            show.confirm(function () {
+                putStatus(statusModel.show, true)
+            });
+            return false;
+        });
+        $('#btnTrash').click(function () {
+            show.confirm(function () {
+                putStatus(statusModel.trash, true)
+            });
+            return false;
+        });
+        $('#btnSoldOut').click(function () {
+            show.confirm(function () {
+                putStatus(statusModel.soldout, true)
+            });
+            return false;
+        });
+
+        $('#btnDelete').click(function () {
+            show.confirm(function () {
+                deleteRecords(true)
+            });
+            return false;
+        });
+    });
+</script>
+}
+
+<ul class="breadcrumb m-t">
+    <li><a href="/admin"><i class="fa fa-home"></i> 首页</a></li>
+    <li class="active"><i class="fa fa-list-ul"></i> 菜单列表</li>
+</ul>
+<section class="panel panel-default padder m-t padder-v text-sm" style="padding-top:0;">
+    <div class="table-responsive">
+        <div id="custom-toolbar">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="btn-group btn-group-sm">
+                        <a href="/admin/sys/admin/menu/add" class="btn btn-default" asp-access
+                            asp-access-key="sys-menus-add"><i class="fa fa-plus-circle m-r-xs"></i>新增</a>
+                        <div class="btn-group btn-group-sm">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-edit m-r-xs"></i>数据操作
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li asp-access asp-access-key="sys-menus-edit">
+                                    <a href="#" id="btnPublish"><i class="fa fa-check m-r-xs"></i>批量发布</a>
+                                </li>
+                                <li asp-access asp-access-key="sys-menus-edit">
+                                    <a href="#" id="btnSoldOut"><i class="fa fa-eye-slash m-r-xs"></i>批量下架</a>
+                                </li>
+                                <li asp-access asp-access-key="sys-menus-edit">
+                                    <a href="#" id="btnTrash"><i class="fa fa-trash-o m-r-xs"></i>扔回收站</a>
+                                </li>
+                                <li asp-access asp-access-key="sys-menus-delete" class="divider"></li>
+                                <li asp-access asp-access-key="sys-menus-delete">
+                                    <a href="#" id="btnDelete"><i class="fa fa-ban m-r-xs"></i>永久删除</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="input-group input-group-sm" style="width: 350px; padding-left: 10px;">
+                            <div class="input-group-btn m-r" id="statusContainer">
+                                <button data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle">
+                                    <span class="dropdown-label">全部数据</span>
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-select">
+                                    @foreach (var item in XUCore.Helpers.Enum.GetDictionary<Status>())
+                                    {
+                                        <li>
+                                            @Html.RadioButton("Status", item.Key)
+                                            <a href="#">@item.Value</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                            <a href="#" class="btn btn-default btn-sm btnRefresh"><i
+                                    class="fa fa-refresh m-r-xs"></i>刷新</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul id="context-menu" class="dropdown-menu text-sm">
+            <li data-item="edit" asp-access asp-access-key="sys-menus-edit">
+                <a href="#"><i class="fa fa-edit m-r-xs"></i>修改数据</a>
+            </li>
+            <li asp-access asp-access-key="sys-menus-edit" class="divider"></li>
+            <li data-item="publish" asp-access asp-access-key="sys-menus-edit">
+                <a href="#"><i class="fa fa-check m-r-xs"></i>发布数据</a>
+            </li>
+            <li data-item="soldout" asp-access asp-access-key="sys-menus-edit">
+                <a href="#"><i class="fa fa-eye-slash m-r-xs"></i>下架数据</a>
+            </li>
+            <li data-item="trash" asp-access asp-access-key="sys-menus-edit">
+                <a href="#"><i class="fa fa-trash-o m-r-xs"></i>扔回收站</a>
+            </li>
+            <li asp-access asp-access-key="sys-menus-delete" class="divider"></li>
+            <li data-item="delete" asp-access asp-access-key="sys-menus-delete">
+                <a href="#"><i class="fa fa-ban m-r-xs"></i>永久删除</a>
+            </li>
+        </ul>
+        <table id="table"></table>
+    </div>
+</section>

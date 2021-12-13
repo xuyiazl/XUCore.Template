@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "XUCore",
+  "classifications": [
+    "XUCore.Template.Razor2"
+  ],
+  "name": "Razor Pages 项目模板 2",
+  "identity": "XUCore.Template.Razor2",
+  "groupIdentity": "XUCore.Template.Razor2",
+  "shortName": "XUCore.Template.Razor2",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "XUCore.Template.Razor2",
+  "preferNameDirectory": true
+}

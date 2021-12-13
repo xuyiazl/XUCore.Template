@@ -1,0 +1,127 @@
+﻿@page
+@model XUCore.Template.Razor2.Web.Pages.Admin.IndexModel
+@{
+    ViewData["Title"] = "后台首页";
+    Layout = "~/Pages/Admin/Shared/_LayoutAdminDetail.cshtml";
+}
+@section Scripts{
+<script src="~/lib/charts/easypiechart/jquery.easy-pie-chart.js"></script>
+<script type="text/javascript">
+    $(function () {
+        "use strict";
+
+        var $table = $('#table');
+
+        var columns = [
+            {
+                field: 'Title', title: '标题', sortable: false, align: 'left', formatter: function (val, row) {
+                    var html = '';
+                    html += "<a href='/admin/sys/admin/notices/detail/" + row.Id + "' target='_blank'><span class=\"" + row.LevelCss + "\">【" + row.LevelName + "】</span>" + row.Title + "</a>";
+                    html += '<span class="text-xs m-l">by ' + row.CreatedAtUserName + ' ' + getDateDiff(row.CreatedAt) + '</span>';
+                    return html;
+                }
+            }
+        ];
+        createTable($table, {
+            showHeader: false,
+            url: '?handler=IndexNoticeList',
+            columns: columns,
+            queryParams: function (params) {
+                return params;
+            }
+        });
+    });
+</script>
+}
+<section class="hbox stretch  text-sm">
+    <aside class="aside-lg bg-light lter b-r">
+        <section class="vbox">
+            <section class="scrollable">
+                <div class="wrapper">
+                    <div class="clearfix text-center m-b m-t">
+                        <div class="inline">
+                            <div class="easypiechart easyPieChart" data-percent="75" data-line-width="5"
+                                data-bar-color="#4cc0c1" data-track-color="#f5f5f5" data-scale-color="false"
+                                data-size="134" data-line-cap="butt" data-animate="1000"
+                                style="width: 134px; height: 134px; line-height: 134px;">
+                                <div class="thumb-lg">
+                                    <img src="@Utils.Face(GlobalStatic.RootUrl,Model.UserDto.Picture, 1)"
+                                        class="img-circle" alt="...">
+                                </div>
+                                <canvas width="268" height="268" style="width: 134px; height: 134px;"></canvas>
+                            </div>
+                            <div>
+                                <div class="h3 m-t-xs m-b-xs">@Model.UserDto.Name</div>
+                                <small class="text-muted">@Model.UserDto.Position</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel wrapper">
+                        <div class="row text-center">
+                            <div class="col-xs-6">
+                                <a href="#">
+                                    <span class="m-b-xs h4 block">@Model.UserDto.LoginCount</span>
+                                    <small class="text-muted">登录次数</small>
+                                </a>
+                            </div>
+                            <div class="col-xs-6">
+                                <a href="#">
+                                    <span
+                                        class="m-b-xs h4 block">@DateTimeHelper.DateStringFromNow(Model.UserDto.LoginLastTime,
+                                        false, "${time}前")</span>
+                                    <small class="text-muted">最后登录时间</small>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="list-group no-radius">
+                        <li class="list-group-item">
+                            <span class="pull-right">@Model.UserDto.UserName</span>
+                            登录账号
+                        </li>
+                        <li class="list-group-item">
+                            <span class="pull-right">@Model.UserDto.Mobile</span>
+                            手机号码
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+    </aside>
+    <aside class="bg-white">
+        <section class="vbox">
+            <header class="header bg-light lt">
+                <ul class="nav nav-tabs nav-white">
+                    <li class="active"><a href="#notices" data-toggle="tab">公告栏</a></li>
+                    <li><a href="#loginrecords" data-toggle="tab">登录记录</a></li>
+                </ul>
+            </header>
+            <section class="scrollable">
+                <div class="tab-content">
+                    <div class="tab-pane active padder padder-v" id="notices">
+                        <table id="table"></table>
+                    </div>
+                    <div class="tab-pane" id="loginrecords">
+                        <ul class="list-group no-radius m-b-none m-t-n-xxs list-group-lg no-border">
+                            @foreach (var item in Model.UserLoginRecords)
+                            {
+                                <li class="list-group-item">
+                                    <a href="#" class="thumb-sm pull-left m-r-sm">
+                                        <img src="@Utils.Face(GlobalStatic.RootUrl,item.Picture, 1)" class="img-circle">
+                                    </a>
+                                    <a href="#" class="clear">
+                                        <small class="pull-right">
+                                            @DateTimeHelper.DateStringFromNow(item.LoginTime, false, "${time}前")
+                                        </small>
+                                        <strong class="block">@item.Name</strong>
+                                        <small>使用 @item.LoginWay 的方式登录 - @item.LoginIp </small>
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </aside>
+</section>

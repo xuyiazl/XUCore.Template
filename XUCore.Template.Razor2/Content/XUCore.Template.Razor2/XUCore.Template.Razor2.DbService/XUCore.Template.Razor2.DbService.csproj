@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<DocumentationFile>XUCore.Template.Razor2.DbService.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Using Include="AutoMapper" />
+		<Using Include="Microsoft.EntityFrameworkCore" />
+		<Using Include="FluentValidation" />
+		<Using Include="MediatR" />
+		<Using Include="System.ComponentModel.DataAnnotations" />
+		
+		<Using Include="XUCore" />
+		<Using Include="XUCore.Extensions" />
+		<Using Include="XUCore.Helpers" />
+		<Using Include="XUCore.Paging" />
+		<Using Include="XUCore.NetCore" />
+		<Using Include="XUCore.NetCore.FreeSql" />
+		<Using Include="XUCore.NetCore.FreeSql.Curd" />
+		<Using Include="XUCore.NetCore.AspectCore.Cache" />
+		<Using Include="XUCore.Ddd.Domain" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<ProjectReference Include="..\XUCore.Template.Razor2.Core\XUCore.Template.Razor2.Core.csproj" />
+		<ProjectReference Include="..\XUCore.Template.Razor2.Persistence\XUCore.Template.Razor2.Persistence.csproj" />
+	</ItemGroup>
+
+</Project>
