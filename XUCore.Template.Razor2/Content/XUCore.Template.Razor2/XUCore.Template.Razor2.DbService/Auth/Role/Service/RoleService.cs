@@ -124,6 +124,15 @@ namespace XUCore.Template.Razor2.DbService.Auth.Role
             return res;
         }
 
+        /// <summary>
+        /// 检查名字是否重复
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public async Task<bool> AnyAsync(string name, CancellationToken cancellationToken)
+            => await repo.Select.AnyAsync(c => c.Name == name, cancellationToken);
+
         public override async Task<IList<RoleDto>> GetListAsync(RoleQueryCommand request, CancellationToken cancellationToken)
         {
             var select = repo.Select

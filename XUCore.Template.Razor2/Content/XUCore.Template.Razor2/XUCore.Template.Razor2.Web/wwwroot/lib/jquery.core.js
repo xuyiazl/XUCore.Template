@@ -623,6 +623,37 @@ var show = {
 }
 
 var createTable = function ($table, opts) {
+    if (opts.defaultColumn && opts.defaultColumn.operate) {
+        opts.columns.unshift({ field: 'operate', title: '操作', align: 'center', width: 40, formatter: operateFormatter });
+    }
+    if (opts.defaultColumn && opts.defaultColumn.check) {
+        opts.columns.unshift({ field: 'state', checkbox: true, align: 'center', valign: 'middle' });
+    }
+    if (opts.defaultColumn && opts.defaultColumn.weight) {
+        opts.columns.push({
+            field: 'Weight', title: '权重', sortable: true, align: 'center', width: 40,
+            editable: {
+                type: 'text', title: '权重', placement: 'left', validate: function (value) {
+                    value = $.trim(value);
+                    if (value) {
+                        if (!/^([1-9]\d*|[0]{1,1})$/.test(value))
+                            return '只能输入整数!';
+                    }
+                }
+            }
+        });
+    }
+    if (opts.defaultColumn && opts.defaultColumn.status) {
+        opts.columns.push({ field: 'Status', title: '状态', width: 40, sortable: true, align: 'center', formatter: statusFormatter });
+    }
+    if (opts.defaultColumn && opts.defaultColumn.create) {
+        opts.columns.push({ field: 'CreatedAtUserName', title: '发布人', width: 140, sortable: true, align: 'center' });
+        opts.columns.push({ field: 'CreatedAt', title: '发布日期', width: 140, sortable: true, align: 'center', formatter: formatterTime });
+    }
+    if (opts.defaultcolumn && opts.defaultColumn.update) {
+        opts.columns.push({ field: 'ModifiedAtUserName', title: '修改人', sortable: true, align: 'center' });
+        opts.columns.push({ field: 'ModifiedAt', title: '修改日期', width: 140, sortable: true, align: 'center', formatter: formatterTime });
+    }
     opts = $.extend({
         classes: 'table table-striped b-t b-light',
         clickToSelect: false,
@@ -664,6 +695,37 @@ var createTable = function ($table, opts) {
     return $table.bootstrapTable(opts);
 }
 var createSimpleTable = function ($table, opts) {
+    if (opts.defaultColumn && opts.defaultColumn.operate) {
+        opts.columns.unshift({ field: 'operate', title: '操作', align: 'center', width: 40, formatter: operateFormatter });
+    }
+    if (opts.defaultColumn && opts.defaultColumn.check) {
+        opts.columns.unshift({ field: 'state', checkbox: true, align: 'center', valign: 'middle' });
+    }
+    if (opts.defaultColumn && opts.defaultColumn.weight) {
+        opts.columns.push({
+            field: 'Weight', title: '权重', sortable: true, align: 'center', width: 40,
+            editable: {
+                type: 'text', title: '权重', placement: 'left', validate: function (value) {
+                    value = $.trim(value);
+                    if (value) {
+                        if (!/^([1-9]\d*|[0]{1,1})$/.test(value))
+                            return '只能输入整数!';
+                    }
+                }
+            }
+        });
+    }
+    if (opts.defaultColumn && opts.defaultColumn.status) {
+        opts.columns.push({ field: 'Status', title: '状态', width: 40, sortable: true, align: 'center', formatter: statusFormatter });
+    }
+    if (opts.defaultColumn && opts.defaultColumn.create) {
+        opts.columns.push({ field: 'CreatedAtUserName', title: '发布人', width: 140, sortable: true, align: 'center' });
+        opts.columns.push({ field: 'CreatedAt', title: '发布日期', width: 140, sortable: true, align: 'center', formatter: formatterTime });
+    }
+    if (opts.defaultcolumn && opts.defaultColumn.update) {
+        opts.columns.push({ field: 'ModifiedAtUserName', title: '修改人', sortable: true, align: 'center' });
+        opts.columns.push({ field: 'ModifiedAt', title: '修改日期', width: 140, sortable: true, align: 'center', formatter: formatterTime });
+    }
     opts = $.extend({
         classes: 'table table-striped b-t b-light',
         clickToSelect: true,

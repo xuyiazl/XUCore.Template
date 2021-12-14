@@ -13,32 +13,7 @@
         var $table = $('#table');
 
         var columns = [
-            { field: 'state', checkbox: true, align: 'center', valign: 'middle' },
-            { field: 'operate', title: '操作', align: 'center', width: 40, formatter: operateFormatter },
-            {
-                field: 'Name', title: '标签名称', width: 150, sortable: false, align: 'center',
-                editable: {
-                    type: 'text', title: '标签名称'
-                }
-            },
-            {
-                field: 'Weight', title: '权重', sortable: true, align: 'center', width: 40,
-                editable: {
-                    type: 'text', title: '权重', placement: 'left', validate: function (value) {
-                        value = $.trim(value);
-                        if (value) {
-                            if (!/^([1-9]\d*|[0]{1,1})$/.test(value))
-                                return '只能输入整数!';
-                        }
-                    }
-                }
-            },
-
-            { field: 'Status', title: '状态', width: 40, sortable: true, align: 'center', formatter: statusFormatter },
-            { field: 'CreatedAtUserName', title: '发布人', width: 80, sortable: true, align: 'center' },
-            { field: 'CreatedAt', title: '发布日期', width: 140, sortable: true, align: 'center', formatter: formatterTime },
-            { field: 'ModifiedAtUserName', title: '修改人', width: 80, sortable: true, align: 'center' },
-            { field: 'ModifiedAt', title: '修改日期', width: 140, sortable: true, align: 'center', formatter: formatterTime },
+            { field: 'Name', title: '标签名称', sortable: false, align: 'center' }
         ];
         var contextMenuItem = function (row, $el) {
             var item = $el.data('item');
@@ -92,6 +67,16 @@
         createTable($table, {
             url: '?handler=PageList',
             columns: columns,
+            defaultColumn: {
+                check: true,
+                operate: true,
+                weight: true,
+                status: true,
+                create: true,
+                update: false
+            },
+            pageSize: 10,
+            pageList: [],
             queryParams: function (params) {
                 params.status = $('input[type=radio][name=Status]:checked').val();
                 params.field = $('input[type=radio][name=field]:checked').val();
@@ -231,7 +216,7 @@
                         </div>
                         <a href="#" class="btn btn-default btnRefresh"><i class="fa fa-refresh m-r-xs"></i>刷新</a>
                     </div>
-                    <div class="input-group input-group-sm" style="width: 350px; padding-left: 10px;">
+                    <div class="input-group input-group-sm" style="padding-left: 10px;">
                         <div class="input-group-btn" id="statusContainer">
                             <button data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle">
                                 <span class="dropdown-label">全部数据</span>

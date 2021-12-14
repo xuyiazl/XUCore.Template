@@ -38,7 +38,14 @@ namespace XUCore.Template.Razor2.DbService.Auth.Role
         {
             public Validator()
             {
-                RuleFor(x => x.Name).NotEmpty().MaximumLength(20).WithName("角色名");
+                RuleFor(x => x.Name).NotEmpty().MaximumLength(20).WithName("角色名")
+                    .MustAsync(async (name, cancel) =>
+                    {
+                        var res = await Web.GetRequiredService<IRoleService>().AnyAsync(name, cancel);
+
+                        return !res;
+                    })
+                    .WithMessage(c => $"该角色名已存在。");
                 RuleFor(x => x.Status).IsInEnum().NotEqual(Status.Default).WithName("数据状态");
             }
         }

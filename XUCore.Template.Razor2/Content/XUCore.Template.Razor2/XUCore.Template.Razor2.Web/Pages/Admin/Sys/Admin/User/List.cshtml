@@ -16,8 +16,6 @@
         var $table = $('#table');
 
         var columns = [
-            { field: 'state', checkbox: true, align: 'center', valign: 'middle' },
-            { field: 'operate', title: '操作', align: 'center', width: 40, formatter: operateFormatter },
             {
                 field: 'Name', title: '姓名', sortable: true, align: 'center',
                 editable: {
@@ -73,14 +71,6 @@
             , { field: 'LoginCount', title: '登录', sortable: false, width: 40, align: 'center' }
             , { field: 'LoginLastTime', title: '登录时间', sortable: true, width: 140, align: 'center', formatter: formatterTime }
             , { field: 'LoginLastIp', title: '登录IP', sortable: false, width: 140, align: 'center' }
-            ,
-            { field: 'Status', title: '状态', width: 40, sortable: true, align: 'center', formatter: statusFormatter },
-            { field: 'CreatedAtUserName', title: '发布人', sortable: true, align: 'center' },
-            { field: 'CreatedAt', title: '发布日期', width: 140, sortable: true, align: 'center', formatter: formatterTime },
-            /*
-            { field: 'ModifiedAtUserName', title: '修改人', sortable: true, align: 'center' },
-            { field: 'ModifiedAt', title: '修改日期', width: 140, sortable: true, align: 'center', formatter: formatterTime },
-            */
         ];
         var contextMenuItem = function (row, $el) {
             var item = $el.data('item');
@@ -153,6 +143,14 @@
         createTable($table, {
             url: '?handler=PageList',
             columns: columns,
+            defaultColumn: {
+                check: true,
+                operate: true,
+                weight: false,
+                status: true,
+                create: true,
+                update: false
+            },
             queryParams: function (params) {
                 params.status = $('input[type=radio][name=Status]:checked').val();
                 params.field = $('input[type=radio][name=field]:checked').val();

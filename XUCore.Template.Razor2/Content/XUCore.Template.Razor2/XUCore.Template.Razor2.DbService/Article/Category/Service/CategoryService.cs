@@ -11,6 +11,7 @@ namespace XUCore.Template.Razor2.DbService.Article
         {
 
         }
+
         /// <summary>
         /// 更新部分字段
         /// </summary>
@@ -53,6 +54,14 @@ namespace XUCore.Template.Razor2.DbService.Article
 
             return await repo.UpdateAsync(list, cancellationToken);
         }
+        /// <summary>
+        /// 检查名字是否重复
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public async Task<bool> AnyAsync(string name, CancellationToken cancellationToken)
+            => await repo.Select.AnyAsync(c => c.Name == name, cancellationToken);
 
         public override async Task<CategoryDto> GetByIdAsync(long id, CancellationToken cancellationToken)
         {

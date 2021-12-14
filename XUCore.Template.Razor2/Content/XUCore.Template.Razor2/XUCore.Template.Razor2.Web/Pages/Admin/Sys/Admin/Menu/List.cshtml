@@ -21,8 +21,6 @@
             }
         }
         var columns = [
-            { field: 'state', checkbox: true, align: 'center', valign: 'middle' },
-            { field: 'operate', title: '操作', align: 'center', width: 40, formatter: operateFormatter },
             { field: 'Name', title: '导航名称', sortable: false, align: 'left' },
             {
                 field: 'Icon', title: '导航图标', sortable: false, align: 'left',
@@ -51,24 +49,7 @@
                 }
             },
             { field: 'IsMenu', title: '导航', sortable: false, align: 'center', formatter: isMenuFormatter },
-            { field: 'IsExpress', title: '快速', sortable: false, align: 'center', formatter: isMenuFormatter },
-            {
-                field: 'Weight', title: '权重', sortable: false, align: 'center', width: 40,
-                editable: {
-                    type: 'text', title: '权重', placement: 'left', validate: function (value) {
-                        value = $.trim(value);
-                        if (value) {
-                            if (!/^([1-9]\d*|[0]{1,1})$/.test(value))
-                                return '只能输入整数!';
-                        }
-                    }
-                }
-            },
-            { field: 'Status', title: '状态', width: 40, sortable: false, align: 'center', formatter: statusFormatter },
-            { field: 'CreatedAtUserName', title: '发布人', sortable: false, align: 'center' },
-            { field: 'CreatedAt', title: '发布日期', width: 140, sortable: false, align: 'center', formatter: formatterTime },
-            { field: 'ModifiedAtUserName', title: '修改人', sortable: false, align: 'center' },
-            { field: 'ModifiedAt', title: '修改日期', width: 140, sortable: false, align: 'center', formatter: formatterTime },
+            { field: 'IsExpress', title: '快速', sortable: false, align: 'center', formatter: isMenuFormatter }
         ];
         var contextMenuItem = function (row, $el) {
             var item = $el.data('item');
@@ -125,6 +106,14 @@
             url: '?handler=MenuByList',
             pagination: false,
             columns: columns,
+            defaultColumn: {
+                check: true,
+                operate: true,
+                weight: true,
+                status: true,
+                create: true,
+                update: false
+            },
             queryParams: function (params) {
                 params.status = $('input[type=radio][name=Status]:checked').val();
                 return params;
