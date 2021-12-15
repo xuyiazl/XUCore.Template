@@ -245,6 +245,12 @@
     vertical-align: middle;
     box-sizing: border-box;
 }
+.table-middle{
+    table-layout:fixed;
+}
+.table-middle > thead > tr > th,.table-middle > tbody > tr > th, .table-middle > tfoot > tr > th, .table-middle > thead > tr > td, .table-middle > tbody > tr > td, .table-middle > tfoot > tr > td {
+    vertical-align: middle !important;
+}
 
 .fixed-table-toolbar .dropdown-menu {
     text-align: left;

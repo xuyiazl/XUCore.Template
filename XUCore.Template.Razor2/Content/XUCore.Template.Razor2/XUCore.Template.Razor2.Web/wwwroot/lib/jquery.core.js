@@ -624,14 +624,14 @@ var show = {
 
 var createTable = function ($table, opts) {
     if (opts.defaultColumn && opts.defaultColumn.operate) {
-        opts.columns.unshift({ field: 'operate', title: '操作', align: 'center', width: 40, formatter: operateFormatter });
+        opts.columns.unshift({ field: 'operate', title: '操作', align: 'center', valign: 'center', width: 50, formatter: operateFormatter });
     }
     if (opts.defaultColumn && opts.defaultColumn.check) {
-        opts.columns.unshift({ field: 'state', checkbox: true, align: 'center', valign: 'middle' });
+        opts.columns.unshift({ field: 'state', checkbox: true, align: 'center', valign: 'center', width: 40, valign: 'middle' });
     }
     if (opts.defaultColumn && opts.defaultColumn.weight) {
         opts.columns.push({
-            field: 'Weight', title: '权重', sortable: true, align: 'center', width: 40,
+            field: 'Weight', title: '权重', sortable: true, align: 'center', valign: 'center', width: 50,
             editable: {
                 type: 'text', title: '权重', placement: 'left', validate: function (value) {
                     value = $.trim(value);
@@ -644,18 +644,18 @@ var createTable = function ($table, opts) {
         });
     }
     if (opts.defaultColumn && opts.defaultColumn.status) {
-        opts.columns.push({ field: 'Status', title: '状态', width: 40, sortable: true, align: 'center', formatter: statusFormatter });
+        opts.columns.push({ field: 'Status', title: '状态', width: 50, sortable: false, align: 'center', valign: 'center', formatter: statusFormatter });
     }
     if (opts.defaultColumn && opts.defaultColumn.create) {
-        opts.columns.push({ field: 'CreatedAtUserName', title: '发布人', width: 140, sortable: true, align: 'center' });
-        opts.columns.push({ field: 'CreatedAt', title: '发布日期', width: 140, sortable: true, align: 'center', formatter: formatterTime });
+        opts.columns.push({ field: 'CreatedAtUserName', title: '发布人', width: 140, sortable: true, align: 'center', valign: 'center' });
+        opts.columns.push({ field: 'CreatedAt', title: '发布日期', width: 140, sortable: true, align: 'center', valign: 'center', formatter: formatterTime });
     }
     if (opts.defaultcolumn && opts.defaultColumn.update) {
-        opts.columns.push({ field: 'ModifiedAtUserName', title: '修改人', sortable: true, align: 'center' });
-        opts.columns.push({ field: 'ModifiedAt', title: '修改日期', width: 140, sortable: true, align: 'center', formatter: formatterTime });
+        opts.columns.push({ field: 'ModifiedAtUserName', title: '修改人', width: 140, sortable: true, align: 'center', valign: 'center' });
+        opts.columns.push({ field: 'ModifiedAt', title: '修改日期', width: 140, sortable: true, align: 'center', valign: 'center', formatter: formatterTime });
     }
     opts = $.extend({
-        classes: 'table table-striped b-t b-light',
+        classes: 'table table-striped text-nowrap b-t b-light',
         clickToSelect: false,
         mobileResponsive: true,
         search: false,
@@ -696,14 +696,14 @@ var createTable = function ($table, opts) {
 }
 var createSimpleTable = function ($table, opts) {
     if (opts.defaultColumn && opts.defaultColumn.operate) {
-        opts.columns.unshift({ field: 'operate', title: '操作', align: 'center', width: 40, formatter: operateFormatter });
+        opts.columns.unshift({ field: 'operate', title: '操作', align: 'center', valign: 'center', width: 50, formatter: operateFormatter });
     }
     if (opts.defaultColumn && opts.defaultColumn.check) {
-        opts.columns.unshift({ field: 'state', checkbox: true, align: 'center', valign: 'middle' });
+        opts.columns.unshift({ field: 'state', checkbox: true, align: 'center', valign: 'center', width: 40, valign: 'middle' });
     }
     if (opts.defaultColumn && opts.defaultColumn.weight) {
         opts.columns.push({
-            field: 'Weight', title: '权重', sortable: true, align: 'center', width: 40,
+            field: 'Weight', title: '权重', sortable: true, align: 'center', valign: 'center', width: 50,
             editable: {
                 type: 'text', title: '权重', placement: 'left', validate: function (value) {
                     value = $.trim(value);
@@ -716,18 +716,18 @@ var createSimpleTable = function ($table, opts) {
         });
     }
     if (opts.defaultColumn && opts.defaultColumn.status) {
-        opts.columns.push({ field: 'Status', title: '状态', width: 40, sortable: true, align: 'center', formatter: statusFormatter });
+        opts.columns.push({ field: 'Status', title: '状态', width: 50, sortable: false, align: 'center', valign: 'center', formatter: statusFormatter });
     }
     if (opts.defaultColumn && opts.defaultColumn.create) {
-        opts.columns.push({ field: 'CreatedAtUserName', title: '发布人', width: 140, sortable: true, align: 'center' });
-        opts.columns.push({ field: 'CreatedAt', title: '发布日期', width: 140, sortable: true, align: 'center', formatter: formatterTime });
+        opts.columns.push({ field: 'CreatedAtUserName', title: '发布人', width: 140, sortable: true, align: 'center', valign: 'center' });
+        opts.columns.push({ field: 'CreatedAt', title: '发布日期', width: 140, sortable: true, align: 'center', valign: 'center', formatter: formatterTime });
     }
     if (opts.defaultcolumn && opts.defaultColumn.update) {
-        opts.columns.push({ field: 'ModifiedAtUserName', title: '修改人', sortable: true, align: 'center' });
-        opts.columns.push({ field: 'ModifiedAt', title: '修改日期', width: 140, sortable: true, align: 'center', formatter: formatterTime });
+        opts.columns.push({ field: 'ModifiedAtUserName', title: '修改人', width: 140, sortable: true, align: 'center', valign: 'center' });
+        opts.columns.push({ field: 'ModifiedAt', title: '修改日期', width: 140, sortable: true, align: 'center', valign: 'center', formatter: formatterTime });
     }
     opts = $.extend({
-        classes: 'table table-striped b-t b-light',
+        classes: 'table table-striped text-nowrap b-t b-light',
         clickToSelect: true,
         mobileResponsive: true,
         search: false,
@@ -832,6 +832,23 @@ var formatterTime = function (val, fmt) {
     fmt = typeof fmt !== 'string' ? 'YYYY-MM-dd hh:mm:ss' : fmt;
     if (typeof val === 'string') return dateFormat(fmt, new Date(val));
     return dateFormat(fmt, val);
+}
+var formatterPrecision = function (x) {
+    var f = parseFloat(x);
+    if (isNaN(f)) {
+        return false;
+    }
+    var f = Math.round(x * 100) / 100;
+    var s = f.toString();
+    var rs = s.indexOf('.');
+    if (rs < 0) {
+        rs = s.length;
+        s += '.';
+    }
+    while (s.length <= rs + 2) {
+        s += '0';
+    }
+    return s;
 }
 //生成随机 GUID 数
 var guid = function () {

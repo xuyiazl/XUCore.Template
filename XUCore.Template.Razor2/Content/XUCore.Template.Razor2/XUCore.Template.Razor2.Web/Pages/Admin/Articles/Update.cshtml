@@ -20,7 +20,7 @@
             data: 'cutorgin=true&autocutsize=600',
             success: function (res) {
                 $('#ArticleDto_Picture').val(res.Data.Url);
-                $('#pictureView').show().val(res.Data.RootUrl);
+                $('#pictureView').attr('src',res.Data.RootUrl).removeClass('hide');
             }
         });
 
