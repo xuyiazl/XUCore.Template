@@ -795,6 +795,90 @@ var statusModel = {
     trash: 3
 }
 
+var putField = function (opts) {
+    opts = $.extend({
+        url: '?handler=UpdateField',
+        type: 'PUT',
+        table: null,
+        row: null,
+        field: ''
+    }, opts);
+    $.ajax({
+        url: opts.url,
+        type: opts.type,
+        data: { id: opts.row['Id'], field: opts.field, value: opts.row[opts.field] },
+        success: function (result) {
+            if (result.Code == 0) {
+                opts.table.bootstrapTable('refresh', { silent: true });
+            } else {
+                show.error('操作提示', result.Message);
+            }
+        }
+    });
+}
+var putStatus = function (opts) {
+    opts = $.extend({
+        url: '?handler=BatchStatus',
+        type: 'PUT',
+        table: null,
+        status: statusModel.show,
+        batch: true,
+        id: 0
+    }, opts);
+    var ids;
+    if (opts.batch) {
+        ids = getSelections(opts.table);
+        if (ids.length == 0) {
+            show.error('错误提示', '请选择要操作的数据');
+            return false;
+        }
+    } else {
+        ids = [opts.id]
+    }
+    $.ajax({
+        url: opts.url,
+        type: opts.type,
+        data: { ids: ids, status: opts.status },
+        success: function (result) {
+            if (result.Code == 0) {
+                opts.table.bootstrapTable('refresh', { silent: true });
+            } else {
+                show.error('操作提示', result.Message);
+            }
+        }
+    });
+}
+var deleteRecords = function (opts) {
+    opts = $.extend({
+        url: '?handler=BatchDelete',
+        type: 'DELETE',
+        table: null,
+        batch: true,
+        id: 0
+    }, opts);
+    var ids;
+    if (opts.batch) {
+        ids = getSelections(opts.table);
+        if (ids.length == 0) {
+            show.error('错误提示', '请选择要永久删除的数据');
+            return false;
+        }
+    } else {
+        ids = [opts.id]
+    }
+    $.ajax({
+        url: opts.url,
+        type: opts.type,
+        data: { ids: ids },
+        success: function (result) {
+            if (result.Code == 0) {
+                opts.table.bootstrapTable('refresh', { silent: true });
+            } else {
+                show.error('操作提示', result.Message);
+            }
+        }
+    });
+}
 
 //var __formatterDate = function (date, istime) {
 //    function dFormat(i) { return i < 10 ? "0" + i.toString() : i; }

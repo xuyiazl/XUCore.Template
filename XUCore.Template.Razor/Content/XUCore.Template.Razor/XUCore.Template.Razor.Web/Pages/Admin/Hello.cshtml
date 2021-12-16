@@ -12,20 +12,19 @@
 
         var $table = $('#table');
 
-        var columns = [
-            {
-                field: 'Title', title: '标题', sortable: false, align: 'left', formatter: function (val, row) {
-                    var html = '';
-                    html += "<a href='/admin/sys/admin/notices/detail/" + row.Id + "' target='_blank'><span class=\"" + row.LevelCss + "\">【" + row.LevelName + "】</span>" + row.Title + "</a>";
-                    html += '<span class="text-xs m-l">by ' + row.CreatedAtUserName + ' ' + getDateDiff(row.CreatedAt) + '</span>';
-                    return html;
-                }
-            }
-        ];
         createTable($table, {
             showHeader: false,
             url: '?handler=IndexNoticeList',
-            columns: columns,
+            columns: [
+                {
+                    field: 'Title', title: '标题', sortable: false, align: 'left', formatter: function (val, row) {
+                        var html = '';
+                        html += "<a href='/admin/sys/admin/notices/detail/" + row.Id + "' target='_blank'><span class=\"" + row.LevelCss + "\">【" + row.LevelName + "】</span>" + row.Title + "</a>";
+                        html += '<span class="text-xs m-l">by ' + row.CreatedAtUserName + ' ' + getDateDiff(row.CreatedAt) + '</span>';
+                        return html;
+                    }
+                }
+            ],
             queryParams: function (params) {
                 return params;
             }
@@ -41,9 +40,13 @@
                 <div class="wrapper">
                     <div class="clearfix text-center m-b m-t">
                         <div class="inline">
-                            <div class="easypiechart easyPieChart" data-percent="75" data-line-width="5" data-bar-color="#4cc0c1" data-track-color="#f5f5f5" data-scale-color="false" data-size="134" data-line-cap="butt" data-animate="1000" style="width: 134px; height: 134px; line-height: 134px;">
+                            <div class="easypiechart easyPieChart" data-percent="75" data-line-width="5"
+                                data-bar-color="#4cc0c1" data-track-color="#f5f5f5" data-scale-color="false"
+                                data-size="134" data-line-cap="butt" data-animate="1000"
+                                style="width: 134px; height: 134px; line-height: 134px;">
                                 <div class="thumb-lg">
-                                    <img src="@Utils.Face(GlobalStatic.RootUrl,Model.UserDto.Picture, 1)" class="img-circle" alt="...">
+                                    <img src="@Utils.Face(GlobalStatic.RootUrl,Model.UserDto.Picture, 1)"
+                                        class="img-circle" alt="...">
                                 </div>
                                 <canvas width="268" height="268" style="width: 134px; height: 134px;"></canvas>
                             </div>
@@ -63,7 +66,9 @@
                             </div>
                             <div class="col-xs-6">
                                 <a href="#">
-                                    <span class="m-b-xs h4 block">@DateTimeHelper.DateStringFromNow(Model.UserDto.LoginLastTime, false, "${time}前")</span>
+                                    <span
+                                        class="m-b-xs h4 block">@DateTimeHelper.DateStringFromNow(Model.UserDto.LoginLastTime,
+                                        false, "${time}前")</span>
                                     <small class="text-muted">最后登录时间</small>
                                 </a>
                             </div>

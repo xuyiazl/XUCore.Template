@@ -15,70 +15,20 @@
 
         var $table = $('#table');
 
-        var columns = [
-            {
-                field: 'CategoryName', title: '目录', width: 140, sortable: true, align: 'left', formatter: function (val, row) {
-                    return '<span class="' + row.CategoryCss + '" >' + row.CategoryName + '</span>';
-                }
-            },
-            {
-                field: 'Title', title: '标题', sortable: false, align: 'left', formatter: function (val, row) {
-                    return "<a href='#" + row.Id + "' target='_blank'>" + row.Title + "</a>";
-                }
-            }
-        ];
-        var contextMenuItem = function (row, $el) {
-            var item = $el.data('item');
-            switch (item) {
-                case 'edit':
-                    window.location = '/admin/articles/update/' + row.Id;
-                    break;
-                case 'publish':
-                    show.confirm(function () {
-                        putStatus(statusModel.show, false, row.Id)
-                    });
-                    break;
-                case 'trash':
-                    show.confirm(function () {
-                        putStatus(statusModel.trash, false, row.Id)
-                    });
-                    break;
-                case 'soldout':
-                    show.confirm(function () {
-                        putStatus(statusModel.soldout, false, row.Id)
-                    });
-                    break;
-                case 'delete':
-                    show.confirm(function () {
-                        deleteRecords(false, row.Id)
-                    });
-                    break;
-            }
-        };
-        var editableSave = function (field, row, oldValue, $el) {
-            var update = function (field, value) {
-                $.ajax({
-                    url: '?handler=UpdateField',
-                    type: "PUT",
-                    data: { id: row.Id, field: field, value: value },
-                    success: function (result) {
-                        if (result.Code == 0) {
-                            $table.bootstrapTable('refresh', { silent: true });
-                        } else {
-                            show.error('操作提示', result.Message);
-                        }
-                    }
-                });
-            }
-            switch (field) {
-                case 'Title': update('Title', row.Title); break;
-                case 'Weight': update('Weight', row.Weight); break;
-            }
-        };
-
         createTable($table, {
             url: '?handler=PageList',
-            columns: columns,
+            columns: [
+                {
+                    field: 'CategoryName', title: '目录', width: 140, sortable: true, align: 'left', formatter: function (val, row) {
+                        return '<span class="' + row.CategoryCss + '" >' + row.CategoryName + '</span>';
+                    }
+                },
+                {
+                    field: 'Title', title: '标题', sortable: false, align: 'left', formatter: function (val, row) {
+                        return "<a href='#" + row.Id + "' target='_blank'>" + row.Title + "</a>";
+                    }
+                }
+            ],
             defaultColumn: {
                 check: true,
                 operate: true,
@@ -93,8 +43,40 @@
                 params.search = $('#search').val();
                 return params;
             },
-            onContextMenuItem: contextMenuItem,
-            onEditableSave: editableSave
+            onContextMenuItem: function (row, $el) {
+                var item = $el.data('item');
+                switch (item) {
+                    case 'edit':
+                        window.location = '/admin/articles/update/' + row.Id;
+                        break;
+                    case 'publish':
+                        show.confirm(function () {
+                            putStatus({ table: $table, status: statusModel.show, batch: false, id: row.Id })
+                        });
+                        break;
+                    case 'trash':
+                        show.confirm(function () {
+                            putStatus({ table: $table, status: statusModel.trash, batch: false, id: row.Id })
+                        });
+                        break;
+                    case 'soldout':
+                        show.confirm(function () {
+                            putStatus({ table: $table, status: statusModel.soldout, batch: false, id: row.Id })
+                        });
+                        break;
+                    case 'delete':
+                        show.confirm(function () {
+                            deleteRecords({ table: $table, batch: false, id: row.Id })
+                        });
+                        break;
+                }
+            },
+            onEditableSave: function (field, row, oldValue, $el) {
+                switch (field) {
+                    case 'Name': putField({ table: $table, row: row, field: 'Name' }); break;
+                    case 'Weight': putField({ table: $table, row: row, field: 'Weight' }); break;
+                }
+            }
         });
 
 
@@ -115,76 +97,28 @@
             }
         });
 
-        var putStatus = function (status, batch, id) {
-            var ids;
-            if (batch) {
-                ids = getSelections($table);
-                if (ids.length == 0) {
-                    show.error('错误提示', '请选择要操作的数据');
-                    return false;
-                }
-            } else {
-                ids = [id]
-            }
-            $.ajax({
-                url: '?handler=BatchStatus',
-                type: "PUT",
-                data: { ids: ids, status: status },
-                success: function (result) {
-                    if (result.Code == 0) {
-                        $table.bootstrapTable('refresh', { silent: true });
-                    } else {
-                        show.error('操作提示', result.Message);
-                    }
-                }
-            });
-        }
-        var deleteRecords = function (batch, id) {
-            var ids;
-            if (batch) {
-                ids = getSelections($table);
-                if (ids.length == 0) {
-                    show.error('错误提示', '请选择要永久删除的数据');
-                    return false;
-                }
-            } else {
-                ids = [id]
-            }
-            $.ajax({
-                url: '?handler=BatchDelete',
-                type: "DELETE",
-                data: { ids: ids },
-                success: function (result) {
-                    if (result.Code == 0) {
-                        $table.bootstrapTable('refresh', { silent: true });
-                    } else {
-                        show.error('操作提示', result.Message);
-                    }
-                }
-            });
-        }
         $('#btnPublish').click(function () {
             show.confirm(function () {
-                putStatus(statusModel.show, true)
+                putStatus({ table: $table, status: statusModel.show })
             });
             return false;
         });
         $('#btnTrash').click(function () {
             show.confirm(function () {
-                putStatus(statusModel.trash, true)
+                putStatus({ table: $table, status: statusModel.trash })
             });
             return false;
         });
         $('#btnSoldOut').click(function () {
             show.confirm(function () {
-                putStatus(statusModel.soldout, true)
+                putStatus({ table: $table, status: statusModel.soldout })
             });
             return false;
         });
 
         $('#btnDelete').click(function () {
             show.confirm(function () {
-                deleteRecords(true)
+                deleteRecords({ table: $table })
             });
             return false;
         });

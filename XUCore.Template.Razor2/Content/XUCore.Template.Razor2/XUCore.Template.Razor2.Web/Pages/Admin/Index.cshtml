@@ -12,20 +12,19 @@
 
         var $table = $('#table');
 
-        var columns = [
-            {
-                field: 'Title', title: '标题', sortable: false, align: 'left', formatter: function (val, row) {
-                    var html = '';
-                    html += "<a href='/admin/sys/admin/notices/detail/" + row.Id + "' target='_blank'><span class=\"" + row.LevelCss + "\">【" + row.LevelName + "】</span>" + row.Title + "</a>";
-                    html += '<span class="text-xs m-l">by ' + row.CreatedAtUserName + ' ' + getDateDiff(row.CreatedAt) + '</span>';
-                    return html;
-                }
-            }
-        ];
         createTable($table, {
             showHeader: false,
             url: '?handler=IndexNoticeList',
-            columns: columns,
+            columns: [
+                {
+                    field: 'Title', title: '标题', sortable: false, align: 'left', formatter: function (val, row) {
+                        var html = '';
+                        html += "<a href='/admin/sys/admin/notices/detail/" + row.Id + "' target='_blank'><span class=\"" + row.LevelCss + "\">【" + row.LevelName + "】</span>" + row.Title + "</a>";
+                        html += '<span class="text-xs m-l">by ' + row.CreatedAtUserName + ' ' + getDateDiff(row.CreatedAt) + '</span>';
+                        return html;
+                    }
+                }
+            ],
             queryParams: function (params) {
                 return params;
             }
