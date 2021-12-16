@@ -692,7 +692,7 @@ var createTable = function ($table, opts) {
         onContextMenuItem: function () { },
         onEditableSave: function () { }
     }, opts);
-    return $table.bootstrapTable(opts);
+    return $table.bootstrapTable('destroy').bootstrapTable(opts);
 }
 var createSimpleTable = function ($table, opts) {
     if (opts.defaultColumn && opts.defaultColumn.operate) {
@@ -756,7 +756,45 @@ var createSimpleTable = function ($table, opts) {
             detailClose: 'fa-minus-circle'
         }
     }, opts);
-    return $table.bootstrapTable(opts);
+    return $table.bootstrapTable('destroy').bootstrapTable(opts);
+}
+/**
+ * 合并单元格
+ * 
+ * @param data
+ *            原始数据（在服务端完成排序）
+ * @param fieldName
+ *            合并属性名称
+ * @param target
+ *            目标表格对象
+ */
+function mergeCells(data, fieldName, tableId) {
+    // 声明一个map计算相同属性值在data对象出现的次数和
+    var sortMap = {};
+    for (var i = 0; i < data.length; i++) {
+        for (var prop in data[i]) {
+            if (prop == fieldName) {
+                var key = data[i][prop];
+                if (sortMap.hasOwnProperty(key)) {
+                    sortMap[key] = sortMap[key] * 1 + 1;
+                } else {
+                    sortMap[key] = 1;
+                }
+                break;
+            }
+        }
+    }
+    var index = 0;
+    for (var prop in sortMap) {
+        var count = sortMap[prop] * 1;
+        $(tableId).bootstrapTable('mergeCells', {
+            index: index,
+            field: fieldName,
+            colspan: 1,
+            rowspan: count
+        });
+        index += count;
+    }
 }
 
 var getSelections = function ($table) {
@@ -767,10 +805,11 @@ var getSelections = function ($table) {
 var operateFormatter = function (value, row) {
     var html = '';
     html += '<div class="btn-group btn-group-xs">';
-    html += '   <button type="button" class="btn btn-default dropdown-toggle operate-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
-    html += '       <span class="caret"></span>';
-    html += '       <span class="sr-only">Toggle Dropdown</span>';
-    html += '   </button>';
+    html += '   <a href="#" class="dropdown-toggle operate-button" data-toggle="dropdown"><i class="icon-settings"></i></a>';
+    // html += '   <button type="button" class="btn btn-default dropdown-toggle operate-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+    // html += '       <span class="caret"></span>';
+    // html += '       <span class="sr-only">Toggle Dropdown</span>';
+    // html += '   </button>';
     html += '</div>';
     return html;
 }
@@ -880,6 +919,7 @@ var deleteRecords = function (opts) {
     });
 }
 
+
 //var __formatterDate = function (date, istime) {
 //    function dFormat(i) { return i < 10 ? "0" + i.toString() : i; }
 //    if (!istime) {
@@ -920,8 +960,9 @@ var formatterTime = function (val, fmt) {
 var formatterPrecision = function (x) {
     var f = parseFloat(x);
     if (isNaN(f)) {
-        return false;
+        return '-';
     }
+    if (f == 0) return '-';
     var f = Math.round(x * 100) / 100;
     var s = f.toString();
     var rs = s.indexOf('.');

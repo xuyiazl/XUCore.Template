@@ -141,6 +141,7 @@
 
 .fixed-table-container input[type="radio"],
 .fixed-table-container input[type="checkbox"] {
+    vertical-align: middle;
     margin: 0 auto !important;
 }
 
