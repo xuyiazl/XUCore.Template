@@ -140,17 +140,14 @@ namespace XUCore.Template.EasyFreeSql.Persistence
                 switch (e.Property.Name)
                 {
                     case nameof(EntityUpdate.ModifiedAtUserId):
-                        if (e.Value.IsNull())
                             e.Value = user.GetId<long>();
                         break;
 
                     case nameof(EntityUpdate.ModifiedAtUserName):
-                        if (e.Value.IsNull())
                             e.Value = user?.UserName;
                         break;
 
                     case nameof(EntityUpdate.ModifiedAt):
-                        if (e.Value.IsNull())
                             e.Value = DateTime.Now.Subtract(timeOffset);
                         break;
                 }
