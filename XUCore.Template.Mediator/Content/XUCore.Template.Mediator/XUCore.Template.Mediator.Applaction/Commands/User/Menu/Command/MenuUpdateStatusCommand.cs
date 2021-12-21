@@ -1,0 +1,53 @@
+﻿namespace XUCore.Template.Mediator.Applaction.Commands;
+
+/// <summary>
+/// 导航更新状态命令
+/// </summary>
+public class MenuUpdateStatusCommand : Command<Result<int>>
+{
+    /// <summary>
+    /// id
+    /// </summary>
+    [Required]
+    public long[] Ids { get; set; }
+    /// <summary>
+    /// 修改的值
+    /// </summary>
+    public bool Enabled { get; set; }
+}
+
+public class MenuUpdateStatusCommandValidator : CommandValidator<MenuUpdateStatusCommand>
+{
+    public MenuUpdateStatusCommandValidator()
+    {
+        RuleFor(x => x.Ids).NotEmpty().WithName("Id不可为空");
+    }
+}
+
+public class MenuUpdateStatusCommandHandler : CommandHandler<MenuUpdateStatusCommand, Result<int>>
+{
+    protected readonly FreeSqlUnitOfWorkManager db;
+    protected readonly IUserInfo user;
+
+    public MenuUpdateStatusCommandHandler(FreeSqlUnitOfWorkManager db, IMediatorHandler bus, IMapper mapper, IUserInfo user) : base(bus, mapper)
+    {
+        this.db = db;
+        this.user = user;
+    }
+
+    public override async Task<Result<int>> Handle(MenuUpdateStatusCommand request, CancellationToken cancellationToken)
+    {
+        var repo = db.Orm.GetRepository<MenuEntity>();
+
+        var list = await repo.Select.Where(c => request.Ids.Contains(c.Id)).ToListAsync<MenuEntity>(cancellationToken);
+
+        list.ForEach(c => c.Enabled = request.Enabled);
+
+        var res = await repo.UpdateAsync(list, cancellationToken);
+
+        if (res > 0)
+            return RestFull.Success(data: res);
+        else
+            return RestFull.Fail(data: res);
+    }
+}

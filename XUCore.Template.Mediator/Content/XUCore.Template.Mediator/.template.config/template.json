@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "XUCore",
+  "classifications": [
+    "XUCore.Template.Mediator"
+  ],
+  "name": "Mediator Api 项目模板",
+  "identity": "XUCore.Template.Mediator",
+  "groupIdentity": "XUCore.Template.Mediator",
+  "shortName": "XUCore.Template.Mediator",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "XUCore.Template.Mediator",
+  "preferNameDirectory": true
+}

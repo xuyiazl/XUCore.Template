@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>disable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Folder Include="wwwroot\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Using Include="XUCore.NetCore" />
+		<Using Include="XUCore.NetCore.AspectCore.Cache" />
+		<Using Include="XUCore.Template.Mediator.Applaction" />
+		<Using Include="XUCore.Template.Mediator.Persistence" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<ProjectReference Include="..\XUCore.Template.Mediator.Applaction\XUCore.Template.Mediator.Applaction.csproj" />
+	</ItemGroup>
+
+</Project>

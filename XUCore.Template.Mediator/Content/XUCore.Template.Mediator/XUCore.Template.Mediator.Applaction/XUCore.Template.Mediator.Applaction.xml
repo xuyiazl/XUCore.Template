@@ -1,0 +1,1757 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>XUCore.Template.Mediator.Applaction</name>
+    </assembly>
+    <members>
+        <member name="T:XUCore.Template.Mediator.Applaction.ChinaAreaAppService">
+            <summary>
+            城市区域管理
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.ChinaAreaAppService.CreateAsync(XUCore.Template.Mediator.Applaction.Commands.ChinaAreaCreateCommand,System.Threading.CancellationToken)">
+            <summary>
+            创建城市区域
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.ChinaAreaAppService.UpdateAsync(XUCore.Template.Mediator.Applaction.Commands.ChinaAreaUpdateCommand,System.Threading.CancellationToken)">
+            <summary>
+            更新城市区域信息
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.ChinaAreaAppService.DeleteAsync(XUCore.Template.Mediator.Applaction.Commands.ChinaAreaDeleteCommand,System.Threading.CancellationToken)">
+            <summary>
+            删除城市区域（物理删除）
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.ChinaAreaAppService.GetAsync(System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            获取城市区域信息
+            </summary>
+            <param name="id"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.ChinaAreaAppService.GetTreeAsync(XUCore.Template.Mediator.Applaction.Commands.ChinaAreaQueryTreeCommand,System.Threading.CancellationToken)">
+            <summary>
+            获取城市区域树形结构
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.ChinaAreaAppService.GetListAsync(XUCore.Template.Mediator.Applaction.Commands.ChinaAreaQueryListCommand,System.Threading.CancellationToken)">
+            <summary>
+            获取城市区域列表
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.LoginAppService">
+            <summary>
+            用户登录接口
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.LoginAppService.PostAsync(XUCore.Template.Mediator.Applaction.Commands.UserLoginCommand,System.Threading.CancellationToken)">
+            <summary>
+            用户登录
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.LoginAppService.PostOutAsync(System.Threading.CancellationToken)">
+            <summary>
+            退出登录
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.LoginAppService.GetPermissionExistsAsync(XUCore.Template.Mediator.Applaction.Commands.PermissionExistCommand,System.Threading.CancellationToken)">
+            <summary>
+            查询是否有权限
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.LoginAppService.GetPermissionMenusAsync(XUCore.Template.Mediator.Applaction.Commands.PermissionQueryMenuTreeCommand,System.Threading.CancellationToken)">
+            <summary>
+            查询权限导航
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.LoginAppService.GetPermissionMenuExpressAsync(XUCore.Template.Mediator.Applaction.Commands.PermissionQueryMenuExpressCommand,System.Threading.CancellationToken)">
+            <summary>
+            查询权限导航（快捷导航）
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.MenuAppService">
+            <summary>
+            用户导航管理
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.MenuAppService.CreateAsync(XUCore.Template.Mediator.Applaction.Commands.MenuCreateCommand,System.Threading.CancellationToken)">
+            <summary>
+            创建导航
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.MenuAppService.UpdateAsync(XUCore.Template.Mediator.Applaction.Commands.MenuUpdateCommand,System.Threading.CancellationToken)">
+            <summary>
+            更新导航信息
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.MenuAppService.UpdateFieldAsync(XUCore.Template.Mediator.Applaction.Commands.MenuUpdateFieldCommand,System.Threading.CancellationToken)">
+            <summary>
+            更新导航指定字段内容
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.MenuAppService.UpdateEnabledAsync(XUCore.Template.Mediator.Applaction.Commands.MenuUpdateStatusCommand,System.Threading.CancellationToken)">
+            <summary>
+            更新状态
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.MenuAppService.DeleteAsync(XUCore.Template.Mediator.Applaction.Commands.MenuDeleteCommand,System.Threading.CancellationToken)">
+            <summary>
+            删除导航（物理删除）
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.MenuAppService.GetAsync(System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            获取导航信息
+            </summary>
+            <param name="id"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.MenuAppService.GetTreeAsync(System.Threading.CancellationToken)">
+            <summary>
+            获取导航树形结构
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.MenuAppService.GetListAsync(XUCore.Template.Mediator.Applaction.Commands.MenuQueryListCommand,System.Threading.CancellationToken)">
+            <summary>
+            获取导航列表
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.MenuAppService.GetPageAsync(XUCore.Template.Mediator.Applaction.Commands.MenuQueryPagedCommand,System.Threading.CancellationToken)">
+            <summary>
+            获取分页
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.RoleAppService">
+            <summary>
+            用户角色管理
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.RoleAppService.CreateAsync(XUCore.Template.Mediator.Applaction.Commands.RoleCreateCommand,System.Threading.CancellationToken)">
+            <summary>
+            创建角色
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.RoleAppService.UpdateAsync(XUCore.Template.Mediator.Applaction.Commands.RoleUpdateCommand,System.Threading.CancellationToken)">
+            <summary>
+            更新角色信息
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.RoleAppService.UpdateFieldAsync(XUCore.Template.Mediator.Applaction.Commands.RoleUpdateFieldCommand,System.Threading.CancellationToken)">
+            <summary>
+            更新角色指定字段内容
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.RoleAppService.UpdateEnabledAsync(XUCore.Template.Mediator.Applaction.Commands.RoleUpdateStatusCommand,System.Threading.CancellationToken)">
+            <summary>
+            更新状态
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.RoleAppService.DeleteAsync(XUCore.Template.Mediator.Applaction.Commands.RoleDeleteCommand,System.Threading.CancellationToken)">
+            <summary>
+            删除角色（物理删除）
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.RoleAppService.GetAsync(System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            获取角色信息
+            </summary>
+            <param name="id"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.RoleAppService.GetListAsync(XUCore.Template.Mediator.Applaction.Commands.RoleQueryListCommand,System.Threading.CancellationToken)">
+            <summary>
+            获取所有角色
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.RoleAppService.GetPageAsync(XUCore.Template.Mediator.Applaction.Commands.RoleQueryPagedCommand,System.Threading.CancellationToken)">
+            <summary>
+            获取角色分页
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.RoleAppService.GetRelevanceMenuAsync(XUCore.Template.Mediator.Applaction.Commands.RoleQueryRelevanceMenuCommand,System.Threading.CancellationToken)">
+            <summary>
+            获取角色关联的所有导航id集合
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.UploadAppService">
+            <summary>
+            文件上传
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.UploadAppService.File(Microsoft.AspNetCore.Http.IFormFile,System.Threading.CancellationToken)">
+            <summary>
+            上传文件
+            </summary>
+            <param name="formFile"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.UploadAppService.Image(Microsoft.AspNetCore.Http.IFormFile,System.Threading.CancellationToken)">
+            <summary>
+            上传图片
+            </summary>
+            <param name="formFile"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.UploadAppService.Base64(XUCore.Template.Mediator.Applaction.Commands.UploadBase64Command,System.Threading.CancellationToken)">
+            <summary>
+            上传图片
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.UserAppService">
+            <summary>
+            用户管理
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.UserAppService.CreateInitAccountAsync(System.Threading.CancellationToken)">
+            <summary>
+            创建初始账号
+            </summary>
+            <remarks>
+            初始账号密码：
+                <para>username : admin</para>
+                <para>password : admin</para>
+            </remarks>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.UserAppService.CreateAsync(XUCore.Template.Mediator.Applaction.Commands.UserCreateCommand,System.Threading.CancellationToken)">
+            <summary>
+            创建用户账号
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.UserAppService.UpdateAsync(XUCore.Template.Mediator.Applaction.Commands.UserUpdateInfoCommand,System.Threading.CancellationToken)">
+            <summary>
+            更新账号信息
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.UserAppService.UpdatePasswordAsync(XUCore.Template.Mediator.Applaction.Commands.UserUpdatePasswordCommand,System.Threading.CancellationToken)">
+            <summary>
+            更新密码
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.UserAppService.UpdateFieldAsync(XUCore.Template.Mediator.Applaction.Commands.UserUpdateFieldCommand,System.Threading.CancellationToken)">
+            <summary>
+            更新指定字段内容
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.UserAppService.UpdateEnabledAsync(XUCore.Template.Mediator.Applaction.Commands.UserUpdateStatusCommand,System.Threading.CancellationToken)">
+            <summary>
+            更新状态
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.UserAppService.DeleteAsync(XUCore.Template.Mediator.Applaction.Commands.UserDeleteCommand,System.Threading.CancellationToken)">
+            <summary>
+            删除账号（物理删除）
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.UserAppService.GetAsync(System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            获取账号信息
+            </summary>
+            <param name="id"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.UserAppService.GetAccountAsync(XUCore.Template.Mediator.Applaction.Commands.UserQueryByAccountCommand,System.Threading.CancellationToken)">
+            <summary>
+            获取账号信息（根据账号或手机号码）
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.UserAppService.GetAnyAsync(XUCore.Template.Mediator.Applaction.Commands.UserAnyByAccountCommand,System.Threading.CancellationToken)">
+            <summary>
+            检查账号或者手机号是否存在
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.UserAppService.GetPageAsync(XUCore.Template.Mediator.Applaction.Commands.UserQueryPagedCommand,System.Threading.CancellationToken)">
+            <summary>
+            获取账号分页
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.UserAppService.CreateRelevanceRoleAsync(XUCore.Template.Mediator.Applaction.Commands.UserRelevanceRoleCommand,System.Threading.CancellationToken)">
+            <summary>
+            账号关联角色
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.UserAppService.GetRelevanceRoleKeysAsync(System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            获取账号关联的角色id集合
+            </summary>
+            <param name="userId"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.UserAppService.GetRecordListAsync(XUCore.Template.Mediator.Applaction.Commands.UserQueryLoginRecordCommand,System.Threading.CancellationToken)">
+            <summary>
+            获取最近登录记录
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.UserAppService.GetRecordPageAsync(XUCore.Template.Mediator.Applaction.Commands.UserQueryLoginRecordPagedCommand,System.Threading.CancellationToken)">
+            <summary>
+            获取所有登录记录分页
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.ApiGroup">
+            <summary>
+            swagger api group
+            </summary>
+        </member>
+        <member name="F:XUCore.Template.Mediator.Applaction.ApiGroup.Admin">
+            <summary>
+            admin
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Filters.ApiExceptionFilter">
+            <summary>
+            API错误日志过滤器
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.Filters.ApiExceptionFilter.OnException(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext)">
+            <summary>
+            异常处理
+            </summary>
+            <param name="context">异常上下文</param>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.JwtHandler">
+            <summary>
+            JWT 授权自定义处理程序
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.JwtHandler.#ctor(System.IServiceProvider)">
+            <summary>
+            JWT 授权自定义处理程序
+            </summary>ws
+            <param name="serviceProvider"></param>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.JwtHandler.HandleAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext)">
+            <summary>
+            重写 Handler 添加自动刷新收取逻辑
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.JwtHandler.PipelineAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext,Microsoft.AspNetCore.Http.DefaultHttpContext)">
+            <summary>
+            验证管道
+            </summary>
+            <param name="context"></param>
+            <param name="httpContext"></param>
+            <returns></returns>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.MediatorMemoryHandler">
+            <summary>
+            Mediator 消息中介发布请求和通知
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.MediatorMemoryHandler.PublishEvent``1(``0,System.Threading.CancellationToken)">
+            <summary>
+            发布事件通知
+            </summary>
+            <typeparam name="TNotification"></typeparam>
+            <param name="event">通知事件</param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.MediatorMemoryHandler.SendCommand``1(XUCore.Ddd.Domain.Command{``0},System.Threading.CancellationToken)">
+            <summary>
+            发送命令请求
+            </summary>
+            <typeparam name="TResponse"></typeparam>
+            <param name="command">命令</param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaCreateCommand">
+            <summary>
+            创建省市区域命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaCreateCommand.ParentId">
+            <summary>
+            上级区域Id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaCreateCommand.Level">
+            <summary>
+            行政区域等级 1-省 2-市 3-区县 4-街道镇
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaCreateCommand.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaCreateCommand.WholeName">
+            <summary>
+            完整名称
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaCreateCommand.Lon">
+            <summary>
+            本区域经度
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaCreateCommand.Lat">
+            <summary>
+            本区域维度
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaCreateCommand.CityCode">
+            <summary>
+            电话区号
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaCreateCommand.ZipCode">
+            <summary>
+            邮政编码
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaCreateCommand.AreaCode">
+            <summary>
+            行政区划代码
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaCreateCommand.PinYin">
+            <summary>
+            名称全拼
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaCreateCommand.SimplePy">
+            <summary>
+            首字母简拼
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaCreateCommand.PerPinYin">
+            <summary>
+            区域名称拼音的第一个字母
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaCreateCommand.Sort">
+            <summary>
+            权重排序
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaDeleteCommand">
+            <summary>
+            省市区域删除命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaDeleteCommand.Ids">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaUpdateCommand">
+            <summary>
+            省市区域更新命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaUpdateCommand.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaUpdateCommand.ParentId">
+            <summary>
+            上级区域Id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaUpdateCommand.Level">
+            <summary>
+            行政区域等级 1-省 2-市 3-区县 4-街道镇
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaUpdateCommand.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaUpdateCommand.WholeName">
+            <summary>
+            完整名称
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaUpdateCommand.Lon">
+            <summary>
+            本区域经度
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaUpdateCommand.Lat">
+            <summary>
+            本区域维度
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaUpdateCommand.CityCode">
+            <summary>
+            电话区号
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaUpdateCommand.ZipCode">
+            <summary>
+            邮政编码
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaUpdateCommand.AreaCode">
+            <summary>
+            行政区划代码
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaUpdateCommand.PinYin">
+            <summary>
+            名称全拼
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaUpdateCommand.SimplePy">
+            <summary>
+            首字母简拼
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaUpdateCommand.PerPinYin">
+            <summary>
+            区域名称拼音的第一个字母
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaUpdateCommand.Sort">
+            <summary>
+            权重排序
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaDto">
+            <summary>
+            导航列表
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaDto.ParentId">
+            <summary>
+            上级区域Id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaDto.Level">
+            <summary>
+            行政区域等级 1-省 2-市 3-区县 4-街道镇
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaDto.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaDto.WholeName">
+            <summary>
+            完整名称
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaDto.Lon">
+            <summary>
+            本区域经度
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaDto.Lat">
+            <summary>
+            本区域维度
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaDto.CityCode">
+            <summary>
+            电话区号
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaDto.ZipCode">
+            <summary>
+            邮政编码
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaDto.AreaCode">
+            <summary>
+            行政区划代码
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaDto.PinYin">
+            <summary>
+            名称全拼
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaDto.SimplePy">
+            <summary>
+            首字母简拼
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaDto.PerPinYin">
+            <summary>
+            区域名称拼音的第一个字母
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaDto.Sort">
+            <summary>
+            权重排序
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaTreeDto">
+            <summary>
+            导航列表
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaTreeDto.Childs">
+            <summary>
+            下级城市
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaQueryByIdCommand">
+            <summary>
+            查询一区域记录
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaQueryByIdCommand.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaQueryListCommand">
+            <summary>
+            省市区域查询命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaQueryListCommand.Limit">
+            <summary>
+            记录数
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaQueryListCommand.CityId">
+            <summary>
+            城市Id
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaQueryPagedCommand">
+            <summary>
+            省市区域查询命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaQueryPagedCommand.CurrentPage">
+            <summary>
+            当前页码
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaQueryPagedCommand.PageSize">
+            <summary>
+            分页大小
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaQueryPagedCommand.Keyword">
+            <summary>
+            搜索关键字
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaQueryTreeCommand">
+            <summary>
+            省市区域查询命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaQueryTreeCommand.CityId">
+            <summary>
+            城市Id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.ChinaAreaQueryTreeCommand.Level">
+            <summary>
+            行政区域等级 0-全部 1-到市级 2-到县级 3-到街道
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.UploadBase64Command">
+            <summary>
+            上传base64图片
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.UploadFileCommand">
+            <summary>
+            上传From文件
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.UploadImageCommand">
+            <summary>
+            上传FromImage图片
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.MenuCreateCommand">
+            <summary>
+            创建导航命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuCreateCommand.ParentId">
+            <summary>
+            导航父级id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuCreateCommand.Name">
+            <summary>
+            名字
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuCreateCommand.Icon">
+            <summary>
+            图标样式
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuCreateCommand.Url">
+            <summary>
+            链接地址
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuCreateCommand.OnlyCode">
+            <summary>
+            唯一代码（权限使用）
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuCreateCommand.IsMenu">
+            <summary>
+            是否是导航
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuCreateCommand.Sort">
+            <summary>
+            排序权重
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuCreateCommand.IsExpress">
+            <summary>
+            是否是快捷导航
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuCreateCommand.Enabled">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.MenuDeleteCommand">
+            <summary>
+            导航删除命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuDeleteCommand.Ids">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.MenuUpdateCommand">
+            <summary>
+            导航更新命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuUpdateCommand.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuUpdateCommand.ParentId">
+            <summary>
+            导航父级id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuUpdateCommand.Name">
+            <summary>
+            名字
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuUpdateCommand.Icon">
+            <summary>
+            图标样式
+            </summary>s
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuUpdateCommand.Url">
+            <summary>
+            链接地址
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuUpdateCommand.OnlyCode">
+            <summary>
+            唯一代码（权限使用）
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuUpdateCommand.IsMenu">
+            <summary>
+            是否是导航
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuUpdateCommand.Sort">
+            <summary>
+            排序权重
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuUpdateCommand.IsExpress">
+            <summary>
+            是否是快捷导航
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuUpdateCommand.Enabled">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.MenuUpdateFieldCommand">
+            <summary>
+            导航更新指定字段命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuUpdateFieldCommand.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuUpdateFieldCommand.Field">
+            <summary>
+            指定的字段名
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuUpdateFieldCommand.Value">
+            <summary>
+            修改的值
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.MenuUpdateStatusCommand">
+            <summary>
+            导航更新状态命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuUpdateStatusCommand.Ids">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuUpdateStatusCommand.Enabled">
+            <summary>
+            修改的值
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.MenuDto">
+            <summary>
+            导航列表
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuDto.ParentId">
+            <summary>
+            导航父级id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuDto.Name">
+            <summary>
+            名字
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuDto.Icon">
+            <summary>
+            图标样式
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuDto.Url">
+            <summary>
+            链接地址
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuDto.OnlyCode">
+            <summary>
+            唯一代码（权限使用）
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuDto.IsMenu">
+            <summary>
+            是否是导航
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuDto.Sort">
+            <summary>
+            排序权重
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuDto.IsExpress">
+            <summary>
+            是否是快捷导航
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.MenuTreeDto">
+            <summary>
+            导航列表
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.MenuQueryByIdCommand">
+            <summary>
+            查询一条菜单记录
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuQueryByIdCommand.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.MenuQueryListCommand">
+            <summary>
+            菜单查询命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuQueryListCommand.Limit">
+            <summary>
+            记录数
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuQueryListCommand.IsMenu">
+            <summary>
+            是否是导航
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuQueryListCommand.Enabled">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.MenuQueryPagedCommand">
+            <summary>
+            菜单查询命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuQueryPagedCommand.CurrentPage">
+            <summary>
+            当前页码
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuQueryPagedCommand.PageSize">
+            <summary>
+            分页大小
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuQueryPagedCommand.Keyword">
+            <summary>
+            搜索关键字
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.MenuQueryPagedCommand.Enabled">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.MenuQueryTreeCommand">
+            <summary>
+            菜单tree查询命令
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.PermissionMenuDto">
+            <summary>
+            权限导航
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.PermissionMenuDto.ParentId">
+            <summary>
+            导航父级id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.PermissionMenuDto.Name">
+            <summary>
+            名字
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.PermissionMenuDto.Icon">
+            <summary>
+            图标样式
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.PermissionMenuDto.Url">
+            <summary>
+            连接地址
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.PermissionMenuDto.OnlyCode">
+            <summary>
+            唯一代码
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.PermissionMenuTreeDto">
+            <summary>
+            权限导航
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.PermissionMenuTreeDto.Child">
+            <summary>
+            子集导航
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.PermissionExistCommand">
+            <summary>
+            权限查询是否存在命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.PermissionExistCommand.UserId">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.PermissionExistCommand.OnlyCode">
+            <summary>
+            唯一代码
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.PermissionQueryCacheCommand">
+            <summary>
+            权限查询命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.PermissionQueryCacheCommand.UserId">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.PermissionQueryMenuExpressCommand">
+            <summary>
+            权限查询快捷菜单命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.PermissionQueryMenuExpressCommand.UserId">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.PermissionQueryMenuTreeCommand">
+            <summary>
+            权限查询菜单tree命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.PermissionQueryMenuTreeCommand.UserId">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.RoleCreateCommand">
+            <summary>
+            创建角色命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.RoleCreateCommand.Name">
+            <summary>
+            角色名
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.RoleCreateCommand.MenuIds">
+            <summary>
+            导航关联id集合
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.RoleCreateCommand.Enabled">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.RoleDeleteCommand">
+            <summary>
+            角色删除命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.RoleDeleteCommand.Ids">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.RoleUpdateCommand">
+            <summary>
+            角色修改命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.RoleUpdateCommand.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.RoleUpdateCommand.Name">
+            <summary>
+            角色名
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.RoleUpdateCommand.MenuIds">
+            <summary>
+            导航id集合
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.RoleUpdateCommand.Enabled">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.RoleUpdateFieldCommand">
+            <summary>
+            角色更新指定字段命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.RoleUpdateFieldCommand.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.RoleUpdateFieldCommand.Field">
+            <summary>
+            指定的字段名
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.RoleUpdateFieldCommand.Value">
+            <summary>
+            修改的值
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.RoleUpdateStatusCommand">
+            <summary>
+            角色更新状态命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.RoleUpdateStatusCommand.Ids">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.RoleUpdateStatusCommand.Enabled">
+            <summary>
+            修改的值
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.RoleDto">
+            <summary>
+            角色
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.RoleDto.Name">
+            <summary>
+            角色名
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.RoleQueryByIdCommand">
+            <summary>
+            查询一条角色记录
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.RoleQueryByIdCommand.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.RoleQueryListCommand">
+            <summary>
+            角色查询命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.RoleQueryListCommand.Limit">
+            <summary>
+            记录数
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.RoleQueryListCommand.Keyword">
+            <summary>
+            搜索关键字
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.RoleQueryListCommand.Enabled">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.RoleQueryPagedCommand">
+            <summary>
+            角色查询命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.RoleQueryPagedCommand.CurrentPage">
+            <summary>
+            当前页码
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.RoleQueryPagedCommand.PageSize">
+            <summary>
+            分页大小
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.RoleQueryPagedCommand.Keyword">
+            <summary>
+            搜索关键字
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.RoleQueryPagedCommand.Enabled">
+            <summary>
+            启用
+            </summary>s
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.RoleQueryRelevanceMenuCommand">
+            <summary>
+            获取角色关联的所有导航id集合
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.RoleQueryRelevanceMenuCommand.RoleId">
+            <summary>
+            角色id
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.UserCreateCommand">
+            <summary>
+            创建用户命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserCreateCommand.UserName">
+            <summary>
+            账号
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserCreateCommand.Mobile">
+            <summary>
+            手机号码
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserCreateCommand.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserCreateCommand.Name">
+            <summary>
+            名字
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserCreateCommand.Location">
+            <summary>
+            位置
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserCreateCommand.Position">
+            <summary>
+            职位
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserCreateCommand.Company">
+            <summary>
+            公司
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserCreateCommand.Roles">
+            <summary>
+            角色id集合
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.UserDeleteCommand">
+            <summary>
+            用户删除命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserDeleteCommand.Ids">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.UserLoginCommand">
+            <summary>
+            登录命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserLoginCommand.Account">
+            <summary>
+            登录账号
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserLoginCommand.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.UserLoginOutCommand">
+            <summary>
+            退出登录命令
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.UserRelevanceRoleCommand">
+            <summary>
+            关联角色命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserRelevanceRoleCommand.UserId">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserRelevanceRoleCommand.RoleIds">
+            <summary>
+            角色id集合
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.UserUpdateFieldCommand">
+            <summary>
+            用户更新指定字段命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserUpdateFieldCommand.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserUpdateFieldCommand.Field">
+            <summary>
+            指定的字段名
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserUpdateFieldCommand.Value">
+            <summary>
+            修改的值
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.UserUpdateInfoCommand">
+            <summary>
+            用户信息修改命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserUpdateInfoCommand.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserUpdateInfoCommand.Name">
+            <summary>
+            名字
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserUpdateInfoCommand.Location">
+            <summary>
+            位置
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserUpdateInfoCommand.Position">
+            <summary>
+            职位
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserUpdateInfoCommand.Company">
+            <summary>
+            公司
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.UserUpdatePasswordCommand">
+            <summary>
+            密码修改命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserUpdatePasswordCommand.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserUpdatePasswordCommand.OldPassword">
+            <summary>
+            旧密码
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserUpdatePasswordCommand.NewPassword">
+            <summary>
+            新密码
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.UserUpdateStatusCommand">
+            <summary>
+            角色更新状态命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserUpdateStatusCommand.Ids">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserUpdateStatusCommand.Enabled">
+            <summary>
+            修改的值
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.UserDto">
+            <summary>
+            用户信息
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserDto.UserName">
+            <summary>
+            账号
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserDto.Mobile">
+            <summary>
+            手机号码
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserDto.Name">
+            <summary>
+            名字
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserDto.Location">
+            <summary>
+            位置
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserDto.Position">
+            <summary>
+            职位
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserDto.Company">
+            <summary>
+            公司
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserDto.Picture">
+            <summary>
+            头像
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.UserLoginRecordDto">
+            <summary>
+            登录记录
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserLoginRecordDto.UserId">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserLoginRecordDto.LoginWay">
+            <summary>
+            登录方式
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserLoginRecordDto.LoginTime">
+            <summary>
+            登录时间
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserLoginRecordDto.LoginIp">
+            <summary>
+            登录ip
+            </summary>s
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserLoginRecordDto.Name">
+            <summary>
+            用户名字
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserLoginRecordDto.Mobile">
+            <summary>
+            用户手机
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserLoginRecordDto.UserName">
+            <summary>
+            用户账号
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserLoginRecordDto.Picture">
+            <summary>
+            用户头像
+            </summary>
+        </member>
+        <member name="F:XUCore.Template.Mediator.Applaction.Commands.AccountMode.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="F:XUCore.Template.Mediator.Applaction.Commands.AccountMode.Mobile">
+            <summary>
+            手机号码
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.UserCreateEvent">
+            <summary>
+            用户账号创建事件
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserCreateEvent.Id">
+            <summary>
+            用户Id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserCreateEvent.User">
+            <summary>
+            用户实体
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.Commands.UserCreateEvent.#ctor(System.Int64,XUCore.Template.Mediator.Persistence.Entities.UserEntity)">
+            <summary>
+            用户账号创建事件
+            </summary>
+            <param name="id"></param>
+            <param name="user"></param>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.UserCreateEventHandler">
+            <summary>
+            事件通知操作
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.Commands.UserCreateEventHandler.#ctor">
+            <summary>
+            事件通知操作
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Applaction.Commands.UserCreateEventHandler.Handle(XUCore.Template.Mediator.Applaction.Commands.UserCreateEvent,System.Threading.CancellationToken)">
+            <summary>
+            接受消息处理创建后的业务
+            </summary>
+            <param name="notification"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.UserAnyByAccountCommand">
+            <summary>
+            查询账号是否存在
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserAnyByAccountCommand.AccountMode">
+            <summary>
+            账号类型
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserAnyByAccountCommand.Account">
+            <summary>
+            账号
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserAnyByAccountCommand.NotId">
+            <summary>
+            需要排除的id
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.UserQueryByAccountCommand">
+            <summary>
+            用户查询
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserQueryByAccountCommand.AccountMode">
+            <summary>
+            账号类型
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserQueryByAccountCommand.Account">
+            <summary>
+            账号
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.UserQueryByIdCommand">
+            <summary>
+            查询一条用户记录
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserQueryByIdCommand.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.UserQueryLoginRecordCommand">
+            <summary>
+            查询命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserQueryLoginRecordCommand.Limit">
+            <summary>
+            记录数
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserQueryLoginRecordCommand.UserId">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.UserQueryLoginRecordPagedCommand">
+            <summary>
+            查询命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserQueryLoginRecordPagedCommand.CurrentPage">
+            <summary>
+            当前页码
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserQueryLoginRecordPagedCommand.PageSize">
+            <summary>
+            分页大小
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserQueryLoginRecordPagedCommand.Keyword">
+            <summary>
+            搜索关键字
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.UserQueryPagedCommand">
+            <summary>
+            用户查询分页
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserQueryPagedCommand.CurrentPage">
+            <summary>
+            当前页码
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserQueryPagedCommand.PageSize">
+            <summary>
+            分页大小
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserQueryPagedCommand.Keyword">
+            <summary>
+            搜索关键字
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserQueryPagedCommand.Enabled">
+            <summary>
+            启用s
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.Commands.UserQueryRelevanceRoleCommand">
+            <summary>
+            获取角色关联的所有导航id集合
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Applaction.Commands.UserQueryRelevanceRoleCommand.UserId">
+            <summary>
+            用户id
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Applaction.DependencyInjection">
+            <summary>
+            注册服务
+            </summary>
+        </member>
+    </members>
+</doc>

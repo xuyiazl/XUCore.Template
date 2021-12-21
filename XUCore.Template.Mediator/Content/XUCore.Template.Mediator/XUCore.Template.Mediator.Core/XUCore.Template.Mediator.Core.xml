@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>XUCore.Template.Mediator.Core</name>
+    </assembly>
+    <members>
+        <member name="P:XUCore.Template.Mediator.Core.DtoBase`1.Id">
+            <summary>
+            主键Id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Core.DtoKeyBase`1.Id">
+            <summary>
+            主键Id
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Core.SubCode">
+            <summary>
+            业务代码
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Core.RestFull">
+            <summary>
+            标准化返回
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Core.RestFull.Success``1(XUCore.Template.Mediator.Core.SubCode,System.String,``0)">
+            <summary>
+            返回成功消息
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="subCode"></param>
+            <param name="message"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Core.RestFull.Fail``1(XUCore.Template.Mediator.Core.SubCode,System.String,``0)">
+            <summary>
+            返回失败消息
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="subCode"></param>
+            <param name="message"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<DocumentationFile>XUCore.Template.Mediator.Core.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Using Include="System.ComponentModel" />
+		<Using Include="AutoMapper" />
+		<Using Include="System.Reflection" />
+		<Using Include="XUCore" />
+		<Using Include="XUCore.NetCore" />
+		<Using Include="XUCore.Extensions" />
+		<Using Include="XUCore.Helpers" />
+		<Using Include="XUCore.Ddd.Domain" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="XUCore" Version="6.0.7" />
+		<PackageReference Include="XUCore.NetCore" Version="6.0.7" />
+		<PackageReference Include="XUCore.NetCore.FreeSql" Version="6.0.7" />
+		<PackageReference Include="XUCore.NetCore.Redis" Version="6.0.7" />
+	</ItemGroup>
+
+</Project>

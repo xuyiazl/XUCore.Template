@@ -1,0 +1,482 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>XUCore.Template.Mediator.Persistence</name>
+    </assembly>
+    <members>
+        <member name="T:XUCore.Template.Mediator.Persistence.ConnectionSettings">
+            <summary>
+            数据库配置
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.ConnectionSettings.Type">
+            <summary>
+            数据库类型
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.ConnectionSettings.ConnectionString">
+            <summary>
+            数据库字符串
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.ConnectionSettings.IdleTime">
+            <summary>
+            空闲时间(分)
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.ConnectionSettings.GenerateData">
+            <summary>
+            生成数据
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.ConnectionSettings.SyncStructure">
+            <summary>
+            同步结构
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.ConnectionSettings.SyncData">
+            <summary>
+            同步数据
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.ConnectionSettings.CreateDb">
+            <summary>
+            建库
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.ConnectionSettings.CreateDbConnectionString">
+            <summary>
+            建库连接字符串
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.ConnectionSettings.CreateDbSql">
+            <summary>
+            建库脚本
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.ConnectionSettings.MonitorCommand">
+            <summary>
+            监听所有操作
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.ConnectionSettings.Curd">
+            <summary>
+            监听Curd操作
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.ConnectionSettings.Dbs">
+            <summary>
+            多数据库
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Persistence.MultiDb">
+            <summary>
+            多数据库
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.MultiDb.Name">
+            <summary>
+            数据库命名
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.MultiDb.Type">
+            <summary>
+            数据库类型
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.MultiDb.ConnectionString">
+            <summary>
+            数据库字符串
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Persistence.DbHelper">
+            <summary>
+            db helper
+            </summary>
+        </member>
+        <member name="F:XUCore.Template.Mediator.Persistence.DbHelper.TimeOffset">
+            <summary>
+            偏移时间
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Persistence.DbHelper.CreateDatabaseAsync(XUCore.Template.Mediator.Persistence.ConnectionSettings)">
+            <summary>
+            创建数据库
+            </summary>
+            <param name="dbConfig"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Persistence.DbHelper.GetEntityTypes">
+            <summary>
+            获得指定程序集表实体
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Persistence.DbHelper.ConfigEntity(IFreeSql)">
+            <summary>
+            配置实体
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Persistence.DbHelper.AuditValue(FreeSql.Aop.AuditValueEventArgs,System.TimeSpan,XUCore.Template.Mediator.Core.IUserInfo)">
+            <summary>
+            审计数据
+            </summary>
+            <param name="e"></param>
+            <param name="timeOffset"></param>
+            <param name="user"></param>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Persistence.DbHelper.SyncStructure(IFreeSql,System.String,XUCore.Template.Mediator.Persistence.ConnectionSettings)">
+            <summary>
+            同步结构
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Persistence.DbHelper.SyncData(IFreeSql)">
+            <summary>
+            同步基础数据
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Persistence.MySqlDb">
+            <summary>
+            多数据库命名
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.Mediator.Persistence.DependencyInjection.CreateMultiDbBuilder(XUCore.Template.Mediator.Persistence.MultiDb)">
+            <summary>
+            创建多数据库构建器
+            </summary>
+            <param name="multiDb"></param>
+            <returns></returns>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Persistence.Entities.ChinaAreaEntity">
+            <summary>
+            城市区域
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.ChinaAreaEntity.ParentId">
+            <summary>
+            上级区域Id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.ChinaAreaEntity.Childs">
+            <summary>
+            下级城市
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.ChinaAreaEntity.Level">
+            <summary>
+            行政区域等级 1-省 2-市 3-区县 4-街道镇
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.ChinaAreaEntity.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.ChinaAreaEntity.WholeName">
+            <summary>
+            完整名称
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.ChinaAreaEntity.Lon">
+            <summary>
+            本区域经度
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.ChinaAreaEntity.Lat">
+            <summary>
+            本区域维度
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.ChinaAreaEntity.CityCode">
+            <summary>
+            电话区号
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.ChinaAreaEntity.ZipCode">
+            <summary>
+            邮政编码
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.ChinaAreaEntity.AreaCode">
+            <summary>
+            行政区划代码
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.ChinaAreaEntity.PinYin">
+            <summary>
+            名称全拼
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.ChinaAreaEntity.SimplePy">
+            <summary>
+            首字母简拼
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.ChinaAreaEntity.PerPinYin">
+            <summary>
+            区域名称拼音的第一个字母
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.ChinaAreaEntity.Sort">
+            <summary>
+            权重排序
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Persistence.Entities.DualEntity">
+            <summary>
+            系统表，用于查询系统函数
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.DualEntity.Id">
+            <summary>
+            主键Id
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Persistence.Entities.MenuEntity">
+            <summary>
+            权限导航表
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.MenuEntity.ParentId">
+            <summary>
+            导航父级id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.MenuEntity.Parent">
+            <summary>
+            上级
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.MenuEntity.Childs">
+            <summary>
+            子菜单
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.MenuEntity.Name">
+            <summary>
+            名字
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.MenuEntity.Icon">
+            <summary>
+            图标样式
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.MenuEntity.Url">
+            <summary>
+            链接地址
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.MenuEntity.OnlyCode">
+            <summary>
+            唯一代码（权限使用）
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.MenuEntity.IsMenu">
+            <summary>
+            是否是导航
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.MenuEntity.Sort">
+            <summary>
+            排序权重
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.MenuEntity.IsExpress">
+            <summary>
+            是否是快捷导航
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.MenuEntity.Enabled">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.MenuEntity.RoleMenus">
+            <summary>
+            角色导航关联列表
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Persistence.Entities.RoleEntity">
+            <summary>
+            角色表
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.RoleEntity.Name">
+            <summary>
+            角色名
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.RoleEntity.Enabled">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.RoleEntity.Sort">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.RoleEntity.RoleMenus">
+            <summary>
+            角色导航关联列表
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.RoleEntity.UserRoles">
+            <summary>
+            用户角色关联列表
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Persistence.Entities.RoleMenuEntity">
+            <summary>
+            角色导航关联表
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.RoleMenuEntity.RoleId">
+            <summary>
+            角色id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.RoleMenuEntity.MenuId">
+            <summary>
+            导航id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.RoleMenuEntity.Menus">
+            <summary>
+            对应关联的导航
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.RoleMenuEntity.Role">
+            <summary>
+            对应关联的角色
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Persistence.Entities.UserEntity">
+            <summary>
+            用户表
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.UserEntity.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.UserEntity.Mobile">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.UserEntity.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.UserEntity.Name">
+            <summary>
+            名字
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.UserEntity.Picture">
+            <summary>
+            头像
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.UserEntity.Location">
+            <summary>
+            所在位置
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.UserEntity.Position">
+            <summary>
+            职位
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.UserEntity.Company">
+            <summary>
+            公司
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.UserEntity.LoginCount">
+            <summary>
+            登录次数
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.UserEntity.LoginLastTime">
+            <summary>
+            最后登录时间
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.UserEntity.LoginLastIp">
+            <summary>
+            最后登录id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.UserEntity.Enabled">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="F:XUCore.Template.Mediator.Persistence.Entities.UserEntity.UserRoles">
+            <summary>
+            对应用户角色关联
+            </summary>
+        </member>
+        <member name="F:XUCore.Template.Mediator.Persistence.Entities.UserEntity.LoginRecords">
+            <summary>
+            对应登录记录关联
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Persistence.Entities.UserLoginRecordEntity">
+            <summary>
+            登录记录表
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.UserLoginRecordEntity.UserId">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.UserLoginRecordEntity.LoginWay">
+            <summary>
+            登录方式
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.UserLoginRecordEntity.LoginIp">
+            <summary>
+            登录ip
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.UserLoginRecordEntity.User">
+            <summary>
+            对应用户
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.Mediator.Persistence.Entities.UserRoleEntity">
+            <summary>
+            用户角色关联表
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.UserRoleEntity.UserId">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.UserRoleEntity.RoleId">
+            <summary>
+            角色id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.UserRoleEntity.User">
+            <summary>
+            对应用户
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Persistence.Entities.UserRoleEntity.Role">
+            <summary>
+            对应角色
+            </summary>
+        </member>
+    </members>
+</doc>
