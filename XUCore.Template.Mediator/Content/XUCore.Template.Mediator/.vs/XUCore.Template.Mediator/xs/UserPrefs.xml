@@ -1,0 +1,5 @@
+﻿<Properties StartupConfiguration="{B26D77EE-247D-4A61-8F93-7DC2B80728D3}|Default">
+  <MonoDevelop.Ide.ItemProperties.1_220-_220表现层.XUCore.Template.Mediator.WebApi PreferredExecutionTarget="/Applications/Microsoft Edge.app" />
+  <MonoDevelop.Ide.ItemProperties.2_220-_220逻辑服务.1_220-_220业务应用.XUCore.Template.Mediator.Domain FirstBuild="True" />
+  <MultiItemStartupConfigurations />
+</Properties>
