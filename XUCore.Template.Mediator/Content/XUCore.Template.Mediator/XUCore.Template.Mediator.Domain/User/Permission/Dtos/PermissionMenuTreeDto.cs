@@ -1,5 +1,4 @@
-﻿
-namespace XUCore.Template.Mediator.Applaction.Commands;
+﻿namespace XUCore.Template.Mediator.Domain;
 
 /// <summary>
 /// 权限导航

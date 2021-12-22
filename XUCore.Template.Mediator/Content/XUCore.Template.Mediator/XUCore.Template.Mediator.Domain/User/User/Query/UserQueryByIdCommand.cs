@@ -1,4 +1,5 @@
-﻿namespace XUCore.Template.Mediator.Applaction.Commands;
+﻿namespace XUCore.Template.Mediator.Domain;
+
 /// <summary>
 /// 查询一条用户记录
 /// </summary>

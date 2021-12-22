@@ -1,4 +1,4 @@
-﻿namespace XUCore.Template.Mediator.Applaction.Commands;
+﻿namespace XUCore.Template.Mediator.Domain;
 
 /// <summary>
 /// 密码修改命令

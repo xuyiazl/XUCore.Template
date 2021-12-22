@@ -1,4 +1,4 @@
-﻿namespace XUCore.Template.Mediator.Domain;
+﻿namespace XUCore.Template.Mediator.Core;
 
 
 /// <summary>

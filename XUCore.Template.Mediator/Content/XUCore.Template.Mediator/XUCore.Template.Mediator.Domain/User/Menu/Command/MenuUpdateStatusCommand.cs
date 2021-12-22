@@ -1,4 +1,4 @@
-﻿namespace XUCore.Template.Mediator.Applaction.Commands;
+﻿namespace XUCore.Template.Mediator.Domain;
 
 /// <summary>
 /// 导航更新状态命令

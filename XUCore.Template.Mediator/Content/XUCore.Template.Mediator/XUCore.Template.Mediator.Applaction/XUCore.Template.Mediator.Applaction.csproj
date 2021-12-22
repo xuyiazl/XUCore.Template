@@ -11,10 +11,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Using Include="AutoMapper" />
-		<Using Include="FluentValidation" />
-		<Using Include="FluentValidation.AspNetCore" />
-		<Using Include="MediatR" />
 		<Using Include="Microsoft.AspNetCore.Builder" />
 		<Using Include="Microsoft.AspNetCore.Hosting" />
 		<Using Include="Microsoft.AspNetCore.Authorization" />
@@ -26,23 +22,22 @@
 		<Using Include="Microsoft.AspNetCore.Mvc" />
 		<Using Include="Microsoft.AspNetCore.Mvc.Filters" />
 		<Using Include="Microsoft.Extensions.Logging" />
-		<Using Include="Newtonsoft.Json" />
-		<Using Include="System.ComponentModel" />
-		<Using Include="System.Text.Encodings.Web" />
-		<Using Include="System.Text.Unicode" />
 		<Using Include="System.ComponentModel.DataAnnotations" />
-		<Using Include="FreeSql" />
+		<Using Include="AutoMapper" />
+		<Using Include="FluentValidation" />
+		<Using Include="FluentValidation.AspNetCore" />
+		<Using Include="MediatR" />
+		<Using Include="Newtonsoft.Json" />
+
 		<Using Include="XUCore" />
 		<Using Include="XUCore.Extensions" />
-		<Using Include="XUCore.Serializer" />
-		<Using Include="XUCore.Paging" />
-		<Using Include="XUCore.Ddd.Domain" />
 		<Using Include="XUCore.Helpers" />
+		<Using Include="XUCore.Paging" />
+		<Using Include="XUCore.Serializer" />
+		<Using Include="XUCore.Ddd.Domain" />
 		<Using Include="XUCore.NetCore" />
-		<Using Include="XUCore.NetCore.FreeSql" />
-		<Using Include="XUCore.NetCore.FreeSql.Curd" />
-		<Using Include="XUCore.NetCore.Properties" />
 		<Using Include="XUCore.NetCore.Filters" />
+		<Using Include="XUCore.NetCore.Properties" />
 		<Using Include="XUCore.NetCore.AspectCore.Cache" />
 		<Using Include="XUCore.NetCore.Authorization" />
 		<Using Include="XUCore.NetCore.DynamicWebApi" />
@@ -50,15 +45,15 @@
 		<Using Include="XUCore.NetCore.Formatter" />
 		<Using Include="XUCore.NetCore.Swagger" />
 		<Using Include="XUCore.NetCore.Uploads" />
-
+		
 		<Using Include="XUCore.Template.Mediator.Core" />
-		<Using Include="XUCore.Template.Mediator.Applaction.Commands" />
+		<Using Include="XUCore.Template.Mediator.Domain" />
 		<Using Include="XUCore.Template.Mediator.Persistence" />
 		<Using Include="XUCore.Template.Mediator.Persistence.Entities" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\XUCore.Template.Mediator.Persistence\XUCore.Template.Mediator.Persistence.csproj" />
+		<ProjectReference Include="..\XUCore.Template.Mediator.Domain\XUCore.Template.Mediator.Domain.csproj" />
 	</ItemGroup>
 
 </Project>

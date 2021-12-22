@@ -1,4 +1,4 @@
-﻿namespace XUCore.Template.Mediator.Applaction.Commands;
+﻿namespace XUCore.Template.Mediator.Domain;
 
 /// <summary>
 /// 创建角色命令

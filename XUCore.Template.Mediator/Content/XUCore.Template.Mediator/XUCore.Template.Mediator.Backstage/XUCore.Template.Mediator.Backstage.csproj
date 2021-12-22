@@ -27,7 +27,7 @@
 		<Using Include="Microsoft.Extensions.Hosting" />
 		<Using Include="Microsoft.Extensions.Logging" />
 
-		<Using Include="XUCore.Extensions"/>
+		<Using Include="XUCore.Extensions" />
 		<Using Include="XUCore.NetCore" />
 		<Using Include="XUCore.NetCore.AspectCore.Cache" />
 		<Using Include="XUCore.NetCore.EasyQuartz" />

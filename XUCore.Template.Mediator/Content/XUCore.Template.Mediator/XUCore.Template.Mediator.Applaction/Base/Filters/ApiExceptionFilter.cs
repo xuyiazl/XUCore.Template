@@ -1,4 +1,4 @@
-﻿namespace XUCore.Template.Mediator.Applaction.Filters;
+﻿namespace XUCore.Template.Mediator.Applaction;
 
 /// <summary>
 /// API错误日志过滤器
