@@ -1,0 +1,42 @@
+﻿namespace XUCore.Template.Mediator.Applaction.Commands;
+/// <summary>
+/// 查询一条用户记录
+/// </summary>
+public class UserQueryByIdCommand : Command<Result<UserDto>>
+{
+    /// <summary>
+    /// Id
+    /// </summary>
+    [Required]
+    public long Id { get; set; }
+}
+
+
+public class UserQueryByIdCommandValidator : CommandValidator<UserQueryByIdCommand>
+{
+    public UserQueryByIdCommandValidator()
+    {
+        RuleFor(x => x.Id).NotEmpty().WithName("Id不可为空");
+    }
+}
+
+public class UserQueryByIdCommandHandler : CommandHandler<UserQueryByIdCommand, Result<UserDto>>
+{
+    protected readonly FreeSqlUnitOfWorkManager db;
+    protected readonly IUserInfo user;
+
+    public UserQueryByIdCommandHandler(FreeSqlUnitOfWorkManager db, IMediatorHandler bus, IMapper mapper, IUserInfo user) : base(bus, mapper)
+    {
+        this.db = db;
+        this.user = user;
+    }
+
+    public override async Task<Result<UserDto>> Handle(UserQueryByIdCommand request, CancellationToken cancellationToken)
+    {
+        var repo = db.Orm.GetRepository<UserEntity>();
+
+        var res = await repo.Select.WhereDynamic(request.Id).ToOneAsync<UserDto>(cancellationToken);
+
+        return RestFull.Success(data: res);
+    }
+}

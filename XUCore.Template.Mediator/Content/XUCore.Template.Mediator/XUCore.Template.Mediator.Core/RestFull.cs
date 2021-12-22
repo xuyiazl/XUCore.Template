@@ -1,4 +1,5 @@
-﻿namespace XUCore.Template.Mediator.Core;
+﻿namespace XUCore.Template.Mediator.Domain;
+
 
 /// <summary>
 /// 业务代码
