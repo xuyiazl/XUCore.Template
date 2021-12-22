@@ -21,7 +21,7 @@ public class MenuUpdateFieldCommand : Command<Result<int>>
     public string Value { get; set; }
 }
 
-public class MenuUpdateFieldCommandValidator : CommandValidator<MenuUpdateFieldCommand>
+internal class MenuUpdateFieldCommandValidator : CommandValidator<MenuUpdateFieldCommand>
 {
     public MenuUpdateFieldCommandValidator()
     {
@@ -30,7 +30,7 @@ public class MenuUpdateFieldCommandValidator : CommandValidator<MenuUpdateFieldC
     }
 }
 
-public class MenuUpdateFieldCommandHandler : CommandHandler<MenuUpdateFieldCommand, Result<int>>
+internal class MenuUpdateFieldCommandHandler : CommandHandler<MenuUpdateFieldCommand, Result<int>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

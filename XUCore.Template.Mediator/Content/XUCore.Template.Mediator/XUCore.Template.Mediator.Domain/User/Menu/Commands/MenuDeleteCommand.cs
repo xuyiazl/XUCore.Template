@@ -12,7 +12,7 @@ public class MenuDeleteCommand : Command<Result<int>>
     public long[] Ids { get; set; }
 }
 
-public class MenuDeleteCommandValidator : CommandValidator<MenuDeleteCommand>
+internal class MenuDeleteCommandValidator : CommandValidator<MenuDeleteCommand>
 {
     public MenuDeleteCommandValidator()
     {
@@ -20,7 +20,7 @@ public class MenuDeleteCommandValidator : CommandValidator<MenuDeleteCommand>
     }
 }
 
-public class MenuDeleteCommandHandler : CommandHandler<MenuDeleteCommand, Result<int>>
+internal class MenuDeleteCommandHandler : CommandHandler<MenuDeleteCommand, Result<int>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

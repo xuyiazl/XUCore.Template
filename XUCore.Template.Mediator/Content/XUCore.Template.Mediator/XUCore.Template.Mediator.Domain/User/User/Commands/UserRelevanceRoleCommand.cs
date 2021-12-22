@@ -16,7 +16,7 @@ public class UserRelevanceRoleCommand : Command<Result<int>>
     public long[] RoleIds { get; set; }
 }
 
-public class UserRelevanceRoleCommandValidator : CommandValidator<UserRelevanceRoleCommand>
+internal class UserRelevanceRoleCommandValidator : CommandValidator<UserRelevanceRoleCommand>
 {
     public UserRelevanceRoleCommandValidator()
     {
@@ -24,7 +24,7 @@ public class UserRelevanceRoleCommandValidator : CommandValidator<UserRelevanceR
     }
 }
 
-public class UserRelevanceRoleCommandHandler : CommandHandler<UserRelevanceRoleCommand, Result<int>>
+internal class UserRelevanceRoleCommandHandler : CommandHandler<UserRelevanceRoleCommand, Result<int>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

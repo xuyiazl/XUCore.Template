@@ -16,7 +16,7 @@ public class MenuUpdateStatusCommand : Command<Result<int>>
     public bool Enabled { get; set; }
 }
 
-public class MenuUpdateStatusCommandValidator : CommandValidator<MenuUpdateStatusCommand>
+internal class MenuUpdateStatusCommandValidator : CommandValidator<MenuUpdateStatusCommand>
 {
     public MenuUpdateStatusCommandValidator()
     {
@@ -24,7 +24,7 @@ public class MenuUpdateStatusCommandValidator : CommandValidator<MenuUpdateStatu
     }
 }
 
-public class MenuUpdateStatusCommandHandler : CommandHandler<MenuUpdateStatusCommand, Result<int>>
+internal class MenuUpdateStatusCommandHandler : CommandHandler<MenuUpdateStatusCommand, Result<int>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

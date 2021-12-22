@@ -12,7 +12,7 @@ public class PermissionQueryMenuExpressCommand : Command<Result<List<PermissionM
 }
 
 
-public class PermissionQueryMenuExpressCommandValidator : CommandValidator<PermissionQueryMenuExpressCommand>
+internal class PermissionQueryMenuExpressCommandValidator : CommandValidator<PermissionQueryMenuExpressCommand>
 {
     public PermissionQueryMenuExpressCommandValidator()
     {
@@ -20,7 +20,7 @@ public class PermissionQueryMenuExpressCommandValidator : CommandValidator<Permi
     }
 }
 
-public class PermissionQueryMenuExpressCommandHandler : CommandHandler<PermissionQueryMenuExpressCommand, Result<List<PermissionMenuDto>>>
+internal class PermissionQueryMenuExpressCommandHandler : CommandHandler<PermissionQueryMenuExpressCommand, Result<List<PermissionMenuDto>>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

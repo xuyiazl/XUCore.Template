@@ -12,7 +12,7 @@ public class UserDeleteCommand : Command<Result<int>>
     public long[] Ids { get; set; }
 }
 
-public class UserDeleteCommandValidator : CommandValidator<UserDeleteCommand>
+internal class UserDeleteCommandValidator : CommandValidator<UserDeleteCommand>
 {
     public UserDeleteCommandValidator()
     {
@@ -20,7 +20,7 @@ public class UserDeleteCommandValidator : CommandValidator<UserDeleteCommand>
     }
 }
 
-public class UserDeleteCommandHandler : CommandHandler<UserDeleteCommand, Result<int>>
+internal class UserDeleteCommandHandler : CommandHandler<UserDeleteCommand, Result<int>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

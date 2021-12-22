@@ -11,7 +11,7 @@ public class PermissionQueryCacheCommand : Command<List<MenuEntity>>
     public long UserId { get; set; }
 }
 
-public class PermissionQueryCacheCommandValidator : CommandValidator<PermissionQueryCacheCommand>
+internal class PermissionQueryCacheCommandValidator : CommandValidator<PermissionQueryCacheCommand>
 {
     public PermissionQueryCacheCommandValidator()
     {
@@ -19,7 +19,7 @@ public class PermissionQueryCacheCommandValidator : CommandValidator<PermissionQ
     }
 }
 
-public class PermissionQueryCacheCommandHandler : CommandHandler<PermissionQueryCacheCommand, List<MenuEntity>>
+internal class PermissionQueryCacheCommandHandler : CommandHandler<PermissionQueryCacheCommand, List<MenuEntity>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

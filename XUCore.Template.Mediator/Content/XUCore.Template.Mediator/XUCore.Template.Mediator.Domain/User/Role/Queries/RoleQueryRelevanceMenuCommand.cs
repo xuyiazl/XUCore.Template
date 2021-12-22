@@ -14,7 +14,7 @@ public class RoleQueryRelevanceMenuCommand : Command<Result<List<long>>>
 }
 
 
-public class RoleQueryRelevanceMenuCommandValidator : CommandValidator<RoleQueryRelevanceMenuCommand>
+internal class RoleQueryRelevanceMenuCommandValidator : CommandValidator<RoleQueryRelevanceMenuCommand>
 {
     public RoleQueryRelevanceMenuCommandValidator()
     {
@@ -22,7 +22,7 @@ public class RoleQueryRelevanceMenuCommandValidator : CommandValidator<RoleQuery
     }
 }
 
-public class RoleQueryRelevanceMenuCommandHandler : CommandHandler<RoleQueryRelevanceMenuCommand, Result<List<long>>>
+internal class RoleQueryRelevanceMenuCommandHandler : CommandHandler<RoleQueryRelevanceMenuCommand, Result<List<long>>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

@@ -8,7 +8,7 @@ public class UserLoginOutCommand : Command<Result<bool>>
 
 }
 
-public class UserLoginOutCommandValidator : CommandValidator<UserLoginOutCommand>
+internal class UserLoginOutCommandValidator : CommandValidator<UserLoginOutCommand>
 {
     public UserLoginOutCommandValidator()
     {
@@ -16,7 +16,7 @@ public class UserLoginOutCommandValidator : CommandValidator<UserLoginOutCommand
     }
 }
 
-public class UserLoginOutCommandHandler : CommandHandler<UserLoginOutCommand, Result<bool>>
+internal class UserLoginOutCommandHandler : CommandHandler<UserLoginOutCommand, Result<bool>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

@@ -12,7 +12,7 @@ public class ChinaAreaQueryByIdCommand : Command<Result<ChinaAreaDto>>
     public long Id { get; set; }
 }
 
-public class ChinaAreaQueryByIdCommandValidator : CommandValidator<ChinaAreaQueryByIdCommand>
+internal class ChinaAreaQueryByIdCommandValidator : CommandValidator<ChinaAreaQueryByIdCommand>
 {
     public ChinaAreaQueryByIdCommandValidator()
     {
@@ -20,7 +20,7 @@ public class ChinaAreaQueryByIdCommandValidator : CommandValidator<ChinaAreaQuer
     }
 }
 
-public class ChinaAreaQueryByIdCommandHandler : CommandHandler<ChinaAreaQueryByIdCommand, Result<ChinaAreaDto>>
+internal class ChinaAreaQueryByIdCommandHandler : CommandHandler<ChinaAreaQueryByIdCommand, Result<ChinaAreaDto>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

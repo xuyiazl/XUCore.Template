@@ -21,7 +21,7 @@ public class RoleUpdateFieldCommand : Command<Result<int>>
     public string Value { get; set; }
 }
 
-public class RoleUpdateFieldCommandValidator : CommandValidator<RoleUpdateFieldCommand>
+internal class RoleUpdateFieldCommandValidator : CommandValidator<RoleUpdateFieldCommand>
 {
     public RoleUpdateFieldCommandValidator()
     {
@@ -30,7 +30,7 @@ public class RoleUpdateFieldCommandValidator : CommandValidator<RoleUpdateFieldC
     }
 }
 
-public class RoleUpdateFieldCommandHandler : CommandHandler<RoleUpdateFieldCommand, Result<int>>
+internal class RoleUpdateFieldCommandHandler : CommandHandler<RoleUpdateFieldCommand, Result<int>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

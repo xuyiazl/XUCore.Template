@@ -22,7 +22,7 @@ public class UserUpdatePasswordCommand : Command<Result<int>>
     public string NewPassword { get; set; }
 }
 
-public class UserUpdatePasswordCommandValidator : CommandValidator<UserUpdatePasswordCommand>
+internal class UserUpdatePasswordCommandValidator : CommandValidator<UserUpdatePasswordCommand>
 {
     public UserUpdatePasswordCommandValidator()
     {
@@ -33,7 +33,7 @@ public class UserUpdatePasswordCommandValidator : CommandValidator<UserUpdatePas
     }
 }
 
-public class UserUpdatePasswordCommandHandler : CommandHandler<UserUpdatePasswordCommand, Result<int>>
+internal class UserUpdatePasswordCommandHandler : CommandHandler<UserUpdatePasswordCommand, Result<int>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

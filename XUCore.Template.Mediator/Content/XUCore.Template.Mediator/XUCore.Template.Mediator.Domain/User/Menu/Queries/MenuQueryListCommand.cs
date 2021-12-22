@@ -20,7 +20,7 @@ public class MenuQueryListCommand : Command<Result<List<MenuDto>>>
     public bool Enabled { get; set; } = true;
 }
 
-public class MenuQueryListCommandValidator : CommandValidator<MenuQueryListCommand>
+internal class MenuQueryListCommandValidator : CommandValidator<MenuQueryListCommand>
 {
     public MenuQueryListCommandValidator()
     {
@@ -28,7 +28,7 @@ public class MenuQueryListCommandValidator : CommandValidator<MenuQueryListComma
     }
 }
 
-public class MenuQueryListCommandHandler : CommandHandler<MenuQueryListCommand, Result<List<MenuDto>>>
+internal class MenuQueryListCommandHandler : CommandHandler<MenuQueryListCommand, Result<List<MenuDto>>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

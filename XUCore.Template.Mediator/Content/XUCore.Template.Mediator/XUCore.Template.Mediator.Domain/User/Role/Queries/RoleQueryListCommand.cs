@@ -20,7 +20,7 @@ public class RoleQueryListCommand : Command<Result<List<RoleDto>>>
     public bool Enabled { get; set; } = true;
 }
 
-public class RoleQueryListCommandValidator : CommandValidator<RoleQueryListCommand>
+internal class RoleQueryListCommandValidator : CommandValidator<RoleQueryListCommand>
 {
     public RoleQueryListCommandValidator()
     {
@@ -28,7 +28,7 @@ public class RoleQueryListCommandValidator : CommandValidator<RoleQueryListComma
     }
 }
 
-public class RoleQueryListCommandHandler : CommandHandler<RoleQueryListCommand, Result<List<RoleDto>>>
+internal class RoleQueryListCommandHandler : CommandHandler<RoleQueryListCommand, Result<List<RoleDto>>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

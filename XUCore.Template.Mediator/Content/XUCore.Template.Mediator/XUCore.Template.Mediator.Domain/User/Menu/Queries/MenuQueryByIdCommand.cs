@@ -12,7 +12,7 @@ public class MenuQueryByIdCommand : Command<Result<MenuDto>>
     public long Id { get; set; }
 }
 
-public class MenuQueryByIdCommandValidator : CommandValidator<MenuQueryByIdCommand>
+internal class MenuQueryByIdCommandValidator : CommandValidator<MenuQueryByIdCommand>
 {
     public MenuQueryByIdCommandValidator()
     {
@@ -20,7 +20,7 @@ public class MenuQueryByIdCommandValidator : CommandValidator<MenuQueryByIdComma
     }
 }
 
-public class MenuQueryByIdCommandHandler : CommandHandler<MenuQueryByIdCommand, Result<MenuDto>>
+internal class MenuQueryByIdCommandHandler : CommandHandler<MenuQueryByIdCommand, Result<MenuDto>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

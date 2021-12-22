@@ -17,7 +17,7 @@ public class ChinaAreaQueryTreeCommand : Command<Result<List<ChinaAreaTreeDto>>>
     public short Level { get; set; }
 }
 
-public class ChinaAreaQueryTreeCommandValidator : CommandValidator<ChinaAreaQueryTreeCommand>
+internal class ChinaAreaQueryTreeCommandValidator : CommandValidator<ChinaAreaQueryTreeCommand>
 {
     public ChinaAreaQueryTreeCommandValidator()
     {
@@ -26,7 +26,7 @@ public class ChinaAreaQueryTreeCommandValidator : CommandValidator<ChinaAreaQuer
 }
 
 
-public class Handler : CommandHandler<ChinaAreaQueryTreeCommand, Result<List<ChinaAreaTreeDto>>>
+internal class Handler : CommandHandler<ChinaAreaQueryTreeCommand, Result<List<ChinaAreaTreeDto>>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

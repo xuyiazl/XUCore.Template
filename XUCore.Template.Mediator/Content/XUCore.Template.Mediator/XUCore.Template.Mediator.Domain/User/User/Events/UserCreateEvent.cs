@@ -28,7 +28,7 @@ public class UserCreateEvent : Event
 /// <summary>
 /// 事件通知操作
 /// </summary>
-public class UserCreateEventHandler : NotificationEventHandler<UserCreateEvent>
+internal class UserCreateEventHandler : NotificationEventHandler<UserCreateEvent>
 {
     /// <summary>
     /// 事件通知操作

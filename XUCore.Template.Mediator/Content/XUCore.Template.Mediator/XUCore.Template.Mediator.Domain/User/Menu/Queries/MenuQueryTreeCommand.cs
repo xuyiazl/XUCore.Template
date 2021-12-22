@@ -8,7 +8,7 @@ public class MenuQueryTreeCommand : Command<Result<List<MenuTreeDto>>>
 
 }
 
-public class MenuQueryTreeCommandValidator : CommandValidator<MenuQueryTreeCommand>
+internal class MenuQueryTreeCommandValidator : CommandValidator<MenuQueryTreeCommand>
 {
     public MenuQueryTreeCommandValidator()
     {
@@ -16,7 +16,7 @@ public class MenuQueryTreeCommandValidator : CommandValidator<MenuQueryTreeComma
     }
 }
 
-public class MenuQueryTreeCommandHandler : CommandHandler<MenuQueryTreeCommand, Result<List<MenuTreeDto>>>
+internal class MenuQueryTreeCommandHandler : CommandHandler<MenuQueryTreeCommand, Result<List<MenuTreeDto>>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

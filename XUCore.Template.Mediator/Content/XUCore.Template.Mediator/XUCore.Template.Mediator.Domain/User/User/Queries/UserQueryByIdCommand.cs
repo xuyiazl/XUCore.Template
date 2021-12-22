@@ -13,7 +13,7 @@ public class UserQueryByIdCommand : Command<Result<UserDto>>
 }
 
 
-public class UserQueryByIdCommandValidator : CommandValidator<UserQueryByIdCommand>
+internal class UserQueryByIdCommandValidator : CommandValidator<UserQueryByIdCommand>
 {
     public UserQueryByIdCommandValidator()
     {
@@ -21,7 +21,7 @@ public class UserQueryByIdCommandValidator : CommandValidator<UserQueryByIdComma
     }
 }
 
-public class UserQueryByIdCommandHandler : CommandHandler<UserQueryByIdCommand, Result<UserDto>>
+internal class UserQueryByIdCommandHandler : CommandHandler<UserQueryByIdCommand, Result<UserDto>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

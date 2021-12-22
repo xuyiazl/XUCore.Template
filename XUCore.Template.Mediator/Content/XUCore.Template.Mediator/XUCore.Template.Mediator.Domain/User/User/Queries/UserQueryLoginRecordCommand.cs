@@ -16,7 +16,7 @@ public class UserQueryLoginRecordCommand : Command<Result<List<UserLoginRecordDt
     public long UserId { get; set; }
 }
 
-public class UserQueryLoginRecordCommandValidator : CommandValidator<UserQueryLoginRecordCommand>
+internal class UserQueryLoginRecordCommandValidator : CommandValidator<UserQueryLoginRecordCommand>
 {
     public UserQueryLoginRecordCommandValidator()
     {
@@ -24,7 +24,7 @@ public class UserQueryLoginRecordCommandValidator : CommandValidator<UserQueryLo
     }
 }
 
-public class UserQueryLoginRecordCommandHandler : CommandHandler<UserQueryLoginRecordCommand, Result<List<UserLoginRecordDto>>>
+internal class UserQueryLoginRecordCommandHandler : CommandHandler<UserQueryLoginRecordCommand, Result<List<UserLoginRecordDto>>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

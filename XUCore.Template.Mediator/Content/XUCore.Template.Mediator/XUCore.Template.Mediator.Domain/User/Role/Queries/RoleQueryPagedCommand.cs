@@ -28,7 +28,7 @@ public class RoleQueryPagedCommand : Command<Result<PagedModel<RoleDto>>>
 }
 
 
-public class RoleQueryPagedCommandValidator : CommandValidator<RoleQueryPagedCommand>
+internal class RoleQueryPagedCommandValidator : CommandValidator<RoleQueryPagedCommand>
 {
     public RoleQueryPagedCommandValidator()
     {
@@ -37,7 +37,7 @@ public class RoleQueryPagedCommandValidator : CommandValidator<RoleQueryPagedCom
     }
 }
 
-public class RoleQueryPagedCommandHandler : CommandHandler<RoleQueryPagedCommand, Result<PagedModel<RoleDto>>>
+internal class RoleQueryPagedCommandHandler : CommandHandler<RoleQueryPagedCommand, Result<PagedModel<RoleDto>>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

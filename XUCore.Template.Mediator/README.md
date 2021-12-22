@@ -2,7 +2,7 @@
 
 XUCore.Template.Mediator
 
-基于 Mediator 的单层应用快速开发项目模板，生成 WebApi 项目
+基于 Mediator 的快速开发项目模板，生成 WebApi 项目
 
 ### 使用模板
 
@@ -22,7 +22,7 @@ dotnet new -u XUCore.Template.Mediator
 
 ```bash
 
-dotnet new --install XUCore.Template.Mediator::6.0.1
+dotnet new --install XUCore.Template.Mediator::6.0.2
 
 ```
 

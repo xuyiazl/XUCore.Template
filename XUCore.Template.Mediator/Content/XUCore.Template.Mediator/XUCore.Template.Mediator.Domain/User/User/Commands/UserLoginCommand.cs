@@ -18,7 +18,7 @@ public class UserLoginCommand : Command<Result<LoginTokenDto>>
 
 }
 
-public class UserLoginCommandValidator : CommandValidator<UserLoginCommand>
+internal class UserLoginCommandValidator : CommandValidator<UserLoginCommand>
 {
     public UserLoginCommandValidator()
     {
@@ -27,7 +27,7 @@ public class UserLoginCommandValidator : CommandValidator<UserLoginCommand>
     }
 }
 
-public class UserLoginCommandHandler : CommandHandler<UserLoginCommand, Result<LoginTokenDto>>
+internal class UserLoginCommandHandler : CommandHandler<UserLoginCommand, Result<LoginTokenDto>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

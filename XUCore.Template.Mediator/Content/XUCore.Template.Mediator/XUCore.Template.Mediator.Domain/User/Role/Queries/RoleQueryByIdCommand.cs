@@ -12,7 +12,7 @@ public class RoleQueryByIdCommand : Command<Result<RoleDto>>
     public long Id { get; set; }
 }
 
-public class RoleQueryByIdCommandValidator : CommandValidator<RoleQueryByIdCommand>
+internal class RoleQueryByIdCommandValidator : CommandValidator<RoleQueryByIdCommand>
 {
     public RoleQueryByIdCommandValidator()
     {
@@ -20,7 +20,7 @@ public class RoleQueryByIdCommandValidator : CommandValidator<RoleQueryByIdComma
     }
 }
 
-public class RoleQueryByIdCommandHandler : CommandHandler<RoleQueryByIdCommand, Result<RoleDto>>
+internal class RoleQueryByIdCommandHandler : CommandHandler<RoleQueryByIdCommand, Result<RoleDto>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

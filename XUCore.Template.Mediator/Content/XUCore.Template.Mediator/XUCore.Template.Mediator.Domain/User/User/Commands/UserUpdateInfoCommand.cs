@@ -40,7 +40,7 @@ public class UserUpdateInfoCommand : Command<Result<int>>, IMapFrom<UserEntity>
 
 }
 
-public class UserUpdateInfoCommandValidator : CommandValidator<UserUpdateInfoCommand>
+internal class UserUpdateInfoCommandValidator : CommandValidator<UserUpdateInfoCommand>
 {
     public UserUpdateInfoCommandValidator()
     {
@@ -53,7 +53,7 @@ public class UserUpdateInfoCommandValidator : CommandValidator<UserUpdateInfoCom
     }
 }
 
-public class UserUpdateInfoCommandHandler : CommandHandler<UserUpdateInfoCommand, Result<int>>
+internal class UserUpdateInfoCommandHandler : CommandHandler<UserUpdateInfoCommand, Result<int>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

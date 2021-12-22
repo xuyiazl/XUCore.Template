@@ -76,7 +76,7 @@ public class ChinaAreaCreateCommand : Command<Result<long>>, IMapFrom<ChinaAreaE
 }
 
 
-public class ChinaAreaCreateCommandValidator : CommandValidator<ChinaAreaCreateCommand>
+internal class ChinaAreaCreateCommandValidator : CommandValidator<ChinaAreaCreateCommand>
 {
     public ChinaAreaCreateCommandValidator()
     {
@@ -94,7 +94,7 @@ public class ChinaAreaCreateCommandValidator : CommandValidator<ChinaAreaCreateC
     }
 }
 
-public class ChinaAreaCreateCommandHandler : CommandHandler<ChinaAreaCreateCommand, Result<long>>
+internal class ChinaAreaCreateCommandHandler : CommandHandler<ChinaAreaCreateCommand, Result<long>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

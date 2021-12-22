@@ -23,7 +23,7 @@ public class ChinaAreaQueryPagedCommand : Command<Result<PagedModel<ChinaAreaDto
     public string Keyword { get; set; }
 }
 
-public class ChinaAreaQueryPagedCommandValidator : CommandValidator<ChinaAreaQueryPagedCommand>
+internal class ChinaAreaQueryPagedCommandValidator : CommandValidator<ChinaAreaQueryPagedCommand>
 {
     public ChinaAreaQueryPagedCommandValidator()
     {
@@ -33,7 +33,7 @@ public class ChinaAreaQueryPagedCommandValidator : CommandValidator<ChinaAreaQue
 }
 
 
-public class ChinaAreaQueryPagedCommandHandler : CommandHandler<ChinaAreaQueryPagedCommand, Result<PagedModel<ChinaAreaDto>>>
+internal class ChinaAreaQueryPagedCommandHandler : CommandHandler<ChinaAreaQueryPagedCommand, Result<PagedModel<ChinaAreaDto>>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

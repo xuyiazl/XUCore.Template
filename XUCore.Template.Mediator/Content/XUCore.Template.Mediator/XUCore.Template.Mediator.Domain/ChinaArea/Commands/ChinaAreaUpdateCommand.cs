@@ -80,7 +80,7 @@ public class ChinaAreaUpdateCommand : Command<Result<int>>, IMapFrom<ChinaAreaEn
         ;
 }
 
-public class ChinaAreaUpdateCommandValidator : CommandValidator<ChinaAreaUpdateCommand>
+internal class ChinaAreaUpdateCommandValidator : CommandValidator<ChinaAreaUpdateCommand>
 {
     public ChinaAreaUpdateCommandValidator()
     {
@@ -101,7 +101,7 @@ public class ChinaAreaUpdateCommandValidator : CommandValidator<ChinaAreaUpdateC
 }
 
 
-public class ChinaAreaUpdateCommandHandler : CommandHandler<ChinaAreaUpdateCommand, Result<int>>
+internal class ChinaAreaUpdateCommandHandler : CommandHandler<ChinaAreaUpdateCommand, Result<int>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

@@ -27,7 +27,7 @@ public class UserQueryPagedCommand : Command<Result<PagedModel<UserDto>>>
     public bool Enabled { get; set; } = true;
 }
 
-public class UserQueryPagedCommandValidator : CommandValidator<UserQueryPagedCommand>
+internal class UserQueryPagedCommandValidator : CommandValidator<UserQueryPagedCommand>
 {
     public UserQueryPagedCommandValidator()
     {
@@ -36,7 +36,7 @@ public class UserQueryPagedCommandValidator : CommandValidator<UserQueryPagedCom
     }
 }
 
-public class UserQueryPagedCommandHandler : CommandHandler<UserQueryPagedCommand, Result<PagedModel<UserDto>>>
+internal class UserQueryPagedCommandHandler : CommandHandler<UserQueryPagedCommand, Result<PagedModel<UserDto>>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;
