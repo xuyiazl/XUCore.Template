@@ -4,16 +4,6 @@
         <name>XUCore.Template.Mediator.Core</name>
     </assembly>
     <members>
-        <member name="P:XUCore.Template.Mediator.Core.DtoBase`1.Id">
-            <summary>
-            主键Id
-            </summary>
-        </member>
-        <member name="P:XUCore.Template.Mediator.Core.DtoKeyBase`1.Id">
-            <summary>
-            主键Id
-            </summary>
-        </member>
         <member name="T:XUCore.Template.Mediator.Core.SubCode">
             <summary>
             业务代码

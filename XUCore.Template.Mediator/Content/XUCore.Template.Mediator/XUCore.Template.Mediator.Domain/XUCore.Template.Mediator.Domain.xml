@@ -4,6 +4,16 @@
         <name>XUCore.Template.Mediator.Domain</name>
     </assembly>
     <members>
+        <member name="P:XUCore.Template.Mediator.Domain.DtoBase`1.Id">
+            <summary>
+            主键Id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.Mediator.Domain.DtoKeyBase`1.Id">
+            <summary>
+            主键Id
+            </summary>
+        </member>
         <member name="T:XUCore.Template.Mediator.Domain.ChinaAreaCreateCommand">
             <summary>
             创建省市区域命令
