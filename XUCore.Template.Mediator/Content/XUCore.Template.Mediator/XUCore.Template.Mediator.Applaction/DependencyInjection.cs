@@ -9,6 +9,8 @@ public static class DependencyInjection
 
     public static IServiceCollection AddApplication(this IServiceCollection services, IConfiguration configuration, IHostEnvironment environment, string serviceMode = "api")
     {
+        services.AddHttpContextAccessor();
+
         // AutoMapper
         services.AddAutoMapper(typeof(IMapFrom<>));
 
