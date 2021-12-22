@@ -38,7 +38,7 @@ internal class UserUpdatePasswordCommandHandler : CommandHandler<UserUpdatePassw
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;
 
-    public UserUpdatePasswordCommandHandler(FreeSqlUnitOfWorkManager db, IMediatorHandler bus, IMapper mapper, IUserInfo user) : base(bus, mapper)
+    public UserUpdatePasswordCommandHandler(FreeSqlUnitOfWorkManager db, IMediator mediator, IMapper mapper, IUserInfo user) : base(mediator, mapper)
     {
         this.db = db;
         this.user = user;

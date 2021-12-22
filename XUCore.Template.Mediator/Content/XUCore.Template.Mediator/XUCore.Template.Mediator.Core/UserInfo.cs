@@ -11,4 +11,19 @@ public class UserInfo : User, IUserInfo
     {
 
     }
+
+    public override void SetToken(string id, string token)
+    {
+
+    }
+
+    public override void RemoveToken()
+    {
+
+    }
+
+    public override bool VaildToken(string token)
+    {
+        return true;
+    }
 }

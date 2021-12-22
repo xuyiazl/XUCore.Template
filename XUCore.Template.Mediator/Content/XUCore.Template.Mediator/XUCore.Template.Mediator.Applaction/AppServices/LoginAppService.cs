@@ -7,11 +7,11 @@
 [DynamicWebApi]
 public class LoginAppService : IDynamicWebApi
 {
-    protected readonly IMediatorHandler bus;
+    protected readonly IMediator mediator;
 
     public LoginAppService(IServiceProvider serviceProvider)
     {
-        this.bus = serviceProvider.GetRequiredService<IMediatorHandler>();
+        this.mediator = serviceProvider.GetRequiredService<IMediator>();
     }
     #region [ 登录 ]
 
@@ -23,14 +23,14 @@ public class LoginAppService : IDynamicWebApi
     /// <returns></returns>
     [AllowAnonymous]
     public async Task<Result<LoginTokenDto>> PostAsync([Required][FromBody] UserLoginCommand request, CancellationToken cancellationToken)
-        => await bus.SendCommand(request, cancellationToken);
+        => await mediator.Send(request, cancellationToken);
     /// <summary>
     /// 退出登录
     /// </summary>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public async Task PostOutAsync(CancellationToken cancellationToken)
-        => await bus.SendCommand(new UserLoginOutCommand(), cancellationToken);
+        => await mediator.Send(new UserLoginOutCommand(), cancellationToken);
 
     #endregion
 
@@ -43,7 +43,7 @@ public class LoginAppService : IDynamicWebApi
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public async Task<Result<bool>> GetPermissionExistsAsync([Required][FromQuery] PermissionExistCommand request, CancellationToken cancellationToken = default)
-        => await bus.SendCommand(request, cancellationToken);
+        => await mediator.Send(request, cancellationToken);
     /// <summary>
     /// 查询权限导航
     /// </summary>
@@ -51,7 +51,7 @@ public class LoginAppService : IDynamicWebApi
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public async Task<Result<List<PermissionMenuTreeDto>>> GetPermissionMenusAsync([Required][FromQuery] PermissionQueryMenuTreeCommand request, CancellationToken cancellationToken = default)
-        => await bus.SendCommand(request, cancellationToken);
+        => await mediator.Send(request, cancellationToken);
     /// <summary>
     /// 查询权限导航（快捷导航）
     /// </summary>
@@ -59,7 +59,7 @@ public class LoginAppService : IDynamicWebApi
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public async Task<Result<List<PermissionMenuDto>>> GetPermissionMenuExpressAsync([Required][FromQuery] PermissionQueryMenuExpressCommand request, CancellationToken cancellationToken = default)
-        => await bus.SendCommand(request, cancellationToken);
+        => await mediator.Send(request, cancellationToken);
 
     #endregion
 }

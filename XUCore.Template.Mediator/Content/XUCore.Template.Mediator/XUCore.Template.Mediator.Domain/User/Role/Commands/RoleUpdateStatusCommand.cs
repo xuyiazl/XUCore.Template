@@ -30,7 +30,7 @@ internal class RoleUpdateStatusCommandHandler : CommandHandler<RoleUpdateStatusC
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;
 
-    public RoleUpdateStatusCommandHandler(FreeSqlUnitOfWorkManager db, IMediatorHandler bus, IMapper mapper, IUserInfo user) : base(bus, mapper)
+    public RoleUpdateStatusCommandHandler(FreeSqlUnitOfWorkManager db, IMediator mediator, IMapper mapper, IUserInfo user) : base(mediator, mapper)
     {
         this.db = db;
         this.user = user;

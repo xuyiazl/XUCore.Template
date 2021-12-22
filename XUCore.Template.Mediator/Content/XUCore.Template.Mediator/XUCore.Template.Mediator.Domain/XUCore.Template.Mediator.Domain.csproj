@@ -12,6 +12,7 @@
   
 	<ItemGroup>
 		<Using Include="AutoMapper" />
+		<Using Include="MediatR" />
 		<Using Include="FluentValidation" />
 		<Using Include="FluentValidation.AspNetCore" />
 		<Using Include="Microsoft.AspNetCore.Http" />

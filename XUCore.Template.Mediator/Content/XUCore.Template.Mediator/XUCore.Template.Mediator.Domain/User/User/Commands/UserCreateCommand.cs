@@ -58,8 +58,8 @@ internal class UserCreateCommandValidator : CommandValidator<UserCreateCommand>
         RuleFor(x => x.UserName).NotEmpty().MaximumLength(20).WithName("账号")
             .MustAsync(async (account, cancel) =>
             {
-                var res = await Web.GetRequiredService<IMediatorHandler>()
-                .SendCommand(new UserAnyByAccountCommand
+                var res = await Web.GetRequiredService<IMediator>()
+                .Send(new UserAnyByAccountCommand
                 {
                     AccountMode = AccountMode.UserName,
                     Account = account,
@@ -75,8 +75,8 @@ internal class UserCreateCommandValidator : CommandValidator<UserCreateCommand>
             .Matches("^[1][3-9]\\d{9}$").WithMessage("手机号格式不正确。")
             .MustAsync(async (account, cancel) =>
             {
-                var res = await Web.GetRequiredService<IMediatorHandler>()
-                .SendCommand(new UserAnyByAccountCommand
+                var res = await Web.GetRequiredService<IMediator>()
+                .Send(new UserAnyByAccountCommand
                 {
                     AccountMode = AccountMode.Mobile,
                     Account = account,
@@ -97,7 +97,7 @@ internal class UserCreateCommandHandler : CommandHandler<UserCreateCommand, Resu
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;
 
-    public UserCreateCommandHandler(FreeSqlUnitOfWorkManager db, IMediatorHandler bus, IMapper mapper, IUserInfo user) : base(bus, mapper)
+    public UserCreateCommandHandler(FreeSqlUnitOfWorkManager db, IMediator mediator, IMapper mapper, IUserInfo user) : base(mediator, mapper)
     {
         this.db = db;
         this.user = user;

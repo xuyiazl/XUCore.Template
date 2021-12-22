@@ -28,7 +28,7 @@ internal class PermissionExistCommandHandler : CommandHandler<PermissionExistCom
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;
 
-    public PermissionExistCommandHandler(FreeSqlUnitOfWorkManager db, IMediatorHandler bus, IMapper mapper, IUserInfo user) : base(bus, mapper)
+    public PermissionExistCommandHandler(FreeSqlUnitOfWorkManager db, IMediator mediator, IMapper mapper, IUserInfo user) : base(mediator, mapper)
     {
         this.db = db;
         this.user = user;
@@ -36,7 +36,7 @@ internal class PermissionExistCommandHandler : CommandHandler<PermissionExistCom
 
     public override async Task<Result<bool>> Handle(PermissionExistCommand request, CancellationToken cancellationToken)
     {
-        var menus = await bus.SendCommand(new PermissionQueryCacheCommand { UserId = request.UserId }, cancellationToken);
+        var menus = await mediator.Send(new PermissionQueryCacheCommand { UserId = request.UserId }, cancellationToken);
 
         var res = menus.Any(c => c.OnlyCode == request.OnlyCode);
 

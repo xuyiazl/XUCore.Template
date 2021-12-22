@@ -26,7 +26,7 @@ internal class ChinaAreaDeleteCommandHandler : CommandHandler<ChinaAreaDeleteCom
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;
 
-    public ChinaAreaDeleteCommandHandler(FreeSqlUnitOfWorkManager db, IMediatorHandler bus, IMapper mapper, IUserInfo user) : base(bus, mapper)
+    public ChinaAreaDeleteCommandHandler(FreeSqlUnitOfWorkManager db, IMediator mediator, IMapper mapper, IUserInfo user) : base(mediator, mapper)
     {
         this.db = db;
         this.user = user;

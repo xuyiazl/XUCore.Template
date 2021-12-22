@@ -7,10 +7,11 @@
 [DynamicWebApi]
 public class UploadAppService : IDynamicWebApi
 {
-    protected readonly IMediatorHandler bus;
+    protected readonly IMediator mediator;
+
     public UploadAppService(IServiceProvider serviceProvider)
     {
-        this.bus = serviceProvider.GetRequiredService<IMediatorHandler>();
+        this.mediator = serviceProvider.GetRequiredService<IMediator>();
     }
     /// <summary>
     /// 上传文件
@@ -19,7 +20,7 @@ public class UploadAppService : IDynamicWebApi
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public async Task<Result<XUCore.Files.FileInfo>> File([Required] IFormFile formFile, CancellationToken cancellationToken)
-        => await bus.SendCommand(new UploadFileCommand { FormFile = formFile }, cancellationToken);
+        => await mediator.Send(new UploadFileCommand { FormFile = formFile }, cancellationToken);
     /// <summary>
     /// 上传图片
     /// </summary>
@@ -27,7 +28,7 @@ public class UploadAppService : IDynamicWebApi
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public async Task<Result<ImageFileInfo>> Image([Required] IFormFile formFile, CancellationToken cancellationToken)
-        => await bus.SendCommand(new UploadImageCommand { FormFile = formFile }, cancellationToken);
+        => await mediator.Send(new UploadImageCommand { FormFile = formFile }, cancellationToken);
     /// <summary>
     /// 上传图片
     /// </summary>
@@ -35,5 +36,5 @@ public class UploadAppService : IDynamicWebApi
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public async Task<Result<ImageFileInfo>> Base64([Required][FromBody] UploadBase64Command request, CancellationToken cancellationToken)
-        => await bus.SendCommand(request, cancellationToken);
+        => await mediator.Send(request, cancellationToken);
 }

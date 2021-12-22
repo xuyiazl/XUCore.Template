@@ -23,9 +23,6 @@ public static class DependencyInjection
             options.Validation = true;
         });
 
-        // 命令总线Domain Bus (Mediator)
-        services.AddMediatorBus<MediatorMemoryHandler>();
-
         // 扫描
         services.AddScanLifetime("XUCore.Template.Mediator");
 

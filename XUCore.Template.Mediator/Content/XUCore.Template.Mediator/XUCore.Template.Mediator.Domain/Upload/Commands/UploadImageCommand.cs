@@ -23,7 +23,7 @@ internal class UploadImageCommandHandler : CommandHandler<UploadImageCommand, Re
     protected readonly IFileUploadService fileUploadService;
     protected readonly IUserInfo user;
 
-    public UploadImageCommandHandler(IFileUploadService fileUploadService, IMediatorHandler bus, IMapper mapper, IUserInfo user) : base(bus, mapper)
+    public UploadImageCommandHandler(IFileUploadService fileUploadService, IMediator mediator, IMapper mapper, IUserInfo user) : base(mediator, mapper)
     {
         this.fileUploadService = fileUploadService;
         this.user = user;

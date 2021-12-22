@@ -7,11 +7,11 @@
 [DynamicWebApi]
 public class ChinaAreaAppService : IDynamicWebApi
 {
-    protected readonly IMediatorHandler bus;
+    protected readonly IMediator mediator;
 
     public ChinaAreaAppService(IServiceProvider serviceProvider)
     {
-        this.bus = serviceProvider.GetRequiredService<IMediatorHandler>();
+        this.mediator = serviceProvider.GetRequiredService<IMediator>();
     }
     /// <summary>
     /// 创建城市区域
@@ -20,7 +20,7 @@ public class ChinaAreaAppService : IDynamicWebApi
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public async Task<Result<long>> CreateAsync([Required][FromBody] ChinaAreaCreateCommand request, CancellationToken cancellationToken = default)
-        => await bus.SendCommand(request, cancellationToken);
+        => await mediator.Send(request, cancellationToken);
     /// <summary>
     /// 更新城市区域信息
     /// </summary>
@@ -28,7 +28,7 @@ public class ChinaAreaAppService : IDynamicWebApi
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public async Task<Result<int>> UpdateAsync([Required][FromBody] ChinaAreaUpdateCommand request, CancellationToken cancellationToken = default)
-        => await bus.SendCommand(request, cancellationToken);
+        => await mediator.Send(request, cancellationToken);
     /// <summary>
     /// 删除城市区域（物理删除）
     /// </summary>
@@ -36,7 +36,7 @@ public class ChinaAreaAppService : IDynamicWebApi
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public async Task<Result<int>> DeleteAsync([Required][FromQuery] ChinaAreaDeleteCommand request, CancellationToken cancellationToken = default)
-        => await bus.SendCommand(request, cancellationToken);
+        => await mediator.Send(request, cancellationToken);
     /// <summary>
     /// 获取城市区域信息
     /// </summary>
@@ -45,7 +45,7 @@ public class ChinaAreaAppService : IDynamicWebApi
     /// <returns></returns>
     [HttpGet("{id}")]
     public async Task<Result<ChinaAreaDto>> GetAsync([Required] long id, CancellationToken cancellationToken = default)
-        => await bus.SendCommand(new ChinaAreaQueryByIdCommand { Id = id }, cancellationToken);
+        => await mediator.Send(new ChinaAreaQueryByIdCommand { Id = id }, cancellationToken);
     /// <summary>
     /// 获取城市区域树形结构
     /// </summary>
@@ -53,7 +53,7 @@ public class ChinaAreaAppService : IDynamicWebApi
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public async Task<Result<List<ChinaAreaTreeDto>>> GetTreeAsync(ChinaAreaQueryTreeCommand request, CancellationToken cancellationToken = default)
-        => await bus.SendCommand(request, cancellationToken);
+        => await mediator.Send(request, cancellationToken);
     /// <summary>
     /// 获取城市区域列表
     /// </summary>
@@ -61,5 +61,5 @@ public class ChinaAreaAppService : IDynamicWebApi
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public async Task<Result<List<ChinaAreaDto>>> GetListAsync([Required][FromQuery] ChinaAreaQueryListCommand request, CancellationToken cancellationToken = default)
-        => await bus.SendCommand(request, cancellationToken);
+        => await mediator.Send(request, cancellationToken);
 }

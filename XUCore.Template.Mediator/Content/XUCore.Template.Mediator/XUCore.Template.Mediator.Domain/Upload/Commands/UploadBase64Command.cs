@@ -22,7 +22,7 @@ internal class UploadBase64CommandHandler : CommandHandler<UploadBase64Command, 
     protected readonly IFileUploadService fileUploadService;
     protected readonly IUserInfo user;
 
-    public UploadBase64CommandHandler(IFileUploadService fileUploadService, IMediatorHandler bus, IMapper mapper, IUserInfo user) : base(bus, mapper)
+    public UploadBase64CommandHandler(IFileUploadService fileUploadService, IMediator mediator, IMapper mapper, IUserInfo user) : base(mediator, mapper)
     {
         this.fileUploadService = fileUploadService;
         this.user = user;

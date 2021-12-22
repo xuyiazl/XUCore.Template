@@ -25,7 +25,7 @@ internal class PermissionQueryMenuExpressCommandHandler : CommandHandler<Permiss
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;
 
-    public PermissionQueryMenuExpressCommandHandler(FreeSqlUnitOfWorkManager db, IMediatorHandler bus, IMapper mapper, IUserInfo user) : base(bus, mapper)
+    public PermissionQueryMenuExpressCommandHandler(FreeSqlUnitOfWorkManager db, IMediator mediator, IMapper mapper, IUserInfo user) : base(mediator, mapper)
     {
         this.db = db;
         this.user = user;
@@ -33,7 +33,7 @@ internal class PermissionQueryMenuExpressCommandHandler : CommandHandler<Permiss
 
     public override async Task<Result<List<PermissionMenuDto>>> Handle(PermissionQueryMenuExpressCommand request, CancellationToken cancellationToken)
     {
-        var menus = await bus.SendCommand(new PermissionQueryCacheCommand { UserId = request.UserId }, cancellationToken);
+        var menus = await mediator.Send(new PermissionQueryCacheCommand { UserId = request.UserId }, cancellationToken);
 
         var list = menus
             .Where(c => c.IsMenu == true && c.IsExpress == true)

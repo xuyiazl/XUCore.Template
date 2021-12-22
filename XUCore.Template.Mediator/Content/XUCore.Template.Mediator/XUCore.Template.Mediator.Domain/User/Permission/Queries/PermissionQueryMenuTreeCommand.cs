@@ -24,7 +24,7 @@ internal class PermissionQueryMenuTreeCommandHandler : CommandHandler<Permission
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;
 
-    public PermissionQueryMenuTreeCommandHandler(FreeSqlUnitOfWorkManager db, IMediatorHandler bus, IMapper mapper, IUserInfo user) : base(bus, mapper)
+    public PermissionQueryMenuTreeCommandHandler(FreeSqlUnitOfWorkManager db, IMediator mediator, IMapper mapper, IUserInfo user) : base(mediator, mapper)
     {
         this.db = db;
         this.user = user;
@@ -32,7 +32,7 @@ internal class PermissionQueryMenuTreeCommandHandler : CommandHandler<Permission
 
     public override async Task<Result<List<PermissionMenuTreeDto>>> Handle(PermissionQueryMenuTreeCommand request, CancellationToken cancellationToken)
     {
-        var menus = await bus.SendCommand(new PermissionQueryCacheCommand { UserId = request.UserId }, cancellationToken);
+        var menus = await mediator.Send(new PermissionQueryCacheCommand { UserId = request.UserId }, cancellationToken);
 
         var list = menus
                 .Where(c => c.IsMenu == true)

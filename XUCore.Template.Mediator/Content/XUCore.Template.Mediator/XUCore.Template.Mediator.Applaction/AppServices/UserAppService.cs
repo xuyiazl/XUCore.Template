@@ -7,10 +7,11 @@
 [DynamicWebApi]
 public class UserAppService : IDynamicWebApi
 {
-    protected readonly IMediatorHandler bus;
+    protected readonly IMediator mediator;
+
     public UserAppService(IServiceProvider serviceProvider)
     {
-        this.bus = serviceProvider.GetRequiredService<IMediatorHandler>();
+        this.mediator = serviceProvider.GetRequiredService<IMediator>();
     }
 
     /// <summary>
@@ -49,7 +50,7 @@ public class UserAppService : IDynamicWebApi
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public async Task<Result<long>> CreateAsync([Required][FromBody] UserCreateCommand request, CancellationToken cancellationToken = default)
-        => await bus.SendCommand(request, cancellationToken);
+        => await mediator.Send(request, cancellationToken);
     /// <summary>
     /// 更新账号信息
     /// </summary>
@@ -57,7 +58,7 @@ public class UserAppService : IDynamicWebApi
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public async Task<Result<int>> UpdateAsync([Required][FromBody] UserUpdateInfoCommand request, CancellationToken cancellationToken = default)
-        => await bus.SendCommand(request, cancellationToken);
+        => await mediator.Send(request, cancellationToken);
     /// <summary>
     /// 更新密码
     /// </summary>
@@ -65,7 +66,7 @@ public class UserAppService : IDynamicWebApi
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public async Task<Result<int>> UpdatePasswordAsync([Required][FromBody] UserUpdatePasswordCommand request, CancellationToken cancellationToken = default)
-        => await bus.SendCommand(request, cancellationToken);
+        => await mediator.Send(request, cancellationToken);
     /// <summary>
     /// 更新指定字段内容
     /// </summary>
@@ -73,7 +74,7 @@ public class UserAppService : IDynamicWebApi
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public async Task<Result<int>> UpdateFieldAsync([Required][FromBody] UserUpdateFieldCommand request, CancellationToken cancellationToken = default)
-        => await bus.SendCommand(request, cancellationToken);
+        => await mediator.Send(request, cancellationToken);
     /// <summary>
     /// 更新状态
     /// </summary>
@@ -81,7 +82,7 @@ public class UserAppService : IDynamicWebApi
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public async Task<Result<int>> UpdateEnabledAsync([Required][FromQuery] UserUpdateStatusCommand request, CancellationToken cancellationToken = default)
-        => await bus.SendCommand(request, cancellationToken);
+        => await mediator.Send(request, cancellationToken);
     /// <summary>
     /// 删除账号（物理删除）
     /// </summary>
@@ -89,7 +90,7 @@ public class UserAppService : IDynamicWebApi
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public async Task<Result<int>> DeleteAsync([Required][FromQuery] UserDeleteCommand request, CancellationToken cancellationToken = default)
-        => await bus.SendCommand(request, cancellationToken);
+        => await mediator.Send(request, cancellationToken);
     /// <summary>
     /// 获取账号信息
     /// </summary>
@@ -98,7 +99,7 @@ public class UserAppService : IDynamicWebApi
     /// <returns></returns>
     [HttpGet("{id}")]
     public async Task<Result<UserDto>> GetAsync([Required] long id, CancellationToken cancellationToken = default)
-        => await bus.SendCommand(new UserQueryByIdCommand { Id = id }, cancellationToken);
+        => await mediator.Send(new UserQueryByIdCommand { Id = id }, cancellationToken);
     /// <summary>
     /// 获取账号信息（根据账号或手机号码）
     /// </summary>
@@ -106,7 +107,7 @@ public class UserAppService : IDynamicWebApi
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public async Task<Result<UserDto>> GetAccountAsync([Required][FromQuery] UserQueryByAccountCommand request, CancellationToken cancellationToken = default)
-        => await bus.SendCommand(request, cancellationToken);
+        => await mediator.Send(request, cancellationToken);
     /// <summary>
     /// 检查账号或者手机号是否存在
     /// </summary>
@@ -114,7 +115,7 @@ public class UserAppService : IDynamicWebApi
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public async Task<Result<bool>> GetAnyAsync([Required][FromQuery] UserAnyByAccountCommand request, CancellationToken cancellationToken = default)
-        => await bus.SendCommand(request, cancellationToken);
+        => await mediator.Send(request, cancellationToken);
     /// <summary>
     /// 获取账号分页
     /// </summary>
@@ -122,7 +123,7 @@ public class UserAppService : IDynamicWebApi
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public async Task<Result<PagedModel<UserDto>>> GetPageAsync([Required][FromQuery] UserQueryPagedCommand request, CancellationToken cancellationToken = default)
-        => await bus.SendCommand(request, cancellationToken);
+        => await mediator.Send(request, cancellationToken);
 
     #endregion
 
@@ -135,7 +136,7 @@ public class UserAppService : IDynamicWebApi
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public async Task<Result<int>> CreateRelevanceRoleAsync([Required][FromBody] UserRelevanceRoleCommand request, CancellationToken cancellationToken = default)
-        => await bus.SendCommand(request, cancellationToken);
+        => await mediator.Send(request, cancellationToken);
     /// <summary>
     /// 获取账号关联的角色id集合
     /// </summary>
@@ -143,7 +144,7 @@ public class UserAppService : IDynamicWebApi
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public async Task<Result<List<long>>> GetRelevanceRoleKeysAsync([Required] long userId, CancellationToken cancellationToken = default)
-        => await bus.SendCommand(new UserQueryRelevanceRoleCommand { UserId = userId }, cancellationToken);
+        => await mediator.Send(new UserQueryRelevanceRoleCommand { UserId = userId }, cancellationToken);
 
     #endregion
 
@@ -156,7 +157,7 @@ public class UserAppService : IDynamicWebApi
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public async Task<Result<List<UserLoginRecordDto>>> GetRecordListAsync([Required][FromQuery] UserQueryLoginRecordCommand request, CancellationToken cancellationToken = default)
-        => await bus.SendCommand(request, cancellationToken);
+        => await mediator.Send(request, cancellationToken);
     /// <summary>
     /// 获取所有登录记录分页
     /// </summary>
@@ -164,7 +165,7 @@ public class UserAppService : IDynamicWebApi
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public async Task<Result<PagedModel<UserLoginRecordDto>>> GetRecordPageAsync([Required][FromQuery] UserQueryLoginRecordPagedCommand request, CancellationToken cancellationToken = default)
-        => await bus.SendCommand(request, cancellationToken);
+        => await mediator.Send(request, cancellationToken);
 
     #endregion
 }

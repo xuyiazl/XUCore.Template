@@ -28,15 +28,15 @@ namespace XUCore.Template.Ddd.Infrastructure
             });
 
             // 命令总线Domain Bus (Mediator)
-            services.AddMediatorBus<MediatorMemoryBus>();
+            services.AddMediatorBus<MediatorMemoryStoreHandler>();
 
             // 注入 基础设施层 - 事件溯源
             services.AddEventStore<SqlEventStoreService>();
 
-            services.AddScanLifetime(scan => scan.FromAssemblies(Reflection.GetCurrentProjectAssemblies("XUCore.Template.Ddd")));
+            services.AddScanLifetime("XUCore.Template.Ddd");
 
             // 注入redis插件
-            services.AddRedisService().AddJsonRedisSerializer();
+            //services.AddRedisService().AddJsonRedisSerializer();
 
             // 注入缓存拦截器（内存缓存）
             services.AddCacheInterceptor(opt =>

@@ -7,7 +7,7 @@ public class JwtHandler : AppAuthorizeHandler
 {
     private readonly IServiceProvider serviceProvider;
     private readonly IUserInfo user;
-    private readonly IMediatorHandler bus;
+    private readonly IMediator mediator;
     /// <summary>
     /// JWT 授权自定义处理程序
     /// </summary>ws
@@ -16,7 +16,7 @@ public class JwtHandler : AppAuthorizeHandler
     {
         this.serviceProvider = serviceProvider;
         this.user = serviceProvider.GetRequiredService<IUserInfo>();
-        this.bus = serviceProvider.GetRequiredService<IMediatorHandler>();
+        this.mediator = serviceProvider.GetRequiredService<IMediator>();
     }
     /// <summary>
     /// 重写 Handler 添加自动刷新收取逻辑
@@ -39,11 +39,11 @@ public class JwtHandler : AppAuthorizeHandler
         else
         {
 
-            //// 验证登录保存的token，如果不一致则是被其他人踢掉，或者退出登录了，需要重新登录
-            //var token = JWTEncryption.GetJwtBearerToken(context.GetCurrentHttpContext());
+            // 验证登录保存的token，如果不一致则是被其他人踢掉，或者退出登录了，需要重新登录
+            var token = JWTEncryption.GetJwtBearerToken(context.GetCurrentHttpContext());
 
-            //if (!user.VaildToken(token))
-            //    context.Fail();
+            if (!user.VaildToken(token))
+                context.Fail();
 
 
             // 自动刷新 token
@@ -67,7 +67,7 @@ public class JwtHandler : AppAuthorizeHandler
         if (securityDefineAttribute == null) return true;
 
         // 检查授权
-        var res = await bus.SendCommand(new PermissionExistCommand { UserId = user.GetId<long>() }, CancellationToken.None);
+        var res = await mediator.Send(new PermissionExistCommand { UserId = user.GetId<long>() }, CancellationToken.None);
 
         return res.Data;
     }
