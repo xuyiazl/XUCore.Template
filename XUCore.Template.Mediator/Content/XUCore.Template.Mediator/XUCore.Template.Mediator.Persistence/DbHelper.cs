@@ -84,8 +84,8 @@ public class DbHelper
         {
             db.CodeFirst.Entity(entityType, a =>
             {
-                    //a.Ignore(tenantId);
-                });
+                //a.Ignore(tenantId);
+            });
         }
     }
 
@@ -137,18 +137,15 @@ public class DbHelper
             switch (e.Property.Name)
             {
                 case nameof(EntityUpdate.ModifiedAtUserId):
-                    if (e.Value.IsNull())
-                        e.Value = user.GetId<long>();
+                    e.Value = user.GetId<long>();
                     break;
 
                 case nameof(EntityUpdate.ModifiedAtUserName):
-                    if (e.Value.IsNull())
-                        e.Value = user?.UserName;
+                    e.Value = user?.UserName;
                     break;
 
                 case nameof(EntityUpdate.ModifiedAt):
-                    if (e.Value.IsNull())
-                        e.Value = DateTime.Now.Subtract(timeOffset);
+                    e.Value = DateTime.Now.Subtract(timeOffset);
                     break;
             }
         }
