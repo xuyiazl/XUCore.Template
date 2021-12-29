@@ -2,16 +2,18 @@
   "$schema": "http://json.schemastore.org/template",
   "author": "XUCore",
   "classifications": [
-    "XUCore.Template.Ddd"
+    "Ddd",
+    "Api",
+    "Web"
   ],
-  "name": "Ddd Api 项目模板",
+  "name": "Ddd 项目模板",
   "identity": "XUCore.Template.Ddd",
   "groupIdentity": "XUCore.Template.Ddd",
-  "shortName": "XUCore.Template.Ddd",
+  "shortName": "XDdd",
   "tags": {
     "language": "C#",
     "type": "project"
   },
-  "sourceName": "XUCore.Template.Ddd",
+  "sourceName": "XDdd",
   "preferNameDirectory": true
 }

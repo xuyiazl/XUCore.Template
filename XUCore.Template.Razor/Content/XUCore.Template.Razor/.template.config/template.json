@@ -2,16 +2,17 @@
   "$schema": "http://json.schemastore.org/template",
   "author": "XUCore",
   "classifications": [
-    "XUCore.Template.Razor"
+    "Razor",
+    "Web"
   ],
   "name": "Razor Pages 项目模板",
   "identity": "XUCore.Template.Razor",
   "groupIdentity": "XUCore.Template.Razor",
-  "shortName": "XUCore.Template.Razor",
+  "shortName": "XRazor",
   "tags": {
     "language": "C#",
     "type": "project"
   },
-  "sourceName": "XUCore.Template.Razor",
+  "sourceName": "XRazor",
   "preferNameDirectory": true
 }

@@ -2,16 +2,18 @@
   "$schema": "http://json.schemastore.org/template",
   "author": "XUCore",
   "classifications": [
-    "XUCore.Template.Mediator"
+    "Mediator",
+    "FreeSql",
+    "Api"
   ],
-  "name": "Mediator Api 项目模板",
+  "name": "Mediator 项目模板",
   "identity": "XUCore.Template.Mediator",
   "groupIdentity": "XUCore.Template.Mediator",
-  "shortName": "XUCore.Template.Mediator",
+  "shortName": "XMediator",
   "tags": {
     "language": "C#",
     "type": "project"
   },
-  "sourceName": "XUCore.Template.Mediator",
+  "sourceName": "XMediator",
   "preferNameDirectory": true
 }

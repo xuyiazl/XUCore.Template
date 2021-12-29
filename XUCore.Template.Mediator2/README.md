@@ -22,7 +22,7 @@ dotnet new -u XUCore.Template.Mediator2
 
 ```bash
 
-dotnet new --install XUCore.Template.Mediator2::6.0.0
+dotnet new --install XUCore.Template.Mediator2::6.0.1
 
 ```
 
