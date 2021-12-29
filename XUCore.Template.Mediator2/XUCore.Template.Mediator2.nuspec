@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+	<metadata>
+		<id>XUCore.Template.Mediator2</id>
+		<version>6.0.0</version>
+		<description>基于Mediator的快速开发项目模板（简化），生成WebApi项目。</description>
+		<authors>XUCore</authors>
+		<copyright>Copyright © XUCore 2020</copyright>
+		<projectUrl>https://github.com/xuyiazl/XUCore.Template</projectUrl>
+		<iconUrl>http://www.3624091.com/favicon.ico</iconUrl>
+		<packageTypes>
+			<packageType name="Template" />
+		</packageTypes>
+	</metadata>
+</package>
