@@ -17,7 +17,7 @@ public class RoleUpdateStatusCommand : Command<Result<int>>
 }
 
 
-internal class RoleUpdateStatusCommandalidator : CommandValidator<RoleUpdateStatusCommand>
+public class RoleUpdateStatusCommandalidator : CommandValidator<RoleUpdateStatusCommand>
 {
     public RoleUpdateStatusCommandalidator()
     {
@@ -25,7 +25,7 @@ internal class RoleUpdateStatusCommandalidator : CommandValidator<RoleUpdateStat
     }
 }
 
-internal class RoleUpdateStatusCommandHandler : CommandHandler<RoleUpdateStatusCommand, Result<int>>
+public class RoleUpdateStatusCommandHandler : CommandHandler<RoleUpdateStatusCommand, Result<int>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

@@ -56,7 +56,7 @@ public class MenuUpdateCommand : Command<Result<int>>, IMapFrom<MenuEntity>
         ;
 }
 
-internal class MenuUpdateCommandValidator : CommandValidator<MenuUpdateCommand>
+public class MenuUpdateCommandValidator : CommandValidator<MenuUpdateCommand>
 {
     public MenuUpdateCommandValidator()
     {
@@ -67,7 +67,7 @@ internal class MenuUpdateCommandValidator : CommandValidator<MenuUpdateCommand>
     }
 }
 
-internal class MenuUpdateCommandHandler : CommandHandler<MenuUpdateCommand, Result<int>>
+public class MenuUpdateCommandHandler : CommandHandler<MenuUpdateCommand, Result<int>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

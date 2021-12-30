@@ -18,7 +18,7 @@ public class UserQueryByAccountCommand : Command<Result<UserDto>>
 }
 
 
-internal class UserQueryByAccountCommandValidator : CommandValidator<UserQueryByAccountCommand>
+public class UserQueryByAccountCommandValidator : CommandValidator<UserQueryByAccountCommand>
 {
     public UserQueryByAccountCommandValidator()
     {
@@ -26,7 +26,7 @@ internal class UserQueryByAccountCommandValidator : CommandValidator<UserQueryBy
     }
 }
 
-internal class UserQueryByAccountCommandHandler : CommandHandler<UserQueryByAccountCommand, Result<UserDto>>
+public class UserQueryByAccountCommandHandler : CommandHandler<UserQueryByAccountCommand, Result<UserDto>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

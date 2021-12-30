@@ -21,7 +21,7 @@ public class UploadBase64Command : Command<Result<ImageFileInfo>>, IDynamicWebAp
         => await mediator.Send(request, cancellationToken);
 }
 
-internal class UploadBase64CommandValidator : CommandValidator<UploadBase64Command>
+public class UploadBase64CommandValidator : CommandValidator<UploadBase64Command>
 {
     public UploadBase64CommandValidator()
     {
@@ -29,7 +29,7 @@ internal class UploadBase64CommandValidator : CommandValidator<UploadBase64Comma
     }
 }
 
-internal class UploadBase64CommandHandler : CommandHandler<UploadBase64Command, Result<ImageFileInfo>>
+public class UploadBase64CommandHandler : CommandHandler<UploadBase64Command, Result<ImageFileInfo>>
 {
     protected readonly IFileUploadService fileUploadService;
     protected readonly IUserInfo user;

@@ -43,7 +43,7 @@ public class RoleUpdateCommand : Command<Result<int>>, IMapFrom<RoleEntity>, IDy
 }
 
 
-internal class RoleUpdateCommandValidator : CommandValidator<RoleUpdateCommand>
+public class RoleUpdateCommandValidator : CommandValidator<RoleUpdateCommand>
 {
     public RoleUpdateCommandValidator()
     {
@@ -53,7 +53,7 @@ internal class RoleUpdateCommandValidator : CommandValidator<RoleUpdateCommand>
     }
 }
 
-internal class RoleUpdateCommandHandler : CommandHandler<RoleUpdateCommand, Result<int>>
+public class RoleUpdateCommandHandler : CommandHandler<RoleUpdateCommand, Result<int>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

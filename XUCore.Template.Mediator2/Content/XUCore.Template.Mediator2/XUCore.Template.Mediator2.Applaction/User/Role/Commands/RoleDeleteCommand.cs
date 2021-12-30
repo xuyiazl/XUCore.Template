@@ -24,7 +24,7 @@ public class RoleDeleteCommand : Command<Result<int>>, IDynamicWebApi
         => await mediator.Send(request, cancellationToken);
 }
 
-internal class RoleDeleteCommandValidator : CommandValidator<RoleDeleteCommand>
+public class RoleDeleteCommandValidator : CommandValidator<RoleDeleteCommand>
 {
     public RoleDeleteCommandValidator()
     {
@@ -32,7 +32,7 @@ internal class RoleDeleteCommandValidator : CommandValidator<RoleDeleteCommand>
     }
 }
 
-internal class RoleDeleteCommandHandler : CommandHandler<RoleDeleteCommand, Result<int>>
+public class RoleDeleteCommandHandler : CommandHandler<RoleDeleteCommand, Result<int>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

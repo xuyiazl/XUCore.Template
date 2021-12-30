@@ -37,7 +37,7 @@ public class UserAnyByAccountCommand : Command<Result<bool>>, IDynamicWebApi
         => await mediator.Send(request, cancellationToken);
 }
 
-internal class UserAnyByAccountCommandValidator : CommandValidator<UserAnyByAccountCommand>
+public class UserAnyByAccountCommandValidator : CommandValidator<UserAnyByAccountCommand>
 {
     public UserAnyByAccountCommandValidator()
     {
@@ -45,7 +45,7 @@ internal class UserAnyByAccountCommandValidator : CommandValidator<UserAnyByAcco
     }
 }
 
-internal class UserAnyByAccountCommandHandler : CommandHandler<UserAnyByAccountCommand, Result<bool>>
+public class UserAnyByAccountCommandHandler : CommandHandler<UserAnyByAccountCommand, Result<bool>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

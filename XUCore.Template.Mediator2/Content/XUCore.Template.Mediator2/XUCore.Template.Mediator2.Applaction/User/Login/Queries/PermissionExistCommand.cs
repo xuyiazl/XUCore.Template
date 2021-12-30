@@ -29,7 +29,7 @@ public class PermissionExistCommand : Command<Result<bool>>, IDynamicWebApi
         => await mediator.Send(request, cancellationToken);
 }
 
-internal class PermissionExistCommandValidator : CommandValidator<PermissionExistCommand>
+public class PermissionExistCommandValidator : CommandValidator<PermissionExistCommand>
 {
     public PermissionExistCommandValidator()
     {
@@ -37,7 +37,7 @@ internal class PermissionExistCommandValidator : CommandValidator<PermissionExis
     }
 }
 
-internal class PermissionExistCommandHandler : CommandHandler<PermissionExistCommand, Result<bool>>
+public class PermissionExistCommandHandler : CommandHandler<PermissionExistCommand, Result<bool>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

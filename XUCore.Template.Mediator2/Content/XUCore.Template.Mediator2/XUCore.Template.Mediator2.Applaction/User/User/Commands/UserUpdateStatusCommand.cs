@@ -28,8 +28,7 @@ public class UserUpdateStatusCommand : Command<Result<int>>, IDynamicWebApi
         => await mediator.Send(request, cancellationToken);
 }
 
-
-internal class UserUpdateStatusCommandValidator : CommandValidator<UserUpdateStatusCommand>
+public class UserUpdateStatusCommandValidator : CommandValidator<UserUpdateStatusCommand>
 {
     public UserUpdateStatusCommandValidator()
     {
@@ -37,7 +36,7 @@ internal class UserUpdateStatusCommandValidator : CommandValidator<UserUpdateSta
     }
 }
 
-internal class UserUpdateStatusCommandHandler : CommandHandler<UserUpdateStatusCommand, Result<int>>
+public class UserUpdateStatusCommandHandler : CommandHandler<UserUpdateStatusCommand, Result<int>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

@@ -65,7 +65,7 @@ public class UserCreateCommand : Command<Result<long>>, IMapFrom<UserEntity>, ID
         => await mediator.Send(request, cancellationToken);
 }
 
-internal class UserCreateCommandValidator : CommandValidator<UserCreateCommand>
+public class UserCreateCommandValidator : CommandValidator<UserCreateCommand>
 {
     public UserCreateCommandValidator()
     {
@@ -106,7 +106,7 @@ internal class UserCreateCommandValidator : CommandValidator<UserCreateCommand>
     }
 }
 
-internal class UserCreateCommandHandler : CommandHandler<UserCreateCommand, Result<long>>
+public class UserCreateCommandHandler : CommandHandler<UserCreateCommand, Result<long>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

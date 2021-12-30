@@ -5,14 +5,14 @@
     "Razor",
     "Web"
   ],
-  "name": "Razor Pages 项目模板",
+  "name": "XUCore Razor Pages 项目模板",
   "identity": "XUCore.Template.Razor",
   "groupIdentity": "XUCore.Template.Razor",
-  "shortName": "XRazor",
+  "shortName": "xrazor",
   "tags": {
     "language": "C#",
     "type": "project"
   },
-  "sourceName": "XRazor",
+  "sourceName": "xrazor",
   "preferNameDirectory": true
 }

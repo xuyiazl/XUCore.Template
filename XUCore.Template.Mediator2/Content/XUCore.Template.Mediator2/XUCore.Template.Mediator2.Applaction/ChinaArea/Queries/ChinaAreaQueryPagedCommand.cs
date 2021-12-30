@@ -35,7 +35,7 @@ public class ChinaAreaQueryPagedCommand : Command<Result<PagedModel<ChinaAreaDto
         => await mediator.Send(request, cancellationToken);
 }
 
-internal class ChinaAreaQueryPagedCommandValidator : CommandValidator<ChinaAreaQueryPagedCommand>
+public class ChinaAreaQueryPagedCommandValidator : CommandValidator<ChinaAreaQueryPagedCommand>
 {
     public ChinaAreaQueryPagedCommandValidator()
     {
@@ -45,7 +45,7 @@ internal class ChinaAreaQueryPagedCommandValidator : CommandValidator<ChinaAreaQ
 }
 
 
-internal class ChinaAreaQueryPagedCommandHandler : CommandHandler<ChinaAreaQueryPagedCommand, Result<PagedModel<ChinaAreaDto>>>
+public class ChinaAreaQueryPagedCommandHandler : CommandHandler<ChinaAreaQueryPagedCommand, Result<PagedModel<ChinaAreaDto>>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

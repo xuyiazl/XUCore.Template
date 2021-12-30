@@ -28,7 +28,7 @@ public class UserRelevanceRoleCommand : Command<Result<int>>, IDynamicWebApi
         => await mediator.Send(request, cancellationToken);
 }
 
-internal class UserRelevanceRoleCommandValidator : CommandValidator<UserRelevanceRoleCommand>
+public class UserRelevanceRoleCommandValidator : CommandValidator<UserRelevanceRoleCommand>
 {
     public UserRelevanceRoleCommandValidator()
     {
@@ -36,7 +36,7 @@ internal class UserRelevanceRoleCommandValidator : CommandValidator<UserRelevanc
     }
 }
 
-internal class UserRelevanceRoleCommandHandler : CommandHandler<UserRelevanceRoleCommand, Result<int>>
+public class UserRelevanceRoleCommandHandler : CommandHandler<UserRelevanceRoleCommand, Result<int>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

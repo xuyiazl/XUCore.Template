@@ -25,8 +25,7 @@ public class RoleQueryRelevanceMenuCommand : Command<Result<List<long>>>, IDynam
         => await mediator.Send(request, cancellationToken);
 }
 
-
-internal class RoleQueryRelevanceMenuCommandValidator : CommandValidator<RoleQueryRelevanceMenuCommand>
+public class RoleQueryRelevanceMenuCommandValidator : CommandValidator<RoleQueryRelevanceMenuCommand>
 {
     public RoleQueryRelevanceMenuCommandValidator()
     {
@@ -34,7 +33,7 @@ internal class RoleQueryRelevanceMenuCommandValidator : CommandValidator<RoleQue
     }
 }
 
-internal class RoleQueryRelevanceMenuCommandHandler : CommandHandler<RoleQueryRelevanceMenuCommand, Result<List<long>>>
+public class RoleQueryRelevanceMenuCommandHandler : CommandHandler<RoleQueryRelevanceMenuCommand, Result<List<long>>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

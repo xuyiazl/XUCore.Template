@@ -14,7 +14,7 @@ XUCore.Template.EasyFreeSql
 
 ```bash
 
-dotnet new -u XUCore.Template.EasyFreeSql
+dotnet new -u xfreesql2
 
 ```
 
@@ -22,7 +22,7 @@ dotnet new -u XUCore.Template.EasyFreeSql
 
 ```bash
 
-dotnet new --install XUCore.Template.EasyFreeSql::6.0.8
+dotnet new --install XUCore.Template.EasyFreeSql::6.0.9
 
 ```
 
@@ -44,11 +44,11 @@ cd E:\demo
 
 ```bash
 
-dotnet new XUCore.Template.EasyFreeSql -n MyTest -o .
+dotnet new xfreesql2 -n MyTest -o .
 
 ```
 
-这里的 `XUCore.Template.EasyFreeSql` 是使用模板短名称。
+这里的 `xfreesql2` 是使用模板短名称。
 
 `MyTest` 为新创建的项目名称。
 

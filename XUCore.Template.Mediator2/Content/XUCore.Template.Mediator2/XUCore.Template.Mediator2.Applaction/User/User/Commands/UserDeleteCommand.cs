@@ -24,7 +24,7 @@ public class UserDeleteCommand : Command<Result<int>>, IDynamicWebApi
         => await mediator.Send(request, cancellationToken);
 }
 
-internal class UserDeleteCommandValidator : CommandValidator<UserDeleteCommand>
+public class UserDeleteCommandValidator : CommandValidator<UserDeleteCommand>
 {
     public UserDeleteCommandValidator()
     {
@@ -32,7 +32,7 @@ internal class UserDeleteCommandValidator : CommandValidator<UserDeleteCommand>
     }
 }
 
-internal class UserDeleteCommandHandler : CommandHandler<UserDeleteCommand, Result<int>>
+public class UserDeleteCommandHandler : CommandHandler<UserDeleteCommand, Result<int>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

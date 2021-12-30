@@ -24,7 +24,7 @@ public class MenuDeleteCommand : Command<Result<int>>, IDynamicWebApi
         => await mediator.Send(request, cancellationToken);
 }
 
-internal class MenuDeleteCommandValidator : CommandValidator<MenuDeleteCommand>
+public class MenuDeleteCommandValidator : CommandValidator<MenuDeleteCommand>
 {
     public MenuDeleteCommandValidator()
     {
@@ -32,7 +32,7 @@ internal class MenuDeleteCommandValidator : CommandValidator<MenuDeleteCommand>
     }
 }
 
-internal class MenuDeleteCommandHandler : CommandHandler<MenuDeleteCommand, Result<int>>
+public class MenuDeleteCommandHandler : CommandHandler<MenuDeleteCommand, Result<int>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

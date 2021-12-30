@@ -14,7 +14,7 @@ XUCore.Template.Mediator2
 
 ```bash
 
-dotnet new -u XUCore.Template.Mediator2
+dotnet new -u xmediator2
 
 ```
 
@@ -22,7 +22,7 @@ dotnet new -u XUCore.Template.Mediator2
 
 ```bash
 
-dotnet new --install XUCore.Template.Mediator2::6.0.1
+dotnet new --install XUCore.Template.Mediator2::6.0.3
 
 ```
 
@@ -44,11 +44,11 @@ cd E:\demo
 
 ```bash
 
-dotnet new XUCore.Template.Mediator2 -n MyTest -o .
+dotnet new xmediator2 -n MyTest -o .
 
 ```
 
-这里的 `XUCore.Template.Mediator2` 是使用模板短名称。
+这里的 `xmediator2` 是使用模板短名称。
 
 `MyTest` 为新创建的项目名称。
 

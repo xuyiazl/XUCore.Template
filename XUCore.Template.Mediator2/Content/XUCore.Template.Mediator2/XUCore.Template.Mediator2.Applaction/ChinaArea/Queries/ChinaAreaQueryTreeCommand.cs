@@ -29,7 +29,7 @@ public class ChinaAreaQueryTreeCommand : Command<Result<List<ChinaAreaTreeDto>>>
         => await mediator.Send(request, cancellationToken);
 }
 
-internal class ChinaAreaQueryTreeCommandValidator : CommandValidator<ChinaAreaQueryTreeCommand>
+public class ChinaAreaQueryTreeCommandValidator : CommandValidator<ChinaAreaQueryTreeCommand>
 {
     public ChinaAreaQueryTreeCommandValidator()
     {
@@ -38,7 +38,7 @@ internal class ChinaAreaQueryTreeCommandValidator : CommandValidator<ChinaAreaQu
 }
 
 
-internal class Handler : CommandHandler<ChinaAreaQueryTreeCommand, Result<List<ChinaAreaTreeDto>>>
+public class Handler : CommandHandler<ChinaAreaQueryTreeCommand, Result<List<ChinaAreaTreeDto>>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

@@ -27,7 +27,7 @@ public class MenuQueryPagedCommand : Command<Result<PagedModel<MenuDto>>>
     public bool Enabled { get; set; } = true;
 }
 
-internal class MenuQueryPagedCommandValidator : CommandValidator<MenuQueryPagedCommand>
+public class MenuQueryPagedCommandValidator : CommandValidator<MenuQueryPagedCommand>
 {
     public MenuQueryPagedCommandValidator()
     {
@@ -36,7 +36,7 @@ internal class MenuQueryPagedCommandValidator : CommandValidator<MenuQueryPagedC
     }
 }
 
-internal class MenuQueryPagedCommandHandler : CommandHandler<MenuQueryPagedCommand, Result<PagedModel<MenuDto>>>
+public class MenuQueryPagedCommandHandler : CommandHandler<MenuQueryPagedCommand, Result<PagedModel<MenuDto>>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

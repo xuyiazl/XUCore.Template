@@ -14,7 +14,7 @@ XUCore.Template.Ddd
 
 ```bash
 
-dotnet new -u XUCore.Template.Ddd
+dotnet new -u xddd
 
 ```
 
@@ -22,7 +22,7 @@ dotnet new -u XUCore.Template.Ddd
 
 ```bash
 
-dotnet new --install XUCore.Template.Ddd::6.0.7
+dotnet new --install XUCore.Template.Ddd::6.0.8
 
 ```
 
@@ -44,11 +44,11 @@ cd E:\demo
 
 ```bash
 
-dotnet new XUCore.Template.Ddd -n MyTest -o .
+dotnet new xddd -n MyTest -o .
 
 ```
 
-这里的 `XUCore.Template.Ddd` 是使用模板短名称。
+这里的 `xddd` 是使用模板短名称。
 
 `MyTest` 为新创建的项目名称。
 

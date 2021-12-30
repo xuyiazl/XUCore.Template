@@ -5,14 +5,14 @@
     "FreeSql",
     "Api"
   ],
-  "name": "FreeSql 项目模板",
+  "name": "XUCore FreeSql 项目模板",
   "identity": "XUCore.Template.FreeSql",
   "groupIdentity": "XUCore.Template.FreeSql",
-  "shortName": "XFreeSql",
+  "shortName": "xfreesql",
   "tags": {
     "language": "C#",
     "type": "project"
   },
-  "sourceName": "XFreeSql",
+  "sourceName": "xfreesql",
   "preferNameDirectory": true
 }

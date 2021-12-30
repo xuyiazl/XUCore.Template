@@ -6,14 +6,14 @@
     "FreeSql",
     "Api"
   ],
-  "name": "Mediator 项目模板",
+  "name": "XUCore Mediator 项目模板",
   "identity": "XUCore.Template.Mediator",
   "groupIdentity": "XUCore.Template.Mediator",
-  "shortName": "XMediator",
+  "shortName": "xmediator",
   "tags": {
     "language": "C#",
     "type": "project"
   },
-  "sourceName": "XMediator",
+  "sourceName": "xmediator",
   "preferNameDirectory": true
 }

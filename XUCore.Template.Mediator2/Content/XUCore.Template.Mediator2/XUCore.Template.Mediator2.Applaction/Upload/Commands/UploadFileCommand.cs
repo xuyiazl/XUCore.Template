@@ -21,7 +21,7 @@ public class UploadFileCommand : Command<Result<XUCore.Files.FileInfo>>, IDynami
         => await mediator.Send(new UploadFileCommand { FormFile = formFile }, cancellationToken);
 }
 
-internal class UploadFileCommandValidator : CommandValidator<UploadFileCommand>
+public class UploadFileCommandValidator : CommandValidator<UploadFileCommand>
 {
     public UploadFileCommandValidator()
     {
@@ -29,7 +29,7 @@ internal class UploadFileCommandValidator : CommandValidator<UploadFileCommand>
     }
 }
 
-internal class UploadFileCommandHandler : CommandHandler<UploadFileCommand, Result<XUCore.Files.FileInfo>>
+public class UploadFileCommandHandler : CommandHandler<UploadFileCommand, Result<XUCore.Files.FileInfo>>
 {
     protected readonly IFileUploadService fileUploadService;
     protected readonly IUserInfo user;

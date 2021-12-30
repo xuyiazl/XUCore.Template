@@ -15,7 +15,7 @@ public class PermissionExistCommand : Command<Result<bool>>
     public string OnlyCode { get; set; }
 }
 
-internal class PermissionExistCommandValidator : CommandValidator<PermissionExistCommand>
+public class PermissionExistCommandValidator : CommandValidator<PermissionExistCommand>
 {
     public PermissionExistCommandValidator()
     {
@@ -23,7 +23,7 @@ internal class PermissionExistCommandValidator : CommandValidator<PermissionExis
     }
 }
 
-internal class PermissionExistCommandHandler : CommandHandler<PermissionExistCommand, Result<bool>>
+public class PermissionExistCommandHandler : CommandHandler<PermissionExistCommand, Result<bool>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

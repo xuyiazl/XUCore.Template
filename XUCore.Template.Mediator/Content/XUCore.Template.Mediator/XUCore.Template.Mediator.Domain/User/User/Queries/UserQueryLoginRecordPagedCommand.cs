@@ -23,7 +23,7 @@ public class UserQueryLoginRecordPagedCommand : Command<Result<PagedModel<UserLo
     public string Keyword { get; set; }
 }
 
-internal class UserQueryLoginRecordPagedCommandValidator : CommandValidator<UserQueryLoginRecordPagedCommand>
+public class UserQueryLoginRecordPagedCommandValidator : CommandValidator<UserQueryLoginRecordPagedCommand>
 {
     public UserQueryLoginRecordPagedCommandValidator()
     {
@@ -32,7 +32,7 @@ internal class UserQueryLoginRecordPagedCommandValidator : CommandValidator<User
     }
 }
 
-internal class UserQueryLoginRecordPagedCommandHandler : CommandHandler<UserQueryLoginRecordPagedCommand, Result<PagedModel<UserLoginRecordDto>>>
+public class UserQueryLoginRecordPagedCommandHandler : CommandHandler<UserQueryLoginRecordPagedCommand, Result<PagedModel<UserLoginRecordDto>>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

@@ -21,7 +21,7 @@ public class UserUpdateFieldCommand : Command<Result<int>>
     public string Value { get; set; }
 }
 
-internal class UserUpdateFieldCommandValidator : CommandValidator<UserUpdateFieldCommand>
+public class UserUpdateFieldCommandValidator : CommandValidator<UserUpdateFieldCommand>
 {
     public UserUpdateFieldCommandValidator()
     {
@@ -30,7 +30,7 @@ internal class UserUpdateFieldCommandValidator : CommandValidator<UserUpdateFiel
     }
 }
 
-internal class UserUpdateFieldCommandHandler : CommandHandler<UserUpdateFieldCommand, Result<int>>
+public class UserUpdateFieldCommandHandler : CommandHandler<UserUpdateFieldCommand, Result<int>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

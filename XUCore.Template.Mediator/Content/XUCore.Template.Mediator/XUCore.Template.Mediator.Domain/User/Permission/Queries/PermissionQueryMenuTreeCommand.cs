@@ -11,7 +11,7 @@ public class PermissionQueryMenuTreeCommand : Command<Result<List<PermissionMenu
     public long UserId { get; set; }
 }
 
-internal class PermissionQueryMenuTreeCommandValidator : CommandValidator<PermissionQueryMenuTreeCommand>
+public class PermissionQueryMenuTreeCommandValidator : CommandValidator<PermissionQueryMenuTreeCommand>
 {
     public PermissionQueryMenuTreeCommandValidator()
     {
@@ -19,7 +19,7 @@ internal class PermissionQueryMenuTreeCommandValidator : CommandValidator<Permis
     }
 }
 
-internal class PermissionQueryMenuTreeCommandHandler : CommandHandler<PermissionQueryMenuTreeCommand, Result<List<PermissionMenuTreeDto>>>
+public class PermissionQueryMenuTreeCommandHandler : CommandHandler<PermissionQueryMenuTreeCommand, Result<List<PermissionMenuTreeDto>>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

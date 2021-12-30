@@ -6,14 +6,14 @@
     "Api",
     "Web"
   ],
-  "name": "Ddd 项目模板",
+  "name": "XUCore Ddd 项目模板",
   "identity": "XUCore.Template.Ddd",
   "groupIdentity": "XUCore.Template.Ddd",
-  "shortName": "XDdd",
+  "shortName": "xddd",
   "tags": {
     "language": "C#",
     "type": "project"
   },
-  "sourceName": "XDdd",
+  "sourceName": "xddd",
   "preferNameDirectory": true
 }

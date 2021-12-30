@@ -39,7 +39,7 @@ public class UserQueryPagedCommand : Command<Result<PagedModel<UserDto>>>, IDyna
         => await mediator.Send(request, cancellationToken);
 }
 
-internal class UserQueryPagedCommandValidator : CommandValidator<UserQueryPagedCommand>
+public class UserQueryPagedCommandValidator : CommandValidator<UserQueryPagedCommand>
 {
     public UserQueryPagedCommandValidator()
     {
@@ -48,7 +48,7 @@ internal class UserQueryPagedCommandValidator : CommandValidator<UserQueryPagedC
     }
 }
 
-internal class UserQueryPagedCommandHandler : CommandHandler<UserQueryPagedCommand, Result<PagedModel<UserDto>>>
+public class UserQueryPagedCommandHandler : CommandHandler<UserQueryPagedCommand, Result<PagedModel<UserDto>>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

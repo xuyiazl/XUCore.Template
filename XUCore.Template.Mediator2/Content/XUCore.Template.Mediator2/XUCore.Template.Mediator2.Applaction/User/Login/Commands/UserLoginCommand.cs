@@ -31,7 +31,7 @@ public class UserLoginCommand : Command<Result<LoginTokenDto>>, IDynamicWebApi
 
 }
 
-internal class UserLoginCommandValidator : CommandValidator<UserLoginCommand>
+public class UserLoginCommandValidator : CommandValidator<UserLoginCommand>
 {
     public UserLoginCommandValidator()
     {
@@ -40,7 +40,7 @@ internal class UserLoginCommandValidator : CommandValidator<UserLoginCommand>
     }
 }
 
-internal class UserLoginCommandHandler : CommandHandler<UserLoginCommand, Result<LoginTokenDto>>
+public class UserLoginCommandHandler : CommandHandler<UserLoginCommand, Result<LoginTokenDto>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

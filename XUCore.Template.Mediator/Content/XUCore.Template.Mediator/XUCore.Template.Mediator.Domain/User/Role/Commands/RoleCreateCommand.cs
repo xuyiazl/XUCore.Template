@@ -24,7 +24,7 @@ public class RoleCreateCommand : Command<Result<long>>, IMapFrom<RoleEntity>
         ;
 }
 
-internal class RoleCreateCommandValidator : CommandValidator<RoleCreateCommand>
+public class RoleCreateCommandValidator : CommandValidator<RoleCreateCommand>
 {
     public RoleCreateCommandValidator()
     {
@@ -32,7 +32,7 @@ internal class RoleCreateCommandValidator : CommandValidator<RoleCreateCommand>
     }
 }
 
-internal class RoleCreateCommandHandler : CommandHandler<RoleCreateCommand, Result<long>>
+public class RoleCreateCommandHandler : CommandHandler<RoleCreateCommand, Result<long>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

@@ -34,7 +34,7 @@ public class UserUpdatePasswordCommand : Command<Result<int>>, IDynamicWebApi
         => await mediator.Send(request, cancellationToken);
 }
 
-internal class UserUpdatePasswordCommandValidator : CommandValidator<UserUpdatePasswordCommand>
+public class UserUpdatePasswordCommandValidator : CommandValidator<UserUpdatePasswordCommand>
 {
     public UserUpdatePasswordCommandValidator()
     {
@@ -45,7 +45,7 @@ internal class UserUpdatePasswordCommandValidator : CommandValidator<UserUpdateP
     }
 }
 
-internal class UserUpdatePasswordCommandHandler : CommandHandler<UserUpdatePasswordCommand, Result<int>>
+public class UserUpdatePasswordCommandHandler : CommandHandler<UserUpdatePasswordCommand, Result<int>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

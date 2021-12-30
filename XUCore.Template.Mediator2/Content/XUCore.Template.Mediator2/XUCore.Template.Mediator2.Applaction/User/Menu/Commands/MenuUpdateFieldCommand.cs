@@ -33,7 +33,7 @@ public class MenuUpdateFieldCommand : Command<Result<int>>, IDynamicWebApi
         => await mediator.Send(request, cancellationToken);
 }
 
-internal class MenuUpdateFieldCommandValidator : CommandValidator<MenuUpdateFieldCommand>
+public class MenuUpdateFieldCommandValidator : CommandValidator<MenuUpdateFieldCommand>
 {
     public MenuUpdateFieldCommandValidator()
     {
@@ -42,7 +42,7 @@ internal class MenuUpdateFieldCommandValidator : CommandValidator<MenuUpdateFiel
     }
 }
 
-internal class MenuUpdateFieldCommandHandler : CommandHandler<MenuUpdateFieldCommand, Result<int>>
+public class MenuUpdateFieldCommandHandler : CommandHandler<MenuUpdateFieldCommand, Result<int>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

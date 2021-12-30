@@ -31,7 +31,7 @@ public class ChinaAreaQueryListCommand : Command<Result<List<ChinaAreaDto>>>, ID
 }
 
 
-internal class ChinaAreaQueryListCommandValidator : CommandValidator<ChinaAreaQueryListCommand>
+public class ChinaAreaQueryListCommandValidator : CommandValidator<ChinaAreaQueryListCommand>
 {
     public ChinaAreaQueryListCommandValidator()
     {
@@ -39,7 +39,7 @@ internal class ChinaAreaQueryListCommandValidator : CommandValidator<ChinaAreaQu
     }
 }
 
-internal class ChinaAreaQueryListCommandHandler : CommandHandler<ChinaAreaQueryListCommand, Result<List<ChinaAreaDto>>>
+public class ChinaAreaQueryListCommandHandler : CommandHandler<ChinaAreaQueryListCommand, Result<List<ChinaAreaDto>>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

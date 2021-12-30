@@ -25,7 +25,7 @@ public class RoleQueryByIdCommand : Command<Result<RoleDto>>, IDynamicWebApi
         => await mediator.Send(new RoleQueryByIdCommand { Id = id }, cancellationToken);
 }
 
-internal class RoleQueryByIdCommandValidator : CommandValidator<RoleQueryByIdCommand>
+public class RoleQueryByIdCommandValidator : CommandValidator<RoleQueryByIdCommand>
 {
     public RoleQueryByIdCommandValidator()
     {
@@ -33,7 +33,7 @@ internal class RoleQueryByIdCommandValidator : CommandValidator<RoleQueryByIdCom
     }
 }
 
-internal class RoleQueryByIdCommandHandler : CommandHandler<RoleQueryByIdCommand, Result<RoleDto>>
+public class RoleQueryByIdCommandHandler : CommandHandler<RoleQueryByIdCommand, Result<RoleDto>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

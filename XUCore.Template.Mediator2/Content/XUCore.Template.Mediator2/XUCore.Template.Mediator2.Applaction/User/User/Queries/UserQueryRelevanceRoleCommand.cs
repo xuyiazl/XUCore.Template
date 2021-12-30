@@ -25,7 +25,7 @@ public class UserQueryRelevanceRoleCommand : Command<Result<List<long>>>, IDynam
         => await mediator.Send(new UserQueryRelevanceRoleCommand { UserId = userId }, cancellationToken);
 }
 
-internal class UserQueryRelevanceRoleCommandValidator : CommandValidator<UserQueryRelevanceRoleCommand>
+public class UserQueryRelevanceRoleCommandValidator : CommandValidator<UserQueryRelevanceRoleCommand>
 {
     public UserQueryRelevanceRoleCommandValidator()
     {
@@ -33,7 +33,7 @@ internal class UserQueryRelevanceRoleCommandValidator : CommandValidator<UserQue
     }
 }
 
-internal class UserQueryRelevanceRoleCommandHandler : CommandHandler<UserQueryRelevanceRoleCommand, Result<List<long>>>
+public class UserQueryRelevanceRoleCommandHandler : CommandHandler<UserQueryRelevanceRoleCommand, Result<List<long>>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

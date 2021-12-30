@@ -10,7 +10,7 @@ public class UploadImageCommand : Command<Result<ImageFileInfo>>
 }
 
 
-internal class UploadImageCommandValidator : CommandValidator<UploadImageCommand>
+public class UploadImageCommandValidator : CommandValidator<UploadImageCommand>
 {
     public UploadImageCommandValidator()
     {
@@ -18,7 +18,7 @@ internal class UploadImageCommandValidator : CommandValidator<UploadImageCommand
     }
 }
 
-internal class UploadImageCommandHandler : CommandHandler<UploadImageCommand, Result<ImageFileInfo>>
+public class UploadImageCommandHandler : CommandHandler<UploadImageCommand, Result<ImageFileInfo>>
 {
     protected readonly IFileUploadService fileUploadService;
     protected readonly IUserInfo user;

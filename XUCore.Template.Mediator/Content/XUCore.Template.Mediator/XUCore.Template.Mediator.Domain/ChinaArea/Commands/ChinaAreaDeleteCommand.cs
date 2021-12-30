@@ -12,7 +12,7 @@ public class ChinaAreaDeleteCommand : Command<Result<int>>
     public long[] Ids { get; set; }
 }
 
-internal class ChinaAreaDeleteCommandValidator : CommandValidator<ChinaAreaDeleteCommand>
+public class ChinaAreaDeleteCommandValidator : CommandValidator<ChinaAreaDeleteCommand>
 {
     public ChinaAreaDeleteCommandValidator()
     {
@@ -21,7 +21,7 @@ internal class ChinaAreaDeleteCommandValidator : CommandValidator<ChinaAreaDelet
 }
 
 
-internal class ChinaAreaDeleteCommandHandler : CommandHandler<ChinaAreaDeleteCommand, Result<int>>
+public class ChinaAreaDeleteCommandHandler : CommandHandler<ChinaAreaDeleteCommand, Result<int>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

@@ -22,7 +22,7 @@ public class UserAnyByAccountCommand : Command<Result<bool>>
     public long NotId { get; set; }
 }
 
-internal class UserAnyByAccountCommandValidator : CommandValidator<UserAnyByAccountCommand>
+public class UserAnyByAccountCommandValidator : CommandValidator<UserAnyByAccountCommand>
 {
     public UserAnyByAccountCommandValidator()
     {
@@ -30,7 +30,7 @@ internal class UserAnyByAccountCommandValidator : CommandValidator<UserAnyByAcco
     }
 }
 
-internal class UserAnyByAccountCommandHandler : CommandHandler<UserAnyByAccountCommand, Result<bool>>
+public class UserAnyByAccountCommandHandler : CommandHandler<UserAnyByAccountCommand, Result<bool>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

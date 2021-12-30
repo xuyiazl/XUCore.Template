@@ -13,7 +13,7 @@ public class UserQueryRelevanceRoleCommand : Command<Result<List<long>>>
     public long UserId { get; set; }
 }
 
-internal class UserQueryRelevanceRoleCommandValidator : CommandValidator<UserQueryRelevanceRoleCommand>
+public class UserQueryRelevanceRoleCommandValidator : CommandValidator<UserQueryRelevanceRoleCommand>
 {
     public UserQueryRelevanceRoleCommandValidator()
     {
@@ -21,7 +21,7 @@ internal class UserQueryRelevanceRoleCommandValidator : CommandValidator<UserQue
     }
 }
 
-internal class UserQueryRelevanceRoleCommandHandler : CommandHandler<UserQueryRelevanceRoleCommand, Result<List<long>>>
+public class UserQueryRelevanceRoleCommandHandler : CommandHandler<UserQueryRelevanceRoleCommand, Result<List<long>>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

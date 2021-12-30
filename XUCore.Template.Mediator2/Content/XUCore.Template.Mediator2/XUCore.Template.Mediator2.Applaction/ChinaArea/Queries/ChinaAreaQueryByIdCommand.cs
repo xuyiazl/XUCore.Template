@@ -25,7 +25,7 @@ public class ChinaAreaQueryByIdCommand : Command<Result<ChinaAreaDto>>, IDynamic
         => await mediator.Send(new ChinaAreaQueryByIdCommand { Id = id }, cancellationToken);
 }
 
-internal class ChinaAreaQueryByIdCommandValidator : CommandValidator<ChinaAreaQueryByIdCommand>
+public class ChinaAreaQueryByIdCommandValidator : CommandValidator<ChinaAreaQueryByIdCommand>
 {
     public ChinaAreaQueryByIdCommandValidator()
     {
@@ -33,7 +33,7 @@ internal class ChinaAreaQueryByIdCommandValidator : CommandValidator<ChinaAreaQu
     }
 }
 
-internal class ChinaAreaQueryByIdCommandHandler : CommandHandler<ChinaAreaQueryByIdCommand, Result<ChinaAreaDto>>
+public class ChinaAreaQueryByIdCommandHandler : CommandHandler<ChinaAreaQueryByIdCommand, Result<ChinaAreaDto>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

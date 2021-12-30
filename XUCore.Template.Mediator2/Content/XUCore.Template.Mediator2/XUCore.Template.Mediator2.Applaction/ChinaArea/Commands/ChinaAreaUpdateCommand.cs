@@ -93,7 +93,7 @@ public class ChinaAreaUpdateCommand : Command<Result<int>>, IMapFrom<ChinaAreaEn
         => await mediator.Send(request, cancellationToken);
 }
 
-internal class ChinaAreaUpdateCommandValidator : CommandValidator<ChinaAreaUpdateCommand>
+public class ChinaAreaUpdateCommandValidator : CommandValidator<ChinaAreaUpdateCommand>
 {
     public ChinaAreaUpdateCommandValidator()
     {
@@ -114,7 +114,7 @@ internal class ChinaAreaUpdateCommandValidator : CommandValidator<ChinaAreaUpdat
 }
 
 
-internal class ChinaAreaUpdateCommandHandler : CommandHandler<ChinaAreaUpdateCommand, Result<int>>
+public class ChinaAreaUpdateCommandHandler : CommandHandler<ChinaAreaUpdateCommand, Result<int>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

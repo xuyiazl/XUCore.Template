@@ -30,7 +30,7 @@ public class UserQueryLoginRecordCommand : Command<Result<List<UserLoginRecordDt
         => await mediator.Send(request, cancellationToken);
 }
 
-internal class UserQueryLoginRecordCommandValidator : CommandValidator<UserQueryLoginRecordCommand>
+public class UserQueryLoginRecordCommandValidator : CommandValidator<UserQueryLoginRecordCommand>
 {
     public UserQueryLoginRecordCommandValidator()
     {
@@ -38,7 +38,7 @@ internal class UserQueryLoginRecordCommandValidator : CommandValidator<UserQuery
     }
 }
 
-internal class UserQueryLoginRecordCommandHandler : CommandHandler<UserQueryLoginRecordCommand, Result<List<UserLoginRecordDto>>>
+public class UserQueryLoginRecordCommandHandler : CommandHandler<UserQueryLoginRecordCommand, Result<List<UserLoginRecordDto>>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

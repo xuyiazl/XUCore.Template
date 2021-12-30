@@ -32,7 +32,7 @@ public class MenuQueryListCommand : Command<Result<List<MenuDto>>>, IDynamicWebA
         => await mediator.Send(request, cancellationToken);
 }
 
-internal class MenuQueryListCommandValidator : CommandValidator<MenuQueryListCommand>
+public class MenuQueryListCommandValidator : CommandValidator<MenuQueryListCommand>
 {
     public MenuQueryListCommandValidator()
     {
@@ -40,7 +40,7 @@ internal class MenuQueryListCommandValidator : CommandValidator<MenuQueryListCom
     }
 }
 
-internal class MenuQueryListCommandHandler : CommandHandler<MenuQueryListCommand, Result<List<MenuDto>>>
+public class MenuQueryListCommandHandler : CommandHandler<MenuQueryListCommand, Result<List<MenuDto>>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

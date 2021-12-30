@@ -32,7 +32,7 @@ public class RoleQueryListCommand : Command<Result<List<RoleDto>>>, IDynamicWebA
         => await mediator.Send(request, cancellationToken);
 }
 
-internal class RoleQueryListCommandValidator : CommandValidator<RoleQueryListCommand>
+public class RoleQueryListCommandValidator : CommandValidator<RoleQueryListCommand>
 {
     public RoleQueryListCommandValidator()
     {
@@ -40,7 +40,7 @@ internal class RoleQueryListCommandValidator : CommandValidator<RoleQueryListCom
     }
 }
 
-internal class RoleQueryListCommandHandler : CommandHandler<RoleQueryListCommand, Result<List<RoleDto>>>
+public class RoleQueryListCommandHandler : CommandHandler<RoleQueryListCommand, Result<List<RoleDto>>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

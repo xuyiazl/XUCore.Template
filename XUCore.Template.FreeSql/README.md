@@ -14,7 +14,7 @@ XUCore.Template.FreeSql
 
 ```bash
 
-dotnet new -u XUCore.Template.FreeSql
+dotnet new -u xfreesql
 
 ```
 
@@ -22,7 +22,7 @@ dotnet new -u XUCore.Template.FreeSql
 
 ```bash
 
-dotnet new --install XUCore.Template.FreeSql::6.0.8
+dotnet new --install XUCore.Template.FreeSql::6.0.9
 
 ```
 
@@ -44,11 +44,11 @@ cd E:\demo
 
 ```bash
 
-dotnet new XUCore.Template.FreeSql -n MyTest -o .
+dotnet new xfreesql -n MyTest -o .
 
 ```
 
-这里的 `XUCore.Template.FreeSql` 是使用模板短名称。
+这里的 `xfreesql` 是使用模板短名称。
 
 `MyTest` 为新创建的项目名称。
 

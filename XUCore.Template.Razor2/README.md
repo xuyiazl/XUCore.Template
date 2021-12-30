@@ -14,7 +14,7 @@ XUCore.Template.Razor2
 
 ```bash
 
-dotnet new -u XUCore.Template.Razor2
+dotnet new -u xrazor2
 
 ```
 
@@ -22,7 +22,7 @@ dotnet new -u XUCore.Template.Razor2
 
 ```bash
 
-dotnet new --install XUCore.Template.Razor2::6.0.6
+dotnet new --install XUCore.Template.Razor2::6.0.7
 
 ```
 
@@ -44,11 +44,11 @@ cd E:\demo
 
 ```bash
 
-dotnet new XUCore.Template.Razor2 -n MyTest -o .
+dotnet new xrazor2 -n MyTest -o .
 
 ```
 
-这里的 `XUCore.Template.Razor2` 是使用模板短名称。
+这里的 `xrazor2` 是使用模板短名称。
 
 `MyTest` 为新创建的项目名称。
 

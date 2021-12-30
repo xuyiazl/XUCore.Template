@@ -52,7 +52,7 @@ public class MenuCreateCommand : Command<Result<long>>, IMapFrom<MenuEntity>
 }
 
 
-internal class MenuCreateCommandValidator : CommandValidator<MenuCreateCommand>
+public class MenuCreateCommandValidator : CommandValidator<MenuCreateCommand>
 {
     public MenuCreateCommandValidator()
     {
@@ -62,7 +62,7 @@ internal class MenuCreateCommandValidator : CommandValidator<MenuCreateCommand>
     }
 }
 
-internal class MenuCreateCommandHandler : CommandHandler<MenuCreateCommand, Result<long>>
+public class MenuCreateCommandHandler : CommandHandler<MenuCreateCommand, Result<long>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;

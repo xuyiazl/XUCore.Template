@@ -52,7 +52,7 @@ public class UserUpdateInfoCommand : Command<Result<int>>, IMapFrom<UserEntity>,
         => await mediator.Send(request, cancellationToken);
 }
 
-internal class UserUpdateInfoCommandValidator : CommandValidator<UserUpdateInfoCommand>
+public class UserUpdateInfoCommandValidator : CommandValidator<UserUpdateInfoCommand>
 {
     public UserUpdateInfoCommandValidator()
     {
@@ -65,7 +65,7 @@ internal class UserUpdateInfoCommandValidator : CommandValidator<UserUpdateInfoC
     }
 }
 
-internal class UserUpdateInfoCommandHandler : CommandHandler<UserUpdateInfoCommand, Result<int>>
+public class UserUpdateInfoCommandHandler : CommandHandler<UserUpdateInfoCommand, Result<int>>
 {
     protected readonly FreeSqlUnitOfWorkManager db;
     protected readonly IUserInfo user;
