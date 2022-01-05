@@ -22,7 +22,7 @@ dotnet new -u xddd
 
 ```bash
 
-dotnet new --install XUCore.Template.Ddd::6.0.8
+dotnet new --install XUCore.Template.Ddd::6.0.9
 
 ```
 

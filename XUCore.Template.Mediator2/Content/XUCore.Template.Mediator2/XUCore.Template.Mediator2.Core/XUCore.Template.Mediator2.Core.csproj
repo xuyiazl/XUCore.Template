@@ -22,10 +22,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="XUCore" Version="6.0.9" />
-		<PackageReference Include="XUCore.NetCore" Version="6.0.9" />
-		<PackageReference Include="XUCore.NetCore.FreeSql" Version="6.0.9" />
-		<PackageReference Include="XUCore.NetCore.Redis" Version="6.0.9" />
+		<PackageReference Include="XUCore" Version="6.0.11" />
+		<PackageReference Include="XUCore.NetCore" Version="6.0.11" />
+		<PackageReference Include="XUCore.NetCore.FreeSql" Version="6.0.11" />
+		<PackageReference Include="XUCore.NetCore.Redis" Version="6.0.11" />
 	</ItemGroup>
 
 </Project>

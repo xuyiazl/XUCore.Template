@@ -13,6 +13,6 @@
     "language": "C#",
     "type": "project"
   },
-  "sourceName": "xfreesql2",
+  "sourceName": "XUCore.Template.EasyFreeSql",
   "preferNameDirectory": true
 }

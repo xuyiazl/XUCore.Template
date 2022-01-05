@@ -13,6 +13,6 @@
     "language": "C#",
     "type": "project"
   },
-  "sourceName": "xrazor",
+  "sourceName": "XUCore.Template.Razor",
   "preferNameDirectory": true
 }

@@ -14,6 +14,6 @@
     "language": "C#",
     "type": "project"
   },
-  "sourceName": "xmediator",
+  "sourceName": "XUCore.Template.Mediator",
   "preferNameDirectory": true
 }

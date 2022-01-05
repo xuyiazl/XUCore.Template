@@ -22,7 +22,7 @@ dotnet new -u xfreesql
 
 ```bash
 
-dotnet new --install XUCore.Template.FreeSql::6.0.9
+dotnet new --install XUCore.Template.FreeSql::6.0.10
 
 ```
 
