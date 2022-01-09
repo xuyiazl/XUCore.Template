@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+
+    //ViewData["BodyClass"] = "container";
+}
+
+@RenderBody()
+
+@section Styles{
+    @RenderSection("Styles", required: false)
+}
+
+@section Scripts{
+    @RenderSection("Scripts", required: false)
+}
+

@@ -1,0 +1,202 @@
+﻿<!--上传裁剪-->
+<div class="modal fade" id="upload-cut-modal">
+    <div class="modal-dialog" style="width: 900px;">
+        <form id="upload-cut-form" class="form-horizontal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title"><i class="fa fa-bullhorn"></i>&nbsp;上传图片</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div style="width:100%;height:400px;background-color:#f3f3f5;">
+                                <img id="cutImage" />
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="previewImg" style="overflow: hidden;width:100%;height:200px;background-color:#f3f3f5;"></div>
+                            <div class="input-group input-group-sm m-t m-b">
+                                <span class="input-group-addon">宽度</span>
+                                <input type="text" class="form-control" id="width" readonly />
+                                <span class="input-group-addon">px</span>
+                            </div>
+                            <div class="input-group input-group-sm m-b">
+                                <span class="input-group-addon">高度</span>
+                                <input type="text" class="form-control" id="height" readonly />
+                                <span class="input-group-addon">px</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-t">
+                        <div class="col-sm-12 text-center">
+                            <label for="chooseImg" class="btn btn-danger btn-sm" title="上传图片">
+                                <input type="file" accept="image/jpg,image/jpeg,image/png" name="file" id="chooseImg" class="hide" onchange="selectImg(this)">
+                                <i class="fa fa-upload"></i>
+                            </label>
+                            <div class="btn-group btn-group-sm">
+                                <a href="#" class="btn btn-default cropper-refresh-btn" data-method="reset" title="复原"><i class="fa fa-refresh"></i></a>
+                            </div>
+                            <div class="btn-group btn-group-sm">
+                                <a href="#" class="btn btn-default" name="aspectRatio" data-method="setAspectRatio" data-option="1.7777777777777777" title="裁剪比例: 16 / 9">16:9</a>
+                                <a href="#" class="btn btn-default" name="aspectRatio" data-method="setAspectRatio" data-option="1.3333333333333333" title="裁剪比例: 4 / 3">4:3</a>
+                                <a href="#" class="btn btn-default" name="aspectRatio" data-method="setAspectRatio" data-option="1" title="裁剪比例: 1 / 1">1:1</a>
+                                <a href="#" class="btn btn-default" name="aspectRatio" data-method="setAspectRatio" data-option="0.6666666666666666" title="裁剪比例: 2 / 3">2:3</a>
+                                <a href="#" class="btn btn-default" name="aspectRatio" data-method="setAspectRatio" data-option="NaN" title="默认: NaN">默认</a>
+                            </div>
+                            <div class="btn-group btn-group-sm">
+                                <a href="#" class="btn btn-default cropper-drag-btn" data-method="setDragMode" data-option="move" title="移动图片"><i class="fa fa-arrows"></i></a>
+                                <a href="#" class="btn btn-default cropper-drag-btn" data-method="setDragMode" data-option="crop" title="裁剪"><i class="fa fa-crop"></i></a>
+                            </div>
+                            <div class="btn-group btn-group-sm">
+                                <a href="#" class="btn btn-default cropper-rotate-btn" data-method="rotate" data-option="45" title="向左旋转 45°"><i class="fa fa-rotate-left"></i></a>
+                                <a href="#" class="btn btn-default cropper-rotate-btn" data-method="rotate" data-option="-45" title="向右旋转 -45°"><i class="fa fa-rotate-right"></i></a>
+                            </div>
+                            <div class="btn-group btn-group-sm">
+                                <a href="#" class="btn btn-default cropper-scale-btn" data-method="scaleX" data-option="-1" title="左右倒置"><i class="fa fa-arrows-h"></i></a>
+                                <a href="#" class="btn btn-default cropper-scale-btn" data-method="scaleY" data-option="-1" title="上下倒置"><i class="fa fa-arrows-v"></i></a>
+                            </div>
+                            <div class="btn-group btn-group-sm">
+                                <a href="#" class="btn btn-default cropper-move-btn" data-method="move" data-option="-10" data-second-option="0" title="向左移动"><i class="fa fa-arrow-left"></i></a>
+                                <a href="#" class="btn btn-default cropper-move-btn" data-method="move" data-option="10" data-second-option="0" title="向右移动"><i class="fa fa-arrow-right"></i></a>
+                                <a href="#" class="btn btn-default cropper-move-btn" data-method="move" data-option="0" data-second-option="-10" title="向上移动"><i class="fa fa-arrow-up"></i></a>
+                                <a href="#" class="btn btn-default cropper-move-btn" data-method="move" data-option="0" data-second-option="10" title="向下移动"><i class="fa fa-arrow-down"></i></a>
+                            </div>
+                            <div class="btn-group btn-group-sm">
+                                <a href="#" class="btn btn-default cropper-zoom-btn" data-method="zoom" data-option="0.1" title="放大"><i class="fa fa-search-plus"></i></a>
+                                <a href="#" class="btn btn-default cropper-zoom-btn" data-method="zoom" data-option="-0.1" title="缩小"><i class="fa fa-search-minus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-t">
+                        <div class="col-sm-12 text-center">
+                            <div class="btn-group btn-group-sm">
+                                <a href="#" class="btn btn-success sureCut" id="sureCut">确定裁剪</a>
+                                <a href="#" class="btn btn-default sureCut" id="download">下载图片</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+//图像上传
+function selectImg(file) {
+    if (!file.files || !file.files[0]) {
+        return;
+    }
+    var reader = new FileReader();
+    reader.onload = function (evt) {
+        var replaceSrc = evt.target.result;
+        var modal = $('#upload-cut-modal');
+        $('#cutImage', modal).cropper('replace', replaceSrc, false);
+    }
+    reader.readAsDataURL(file.files[0]);
+}
+var getRootImageBase64 = function (url, cb) {
+    let image = new Image();
+    image.src = url;
+    image.setAttribute('crossOrigin', 'anonymous');
+    image.onload = () => {
+        var canvas = document.createElement("canvas");
+        canvas.width = image.width;
+        canvas.height = image.height;
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(image, 0, 0, image.width, image.height);
+        var ext = image.src.substring(image.src.lastIndexOf(".") + 1).toLowerCase();
+        var base64 = canvas.toDataURL("image/jpeg");
+        cb && cb(base64);
+    }
+}
+$(function () {
+    var modal = $('#upload-cut-modal');
+    //modal.on('show.bs.modal', function (e) {
+    //    var url = $('#Picture').val();
+    //    if (url && url.length > 0) {
+    //        getRootImageBase64('Model.Root' + url, function (base64) {
+    //            cutImage.cropper('replace', base64, false);
+    //        });
+    //    }
+    //});
+    var cutImage = $('#cutImage', modal);
+    cutImage.cropper({
+        aspectRatio: 'NaN',//默认比例
+        preview: '.previewImg',//预览视图
+        guides: true,  //裁剪框的虚线(九宫格)
+        autoCropArea: 0.8,  //0-1之间的数值，定义自动剪裁区域的大小，默认0.8
+        dragCrop: true,  //是否允许移除当前的剪裁框，并通过拖动来新建一个剪裁框区域
+        movable: true,  //是否允许移动剪裁框
+        resizable: true,  //是否允许改变裁剪框的大小
+        zoomable: true,  //是否允许缩放图片大小
+        mouseWheelZoom: true,  //是否允许通过鼠标滚轮来缩放图片
+        touchDragZoom: true,  //是否允许通过触摸移动来缩放图片
+        rotatable: true,  //是否允许旋转图片
+        viewMode: 2,
+        crop: function (e) {
+            // 输出结果数据裁剪图像。
+            $('#width').val(parseInt(e.width));
+            $('#height').val(parseInt(e.height));
+        }
+    });
+    $(".cropper-drag-btn,.cropper-rotate-btn,.cropper-zoom-btn,a[name=aspectRatio],.cropper-refresh-btn").on("click", function () {
+        cutImage.cropper($(this).data('method'), $(this).data('option'));
+    });
+    $(".cropper-scale-btn", modal).on("click", function () {
+        var option = $(this).data('option');
+        cutImage.cropper($(this).data('method'), option);
+        $(this).data('option', option == -1 ? '1' : '-1');
+    });
+    $(".cropper-move-btn", modal).on("click", function () {
+        cutImage.cropper($(this).data('method'), $(this).data('option'), $(this).data('second-option'));
+    });
+    //裁剪后的处理
+    $("#sureCut", modal).on("click", function () {
+        var cas = cutImage.cropper('getCroppedCanvas');
+        var base64url = cas.toDataURL('image/jpeg');
+        //cutImage.cropper('replace', base64url, false);
+        $.ajax({
+            url: '/api/upload/base64image',
+            type: "POST",
+            data: { base64: base64url, type: 'image/jpeg' },
+            success: function (res) {
+                if (res.code == 0) {
+                    $('#upload-cut-modal').modal('hide');
+                    $('#@Model').val(res.Data.Url);
+                    $('#pictureView').val(res.Data.RootUrl);
+                } else {
+                    show.error('操作提示', res.Message);
+                }
+            }
+        });
+    });
+
+    $('#download', modal).on("click", function () {
+        var cas = cutImage.cropper('getCroppedCanvas');
+        var base64url = cas.toDataURL('image/jpeg');
+        downloadIamge(base64url);
+    });
+    function downloadIamge(base64url, name) {
+        var image = new Image();
+        image.setAttribute('crossOrigin', 'anonymous');
+        image.onload = function () {
+            var canvas = document.createElement('canvas');
+            canvas.width = image.width;
+            canvas.height = image.height;
+
+            var context = canvas.getContext('2d');
+            context.drawImage(image, 0, 0, image.width, image.height);
+            var url = canvas.toDataURL('image/jpeg');
+            var a = document.createElement('a');
+            var event = new MouseEvent('click');
+            a.download = name || '下载图片名称';
+            a.href = url;
+            a.dispatchEvent(event);
+        }
+        image.src = base64url;
+    }
+});
+</script>
+
+

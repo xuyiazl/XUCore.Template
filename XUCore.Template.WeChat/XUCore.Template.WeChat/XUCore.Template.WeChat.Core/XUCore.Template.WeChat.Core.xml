@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>XUCore.Template.WeChat.Core</name>
+    </assembly>
+    <members>
+        <member name="P:XUCore.Template.WeChat.Core.WebSite.Title">
+            <summary>
+            网站标题
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.Core.WebSite.SimpleTitle">
+            <summary>
+            网站标题简写
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.Core.WebSite.Logo">
+            <summary>
+            网站Logo
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.Core.WebSite.AQ">
+            <summary>
+            备案号
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.Core.DtoBase`1.Id">
+            <summary>
+            主键Id
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.Core.DtoBase`1.CreatedAtUserName">
+            <summary>
+            创建者
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.Core.DtoBase`1.CreatedAt">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.Core.DtoBase`1.ModifiedAtUserName">
+            <summary>
+            修改者
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.Core.DtoBase`1.ModifiedAt">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.Core.DtoKeyBase`1.Id">
+            <summary>
+            主键Id
+            </summary>
+        </member>
+    </members>
+</doc>
