@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace XUCore.Template.WeChat.Applaction;
 
+[AllowAnonymous]
 [WxPublicAccountOAuthFilter]
 public class WeChatPageModel : PageModel
 {
