@@ -25,7 +25,7 @@ namespace XUCore.Template.Ddd.Domain.Auth.Role
                 this.db = db;
             }
 
-            [UnitOfWork(DbType = typeof(IDefaultDbContext))]
+            [Transaction]
             public override async Task<int> Handle(RoleDeleteCommand request, CancellationToken cancellationToken)
             {
                 var res = await db.DeleteAsync<RoleEntity>(c => request.Ids.Contains(c.Id));

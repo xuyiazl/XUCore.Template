@@ -61,7 +61,7 @@ namespace XUCore.Template.Ddd.Domain.User.User
                 this.mapper = mapper;
             }
 
-            [UnitOfWork(DbType = typeof(IDefaultDbContext))]
+            [Transaction]
             public override async Task<int> Handle(UserUpdateInfoCommand request, CancellationToken cancellationToken)
             {
                 var entity = await db.GetByIdAsync<UserEntity>(request.Id, cancellationToken);
