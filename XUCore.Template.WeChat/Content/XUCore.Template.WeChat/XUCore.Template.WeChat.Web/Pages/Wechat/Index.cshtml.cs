@@ -1,5 +1,5 @@
 
-namespace XUCore.Template.WeChat.Web.Pages.Wechat
+namespace XUCore.Template.WeChat.Web.Pages.WeChat
 {
     public class IndexModel : WeChatPageModel
     {
