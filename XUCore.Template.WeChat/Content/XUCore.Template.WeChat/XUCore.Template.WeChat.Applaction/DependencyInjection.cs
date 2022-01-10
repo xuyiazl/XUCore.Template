@@ -1,4 +1,5 @@
-﻿using Magicodes.Wx.PublicAccount.Sdk;
+﻿using Essensoft.AspNetCore.Payment.WeChatPay;
+using Magicodes.Wx.PublicAccount.Sdk;
 using Magicodes.Wx.PublicAccount.Sdk.AspNet;
 using Magicodes.Wx.PublicAccount.Sdk.AspNet.ServerMessages;
 using Microsoft.AspNetCore.Antiforgery;
@@ -32,6 +33,11 @@ namespace XUCore.Template.WeChat.Applaction
 
             // 注册上传服务
             services.AddUploadService();
+
+            // 引入Payment 依赖注入
+            // 开发指南 https://github.com/essensoft/paylink/tree/main/samples/WebApplicationSample
+            services.AddWeChatPay();
+            services.BindSection<WeChatPayOptions>(configuration, "WeChatPay");
 
             services
                 .AddRazorPages(options =>
