@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="/weui-2.5.4/dist/style/weui.min.css" />
+    <link rel="stylesheet" href="/weui-2.5.4/dist/main.css" />
+    @RenderSection("Styles", required: false)
+</head>
+<body ontouchstart>
+    @RenderBody()
+
+    <script type="text/javascript" src="/weui-2.5.4/dist/zepto.min.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/t/wx_fed/cdn_libs/res/weui/1.2.8/weui.min.js"></script>
+    <script type="text/javascript">
+        function wxReady(callback) {
+            if (typeof WeixinJSBridge === 'object' && typeof window.WeixinJSBridge.invoke === 'function') {
+                callback()
+            } else {
+                document.addEventListener('WeixinJSBridgeReady', callback, false)
+            }
+        }
+    </script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+
