@@ -37,7 +37,7 @@ namespace XUCore.Template.Ddd.Domain.User.User
                 this.mapper = mapper;
             }
 
-            [UnitOfWork(DbType = typeof(IDefaultDbContext))]
+            [Transaction]
             public override async Task<int> Handle(UserRelevanceRoleCommand request, CancellationToken cancellationToken)
             {
                 //先清空用户的角色，确保没有冗余的数据

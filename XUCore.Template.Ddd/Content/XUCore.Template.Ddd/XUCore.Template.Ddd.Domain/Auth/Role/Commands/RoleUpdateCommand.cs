@@ -50,7 +50,7 @@ namespace XUCore.Template.Ddd.Domain.Auth.Role
                 this.mapper = mapper;
             }
 
-            [UnitOfWork(DbType = typeof(IDefaultDbContext))]
+            [Transaction]
             public override async Task<int> Handle(RoleUpdateCommand request, CancellationToken cancellationToken)
             {
                 var entity = await db.GetByIdAsync<RoleEntity>(request.Id, cancellationToken);

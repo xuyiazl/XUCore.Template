@@ -28,7 +28,7 @@ namespace XUCore.Template.Ddd.Domain.User.User
                 this.mapper = mapper;
             }
 
-            [UnitOfWork(DbType = typeof(IDefaultDbContext))]
+            [Transaction]
             public override async Task<int> Handle(UserDeleteCommand request, CancellationToken cancellationToken)
             {
                 var res = await db.DeleteAsync<UserEntity>(c => request.Ids.Contains(c.Id));

@@ -99,7 +99,7 @@ namespace XUCore.Template.Ddd.Domain.User.User
                 this.mapper = mapper;
             }
 
-            [UnitOfWork(DbType = typeof(IDefaultDbContext))]
+            [Transaction]
             public override async Task<int> Handle(UserCreateCommand request, CancellationToken cancellationToken)
             {
                 //await bus.PublishEvent(new DomainNotification("", "开始注册...."), cancellationToken);

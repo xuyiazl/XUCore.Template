@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "XUCore",
+  "classifications": [
+    "Razor",
+    "Web",
+    "WeChat"
+  ],
+  "name": "XUCore Razor Pages WeChat 微信公众号项目模板",
+  "identity": "XUCore.Template.WeChat",
+  "groupIdentity": "XUCore.Template.WeChat",
+  "shortName": "xwechat",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "XUCore.Template.WeChat",
+  "preferNameDirectory": true
+}

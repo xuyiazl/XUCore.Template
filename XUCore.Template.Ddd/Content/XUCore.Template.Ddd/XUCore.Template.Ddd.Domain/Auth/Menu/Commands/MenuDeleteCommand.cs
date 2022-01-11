@@ -25,7 +25,7 @@ namespace XUCore.Template.Ddd.Domain.Auth.Menu
                 this.db = db;
             }
 
-            [UnitOfWork(DbType = typeof(IDefaultDbContext))]
+            [Transaction]
             public override async Task<int> Handle(MenuDeleteCommand request, CancellationToken cancellationToken)
             {
                 var res = await db.DeleteAsync<MenuEntity>(c => request.Ids.Contains(c.Id));
