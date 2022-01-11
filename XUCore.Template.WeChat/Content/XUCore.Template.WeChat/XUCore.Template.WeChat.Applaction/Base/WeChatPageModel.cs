@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 namespace XUCore.Template.WeChat.Applaction;
 
 [AllowAnonymous]
-[WxPublicAccountOAuthFilter]
+[WxPublicAccountOAuthFilter(OAuthLevel = OAuthLevels.OpenIdAndUserInfo)]
 public class WeChatPageModel : PageModel
 {
     /// <summary>
@@ -17,7 +17,7 @@ public class WeChatPageModel : PageModel
         get
         {
             var webAccessToken = Request.HttpContext.Items[WxConsts.COOKIE_WX_WEBTOKEN].SafeString();
-            if (webAccessToken == null)
+            if (webAccessToken.IsEmpty())
             {
                 webAccessToken = Request.Cookies[WxConsts.COOKIE_WX_WEBTOKEN];
             }
@@ -34,7 +34,7 @@ public class WeChatPageModel : PageModel
         get
         {
             var openId = Request.HttpContext.Items[WxConsts.COOKIE_WX_OPENID].SafeString();
-            if (openId == null)
+            if (openId.IsEmpty())
             {
                 openId = Request.Cookies[WxConsts.COOKIE_WX_OPENID];
             }

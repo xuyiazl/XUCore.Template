@@ -1,8 +1,7 @@
-﻿using Essensoft.AspNetCore.Payment.WeChatPay;
+﻿using Essensoft.Paylink.WeChatPay;
 using Magicodes.Wx.PublicAccount.Sdk;
 using Magicodes.Wx.PublicAccount.Sdk.AspNet;
 using Magicodes.Wx.PublicAccount.Sdk.AspNet.ServerMessages;
-using Microsoft.AspNetCore.Antiforgery;
 using XUCore.Template.WeChat.Applaction.WeChat;
 using XUCore.Template.WeChat.Core;
 
@@ -39,6 +38,15 @@ namespace XUCore.Template.WeChat.Applaction
             services.AddWeChatPay();
             services.BindSection<WeChatPayOptions>(configuration, "WeChatPay");
 
+            //注册IWxEventsHandler,如需处理自定义事件消息,请务必实现IWxEventsHandler
+            services.AddSingleton<IWxEventsHandler, WeChatEventsHandler>();
+            services
+                //添加公众号Sdk集成
+                .AddMPublicAccountSdk()
+                .AddDistributedMemoryCache()
+                //添加服务器消息事件处理器
+                .AddServerMessageHandler();
+
             services
                 .AddRazorPages(options =>
                 {
@@ -74,27 +82,22 @@ namespace XUCore.Template.WeChat.Applaction
 
             //cookie写入需要注意浏览器的SameSiteMode，会随着浏览器版本不同，当前在IE和Edge无法登陆
 
-            //void CheckSameSite(HttpContext httpContext, CookieOptions options)
-            //{
-            //    if (options.SameSite == SameSiteMode.None)
-            //    {
-            //        //var userAgent = Web.Browser;
-            //        //if (userAgent.IndexOf("like Gecko") > -1)
-            //        //    options.SameSite = SameSiteMode.None;
-            //        //if (userAgent.IndexOf("Edge") > -1)
-            //        //    options.SameSite = SameSiteMode.None;
-            //        //else
-            //        options.SameSite = SameSiteMode.Unspecified;
-            //    }
-            //}
+            void CheckSameSite(HttpContext httpContext, CookieOptions options)
+            {
+                if (options.SameSite == SameSiteMode.None)
+                {
+                    if (httpContext.Request.Scheme != "https")
+                    {
+                        options.SameSite = SameSiteMode.Unspecified;
+                    }
+                }
+            }
 
             services.Configure<CookiePolicyOptions>(options =>
             {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-                //options.OnAppendCookie = cookieContext => CheckSameSite(cookieContext.Context, cookieContext.CookieOptions);
-                //options.OnDeleteCookie = cookieContext => CheckSameSite(cookieContext.Context, cookieContext.CookieOptions);
+                options.MinimumSameSitePolicy = SameSiteMode.Unspecified;
+                options.OnAppendCookie = cookieContext => CheckSameSite(cookieContext.Context, cookieContext.CookieOptions);
+                options.OnDeleteCookie = cookieContext => CheckSameSite(cookieContext.Context, cookieContext.CookieOptions);
             });
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -121,19 +124,6 @@ namespace XUCore.Template.WeChat.Applaction
                 .AddControlAccessStrategy<ControlAccessStrategy>()
                 .AddResourceAccessStrategy<ResourceAccessStrategy>();
 
-            //注册IWxEventsHandler,如需处理自定义事件消息,请务必实现IWxEventsHandler
-            services.AddSingleton<IWxEventsHandler, WeChatEventsHandler>();
-            services.AddMPublicAccountSdk()
-                .AddDistributedMemoryCache()
-                //添加服务器消息事件处理器
-                .AddServerMessageHandler();
-
-            services
-                //添加公众号Sdk集成
-                .AddMPublicAccountSdk()
-                //使用内存缓存
-                .AddDistributedMemoryCache();
-
             return services;
         }
 
@@ -146,7 +136,6 @@ namespace XUCore.Template.WeChat.Applaction
 
             app.UseCookiePolicy();
 
-
             app.UseStaticFiles();
 
             app.UseRouting();
@@ -154,17 +143,17 @@ namespace XUCore.Template.WeChat.Applaction
             app.UseAuthentication();
             app.UseAuthorization();
 
-            //注册真实IP中间件
-            app.UseRealIp();
-
-            //启用静态请求上下文
-            app.UseStaticHttpContext();
-            
             app
                 //配置公众号Sdk
                 .UseMPublicAccountSdk()
                 //使用分布式缓存缓存Access Token
                 .UseWxDistributedCacheForAccessToken();
+
+            //注册真实IP中间件
+            app.UseRealIp();
+
+            //启用静态请求上下文
+            app.UseStaticHttpContext();
 
             app.UseEndpoints(endpoints =>
             {

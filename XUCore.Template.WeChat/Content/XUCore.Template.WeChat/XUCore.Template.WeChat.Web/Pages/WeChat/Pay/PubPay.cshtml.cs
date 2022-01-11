@@ -1,18 +1,14 @@
-using Essensoft.AspNetCore.Payment.WeChatPay;
-using Essensoft.AspNetCore.Payment.WeChatPay.V3;
-using Essensoft.AspNetCore.Payment.WeChatPay.V3.Domain;
-using Essensoft.AspNetCore.Payment.WeChatPay.V3.Request;
-using System.ComponentModel.DataAnnotations;
-using XUCore.Serializer;
+using Essensoft.Paylink.WeChatPay;
+using Essensoft.Paylink.WeChatPay.V3;
+using Essensoft.Paylink.WeChatPay.V3.Domain;
+using Essensoft.Paylink.WeChatPay.V3.Request;
 
 namespace XUCore.Template.WeChat.Web.Pages.WeChat.Pay
 {
-    public class PubPayModel : PageModel
+    public class PubPayModel : WeChatPageModel
     {
         private readonly IWeChatPayClient client;
         private readonly WeChatPayOptions weChatPayOptions;
-
-        public WeChatPayPubPayV3ViewModel viewModel { get; set; }
 
         public PubPayModel(IWeChatPayClient client, WeChatPayOptions weChatPayOptions)
         {
@@ -22,24 +18,31 @@ namespace XUCore.Template.WeChat.Web.Pages.WeChat.Pay
 
         public void OnGet()
         {
-            viewModel = new WeChatPayPubPayV3ViewModel();
         }
 
         /// <summary>
         /// 公众号支付-JSAPI下单
         /// </summary>
         /// <param name="viewModel"></param>
-        public async Task<IActionResult> OnPostPubPayAsync(WeChatPayPubPayV3ViewModel _viewModel)
+        public async Task<IActionResult> OnPostPubPayAsync()
         {
+            var order = new
+            {
+                OutTradeNo = Str.CreateOrderNumber("N"),
+                Total = 1,
+                Description = "微信公众号支付测试",
+                NotifyUrl = "http://test.shougolf.com/wechatpay/v3/notify/transactions",
+            };
+
             var model = new WeChatPayTransactionsJsApiBodyModel
             {
                 AppId = weChatPayOptions.AppId,
                 MchId = weChatPayOptions.MchId,
-                Amount = new Amount { Total = _viewModel.Total, Currency = "CNY" },
-                Description = _viewModel.Description,
-                NotifyUrl = _viewModel.NotifyUrl,
-                OutTradeNo = _viewModel.OutTradeNo,
-                Payer = new PayerInfo { OpenId = _viewModel.OpenId }
+                Amount = new Amount { Total = order.Total, Currency = "CNY" },
+                Description = order.Description,
+                NotifyUrl = order.NotifyUrl,
+                OutTradeNo = order.OutTradeNo,
+                Payer = new PayerInfo { OpenId = OpenId }
             };
 
             var request = new WeChatPayTransactionsJsApiRequest();
@@ -59,38 +62,16 @@ namespace XUCore.Template.WeChat.Web.Pages.WeChat.Pay
 
                 // 将参数(parameter)给 公众号前端
                 // https://pay.weixin.qq.com/wiki/doc/apiv3/apis/chapter3_1_4.shtml
-                ViewData["parameter"] = parameter.ToJson();
-                ViewData["response"] = response.Body;
-                return Page();
+                //ViewData["parameter"] = parameter.ToJson();
+                //ViewData["response"] = response.Body;
+
+                return new Result(StateCode.Success, "", "", parameter);
             }
 
-            ViewData["response"] = response.Body;
+            //ViewData["response"] = response.Body;
 
-            return Page();
+            return new Result(StateCode.Fail, "", "", new WeChatPayDictionary());
         }
-    }
-
-    public class WeChatPayPubPayV3ViewModel
-    {
-        [Required]
-        [Display(Name = "out_trade_no")]
-        public string OutTradeNo { get; set; } = DateTime.Now.ToString("yyyyMMddHHmmssfff");
-
-        [Required]
-        [Display(Name = "description")]
-        public string Description { get; set; } = "微信公众号支付测试";
-
-        [Required]
-        [Display(Name = "total")]
-        public int Total { get; set; } = 1;
-
-        [Required]
-        [Display(Name = "notify_url")]
-        public string NotifyUrl { get; set; } = "http://domain.com/wechatpay/v3/notify/transactions";
-
-        [Required]
-        [Display(Name = "openid")]
-        public string OpenId { get; set; }
     }
 
 }

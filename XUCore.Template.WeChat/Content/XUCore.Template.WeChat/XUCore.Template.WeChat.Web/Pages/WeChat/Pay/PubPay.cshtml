@@ -12,7 +12,6 @@
 <link rel="stylesheet" href="~/css/font.css" type="text/css" />
 <link rel="stylesheet" href="~/css/app.css" type="text/css" />
 <link rel="stylesheet" href="~/lib/flavr/css/flavr.css" type="text/css" />
-<link rel="stylesheet" href="~/lib/chosen/chosen.css" type="text/css" />
 <!--[if lt IE 9]>
   <script src="~/lib/ie/html5shiv.js"></script>
   <script src="~/lib/ie/respond.min.js"></script>
@@ -21,41 +20,48 @@
 <script src="~/lib/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="~/lib/bootstrap.js"></script>
-<script src="~/lib/icheck/icheck.min.js"></script>
-<script src="~/lib/datepicker/bootstrap-datepicker.js"></script>
-<script src="~/lib/chosen/chosen.jquery.min.js"></script>
-<script src="~/lib/slider/bootstrap-slider.js"></script>
-<script src="~/lib/sortable/jquery.sortable.js"></script>
 <script src="~/lib/flavr/js/flavr.min.js"></script>
 <!-- parsley -->
 <link rel="stylesheet" href="~/lib/parsley/parsley.css" type="text/css" />
 <script src="~/lib/parsley/parsley.min.js"></script>
 <script src="~/lib/parsley/i18n/zh_cn.js"></script>
-<!-- App -->
-<script src="~/lib/app.js"></script>
-<script src="~/lib/slimscroll/jquery.slimscroll.min.js"></script>
-<script src="~/lib/app.plugin.js"></script>
 <!-- Core -->
 <script src="~/lib/jquery.core.js"></script>
 <script type="text/javascript">
     $(function(){
      $('#data-form').parsleyForm({
             submit: function (formData) {
-
                 $.ajax({
                     url: '?handler=PubPay',
                     type: "POST",
                     data: formData,
                     success: function (result) {
                         if (result.Code == 0) {
-                            show.successConfirm('操作提示', result.Message, {
-                                confirm: { text: '好的', style: 'success' },
-                                back: {
-                                    text: '关闭页面', style: 'default', action: function () {
-
-                                    }
-                                },
-                            });
+                            function onBridgeReady(){
+                               WeixinJSBridge.invoke('getBrandWCPayRequest', {
+                                     "appId":result.Data.appId,
+                                     "timeStamp":result.Data.timeStamp,
+                                     "nonceStr":result.Data.nonceStr,
+                                     "package":result.Data.package,
+                                     "signType":result.Data.signType,
+                                     "paySign":result.Data.paySign
+                                  },function(res){
+                                  if(res.err_msg == "get_brand_wcpay_request:ok" ){
+                                    // 使用以上方式判断前端返回,微信团队郑重提示：
+                                    //res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
+                                  }
+                               });
+                            }
+                            if (typeof WeixinJSBridge == "undefined"){
+                               if( document.addEventListener ){
+                                   document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+                               }else if (document.attachEvent){
+                                   document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                                   document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+                               }
+                            }else{
+                               onBridgeReady();
+                            }
                         } else {
                             show.error('操作提示', result.Message);
                         }
@@ -66,65 +72,7 @@
     })
 </script>
 
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a asp-controller="WeChatPayV3" asp-action="Index">微信支付V3</a></li>
-        <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
-    </ol>
-</nav>
-<br />
 @Html.AntiForgeryToken();
 <form id="data-form" class="form-horizontal m-t text-sm" data-parsley-validate="true">
-    <div class="form-group m-b-none">
-        @Html.LabelFor(c => c.viewModel.OutTradeNo, "订单号码", new { @class = "col-sm-1 control-label" })
-        <div class="col-sm-4">
-            @Html.TextBoxFor(c => c.viewModel.OutTradeNo, null, new { @class = "form-control input-sm", @data_parsley_maxlength = "100", @data_parsley_trigger = "change", @data_parsley_required = "true" })
-            <div class="error"></div>
-        </div>
-    </div>
-    <div class="line line-dashed b-b line-sm pull-in"></div>
-    <div class="form-group m-b-none">
-        @Html.LabelFor(c => c.viewModel.Description, "描述", new { @class = "col-sm-1 control-label" })
-        <div class="col-sm-4">
-            @Html.TextBoxFor(c => c.viewModel.Description, null, new { @class = "form-control input-sm", @data_parsley_maxlength = "100", @data_parsley_trigger = "change", @data_parsley_required = "true" })
-            <div class="error"></div>
-        </div>
-    </div>
-    <div class="line line-dashed b-b line-sm pull-in"></div>
-    <div class="form-group m-b-none">
-        @Html.LabelFor(c => c.viewModel.Total, "订单金额", new { @class = "col-sm-1 control-label" })
-        <div class="col-sm-4">
-            @Html.TextBoxFor(c => c.viewModel.Total, null, new { @class = "form-control input-sm", @data_parsley_maxlength = "100", @data_parsley_trigger = "change", @data_parsley_required = "true" })
-            <div class="error"></div>
-        </div>
-    </div>
-    <div class="line line-dashed b-b line-sm pull-in"></div>
-    <div class="form-group m-b-none">
-        @Html.LabelFor(c => c.viewModel.NotifyUrl, "通知回调", new { @class = "col-sm-1 control-label" })
-        <div class="col-sm-4">
-            @Html.TextBoxFor(c => c.viewModel.NotifyUrl, null, new { @class = "form-control input-sm", @data_parsley_maxlength = "100", @data_parsley_trigger = "change", @data_parsley_required = "true" })
-            <div class="error"></div>
-        </div>
-    </div>
-    <div class="line line-dashed b-b line-sm pull-in"></div>
-    <div class="form-group m-b-none">
-        @Html.LabelFor(c => c.viewModel.OpenId, "OpenId", new { @class = "col-sm-1 control-label" })
-        <div class="col-sm-4">
-            @Html.TextBoxFor(c => c.viewModel.OpenId, null, new { @value="", @class = "form-control input-sm", @data_parsley_maxlength = "100", @data_parsley_trigger = "change", @data_parsley_required = "true" })
-            <div class="error"></div>
-        </div>
-    </div>
-    <div class="line line-dashed b-b line-sm pull-in"></div>
     <button type="submit" class="btn btn-primary">提交请求</button>
-</form>
-<hr />
-<form class="form-horizontal">
-    <div class="form-group">
-        <label>Response:</label>
-        <textarea class="form-control" rows="10">@ViewData["response"]</textarea>
-    </div>
-    <div class="form-group">
-        <label>Parameter:</label>
-        <textarea class="form-control" rows="3">@ViewData["parameter"]</textarea>
-    </div>
 </form>
