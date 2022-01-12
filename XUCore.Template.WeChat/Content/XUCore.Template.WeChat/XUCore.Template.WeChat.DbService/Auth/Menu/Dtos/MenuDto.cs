@@ -47,4 +47,3 @@ namespace XUCore.Template.WeChat.DbService.Auth.Menu
         public Status Status { get; set; }
     }
 }
-

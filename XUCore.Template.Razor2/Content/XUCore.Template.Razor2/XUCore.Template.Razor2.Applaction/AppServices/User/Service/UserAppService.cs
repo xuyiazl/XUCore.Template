@@ -61,7 +61,7 @@ namespace XUCore.Template.Razor2.Applaction.User
         /// <param name="value"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public async Task<int> UpdateFieldAsync(long id, string field, string value, CancellationToken cancellationToken = default)
+        public async Task<int> UpdateAsync(long id, string field, string value, CancellationToken cancellationToken = default)
         {
             return await userService.UpdateAsync(id, field, value, cancellationToken);
         }
@@ -72,7 +72,7 @@ namespace XUCore.Template.Razor2.Applaction.User
         /// <param name="status"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public async Task<int> UpdateStatusAsync(long[] ids, Status status, CancellationToken cancellationToken = default)
+        public async Task<int> UpdateAsync(long[] ids, Status status, CancellationToken cancellationToken = default)
         {
             return await userService.UpdateAsync(ids, status, cancellationToken);
         }

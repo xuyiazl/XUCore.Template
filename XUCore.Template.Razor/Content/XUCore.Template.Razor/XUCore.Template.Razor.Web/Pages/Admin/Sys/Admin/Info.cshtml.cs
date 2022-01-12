@@ -67,7 +67,7 @@ namespace XUCore.Template.Razor.Web.Pages.Admin.Sys.Admin
 
         public async Task<IActionResult> OnPutUserUpdatePictureAsync(string Picture)
         {
-            var res = await userAppService.UpdateFieldAsync(userInfo.UserId, "picture", Picture);
+            var res = await userAppService.UpdateAsync(userInfo.UserId, "picture", Picture);
 
             if (res > 0)
                 return new Result(StateCode.Success, "", "修改成功");

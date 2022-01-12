@@ -4,15 +4,22 @@ using XUCore.Template.Razor2.Persistence.Entities.User;
 
 namespace XUCore.Template.Razor2.DbService.User.User
 {
-    public class UserService : FreeSqlCurdService<long, UserEntity, UserDto, UserCreateCommand, UserUpdateInfoCommand, UserQueryCommand, UserQueryPagedCommand>,
-        IUserService
+    public class UserService : IUserService
     {
-        public UserService(IServiceProvider serviceProvider, FreeSqlUnitOfWorkManager muowm, IMapper mapper, IUserInfo user) : base(muowm, mapper, user)
-        {
+        protected readonly FreeSqlUnitOfWorkManager unitOfWork;
+        protected readonly IBaseRepository<UserEntity> repo;
+        protected readonly IMapper mapper;
+        protected readonly IUserInfo user;
 
+        public UserService(IServiceProvider serviceProvider)
+        {
+            this.unitOfWork = serviceProvider.GetRequiredService<FreeSqlUnitOfWorkManager>();
+            this.repo = unitOfWork.Orm.GetRepository<UserEntity>();
+            this.mapper = serviceProvider.GetRequiredService<IMapper>();
+            this.user = serviceProvider.GetRequiredService<IUserInfo>();
         }
 
-        public override async Task<UserEntity> CreateAsync(UserCreateCommand request, CancellationToken cancellationToken)
+        public async Task<UserEntity> CreateAsync(UserCreateCommand request, CancellationToken cancellationToken)
         {
             var entity = mapper.Map<UserCreateCommand, UserEntity>(request);
 
@@ -31,14 +38,26 @@ namespace XUCore.Template.Razor2.DbService.User.User
                     });
                 }
 
-                await freeSql.Insert<UserRoleEntity>(entity.UserRoles).ExecuteAffrowsAsync(cancellationToken);
-
-                CreatedAction?.Invoke(entity);
+                await unitOfWork.Orm.Insert<UserRoleEntity>(entity.UserRoles).ExecuteAffrowsAsync(cancellationToken);
 
                 return res;
             }
 
             return default;
+        }
+
+        public async Task<int> UpdateAsync(UserUpdateInfoCommand request, CancellationToken cancellationToken)
+        {
+            var entity = await repo.Select.WhereDynamic(request.Id).ToOneAsync(cancellationToken);
+
+            if (entity == null)
+                return 0;
+
+            entity = mapper.Map(request, entity);
+
+            var res = await repo.UpdateAsync(entity, cancellationToken);
+
+            return res;
         }
 
         public async Task<int> UpdateAsync(UserUpdatePasswordCommand request, CancellationToken cancellationToken)
@@ -51,7 +70,7 @@ namespace XUCore.Template.Razor2.DbService.User.User
             if (!entity.Password.Equals(request.OldPassword))
                 Failure.Error("旧密码错误");
 
-            return await freeSql.Update<UserEntity>(request.Id).Set(c => new UserEntity { Password = request.NewPassword }).ExecuteAffrowsAsync(cancellationToken);
+            return await unitOfWork.Orm.Update<UserEntity>(request.Id).Set(c => new UserEntity { Password = request.NewPassword }).ExecuteAffrowsAsync(cancellationToken);
         }
 
         public async Task<int> UpdateAsync(long id, string field, string value, CancellationToken cancellationToken)
@@ -91,13 +110,7 @@ namespace XUCore.Template.Razor2.DbService.User.User
 
             return await repo.UpdateAsync(entity, cancellationToken);
         }
-        /// <summary>
-        /// 更新状态
-        /// </summary>
-        /// <param name="ids"></param>
-        /// <param name="status"></param>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
+
         public async Task<int> UpdateAsync(long[] ids, Status status, CancellationToken cancellationToken)
         {
             var list = await repo.Select.Where(c => ids.Contains(c.Id)).ToListAsync<UserEntity>(cancellationToken);
@@ -107,18 +120,16 @@ namespace XUCore.Template.Razor2.DbService.User.User
             return await repo.UpdateAsync(list, cancellationToken);
         }
 
-        public override async Task<int> DeleteAsync(long[] ids, CancellationToken cancellationToken)
+        public async Task<int> DeleteAsync(long[] ids, CancellationToken cancellationToken)
         {
-            var res = await freeSql.Delete<UserEntity>(ids).ExecuteAffrowsAsync(cancellationToken);
+            var res = await unitOfWork.Orm.Delete<UserEntity>(ids).ExecuteAffrowsAsync(cancellationToken);
 
             if (res > 0)
             {
                 //删除关联的导航
-                await freeSql.Delete<UserLoginRecordEntity>().Where(c => ids.Contains(c.UserId)).ExecuteAffrowsAsync(cancellationToken);
+                await unitOfWork.Orm.Delete<UserLoginRecordEntity>().Where(c => ids.Contains(c.UserId)).ExecuteAffrowsAsync(cancellationToken);
                 //删除用户关联的角色
-                await freeSql.Delete<UserRoleEntity>().Where(c => ids.Contains(c.UserId)).ExecuteAffrowsAsync(cancellationToken);
-
-                DeletedAction?.Invoke(ids);
+                await unitOfWork.Orm.Delete<UserRoleEntity>().Where(c => ids.Contains(c.UserId)).ExecuteAffrowsAsync(cancellationToken);
             }
 
             return res;
@@ -159,7 +170,7 @@ namespace XUCore.Template.Razor2.DbService.User.User
             user.LoginLastTime = DateTime.Now;
             user.LoginLastIp = Web.IP;
 
-            await freeSql
+            await unitOfWork.Orm
                 .Update<UserEntity>(user.Id)
                 .Set(c => new UserEntity()
                 {
@@ -169,7 +180,7 @@ namespace XUCore.Template.Razor2.DbService.User.User
                 })
                 .ExecuteAffrowsAsync(cancellationToken);
 
-            await freeSql
+            await unitOfWork.Orm
                 .Insert(new UserLoginRecordEntity
                 {
                     UserId = user.Id,
@@ -217,7 +228,12 @@ namespace XUCore.Template.Razor2.DbService.User.User
             };
         }
 
-        public override async Task<IList<UserDto>> GetListAsync(UserQueryCommand request, CancellationToken cancellationToken)
+        public async Task<UserDto> GetByIdAsync(long id, CancellationToken cancellationToken)
+        {
+            return await repo.Select.WhereDynamic(id).ToOneAsync<UserDto>(cancellationToken);
+        }
+
+        public async Task<IList<UserDto>> GetListAsync(UserQueryCommand request, CancellationToken cancellationToken)
         {
             var select = repo.Select
                 .WhereIf(request.Status != Status.Default, c => c.Status == request.Status)
@@ -235,7 +251,7 @@ namespace XUCore.Template.Razor2.DbService.User.User
             return res;
         }
 
-        public override async Task<PagedModel<UserDto>> GetPagedListAsync(UserQueryPagedCommand request, CancellationToken cancellationToken)
+        public async Task<PagedModel<UserDto>> GetPagedListAsync(UserQueryPagedCommand request, CancellationToken cancellationToken)
         {
             var res = await repo.Select
                 .WhereIf(request.Status != Status.Default, c => c.Status == request.Status)
@@ -252,7 +268,7 @@ namespace XUCore.Template.Razor2.DbService.User.User
         public async Task<int> CreateRelevanceRoleAsync(UserRelevanceRoleCommand request, CancellationToken cancellationToken)
         {
             //先清空用户的角色，确保没有冗余的数据
-            await freeSql.Delete<UserRoleEntity>().Where(c => c.UserId == request.UserId).ExecuteAffrowsAsync(cancellationToken);
+            await unitOfWork.Orm.Delete<UserRoleEntity>().Where(c => c.UserId == request.UserId).ExecuteAffrowsAsync(cancellationToken);
 
             var userRoles = Array.ConvertAll(request.RoleIds, roleid => new UserRoleEntity
             {
@@ -262,19 +278,19 @@ namespace XUCore.Template.Razor2.DbService.User.User
 
             //添加角色
             if (userRoles.Length > 0)
-                return await freeSql.Insert(userRoles).ExecuteAffrowsAsync(cancellationToken);
+                return await unitOfWork.Orm.Insert(userRoles).ExecuteAffrowsAsync(cancellationToken);
 
             return 1;
         }
 
         public async Task<IList<long>> GetRoleKeysAsync(long userId, CancellationToken cancellationToken)
         {
-            return await freeSql.Select<UserRoleEntity>().Where(c => c.UserId == userId).OrderBy(c => c.RoleId).ToListAsync(c => c.RoleId, cancellationToken);
+            return await unitOfWork.Orm.Select<UserRoleEntity>().Where(c => c.UserId == userId).OrderBy(c => c.RoleId).ToListAsync(c => c.RoleId, cancellationToken);
         }
 
         public async Task<IList<UserLoginRecordDto>> GetRecordListAsync(UserLoginRecordQueryCommand request, CancellationToken cancellationToken)
         {
-            var res = await freeSql.Select<UserLoginRecordEntity, UserEntity>()
+            var res = await unitOfWork.Orm.Select<UserLoginRecordEntity, UserEntity>()
                 .LeftJoin((record, user) => record.UserId == user.Id)
                 .Where((record, user) => record.UserId == request.UserId)
                 .OrderByDescending((record, user) => record.CreatedAt)
@@ -297,7 +313,7 @@ namespace XUCore.Template.Razor2.DbService.User.User
 
         public async Task<PagedModel<UserLoginRecordDto>> GetRecordPagedListAsync(UserLoginRecordQueryPagedCommand request, CancellationToken cancellationToken)
         {
-            var res = await freeSql
+            var res = await unitOfWork.Orm
                 .Select<UserLoginRecordEntity, UserEntity>()
                 .LeftJoin((record, user) => record.UserId == user.Id)
                 .WhereIf(request.Keyword.NotEmpty(), (record, user) => user.Name.Contains(request.Keyword) || user.Mobile.Contains(request.Keyword) || user.UserName.Contains(request.Keyword))

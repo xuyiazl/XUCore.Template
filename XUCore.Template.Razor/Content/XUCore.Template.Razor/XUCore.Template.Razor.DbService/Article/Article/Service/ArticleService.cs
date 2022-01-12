@@ -4,15 +4,22 @@ using XUCore.Template.Razor.Persistence.Enums;
 
 namespace XUCore.Template.Razor.DbService.Article
 {
-    public class ArticleService : FreeSqlCurdService<long, ArticleEntity, ArticleDto, ArticleCreateCommand, ArticleUpdateCommand, ArticleQueryCommand, ArticleQueryPagedCommand>,
-        IArticleService
+    public class ArticleService : IArticleService
     {
-        public ArticleService(IServiceProvider serviceProvider, FreeSqlUnitOfWorkManager muowm, IMapper mapper, IUserInfo user) : base(muowm, mapper, user)
-        {
+        protected readonly FreeSqlUnitOfWorkManager unitOfWork;
+        protected readonly IBaseRepository<ArticleEntity> repo;
+        protected readonly IMapper mapper;
+        protected readonly IUserInfo user;
 
+        public ArticleService(IServiceProvider serviceProvider)
+        {
+            this.unitOfWork = serviceProvider.GetRequiredService<FreeSqlUnitOfWorkManager>();
+            this.repo = unitOfWork.Orm.GetRepository<ArticleEntity>();
+            this.mapper = serviceProvider.GetRequiredService<IMapper>();
+            this.user = serviceProvider.GetRequiredService<IUserInfo>();
         }
 
-        public override async Task<ArticleEntity> CreateAsync(ArticleCreateCommand request, CancellationToken cancellationToken)
+        public async Task<ArticleEntity> CreateAsync(ArticleCreateCommand request, CancellationToken cancellationToken)
         {
             var entity = mapper.Map<ArticleCreateCommand, ArticleEntity>(request);
 
@@ -30,9 +37,7 @@ namespace XUCore.Template.Razor.DbService.Article
                     });
                 }
 
-                await freeSql.Insert<ArticleTagEntity>(entity.TagNavs).ExecuteAffrowsAsync(cancellationToken);
-
-                CreatedAction?.Invoke(entity);
+                await unitOfWork.Orm.Insert<ArticleTagEntity>(entity.TagNavs).ExecuteAffrowsAsync(cancellationToken);
 
                 return res;
             }
@@ -40,7 +45,7 @@ namespace XUCore.Template.Razor.DbService.Article
             return default;
         }
 
-        public override async Task<int> UpdateAsync(ArticleUpdateCommand request, CancellationToken cancellationToken)
+        public async Task<int> UpdateAsync(ArticleUpdateCommand request, CancellationToken cancellationToken)
         {
             var entity = await repo.Select.WhereDynamic(request.Id).ToOneAsync(cancellationToken);
 
@@ -64,23 +69,13 @@ namespace XUCore.Template.Razor.DbService.Article
                 }
 
                 //先清空导航集合，确保没有冗余信息
-                await freeSql.Delete<ArticleTagEntity>().Where(c => c.ArticleId == request.Id).ExecuteAffrowsAsync(cancellationToken);
+                await unitOfWork.Orm.Delete<ArticleTagEntity>().Where(c => c.ArticleId == request.Id).ExecuteAffrowsAsync(cancellationToken);
 
-                await freeSql.Insert<ArticleTagEntity>(entity.TagNavs).ExecuteAffrowsAsync(cancellationToken);
-
-                UpdatedAction?.Invoke(entity);
+                await unitOfWork.Orm.Insert<ArticleTagEntity>(entity.TagNavs).ExecuteAffrowsAsync(cancellationToken);
             }
             return res;
         }
 
-        /// <summary>
-        /// 更新部分字段
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="field"></param>
-        /// <param name="value"></param>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
         public async Task<int> UpdateAsync(long id, string field, string value, CancellationToken cancellationToken)
         {
             var entity = await repo.Select.WhereDynamic(id).ToOneAsync(cancellationToken);
@@ -100,14 +95,8 @@ namespace XUCore.Template.Razor.DbService.Article
 
             return await repo.UpdateAsync(entity, cancellationToken);
         }
-        /// <summary>
-        /// 更新状态
-        /// </summary>
-        /// <param name="ids"></param>
-        /// <param name="status"></param>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
-        public async Task<int> UpdateStatusAsync(long[] ids, Status status, CancellationToken cancellationToken)
+
+        public async Task<int> UpdateAsync(long[] ids, Status status, CancellationToken cancellationToken)
         {
             var list = await repo.Select.Where(c => ids.Contains(c.Id)).ToListAsync<ArticleEntity>(cancellationToken);
 
@@ -116,21 +105,19 @@ namespace XUCore.Template.Razor.DbService.Article
             return await repo.UpdateAsync(list, cancellationToken);
         }
 
-        public override async Task<int> DeleteAsync(long[] ids, CancellationToken cancellationToken)
+        public async Task<int> DeleteAsync(long[] ids, CancellationToken cancellationToken)
         {
-            var res = await freeSql.Delete<ArticleEntity>(ids).ExecuteAffrowsAsync(cancellationToken);
+            var res = await unitOfWork.Orm.Delete<ArticleEntity>(ids).ExecuteAffrowsAsync(cancellationToken);
 
             if (res > 0)
             {
-                await freeSql.Delete<ArticleTagEntity>().Where(c => ids.Contains(c.ArticleId)).ExecuteAffrowsAsync(cancellationToken);
-
-                DeletedAction?.Invoke(ids);
+                await unitOfWork.Orm.Delete<ArticleTagEntity>().Where(c => ids.Contains(c.ArticleId)).ExecuteAffrowsAsync(cancellationToken);
             }
 
             return res;
         }
 
-        public override async Task<ArticleDto> GetByIdAsync(long id, CancellationToken cancellationToken)
+        public async Task<ArticleDto> GetByIdAsync(long id, CancellationToken cancellationToken)
         {
             var res = await repo.Select.WhereDynamic(id).Include(c => c.Category).IncludeMany(c => c.TagNavs).ToOneAsync(cancellationToken);
 
@@ -139,12 +126,12 @@ namespace XUCore.Template.Razor.DbService.Article
             var navIds = res.TagNavs.Select(t => t.TagId).ToList();
 
             dto.TagIds = navIds;
-            dto.Tags = await freeSql.Select<TagEntity>().Where(c => navIds.Contains(c.Id)).ToListAsync<TagSimpleDto>(cancellationToken);
+            dto.Tags = await unitOfWork.Orm.Select<TagEntity>().Where(c => navIds.Contains(c.Id)).ToListAsync<TagSimpleDto>(cancellationToken);
 
             return dto;
         }
 
-        public override async Task<IList<ArticleDto>> GetListAsync(ArticleQueryCommand request, CancellationToken cancellationToken)
+        public async Task<IList<ArticleDto>> GetListAsync(ArticleQueryCommand request, CancellationToken cancellationToken)
         {
             var select = repo.Select
                    .Include(c => c.Category)
@@ -163,7 +150,7 @@ namespace XUCore.Template.Razor.DbService.Article
             return dto;
         }
 
-        public override async Task<PagedModel<ArticleDto>> GetPagedListAsync(ArticleQueryPagedCommand request, CancellationToken cancellationToken)
+        public async Task<PagedModel<ArticleDto>> GetPagedListAsync(ArticleQueryPagedCommand request, CancellationToken cancellationToken)
         {
             var res = await repo.Select
                    .Include(c => c.Category)

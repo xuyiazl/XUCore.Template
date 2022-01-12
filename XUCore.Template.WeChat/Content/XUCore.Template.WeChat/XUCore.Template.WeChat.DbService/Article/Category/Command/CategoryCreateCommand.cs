@@ -53,4 +53,3 @@ namespace XUCore.Template.WeChat.DbService.Article
         }
     }
 }
-

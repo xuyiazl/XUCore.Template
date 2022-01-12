@@ -30,4 +30,3 @@ namespace XUCore.Template.WeChat.DbService.Auth.Permission
         public string OnlyCode { get; set; }
     }
 }
-

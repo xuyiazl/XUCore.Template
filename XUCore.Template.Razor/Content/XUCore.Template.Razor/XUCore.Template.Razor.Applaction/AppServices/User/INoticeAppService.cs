@@ -31,7 +31,7 @@ namespace XUCore.Template.Razor.Applaction.User
         /// <param name="value"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<int> UpdateFieldAsync(long id, string field, string value, CancellationToken cancellationToken = default);
+        Task<int> UpdateAsync(long id, string field, string value, CancellationToken cancellationToken = default);
         /// <summary>
         /// 更新状态
         /// </summary>
@@ -39,7 +39,7 @@ namespace XUCore.Template.Razor.Applaction.User
         /// <param name="status"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<int> UpdateStatusAsync(long[] ids, Status status, CancellationToken cancellationToken = default);
+        Task<int> UpdateAsync(long[] ids, Status status, CancellationToken cancellationToken = default);
         /// <summary>
         /// 删除公告板（物理删除）
         /// </summary>

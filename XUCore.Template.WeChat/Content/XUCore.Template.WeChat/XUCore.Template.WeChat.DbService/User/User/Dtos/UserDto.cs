@@ -55,4 +55,3 @@ namespace XUCore.Template.WeChat.DbService.User.User
         public Status Status { get; set; }
     }
 }
-

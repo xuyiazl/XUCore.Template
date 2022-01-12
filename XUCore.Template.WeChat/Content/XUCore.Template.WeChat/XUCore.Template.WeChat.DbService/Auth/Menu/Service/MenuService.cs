@@ -4,12 +4,45 @@ using XUCore.Template.WeChat.Persistence.Enums;
 
 namespace XUCore.Template.WeChat.DbService.Auth.Menu
 {
-    public class MenuService : FreeSqlCurdService<long, MenuEntity, MenuDto, MenuCreateCommand, MenuUpdateCommand, MenuQueryCommand, MenuQueryPagedCommand>,
-        IMenuService
+    public class MenuService : IMenuService
     {
-        public MenuService(IServiceProvider serviceProvider, FreeSqlUnitOfWorkManager muowm, IMapper mapper, IUserInfo user) : base(muowm, mapper, user)
-        {
+        protected readonly FreeSqlUnitOfWorkManager unitOfWork;
+        protected readonly IBaseRepository<MenuEntity> repo;
+        protected readonly IMapper mapper;
+        protected readonly IUserInfo user;
 
+        public MenuService(IServiceProvider serviceProvider)
+        {
+            this.unitOfWork = serviceProvider.GetRequiredService<FreeSqlUnitOfWorkManager>();
+            this.repo = unitOfWork.Orm.GetRepository<MenuEntity>();
+            this.mapper = serviceProvider.GetRequiredService<IMapper>();
+            this.user = serviceProvider.GetRequiredService<IUserInfo>();
+        }
+
+        public async Task<MenuEntity> CreateAsync(MenuCreateCommand request, CancellationToken cancellationToken)
+        {
+            var entity = mapper.Map<MenuCreateCommand, MenuEntity>(request);
+
+            var res = await repo.InsertAsync(entity, cancellationToken);
+
+            if (res != null)
+                return res;
+
+            return default;
+        }
+
+        public async Task<int> UpdateAsync(MenuUpdateCommand request, CancellationToken cancellationToken)
+        {
+            var entity = await repo.Select.WhereDynamic(request.Id).ToOneAsync(cancellationToken);
+
+            if (entity == null)
+                return 0;
+
+            entity = mapper.Map(request, entity);
+
+            var res = await repo.UpdateAsync(entity, cancellationToken);
+
+            return res;
         }
 
         public async Task<int> UpdateAsync(long id, string field, string value, CancellationToken cancellationToken)
@@ -40,13 +73,7 @@ namespace XUCore.Template.WeChat.DbService.Auth.Menu
 
             return await repo.UpdateAsync(entity, cancellationToken);
         }
-        /// <summary>
-        /// 更新状态
-        /// </summary>
-        /// <param name="ids"></param>
-        /// <param name="status"></param>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
+        
         public async Task<int> UpdateAsync(long[] ids, Status status, CancellationToken cancellationToken)
         {
             var list = await repo.Select.Where(c => ids.Contains(c.Id)).ToListAsync<MenuEntity>(cancellationToken);
@@ -56,18 +83,21 @@ namespace XUCore.Template.WeChat.DbService.Auth.Menu
             return await repo.UpdateAsync(list, cancellationToken);
         }
 
-        public override async Task<int> DeleteAsync(long[] ids, CancellationToken cancellationToken)
+        public async Task<int> DeleteAsync(long[] ids, CancellationToken cancellationToken)
         {
-            var res = await freeSql.Delete<MenuEntity>(ids).ExecuteAffrowsAsync(cancellationToken);
+            var res = await unitOfWork.Orm.Delete<MenuEntity>(ids).ExecuteAffrowsAsync(cancellationToken);
 
             if (res > 0)
             {
-                await freeSql.Delete<RoleMenuEntity>().Where(c => ids.Contains(c.MenuId)).ExecuteAffrowsAsync(cancellationToken);
-
-                DeletedAction?.Invoke(ids);
+                await unitOfWork.Orm.Delete<RoleMenuEntity>().Where(c => ids.Contains(c.MenuId)).ExecuteAffrowsAsync(cancellationToken);
             }
 
             return res;
+        }
+
+        public async Task<MenuDto> GetByIdAsync(long id, CancellationToken cancellationToken)
+        {
+            return await repo.Select.WhereDynamic(id).ToOneAsync<MenuDto>(cancellationToken);
         }
 
         public async Task<IList<MenuDto>> GetListAsync(CancellationToken cancellationToken)
@@ -79,7 +109,7 @@ namespace XUCore.Template.WeChat.DbService.Auth.Menu
             return res;
         }
 
-        public override async Task<IList<MenuDto>> GetListAsync(MenuQueryCommand request, CancellationToken cancellationToken)
+        public async Task<IList<MenuDto>> GetListAsync(MenuQueryCommand request, CancellationToken cancellationToken)
         {
             var select = repo.Select
                 //.Where(c => c.IsMenu == request.IsMenu)
@@ -95,7 +125,7 @@ namespace XUCore.Template.WeChat.DbService.Auth.Menu
             return res;
         }
 
-        public override async Task<PagedModel<MenuDto>> GetPagedListAsync(MenuQueryPagedCommand request, CancellationToken cancellationToken)
+        public async Task<PagedModel<MenuDto>> GetPagedListAsync(MenuQueryPagedCommand request, CancellationToken cancellationToken)
         {
             var res = await repo.Select
                 .WhereIf(request.Status != Status.Default, c => c.Status == request.Status)
@@ -128,4 +158,3 @@ namespace XUCore.Template.WeChat.DbService.Auth.Menu
         }
     }
 }
-

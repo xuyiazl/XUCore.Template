@@ -19,4 +19,3 @@ namespace XUCore.Template.WeChat.DbService.Auth.Role
         public Status Status { get; set; }
     }
 }
-

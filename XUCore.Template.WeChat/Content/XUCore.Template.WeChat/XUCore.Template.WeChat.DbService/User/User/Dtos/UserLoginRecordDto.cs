@@ -41,4 +41,3 @@ namespace XUCore.Template.WeChat.DbService.User.User
         public string Picture { get; set; }
     }
 }
-

@@ -34,9 +34,9 @@ namespace XUCore.Template.Razor2.Web.Pages.Admin.Sys.Admin.Role
             });
         }
 
-        public async Task<IActionResult> OnPutUpdateFieldAsync(long id, string field, string value)
+        public async Task<IActionResult> OnPutUpdateAsync(long id, string field, string value)
         {
-            var res = await roleAppService.UpdateFieldAsync(id, field, value);
+            var res = await roleAppService.UpdateAsync(id, field, value);
 
             if (res > 0)
                 return new Result(StateCode.Success, "", "更新成功");
@@ -49,7 +49,7 @@ namespace XUCore.Template.Razor2.Web.Pages.Admin.Sys.Admin.Role
             if (ids.Contains(1))
                 return new Result(StateCode.Fail, "", "操作失败，超级管理员禁止操作");
 
-            var res = await roleAppService.UpdateStatusAsync(ids, status);
+            var res = await roleAppService.UpdateAsync(ids, status);
 
             if (res > 0)
                 return new Result(StateCode.Success, "", "操作成功");

@@ -52,7 +52,7 @@ namespace XUCore.Template.Razor2.Web.Pages.Admin.Sys.Admin.User
             return new JsonResult(roles);
         }
 
-        public async Task<IActionResult> OnPutUpdateFieldAsync(long id, string field, string value)
+        public async Task<IActionResult> OnPutUpdateAsync(long id, string field, string value)
         {
             value = value.SafeString().Trim();
             field = field.ToLower();
@@ -69,7 +69,7 @@ namespace XUCore.Template.Razor2.Web.Pages.Admin.Sys.Admin.User
                     return new Result(StateCode.Fail, "", "更新失败，手机号码已存在");
             }
             {
-                var res = await userAppService.UpdateFieldAsync(id, field, value);
+                var res = await userAppService.UpdateAsync(id, field, value);
 
                 if (res > 0)
                     return new Result(StateCode.Success, "", "更新成功");
@@ -93,7 +93,7 @@ namespace XUCore.Template.Razor2.Web.Pages.Admin.Sys.Admin.User
         }
         public async Task<IActionResult> OnPutBatchStatusAsync([FromForm] long[] ids, [FromForm] Status status)
         {
-            var res = await userAppService.UpdateStatusAsync(ids, status);
+            var res = await userAppService.UpdateAsync(ids, status);
 
             if (res > 0)
                 return new Result(StateCode.Success, "", "操作成功");

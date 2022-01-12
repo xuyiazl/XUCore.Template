@@ -15,4 +15,3 @@ namespace XUCore.Template.WeChat.DbService.Article
         public string Name { get; set; }
     }
 }
-

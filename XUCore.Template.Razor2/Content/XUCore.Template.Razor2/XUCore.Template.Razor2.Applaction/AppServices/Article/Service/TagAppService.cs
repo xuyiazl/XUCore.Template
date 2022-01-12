@@ -48,7 +48,7 @@ namespace XUCore.Template.Razor2.Applaction.Article
         /// <param name="value"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public async Task<int> UpdateFieldAsync(long id, string field, string value, CancellationToken cancellationToken = default)
+        public async Task<int> UpdateAsync(long id, string field, string value, CancellationToken cancellationToken = default)
         {
             return await tagService.UpdateAsync(id, field, value, cancellationToken);
         }
@@ -59,9 +59,9 @@ namespace XUCore.Template.Razor2.Applaction.Article
         /// <param name="status"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public async Task<int> UpdateStatusAsync(long[] ids, Status status, CancellationToken cancellationToken = default)
+        public async Task<int> UpdateAsync(long[] ids, Status status, CancellationToken cancellationToken = default)
         {
-            return await tagService.UpdateStatusAsync(ids, status, cancellationToken);
+            return await tagService.UpdateAsync(ids, status, cancellationToken);
         }
         /// <summary>
         /// 删除标签（物理删除）

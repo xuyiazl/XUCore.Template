@@ -23,4 +23,3 @@ namespace XUCore.Template.WeChat.DbService.Article
 		public Status Status { get; set; }
     }
 }
-

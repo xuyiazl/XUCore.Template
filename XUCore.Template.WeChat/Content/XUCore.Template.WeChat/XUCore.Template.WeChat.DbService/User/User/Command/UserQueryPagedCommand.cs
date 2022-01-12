@@ -36,4 +36,3 @@ namespace XUCore.Template.WeChat.DbService.User.User
         }
     }
 }
-

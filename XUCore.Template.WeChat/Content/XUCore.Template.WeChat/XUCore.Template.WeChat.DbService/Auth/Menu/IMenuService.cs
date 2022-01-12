@@ -3,11 +3,26 @@ using XUCore.Template.WeChat.Persistence.Enums;
 
 namespace XUCore.Template.WeChat.DbService.Auth.Menu
 {
-    public interface IMenuService : ICurdService<long, MenuEntity, MenuDto, MenuCreateCommand, MenuUpdateCommand, MenuQueryCommand, MenuQueryPagedCommand>, IScoped
+    public interface IMenuService : IScoped
     {
-        Task<IList<MenuDto>> GetListAsync(CancellationToken cancellationToken);
-        Task<IList<MenuTreeDto>> GetListByTreeAsync(CancellationToken cancellationToken);
+        Task<MenuEntity> CreateAsync(MenuCreateCommand request, CancellationToken cancellationToken);
+
+        Task<int> UpdateAsync(MenuUpdateCommand request, CancellationToken cancellationToken);
+
         Task<int> UpdateAsync(long id, string field, string value, CancellationToken cancellationToken);
+
         Task<int> UpdateAsync(long[] ids, Status status, CancellationToken cancellationToken);
+
+        Task<int> DeleteAsync(long[] ids, CancellationToken cancellationToken);
+
+        Task<MenuDto> GetByIdAsync(long id, CancellationToken cancellationToken);
+
+        Task<IList<MenuDto>> GetListAsync(CancellationToken cancellationToken);
+
+        Task<IList<MenuDto>> GetListAsync(MenuQueryCommand request, CancellationToken cancellationToken);
+
+        Task<PagedModel<MenuDto>> GetPagedListAsync(MenuQueryPagedCommand request, CancellationToken cancellationToken);
+
+        Task<IList<MenuTreeDto>> GetListByTreeAsync(CancellationToken cancellationToken);
     }
 }

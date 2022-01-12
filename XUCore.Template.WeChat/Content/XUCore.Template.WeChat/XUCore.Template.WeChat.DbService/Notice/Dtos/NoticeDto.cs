@@ -43,4 +43,3 @@ namespace XUCore.Template.WeChat.DbService.Notice
         public string LevelName => Utils.LevelSwap(LevelId).Name;
     }
 }
-

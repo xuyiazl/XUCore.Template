@@ -12,4 +12,3 @@
         public IList<PermissionMenuTreeDto> Child { get; set; }
     }
 }
-

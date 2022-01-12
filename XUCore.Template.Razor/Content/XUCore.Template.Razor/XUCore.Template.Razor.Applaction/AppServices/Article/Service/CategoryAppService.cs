@@ -8,11 +8,11 @@ namespace XUCore.Template.Razor.Applaction.Article
     /// </summary>
     public class CategoryAppService : ICategoryAppService
     {
-        private readonly ICategoryService CategoryService;
+        private readonly ICategoryService categoryService;
 
         public CategoryAppService(IServiceProvider serviceProvider)
         {
-            this.CategoryService = serviceProvider.GetRequiredService<ICategoryService>();
+            this.categoryService = serviceProvider.GetRequiredService<ICategoryService>();
         }
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace XUCore.Template.Razor.Applaction.Article
         /// <returns></returns>
         public async Task<long> CreateAsync(CategoryCreateCommand request, CancellationToken cancellationToken = default)
         {
-            var res = await CategoryService.CreateAsync(request, cancellationToken);
+            var res = await categoryService.CreateAsync(request, cancellationToken);
 
             if (res != null)
                 return res.Id;
@@ -38,7 +38,7 @@ namespace XUCore.Template.Razor.Applaction.Article
         /// <returns></returns>
         public async Task<int> UpdateAsync(CategoryUpdateCommand request, CancellationToken cancellationToken = default)
         {
-            return await CategoryService.UpdateAsync(request, cancellationToken);
+            return await categoryService.UpdateAsync(request, cancellationToken);
         }
         /// <summary>
         /// 更新目录指定字段内容
@@ -48,9 +48,9 @@ namespace XUCore.Template.Razor.Applaction.Article
         /// <param name="value"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public async Task<int> UpdateFieldAsync(long id, string field, string value, CancellationToken cancellationToken = default)
+        public async Task<int> UpdateAsync(long id, string field, string value, CancellationToken cancellationToken = default)
         {
-            return await CategoryService.UpdateAsync(id, field, value, cancellationToken);
+            return await categoryService.UpdateAsync(id, field, value, cancellationToken);
         }
         /// <summary>
         /// 更新状态
@@ -59,9 +59,9 @@ namespace XUCore.Template.Razor.Applaction.Article
         /// <param name="status"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public async Task<int> UpdateStatusAsync(long[] ids, Status status, CancellationToken cancellationToken = default)
+        public async Task<int> UpdateAsync(long[] ids, Status status, CancellationToken cancellationToken = default)
         {
-            return await CategoryService.UpdateStatusAsync(ids, status, cancellationToken);
+            return await categoryService.UpdateAsync(ids, status, cancellationToken);
         }
         /// <summary>
         /// 删除目录（物理删除）
@@ -71,7 +71,7 @@ namespace XUCore.Template.Razor.Applaction.Article
         /// <returns></returns>
         public async Task<int> DeleteAsync(long[] ids, CancellationToken cancellationToken = default)
         {
-            return await CategoryService.DeleteAsync(ids, cancellationToken);
+            return await categoryService.DeleteAsync(ids, cancellationToken);
         }
         /// <summary>
         /// 获取目录信息
@@ -81,7 +81,7 @@ namespace XUCore.Template.Razor.Applaction.Article
         /// <returns></returns>
         public async Task<CategoryDto> GetByIdAsync(long id, CancellationToken cancellationToken = default)
         {
-            return await CategoryService.GetByIdAsync(id, cancellationToken);
+            return await categoryService.GetByIdAsync(id, cancellationToken);
         }
         /// <summary>
         /// 获取目录下拉菜单
@@ -126,7 +126,7 @@ namespace XUCore.Template.Razor.Applaction.Article
         /// <returns></returns>
         public async Task<IList<CategoryDto>> GetListAsync(CategoryQueryCommand request, CancellationToken cancellationToken = default)
         {
-            return await CategoryService.GetListAsync(request, cancellationToken);
+            return await categoryService.GetListAsync(request, cancellationToken);
         }
         /// <summary>
         /// 获取目录分页
@@ -136,7 +136,7 @@ namespace XUCore.Template.Razor.Applaction.Article
         /// <returns></returns>
         public async Task<PagedModel<CategoryDto>> GetPagedListAsync(CategoryQueryPagedCommand request, CancellationToken cancellationToken = default)
         {
-            return await CategoryService.GetPagedListAsync(request, cancellationToken);
+            return await categoryService.GetPagedListAsync(request, cancellationToken);
         }
     }
 }

@@ -37,7 +37,7 @@ namespace XUCore.Template.WeChat.Applaction.WeChat
         /// <param name="value"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<int> UpdateFieldAsync(long id, string field, string value, CancellationToken cancellationToken = default);
+        Task<int> UpdateAsync(long id, string field, string value, CancellationToken cancellationToken = default);
         /// <summary>
         /// 更新状态
         /// </summary>
@@ -45,7 +45,7 @@ namespace XUCore.Template.WeChat.Applaction.WeChat
         /// <param name="status"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<int> UpdateStatusAsync(long[] ids, Status status, CancellationToken cancellationToken = default);
+        Task<int> UpdateAsync(long[] ids, Status status, CancellationToken cancellationToken = default);
         /// <summary>
         /// 删除账号（物理删除）
         /// </summary>

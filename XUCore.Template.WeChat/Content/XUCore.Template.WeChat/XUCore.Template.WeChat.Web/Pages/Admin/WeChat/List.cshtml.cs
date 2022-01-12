@@ -47,12 +47,12 @@ namespace XUCore.Template.WeChat.Web.Pages.Admin.WeChat
             });
         }
 
-        public async Task<IActionResult> OnPutUpdateFieldAsync(long id, string field, string value)
+        public async Task<IActionResult> OnPutUpdateAsync(long id, string field, string value)
         {
             value = value.SafeString().Trim();
             field = field.ToLower();
 
-            var res = await weChatUserAppService.UpdateFieldAsync(id, field, value);
+            var res = await weChatUserAppService.UpdateAsync(id, field, value);
 
             if (res > 0)
                 return new Result(StateCode.Success, "", "更新成功");
@@ -62,7 +62,7 @@ namespace XUCore.Template.WeChat.Web.Pages.Admin.WeChat
 
         public async Task<IActionResult> OnPutBatchStatusAsync([FromForm] long[] ids, [FromForm] Status status)
         {
-            var res = await weChatUserAppService.UpdateStatusAsync(ids, status);
+            var res = await weChatUserAppService.UpdateAsync(ids, status);
 
             if (res > 0)
                 return new Result(StateCode.Success, "", "操作成功");

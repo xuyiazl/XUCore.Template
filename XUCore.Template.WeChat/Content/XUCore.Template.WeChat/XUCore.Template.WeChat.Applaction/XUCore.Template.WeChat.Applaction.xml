@@ -35,7 +35,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.WeChat.Applaction.Article.IArticleAppService.UpdateFieldAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.WeChat.Applaction.Article.IArticleAppService.UpdateAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
             <summary>
             更新文章指定字段内容
             </summary>
@@ -45,7 +45,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.WeChat.Applaction.Article.IArticleAppService.UpdateStatusAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.WeChat.Applaction.Article.IArticleAppService.UpdateAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
             <summary>
             更新状态
             </summary>
@@ -107,7 +107,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.WeChat.Applaction.Article.ICategoryAppService.UpdateFieldAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.WeChat.Applaction.Article.ICategoryAppService.UpdateAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
             <summary>
             更新目录指定字段内容
             </summary>
@@ -117,7 +117,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.WeChat.Applaction.Article.ICategoryAppService.UpdateStatusAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.WeChat.Applaction.Article.ICategoryAppService.UpdateAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
             <summary>
             更新状态
             </summary>
@@ -195,7 +195,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.WeChat.Applaction.Article.ITagAppService.UpdateFieldAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.WeChat.Applaction.Article.ITagAppService.UpdateAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
             <summary>
             更新标签指定字段内容
             </summary>
@@ -205,7 +205,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.WeChat.Applaction.Article.ITagAppService.UpdateStatusAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.WeChat.Applaction.Article.ITagAppService.UpdateAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
             <summary>
             更新状态
             </summary>
@@ -283,7 +283,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.WeChat.Applaction.Article.ArticleAppService.UpdateFieldAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.WeChat.Applaction.Article.ArticleAppService.UpdateAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
             <summary>
             更新文章指定字段内容
             </summary>
@@ -293,7 +293,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.WeChat.Applaction.Article.ArticleAppService.UpdateStatusAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.WeChat.Applaction.Article.ArticleAppService.UpdateAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
             <summary>
             更新状态
             </summary>
@@ -355,7 +355,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.WeChat.Applaction.Article.CategoryAppService.UpdateFieldAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.WeChat.Applaction.Article.CategoryAppService.UpdateAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
             <summary>
             更新目录指定字段内容
             </summary>
@@ -365,7 +365,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.WeChat.Applaction.Article.CategoryAppService.UpdateStatusAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.WeChat.Applaction.Article.CategoryAppService.UpdateAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
             <summary>
             更新状态
             </summary>
@@ -443,7 +443,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.WeChat.Applaction.Article.TagAppService.UpdateFieldAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.WeChat.Applaction.Article.TagAppService.UpdateAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
             <summary>
             更新标签指定字段内容
             </summary>
@@ -453,7 +453,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.WeChat.Applaction.Article.TagAppService.UpdateStatusAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.WeChat.Applaction.Article.TagAppService.UpdateAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
             <summary>
             更新状态
             </summary>
@@ -693,7 +693,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.WeChat.Applaction.User.IMenuAppService.UpdateFieldAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.WeChat.Applaction.User.IMenuAppService.UpdateAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
             <summary>
             更新导航指定字段内容
             </summary>
@@ -703,7 +703,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.WeChat.Applaction.User.IMenuAppService.UpdateStatusAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.WeChat.Applaction.User.IMenuAppService.UpdateAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
             <summary>
             更新状态
             </summary>
@@ -771,7 +771,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.WeChat.Applaction.User.INoticeAppService.UpdateFieldAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.WeChat.Applaction.User.INoticeAppService.UpdateAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
             <summary>
             更新公告板指定字段内容
             </summary>
@@ -781,7 +781,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.WeChat.Applaction.User.INoticeAppService.UpdateStatusAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.WeChat.Applaction.User.INoticeAppService.UpdateAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
             <summary>
             更新状态
             </summary>
@@ -851,7 +851,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.WeChat.Applaction.User.IRoleAppService.UpdateFieldAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.WeChat.Applaction.User.IRoleAppService.UpdateAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
             <summary>
             更新角色指定字段内容
             </summary>
@@ -861,7 +861,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.WeChat.Applaction.User.IRoleAppService.UpdateStatusAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.WeChat.Applaction.User.IRoleAppService.UpdateAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
             <summary>
             更新状态
             </summary>
@@ -939,7 +939,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.WeChat.Applaction.User.IUserAppService.UpdateFieldAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.WeChat.Applaction.User.IUserAppService.UpdateAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
             <summary>
             更新指定字段内容
             </summary>
@@ -949,7 +949,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.WeChat.Applaction.User.IUserAppService.UpdateStatusAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.WeChat.Applaction.User.IUserAppService.UpdateAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
             <summary>
             更新状态
             </summary>
@@ -1061,7 +1061,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.WeChat.Applaction.User.MenuAppService.UpdateFieldAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.WeChat.Applaction.User.MenuAppService.UpdateAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
             <summary>
             更新导航指定字段内容
             </summary>
@@ -1071,7 +1071,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.WeChat.Applaction.User.MenuAppService.UpdateStatusAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.WeChat.Applaction.User.MenuAppService.UpdateAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
             <summary>
             更新状态
             </summary>
@@ -1139,7 +1139,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.WeChat.Applaction.User.NoticeAppService.UpdateFieldAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.WeChat.Applaction.User.NoticeAppService.UpdateAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
             <summary>
             更新公告板指定字段内容
             </summary>
@@ -1149,7 +1149,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.WeChat.Applaction.User.NoticeAppService.UpdateStatusAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.WeChat.Applaction.User.NoticeAppService.UpdateAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
             <summary>
             更新状态
             </summary>
@@ -1219,7 +1219,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.WeChat.Applaction.User.RoleAppService.UpdateFieldAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.WeChat.Applaction.User.RoleAppService.UpdateAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
             <summary>
             更新角色指定字段内容
             </summary>
@@ -1229,7 +1229,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.WeChat.Applaction.User.RoleAppService.UpdateStatusAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.WeChat.Applaction.User.RoleAppService.UpdateAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
             <summary>
             更新状态
             </summary>
@@ -1307,7 +1307,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.WeChat.Applaction.User.UserAppService.UpdateFieldAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.WeChat.Applaction.User.UserAppService.UpdateAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
             <summary>
             更新指定字段内容
             </summary>
@@ -1317,7 +1317,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.WeChat.Applaction.User.UserAppService.UpdateStatusAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.WeChat.Applaction.User.UserAppService.UpdateAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
             <summary>
             更新状态
             </summary>
@@ -1437,7 +1437,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.WeChat.Applaction.WeChat.IWeChatUserAppService.UpdateFieldAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.WeChat.Applaction.WeChat.IWeChatUserAppService.UpdateAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
             <summary>
             更新指定字段内容
             </summary>
@@ -1447,7 +1447,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.WeChat.Applaction.WeChat.IWeChatUserAppService.UpdateStatusAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.WeChat.Applaction.WeChat.IWeChatUserAppService.UpdateAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
             <summary>
             更新状态
             </summary>
@@ -1529,7 +1529,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.WeChat.Applaction.WeChat.WeChatUserAppService.UpdateFieldAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.WeChat.Applaction.WeChat.WeChatUserAppService.UpdateAsync(System.Int64,System.String,System.String,System.Threading.CancellationToken)">
             <summary>
             更新指定字段内容
             </summary>
@@ -1539,7 +1539,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:XUCore.Template.WeChat.Applaction.WeChat.WeChatUserAppService.UpdateStatusAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
+        <member name="M:XUCore.Template.WeChat.Applaction.WeChat.WeChatUserAppService.UpdateAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
             <summary>
             更新状态
             </summary>

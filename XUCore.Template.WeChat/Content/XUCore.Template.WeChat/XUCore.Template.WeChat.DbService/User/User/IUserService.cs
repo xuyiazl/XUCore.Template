@@ -4,18 +4,37 @@ using XUCore.Template.WeChat.Persistence.Entities.User;
 
 namespace XUCore.Template.WeChat.DbService.User.User
 {
-    public interface IUserService : ICurdService<long, UserEntity, UserDto, UserCreateCommand, UserUpdateInfoCommand, UserQueryCommand, UserQueryPagedCommand>, IScoped
+    public interface IUserService : IScoped
     {
-        Task<bool> AnyByAccountAsync(AccountMode accountMode, string account, long notId, CancellationToken cancellationToken);
-        Task<UserDto> GetByAccountAsync(AccountMode accountMode, string account, CancellationToken cancellationToken);
-        Task<IList<long>> GetRoleKeysAsync(long userId, CancellationToken cancellationToken);
-        Task<UserDto> LoginAsync(UserLoginCommand request, CancellationToken cancellationToken);
-        Task<int> CreateRelevanceRoleAsync(UserRelevanceRoleCommand request, CancellationToken cancellationToken);
+        Task<UserEntity> CreateAsync(UserCreateCommand request, CancellationToken cancellationToken);
+
+        Task<int> UpdateAsync(UserUpdateInfoCommand request, CancellationToken cancellationToken);
+
         Task<int> UpdateAsync(UserUpdatePasswordCommand request, CancellationToken cancellationToken);
+
         Task<int> UpdateAsync(long id, string field, string value, CancellationToken cancellationToken);
+
         Task<int> UpdateAsync(long[] ids, Status status, CancellationToken cancellationToken);
 
+        Task<int> DeleteAsync(long[] ids, CancellationToken cancellationToken);
+
+        Task<UserDto> LoginAsync(UserLoginCommand request, CancellationToken cancellationToken);
+
+        Task<bool> AnyByAccountAsync(AccountMode accountMode, string account, long notId, CancellationToken cancellationToken);
+
+        Task<UserDto> GetByAccountAsync(AccountMode accountMode, string account, CancellationToken cancellationToken);
+
+        Task<UserDto> GetByIdAsync(long id, CancellationToken cancellationToken);
+
         Task<IList<UserSimpleDto>> GetListAsync(CancellationToken cancellationToken);
+
+        Task<IList<UserDto>> GetListAsync(UserQueryCommand request, CancellationToken cancellationToken);
+
+        Task<PagedModel<UserDto>> GetPagedListAsync(UserQueryPagedCommand request, CancellationToken cancellationToken);
+
+        Task<int> CreateRelevanceRoleAsync(UserRelevanceRoleCommand request, CancellationToken cancellationToken);
+
+        Task<IList<long>> GetRoleKeysAsync(long userId, CancellationToken cancellationToken);
 
         Task<IList<UserLoginRecordDto>> GetRecordListAsync(UserLoginRecordQueryCommand request, CancellationToken cancellationToken);
 

@@ -4,21 +4,47 @@ using XUCore.Template.WeChat.Persistence.Enums;
 
 namespace XUCore.Template.WeChat.DbService.Article
 {
-    public class CategoryService : FreeSqlCurdService<long, CategoryEntity, CategoryDto, CategoryCreateCommand, CategoryUpdateCommand, CategoryQueryCommand, CategoryQueryPagedCommand>,
-        ICategoryService
+    public class CategoryService : ICategoryService
     {
-        public CategoryService(IServiceProvider serviceProvider, FreeSqlUnitOfWorkManager muowm, IMapper mapper, IUserInfo user) : base(muowm, mapper, user)
-        {
+        protected readonly FreeSqlUnitOfWorkManager unitOfWork;
+        protected readonly IBaseRepository<CategoryEntity> repo;
+        protected readonly IMapper mapper;
+        protected readonly IUserInfo user;
 
+        public CategoryService(IServiceProvider serviceProvider)
+        {
+            this.unitOfWork = serviceProvider.GetRequiredService<FreeSqlUnitOfWorkManager>();
+            this.repo = unitOfWork.Orm.GetRepository<CategoryEntity>();
+            this.mapper = serviceProvider.GetRequiredService<IMapper>();
+            this.user = serviceProvider.GetRequiredService<IUserInfo>();
         }
-        /// <summary>
-        /// 更新部分字段
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="field"></param>
-        /// <param name="value"></param>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
+
+        public async Task<CategoryEntity> CreateAsync(CategoryCreateCommand request, CancellationToken cancellationToken)
+        {
+            var entity = mapper.Map<CategoryCreateCommand, CategoryEntity>(request);
+
+            var res = await repo.InsertAsync(entity, cancellationToken);
+
+            if (res != null)
+                return res;
+
+            return default;
+        }
+
+        public async Task<int> UpdateAsync(CategoryUpdateCommand request, CancellationToken cancellationToken)
+        {
+            var entity = await repo.Select.WhereDynamic(request.Id).ToOneAsync(cancellationToken);
+
+            if (entity == null)
+                return 0;
+
+            entity = mapper.Map(request, entity);
+
+            var res = await repo.UpdateAsync(entity, cancellationToken);
+
+            return res;
+        }
+        
         public async Task<int> UpdateAsync(long id, string field, string value, CancellationToken cancellationToken)
         {
             var entity = await repo.Select.WhereDynamic(id).ToOneAsync(cancellationToken);
@@ -38,14 +64,8 @@ namespace XUCore.Template.WeChat.DbService.Article
 
             return await repo.UpdateAsync(entity, cancellationToken);
         }
-        /// <summary>
-        /// 更新状态
-        /// </summary>
-        /// <param name="ids"></param>
-        /// <param name="status"></param>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
-        public async Task<int> UpdateStatusAsync(long[] ids, Status status, CancellationToken cancellationToken)
+        
+        public async Task<int> UpdateAsync(long[] ids, Status status, CancellationToken cancellationToken)
         {
             var list = await repo.Select.Where(c => ids.Contains(c.Id)).ToListAsync<CategoryEntity>(cancellationToken);
 
@@ -54,21 +74,22 @@ namespace XUCore.Template.WeChat.DbService.Article
             return await repo.UpdateAsync(list, cancellationToken);
         }
 
-        /// <summary>
-        /// 检查名字是否重复
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
+        public async Task<int> DeleteAsync(long[] ids, CancellationToken cancellationToken)
+        {
+            var res = await unitOfWork.Orm.Delete<CategoryEntity>(ids).ExecuteAffrowsAsync(cancellationToken);
+
+            return res;
+        }
+
         public async Task<bool> AnyAsync(string name, CancellationToken cancellationToken)
             => await repo.Select.AnyAsync(c => c.Name == name, cancellationToken);
 
-        public override async Task<CategoryDto> GetByIdAsync(long id, CancellationToken cancellationToken)
+        public async Task<CategoryDto> GetByIdAsync(long id, CancellationToken cancellationToken)
         {
             return await repo.Select.WhereDynamic(id).ToOneAsync<CategoryDto>(cancellationToken);
         }
 
-        public override async Task<IList<CategoryDto>> GetListAsync(CategoryQueryCommand request, CancellationToken cancellationToken)
+        public async Task<IList<CategoryDto>> GetListAsync(CategoryQueryCommand request, CancellationToken cancellationToken)
         {
             var select = repo.Select
                    .WhereIf(request.Status != Status.Default, c => c.Status == request.Status)
@@ -84,7 +105,7 @@ namespace XUCore.Template.WeChat.DbService.Article
             return res;
         }
 
-        public override async Task<PagedModel<CategoryDto>> GetPagedListAsync(CategoryQueryPagedCommand request, CancellationToken cancellationToken)
+        public async Task<PagedModel<CategoryDto>> GetPagedListAsync(CategoryQueryPagedCommand request, CancellationToken cancellationToken)
         {
             var res = await repo.Select
                    .WhereIf(request.Status != Status.Default, (c) => c.Status == request.Status)
@@ -97,4 +118,3 @@ namespace XUCore.Template.WeChat.DbService.Article
         }
     }
 }
-

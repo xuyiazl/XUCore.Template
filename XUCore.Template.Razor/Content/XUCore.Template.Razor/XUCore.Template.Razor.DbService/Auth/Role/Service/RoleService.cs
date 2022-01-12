@@ -1,19 +1,26 @@
 ﻿using XUCore.Template.Razor.Core;
 using XUCore.Template.Razor.Persistence.Entities.Auth;
-using XUCore.Template.Razor.Persistence.Enums;
 using XUCore.Template.Razor.Persistence.Entities.User;
+using XUCore.Template.Razor.Persistence.Enums;
 
 namespace XUCore.Template.Razor.DbService.Auth.Role
 {
-    public class RoleService : FreeSqlCurdService<long, RoleEntity, RoleDto, RoleCreateCommand, RoleUpdateCommand, RoleQueryCommand, RoleQueryPagedCommand>,
-        IRoleService
+    public class RoleService : IRoleService
     {
-        public RoleService(IServiceProvider serviceProvider, FreeSqlUnitOfWorkManager muowm, IMapper mapper, IUserInfo user) : base(muowm, mapper, user)
-        {
+        protected readonly FreeSqlUnitOfWorkManager unitOfWork;
+        protected readonly IBaseRepository<RoleEntity> repo;
+        protected readonly IMapper mapper;
+        protected readonly IUserInfo user;
 
+        public RoleService(IServiceProvider serviceProvider)
+        {
+            this.unitOfWork = serviceProvider.GetRequiredService<FreeSqlUnitOfWorkManager>();
+            this.repo = unitOfWork.Orm.GetRepository<RoleEntity>();
+            this.mapper = serviceProvider.GetRequiredService<IMapper>();
+            this.user = serviceProvider.GetRequiredService<IUserInfo>();
         }
 
-        public override async Task<RoleEntity> CreateAsync(RoleCreateCommand request, CancellationToken cancellationToken)
+        public async Task<RoleEntity> CreateAsync(RoleCreateCommand request, CancellationToken cancellationToken)
         {
             var entity = mapper.Map<RoleCreateCommand, RoleEntity>(request);
 
@@ -31,9 +38,7 @@ namespace XUCore.Template.Razor.DbService.Auth.Role
                     });
                 }
 
-                await freeSql.Insert<RoleMenuEntity>(entity.RoleMenus).ExecuteAffrowsAsync(cancellationToken);
-
-                CreatedAction?.Invoke(entity);
+                await unitOfWork.Orm.Insert<RoleMenuEntity>(entity.RoleMenus).ExecuteAffrowsAsync(cancellationToken);
 
                 return res;
             }
@@ -41,7 +46,7 @@ namespace XUCore.Template.Razor.DbService.Auth.Role
             return default;
         }
 
-        public override async Task<int> UpdateAsync(RoleUpdateCommand request, CancellationToken cancellationToken)
+        public async Task<int> UpdateAsync(RoleUpdateCommand request, CancellationToken cancellationToken)
         {
             var entity = await repo.Select.WhereDynamic(request.Id).ToOneAsync(cancellationToken);
 
@@ -65,11 +70,9 @@ namespace XUCore.Template.Razor.DbService.Auth.Role
                 }
 
                 //先清空导航集合，确保没有冗余信息
-                await freeSql.Delete<RoleMenuEntity>().Where(c => c.RoleId == request.Id).ExecuteAffrowsAsync(cancellationToken);
+                await unitOfWork.Orm.Delete<RoleMenuEntity>().Where(c => c.RoleId == request.Id).ExecuteAffrowsAsync(cancellationToken);
 
-                await freeSql.Insert<RoleMenuEntity>(entity.RoleMenus).ExecuteAffrowsAsync(cancellationToken);
-
-                UpdatedAction?.Invoke(entity);
+                await unitOfWork.Orm.Insert<RoleMenuEntity>(entity.RoleMenus).ExecuteAffrowsAsync(cancellationToken);
             }
             return res;
         }
@@ -90,14 +93,7 @@ namespace XUCore.Template.Razor.DbService.Auth.Role
 
             return await repo.UpdateAsync(entity, cancellationToken);
         }
-
-        /// <summary>
-        /// 更新状态
-        /// </summary>
-        /// <param name="ids"></param>
-        /// <param name="status"></param>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
+        
         public async Task<int> UpdateAsync(long[] ids, Status status, CancellationToken cancellationToken)
         {
             var list = await repo.Select.Where(c => ids.Contains(c.Id)).ToListAsync<RoleEntity>(cancellationToken);
@@ -107,33 +103,29 @@ namespace XUCore.Template.Razor.DbService.Auth.Role
             return await repo.UpdateAsync(list, cancellationToken);
         }
 
-        public override async Task<int> DeleteAsync(long[] ids, CancellationToken cancellationToken)
+        public async Task<int> DeleteAsync(long[] ids, CancellationToken cancellationToken)
         {
-            var res = await freeSql.Delete<RoleEntity>(ids).ExecuteAffrowsAsync(cancellationToken);
+            var res = await unitOfWork.Orm.Delete<RoleEntity>(ids).ExecuteAffrowsAsync(cancellationToken);
 
             if (res > 0)
             {
                 //删除关联的导航
-                await freeSql.Delete<RoleMenuEntity>().Where(c => ids.Contains(c.RoleId)).ExecuteAffrowsAsync(cancellationToken);
+                await unitOfWork.Orm.Delete<RoleMenuEntity>().Where(c => ids.Contains(c.RoleId)).ExecuteAffrowsAsync(cancellationToken);
                 //删除用户关联的角色
-                await freeSql.Delete<UserRoleEntity>().Where(c => ids.Contains(c.RoleId)).ExecuteAffrowsAsync(cancellationToken);
-
-                DeletedAction?.Invoke(ids);
+                await unitOfWork.Orm.Delete<UserRoleEntity>().Where(c => ids.Contains(c.RoleId)).ExecuteAffrowsAsync(cancellationToken);
             }
 
             return res;
         }
 
-        /// <summary>
-        /// 检查名字是否重复
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
         public async Task<bool> AnyAsync(string name, CancellationToken cancellationToken)
             => await repo.Select.AnyAsync(c => c.Name == name, cancellationToken);
+        public async Task<RoleDto> GetByIdAsync(long id, CancellationToken cancellationToken)
+        {
+            return await repo.Select.WhereDynamic(id).ToOneAsync<RoleDto>(cancellationToken);
+        }
 
-        public override async Task<IList<RoleDto>> GetListAsync(RoleQueryCommand request, CancellationToken cancellationToken)
+        public async Task<IList<RoleDto>> GetListAsync(RoleQueryCommand request, CancellationToken cancellationToken)
         {
             var select = repo.Select
                    .WhereIf(request.Status != Status.Default, c => c.Status == request.Status)
@@ -150,10 +142,10 @@ namespace XUCore.Template.Razor.DbService.Auth.Role
 
         public async Task<IList<long>> GetRelevanceMenuAsync(int roleId, CancellationToken cancellationToken)
         {
-            return await freeSql.Select<RoleMenuEntity>().Where(c => c.RoleId == roleId).OrderBy(c => c.MenuId).ToListAsync(c => c.MenuId, cancellationToken);
+            return await unitOfWork.Orm.Select<RoleMenuEntity>().Where(c => c.RoleId == roleId).OrderBy(c => c.MenuId).ToListAsync(c => c.MenuId, cancellationToken);
         }
 
-        public override async Task<PagedModel<RoleDto>> GetPagedListAsync(RoleQueryPagedCommand request, CancellationToken cancellationToken)
+        public async Task<PagedModel<RoleDto>> GetPagedListAsync(RoleQueryPagedCommand request, CancellationToken cancellationToken)
         {
             var res = await repo.Select
                    .WhereIf(request.Status != Status.Default, c => c.Status == request.Status)

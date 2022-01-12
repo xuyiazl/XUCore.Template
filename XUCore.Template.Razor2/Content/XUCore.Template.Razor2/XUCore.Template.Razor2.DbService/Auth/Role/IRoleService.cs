@@ -3,17 +3,26 @@ using XUCore.Template.Razor2.Persistence.Enums;
 
 namespace XUCore.Template.Razor2.DbService.Auth.Role
 {
-    public interface IRoleService : ICurdService<long, RoleEntity, RoleDto, RoleCreateCommand, RoleUpdateCommand, RoleQueryCommand, RoleQueryPagedCommand>, IScoped
+    public interface IRoleService : IScoped
     {
+        Task<RoleEntity> CreateAsync(RoleCreateCommand request, CancellationToken cancellationToken);
+
+        Task<int> UpdateAsync(RoleUpdateCommand request, CancellationToken cancellationToken);
+
         Task<int> UpdateAsync(long id, string field, string value, CancellationToken cancellationToken);
+
         Task<int> UpdateAsync(long[] ids, Status status, CancellationToken cancellationToken);
-        /// <summary>
-        /// 检查名字是否重复
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
+
+        Task<int> DeleteAsync(long[] ids, CancellationToken cancellationToken);
+
         Task<bool> AnyAsync(string name, CancellationToken cancellationToken);
+
+        Task<RoleDto> GetByIdAsync(long id, CancellationToken cancellationToken);
+
+        Task<IList<RoleDto>> GetListAsync(RoleQueryCommand request, CancellationToken cancellationToken);
+
         Task<IList<long>> GetRelevanceMenuAsync(int roleId, CancellationToken cancellationToken);
+
+        Task<PagedModel<RoleDto>> GetPagedListAsync(RoleQueryPagedCommand request, CancellationToken cancellationToken);
     }
 }

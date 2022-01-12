@@ -4,15 +4,22 @@ using XUCore.Template.WeChat.Persistence.Entities.User;
 
 namespace XUCore.Template.WeChat.DbService.User.WeChatUser
 {
-    public class WeChatUserService : FreeSqlCurdService<long, WeChatUserEntity, WeChatUserDto, WeChatUserCreateCommand, WeChatUserUpdateInfoCommand, WeChatUserQueryCommand, WeChatUserQueryPagedCommand>,
-        IWeChatUserService
+    public class WeChatUserService : IWeChatUserService
     {
-        public WeChatUserService(IServiceProvider serviceProvider, FreeSqlUnitOfWorkManager muowm, IMapper mapper, IUserInfo UserWeChat) : base(muowm, mapper, UserWeChat)
-        {
+        protected readonly FreeSqlUnitOfWorkManager unitOfWork;
+        protected readonly IBaseRepository<WeChatUserEntity> repo;
+        protected readonly IMapper mapper;
+        protected readonly IUserInfo user;
 
+        public WeChatUserService(IServiceProvider serviceProvider)
+        {
+            this.unitOfWork = serviceProvider.GetRequiredService<FreeSqlUnitOfWorkManager>();
+            this.repo = unitOfWork.Orm.GetRepository<WeChatUserEntity>();
+            this.mapper = serviceProvider.GetRequiredService<IMapper>();
+            this.user = serviceProvider.GetRequiredService<IUserInfo>();
         }
 
-        public override async Task<WeChatUserEntity> CreateAsync(WeChatUserCreateCommand request, CancellationToken cancellationToken)
+        public async Task<WeChatUserEntity> CreateAsync(WeChatUserCreateCommand request, CancellationToken cancellationToken)
         {
             var entity = await repo.Select.Where(c => c.OpenId == request.OpenId).ToOneAsync(cancellationToken);
 
@@ -24,8 +31,6 @@ namespace XUCore.Template.WeChat.DbService.User.WeChatUser
 
                 if (res != null)
                 {
-                    CreatedAction?.Invoke(entity);
-
                     return res;
                 }
             }
@@ -41,12 +46,24 @@ namespace XUCore.Template.WeChat.DbService.User.WeChatUser
                     entity.Country = request.Country;
 
                     await repo.UpdateAsync(entity, cancellationToken);
-
-                    UpdatedAction?.Invoke(entity);
                 }
             }
 
             return entity;
+        }
+
+        public async Task<int> UpdateAsync(WeChatUserUpdateInfoCommand request, CancellationToken cancellationToken)
+        {
+            var entity = await repo.Select.WhereDynamic(request.Id).ToOneAsync(cancellationToken);
+
+            if (entity == null)
+                return 0;
+
+            entity = mapper.Map(request, entity);
+
+            var res = await repo.UpdateAsync(entity, cancellationToken);
+
+            return res;
         }
 
         public async Task<int> UpdateAsync(WeChatUserUpdatePasswordCommand request, CancellationToken cancellationToken)
@@ -59,7 +76,7 @@ namespace XUCore.Template.WeChat.DbService.User.WeChatUser
             if (!entity.Password.Equals(request.OldPassword))
                 Failure.Error("旧密码错误");
 
-            return await freeSql.Update<WeChatUserEntity>(request.Id).Set(c => new WeChatUserEntity { Password = request.NewPassword }).ExecuteAffrowsAsync(cancellationToken);
+            return await unitOfWork.Orm.Update<WeChatUserEntity>(request.Id).Set(c => new WeChatUserEntity { Password = request.NewPassword }).ExecuteAffrowsAsync(cancellationToken);
         }
 
         public async Task<int> UpdateAsync(long id, string field, string value, CancellationToken cancellationToken)
@@ -96,13 +113,7 @@ namespace XUCore.Template.WeChat.DbService.User.WeChatUser
 
             return await repo.UpdateAsync(entity, cancellationToken);
         }
-        /// <summary>
-        /// 更新状态
-        /// </summary>
-        /// <param name="ids"></param>
-        /// <param name="status"></param>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
+
         public async Task<int> UpdateAsync(long[] ids, Status status, CancellationToken cancellationToken)
         {
             var list = await repo.Select.Where(c => ids.Contains(c.Id)).ToListAsync<WeChatUserEntity>(cancellationToken);
@@ -112,14 +123,9 @@ namespace XUCore.Template.WeChat.DbService.User.WeChatUser
             return await repo.UpdateAsync(list, cancellationToken);
         }
 
-        public override async Task<int> DeleteAsync(long[] ids, CancellationToken cancellationToken)
+        public async Task<int> DeleteAsync(long[] ids, CancellationToken cancellationToken)
         {
-            var res = await freeSql.Delete<WeChatUserEntity>(ids).ExecuteAffrowsAsync(cancellationToken);
-
-            if (res > 0)
-            {
-                DeletedAction?.Invoke(ids);
-            }
+            var res = await unitOfWork.Orm.Delete<WeChatUserEntity>(ids).ExecuteAffrowsAsync(cancellationToken);
 
             return res;
         }
@@ -142,6 +148,11 @@ namespace XUCore.Template.WeChat.DbService.User.WeChatUser
             return mapper.Map<WeChatUserDto>(user);
         }
 
+        public async Task<WeChatUserDto> GetByIdAsync(long id, CancellationToken cancellationToken)
+        {
+            return await repo.Select.WhereDynamic(id).ToOneAsync<WeChatUserDto>(cancellationToken);
+        }
+
         public async Task<WeChatUserDto> GetByOpenIdAsync(string opendId, CancellationToken cancellationToken)
         {
             var user = await repo.Select.Where(c => c.OpenId == opendId).ToOneAsync(cancellationToken);
@@ -149,7 +160,7 @@ namespace XUCore.Template.WeChat.DbService.User.WeChatUser
             return mapper.Map<WeChatUserDto>(user);
         }
 
-        public override async Task<IList<WeChatUserDto>> GetListAsync(WeChatUserQueryCommand request, CancellationToken cancellationToken)
+        public async Task<IList<WeChatUserDto>> GetListAsync(WeChatUserQueryCommand request, CancellationToken cancellationToken)
         {
             var select = repo.Select
                   .Include(c => c.User)
@@ -167,7 +178,7 @@ namespace XUCore.Template.WeChat.DbService.User.WeChatUser
             return dto;
         }
 
-        public override async Task<PagedModel<WeChatUserDto>> GetPagedListAsync(WeChatUserQueryPagedCommand request, CancellationToken cancellationToken)
+        public async Task<PagedModel<WeChatUserDto>> GetPagedListAsync(WeChatUserQueryPagedCommand request, CancellationToken cancellationToken)
         {
             var res = await repo.Select
                    .Include(c => c.User)

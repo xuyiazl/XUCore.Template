@@ -46,4 +46,3 @@ namespace XUCore.Template.WeChat.DbService.Auth.Role
         }
     }
 }
-

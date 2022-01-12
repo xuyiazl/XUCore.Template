@@ -8,4 +8,3 @@
         public IList<MenuTreeDto> Childs { get; set; }
     }
 }
-
