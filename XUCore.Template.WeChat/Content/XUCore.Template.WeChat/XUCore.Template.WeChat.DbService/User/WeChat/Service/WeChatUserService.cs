@@ -4,7 +4,7 @@ using XUCore.Template.WeChat.Persistence.Entities.User;
 
 namespace XUCore.Template.WeChat.DbService.User.WeChatUser
 {
-    public class WeChatUserService : FreeSqlCurdService<long, UserWeChatEntity, WeChatUserDto, WeChatUserCreateCommand, WeChatUserUpdateInfoCommand, WeChatUserQueryCommand, WeChatUserQueryPagedCommand>,
+    public class WeChatUserService : FreeSqlCurdService<long, WeChatUserEntity, WeChatUserDto, WeChatUserCreateCommand, WeChatUserUpdateInfoCommand, WeChatUserQueryCommand, WeChatUserQueryPagedCommand>,
         IWeChatUserService
     {
         public WeChatUserService(IServiceProvider serviceProvider, FreeSqlUnitOfWorkManager muowm, IMapper mapper, IUserInfo UserWeChat) : base(muowm, mapper, UserWeChat)
@@ -12,13 +12,13 @@ namespace XUCore.Template.WeChat.DbService.User.WeChatUser
 
         }
 
-        public override async Task<UserWeChatEntity> CreateAsync(WeChatUserCreateCommand request, CancellationToken cancellationToken)
+        public override async Task<WeChatUserEntity> CreateAsync(WeChatUserCreateCommand request, CancellationToken cancellationToken)
         {
             var entity = await repo.Select.Where(c => c.OpenId == request.OpenId).ToOneAsync(cancellationToken);
 
             if (entity == null)
             {
-                entity = mapper.Map<WeChatUserCreateCommand, UserWeChatEntity>(request);
+                entity = mapper.Map<WeChatUserCreateCommand, WeChatUserEntity>(request);
 
                 var res = await repo.InsertAsync(entity, cancellationToken);
 
@@ -51,7 +51,7 @@ namespace XUCore.Template.WeChat.DbService.User.WeChatUser
 
         public async Task<int> UpdateAsync(WeChatUserUpdatePasswordCommand request, CancellationToken cancellationToken)
         {
-            var entity = await repo.Select.WhereDynamic(request.Id).ToOneAsync<UserWeChatEntity>(cancellationToken);
+            var entity = await repo.Select.WhereDynamic(request.Id).ToOneAsync<WeChatUserEntity>(cancellationToken);
 
             request.NewPassword = Encrypt.Md5By32(request.NewPassword);
             request.OldPassword = Encrypt.Md5By32(request.OldPassword);
@@ -59,7 +59,7 @@ namespace XUCore.Template.WeChat.DbService.User.WeChatUser
             if (!entity.Password.Equals(request.OldPassword))
                 Failure.Error("旧密码错误");
 
-            return await freeSql.Update<UserWeChatEntity>(request.Id).Set(c => new UserWeChatEntity { Password = request.NewPassword }).ExecuteAffrowsAsync(cancellationToken);
+            return await freeSql.Update<WeChatUserEntity>(request.Id).Set(c => new WeChatUserEntity { Password = request.NewPassword }).ExecuteAffrowsAsync(cancellationToken);
         }
 
         public async Task<int> UpdateAsync(long id, string field, string value, CancellationToken cancellationToken)
@@ -102,7 +102,7 @@ namespace XUCore.Template.WeChat.DbService.User.WeChatUser
         /// <returns></returns>
         public async Task<int> UpdateAsync(long[] ids, Status status, CancellationToken cancellationToken)
         {
-            var list = await repo.Select.Where(c => ids.Contains(c.Id)).ToListAsync<UserWeChatEntity>(cancellationToken);
+            var list = await repo.Select.Where(c => ids.Contains(c.Id)).ToListAsync<WeChatUserEntity>(cancellationToken);
 
             list.ForEach(c => c.Status = status);
 
@@ -111,7 +111,7 @@ namespace XUCore.Template.WeChat.DbService.User.WeChatUser
 
         public override async Task<int> DeleteAsync(long[] ids, CancellationToken cancellationToken)
         {
-            var res = await freeSql.Delete<UserWeChatEntity>(ids).ExecuteAffrowsAsync(cancellationToken);
+            var res = await freeSql.Delete<WeChatUserEntity>(ids).ExecuteAffrowsAsync(cancellationToken);
 
             if (res > 0)
             {
@@ -123,7 +123,7 @@ namespace XUCore.Template.WeChat.DbService.User.WeChatUser
 
         public async Task<WeChatUserDto> LoginAsync(WeChatUserLoginCommand request, CancellationToken cancellationToken)
         {
-            var user = default(UserWeChatEntity);
+            var user = default(WeChatUserEntity);
 
             request.Password = Encrypt.Md5By32(request.Password);
 
@@ -173,7 +173,7 @@ namespace XUCore.Template.WeChat.DbService.User.WeChatUser
                              c.Mobile.Contains(request.Keyword)
                         )
                 .OrderBy(request.OrderBy)
-                .ToPagedListAsync<UserWeChatEntity, WeChatUserDto>(request.CurrentPage, request.PageSize, cancellationToken);
+                .ToPagedListAsync<WeChatUserEntity, WeChatUserDto>(request.CurrentPage, request.PageSize, cancellationToken);
 
             return res.ToModel();
         }

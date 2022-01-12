@@ -7,7 +7,7 @@ namespace XUCore.Template.WeChat.DbService.User.WeChatUser
     /// <summary>
     /// 用户信息修改命令
     /// </summary>
-    public class WeChatUserUpdateInfoCommand : UpdateCommand<long>, IMapFrom<UserWeChatEntity>
+    public class WeChatUserUpdateInfoCommand : UpdateCommand<long>, IMapFrom<WeChatUserEntity>
     {
         /// <summary>
         /// 用户的昵称
@@ -48,7 +48,7 @@ namespace XUCore.Template.WeChat.DbService.User.WeChatUser
         }
 
         public void Mapping(Profile profile) =>
-            profile.CreateMap<WeChatUserUpdateInfoCommand, UserWeChatEntity>()
+            profile.CreateMap<WeChatUserUpdateInfoCommand, WeChatUserEntity>()
                 .ForMember(c => c.City, c => c.MapFrom(s => s.City.SafeString()))
                 .ForMember(c => c.Province, c => c.MapFrom(s => s.Province.SafeString()))
                 .ForMember(c => c.Country, c => c.MapFrom(s => s.Country.SafeString()))

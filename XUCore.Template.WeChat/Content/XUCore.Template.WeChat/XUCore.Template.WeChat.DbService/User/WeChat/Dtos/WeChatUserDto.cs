@@ -7,7 +7,7 @@ namespace XUCore.Template.WeChat.DbService.User.WeChatUser
     /// <summary>
     /// 用户信息
     /// </summary>
-    public class WeChatUserDto : DtoBase<UserWeChatEntity>
+    public class WeChatUserDto : DtoBase<WeChatUserEntity>
     {
         /// <summary>
         /// 只有在用户将公众号绑定到微信开放平台帐号后，才会出现该字段。详见：获取用户个人信息（UnionID机制）

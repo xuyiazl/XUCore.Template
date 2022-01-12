@@ -7,7 +7,7 @@ namespace XUCore.Template.WeChat.DbService.User.WeChatUser
     /// <summary>
     /// 创建用户命令
     /// </summary>
-    public class WeChatUserCreateCommand : CreateCommand, IMapFrom<UserWeChatEntity>
+    public class WeChatUserCreateCommand : CreateCommand, IMapFrom<WeChatUserEntity>
     {
         /// <summary>
         /// 只有在用户将公众号绑定到微信开放平台帐号后，才会出现该字段。详见：获取用户个人信息（UnionID机制）
@@ -74,7 +74,7 @@ namespace XUCore.Template.WeChat.DbService.User.WeChatUser
         }
 
         public void Mapping(Profile profile) =>
-            profile.CreateMap<WeChatUserCreateCommand, UserWeChatEntity>()
+            profile.CreateMap<WeChatUserCreateCommand, WeChatUserEntity>()
                 .ForMember(c => c.City, c => c.MapFrom(s => s.City.SafeString()))
                 .ForMember(c => c.Province, c => c.MapFrom(s => s.Province.SafeString()))
                 .ForMember(c => c.Country, c => c.MapFrom(s => s.Country.SafeString()))
