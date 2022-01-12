@@ -31,15 +31,19 @@ namespace XUCore.Template.WeChat.DbService.User.WeChatUser
             }
             else
             {
-                entity.NickName = request.NickName;
-                entity.City = request.City;
-                entity.Province = request.Province;
-                entity.Country = request.Country;
-                entity.Headimgurl = request.Headimgurl;
+                if (!entity.NickName.Equals(request.NickName) || !entity.Headimgurl.Equals(request.Headimgurl))
+                {
+                    entity.NickName = request.NickName;
+                    entity.Headimgurl = request.Headimgurl;
 
-                await repo.UpdateAsync(entity, cancellationToken);
+                    entity.City = request.City;
+                    entity.Province = request.Province;
+                    entity.Country = request.Country;
 
-                UpdatedAction?.Invoke(entity);
+                    await repo.UpdateAsync(entity, cancellationToken);
+
+                    UpdatedAction?.Invoke(entity);
+                }
             }
 
             return entity;

@@ -58,6 +58,9 @@ public class WeChatPageModel : PageModel
 
     public override async void OnPageHandlerExecuted(PageHandlerExecutedContext context)
     {
+        // 此处暂时每次进入页面授权后 拿用户信息 并建立账号
+        // 根据业务自行修改，拿信息的频繁度可以调整
+
         var user = Request.HttpContext.RequestServices.GetRequiredService<IWeChatUserAppService>();
 
         var info = await GetWeChatUserInfoAsync();

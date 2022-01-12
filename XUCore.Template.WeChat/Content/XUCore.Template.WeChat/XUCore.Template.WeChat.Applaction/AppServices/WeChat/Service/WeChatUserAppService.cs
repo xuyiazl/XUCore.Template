@@ -6,7 +6,7 @@ namespace XUCore.Template.WeChat.Applaction.WeChat
     /// <summary>
     /// 用户管理
     /// </summary>
-    public class WeChatUserAppService
+    public class WeChatUserAppService : IWeChatUserAppService
     {
         private readonly IWeChatUserService userService;
 
