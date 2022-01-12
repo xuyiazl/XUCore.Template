@@ -235,6 +235,17 @@ namespace XUCore.Template.WeChat.DbService.User.User
             return res;
         }
 
+        public async Task<IList<UserSimpleDto>> GetListAsync(CancellationToken cancellationToken)
+        {
+            var select = repo.Select
+                .Where(c => c.Status == Status.Show)
+                .OrderBy(c => c.Id);
+
+            var res = await select.ToListAsync<UserSimpleDto>(cancellationToken);
+
+            return res;
+        }
+
         public override async Task<PagedModel<UserDto>> GetPagedListAsync(UserQueryPagedCommand request, CancellationToken cancellationToken)
         {
             var res = await repo.Select

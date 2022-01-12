@@ -10,6 +10,10 @@ namespace XUCore.Template.WeChat.DbService.User.WeChatUser
     public class WeChatUserCreateCommand : CreateCommand, IMapFrom<WeChatUserEntity>
     {
         /// <summary>
+        /// 关联的管理员Id
+        /// </summary>
+        public long UserId { get; set; }
+        /// <summary>
         /// 只有在用户将公众号绑定到微信开放平台帐号后，才会出现该字段。详见：获取用户个人信息（UnionID机制）
         /// </summary>
         public string Unionid { get; set; }

@@ -81,6 +81,13 @@ namespace XUCore.Template.WeChat.Applaction.User
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         Task<bool> GetAnyAsync(AccountMode accountMode, string account, long notId, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// 获取所有用户精简信息
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        Task<IList<UserSimpleDto>> GetListAsync(CancellationToken cancellationToken);
         /// <summary>
         /// 获取账号分页
         /// </summary>

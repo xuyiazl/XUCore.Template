@@ -553,6 +553,11 @@
             微信用户表
             </summary>
         </member>
+        <member name="P:XUCore.Template.WeChat.Persistence.Entities.User.WeChatUserEntity.UserId">
+            <summary>
+            关联的管理员Id
+            </summary>
+        </member>
         <member name="P:XUCore.Template.WeChat.Persistence.Entities.User.WeChatUserEntity.Unionid">
             <summary>
             只有在用户将公众号绑定到微信开放平台帐号后，才会出现该字段。详见：获取用户个人信息（UnionID机制）
@@ -606,6 +611,11 @@
         <member name="P:XUCore.Template.WeChat.Persistence.Entities.User.WeChatUserEntity.Status">
             <summary>
             数据状态
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.Persistence.Entities.User.WeChatUserEntity.User">
+            <summary>
+            管理员用户
             </summary>
         </member>
         <member name="F:XUCore.Template.WeChat.Persistence.Enums.AccountMode.UserName">

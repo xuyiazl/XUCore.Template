@@ -120,6 +120,15 @@ namespace XUCore.Template.WeChat.Applaction.User
             return await userService.AnyByAccountAsync(accountMode, account, notId, cancellationToken);
         }
         /// <summary>
+        /// 获取所有用户精简信息
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public async Task<IList<UserSimpleDto>> GetListAsync(CancellationToken cancellationToken)
+        {
+            return await userService.GetListAsync(cancellationToken);
+        }
+        /// <summary>
         /// 获取账号分页
         /// </summary>
         /// <param name="request"></param>

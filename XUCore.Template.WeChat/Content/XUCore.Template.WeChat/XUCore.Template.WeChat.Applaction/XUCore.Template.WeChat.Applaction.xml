@@ -993,6 +993,13 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
+        <member name="M:XUCore.Template.WeChat.Applaction.User.IUserAppService.GetListAsync(System.Threading.CancellationToken)">
+            <summary>
+            获取所有用户精简信息
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
         <member name="M:XUCore.Template.WeChat.Applaction.User.IUserAppService.GetPageAsync(XUCore.Template.WeChat.DbService.User.User.UserQueryPagedCommand,System.Threading.CancellationToken)">
             <summary>
             获取账号分页
@@ -1351,6 +1358,13 @@
             <param name="accountMode"></param>
             <param name="account"></param>
             <param name="notId"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUCore.Template.WeChat.Applaction.User.UserAppService.GetListAsync(System.Threading.CancellationToken)">
+            <summary>
+            获取所有用户精简信息
+            </summary>
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>

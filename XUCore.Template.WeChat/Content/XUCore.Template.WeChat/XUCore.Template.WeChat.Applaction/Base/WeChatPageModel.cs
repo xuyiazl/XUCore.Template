@@ -67,6 +67,7 @@ public class WeChatPageModel : PageModel
 
         await user.CreateAsync(new()
         {
+            UserId = 0,
             Unionid = info.Unionid,
             OpenId = info.OpenId,
             Mobile = string.Empty,

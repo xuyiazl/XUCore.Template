@@ -89,6 +89,9 @@ namespace XUCore.Template.WeChat.DbService.User.WeChatUser
                 case "sex":
                     entity.Sex = value.ToInt();
                     break;
+                case "userid":
+                    entity.UserId = value.ToInt();
+                    break;
             }
 
             return await repo.UpdateAsync(entity, cancellationToken);
@@ -149,33 +152,35 @@ namespace XUCore.Template.WeChat.DbService.User.WeChatUser
         public override async Task<IList<WeChatUserDto>> GetListAsync(WeChatUserQueryCommand request, CancellationToken cancellationToken)
         {
             var select = repo.Select
-                .WhereIf(request.Status != Status.Default, c => c.Status == request.Status)
-                .WhereIf(request.Keyword.NotEmpty(), c =>
-                             c.NickName.Contains(request.Keyword) ||
-                             c.Mobile.Contains(request.Keyword)
-                        )
-                .OrderBy(c => c.Id);
+                  .Include(c => c.User)
+                  .WhereIf(request.Status != Status.Default, c => c.Status == request.Status)
+                  .WhereIf(request.Keyword.NotEmpty(), c => c.NickName.Contains(request.Keyword) || c.Mobile.Contains(request.Keyword))
+                  .OrderBy(c => c.CreatedAt);
 
             if (request.Limit > 0)
                 select = select.Take(request.Limit);
 
-            var res = await select.ToListAsync<WeChatUserDto>(cancellationToken);
+            var res = await select.ToListAsync(cancellationToken: cancellationToken);
 
-            return res;
+            var dto = mapper.Map<IList<WeChatUserEntity>, IList<WeChatUserDto>>(res);
+
+            return dto;
         }
 
         public override async Task<PagedModel<WeChatUserDto>> GetPagedListAsync(WeChatUserQueryPagedCommand request, CancellationToken cancellationToken)
         {
             var res = await repo.Select
-                .WhereIf(request.Status != Status.Default, c => c.Status == request.Status)
-                .WhereIf(request.Keyword.NotEmpty(), c =>
-                             c.NickName.Contains(request.Keyword) ||
-                             c.Mobile.Contains(request.Keyword)
-                        )
-                .OrderBy(request.OrderBy)
-                .ToPagedListAsync<WeChatUserEntity, WeChatUserDto>(request.CurrentPage, request.PageSize, cancellationToken);
+                   .Include(c => c.User)
+                   .WhereIf(request.Status != Status.Default, (c) => c.Status == request.Status)
+                   .WhereIf(request.Keyword.NotEmpty(), c => c.NickName.Contains(request.Keyword) || c.Mobile.Contains(request.Keyword))
+                   .OrderByDescending((c) => c.CreatedAt)
+                   .Count(out long count)
+                   .Page(request.CurrentPage, request.PageSize)
+                   .ToListAsync(cancellationToken: cancellationToken);
 
-            return res.ToModel();
+            var dto = mapper.Map<IList<WeChatUserEntity>, IList<WeChatUserDto>>(res);
+
+            return new PagedModel<WeChatUserDto>(dto, count, request.CurrentPage, request.PageSize);
         }
     }
 }

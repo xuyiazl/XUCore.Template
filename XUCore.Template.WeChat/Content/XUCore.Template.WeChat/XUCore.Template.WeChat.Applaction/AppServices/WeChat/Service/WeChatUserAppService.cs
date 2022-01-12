@@ -1,4 +1,6 @@
-﻿using XUCore.Template.WeChat.DbService.User.WeChatUser;
+﻿using XUCore.Template.WeChat.Applaction.Login;
+using XUCore.Template.WeChat.Core;
+using XUCore.Template.WeChat.DbService.User.WeChatUser;
 using XUCore.Template.WeChat.Persistence.Enums;
 
 namespace XUCore.Template.WeChat.Applaction.WeChat
@@ -9,10 +11,14 @@ namespace XUCore.Template.WeChat.Applaction.WeChat
     public class WeChatUserAppService : IWeChatUserAppService
     {
         private readonly IWeChatUserService userService;
+        private readonly ILoginAppService loginAppService;
+        private readonly IUserInfo userInfo;
 
         public WeChatUserAppService(IServiceProvider serviceProvider)
         {
             this.userService = serviceProvider.GetRequiredService<IWeChatUserService>();
+            this.loginAppService = serviceProvider.GetRequiredService<ILoginAppService>();
+            this.userInfo = serviceProvider.GetRequiredService<IUserInfo>();
         }
 
         /// <summary>
@@ -111,7 +117,16 @@ namespace XUCore.Template.WeChat.Applaction.WeChat
         /// <returns></returns>
         public async Task<PagedModel<WeChatUserDto>> GetPageAsync(WeChatUserQueryPagedCommand request, CancellationToken cancellationToken = default)
         {
-            return await userService.GetPagedListAsync(request, cancellationToken);
+            var res = await userService.GetPagedListAsync(request, cancellationToken);
+
+            if (!await loginAppService.GetPermissionExistsAsync(userInfo.UserId, "wechat-mobile"))
+            {
+                res.Items.ForEach(c =>
+                {
+                    c.Mobile = c.Mobile.EncryptPhone();
+                });
+            }
+            return res;
         }
     }
 }

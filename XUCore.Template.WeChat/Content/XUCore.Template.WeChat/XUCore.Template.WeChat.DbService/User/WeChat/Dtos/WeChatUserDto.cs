@@ -1,6 +1,7 @@
 ﻿using XUCore.Template.WeChat.Core;
 using XUCore.Template.WeChat.Persistence.Enums;
 using XUCore.Template.WeChat.Persistence.Entities.User;
+using XUCore.Template.WeChat.DbService.User.User;
 
 namespace XUCore.Template.WeChat.DbService.User.WeChatUser
 {
@@ -9,6 +10,10 @@ namespace XUCore.Template.WeChat.DbService.User.WeChatUser
     /// </summary>
     public class WeChatUserDto : DtoBase<WeChatUserEntity>
     {
+        /// <summary>
+        /// 关联的管理员Id
+        /// </summary>
+        public long UserId { get; set; }
         /// <summary>
         /// 只有在用户将公众号绑定到微信开放平台帐号后，才会出现该字段。详见：获取用户个人信息（UnionID机制）
         /// </summary>
@@ -58,6 +63,11 @@ namespace XUCore.Template.WeChat.DbService.User.WeChatUser
         /// 数据状态
         /// </summary>
         public Status Status { get; set; }
+
+        /// <summary>
+        /// 管理员信息
+        /// </summary>
+        public UserSimpleDto User { get; set; }
     }
 }
 

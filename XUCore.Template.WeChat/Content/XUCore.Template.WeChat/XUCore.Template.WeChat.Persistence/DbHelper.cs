@@ -290,6 +290,20 @@ namespace XUCore.Template.WeChat.Persistence
                                 new MenuEntity {Name = "删除",Url = "#",OnlyCode = "sys-notice-delete",Weight = 7,IsMenu = false,IsExpress = false,Status =  Status.Show},
                                 new MenuEntity {Name = "列表",Url = "#",OnlyCode = "sys-notice-list",Weight = 6,IsMenu = false,IsExpress = false,Status =  Status.Show}
                             }
+                        },
+                        new MenuEntity {
+                            Name = "微信用户",
+                            Icon = "fa fa-user text-dark",
+                            Url = "/admin/wechat/list",
+                            OnlyCode = "wechat-user",
+                            Weight = 98,
+                            IsMenu = true,
+                            IsExpress = false,
+                             Status =  Status.Show,
+                            Childs = new List<MenuEntity>{
+                                new MenuEntity {Name = "手机号码",Url = "#",OnlyCode = "wechat-mobile",Weight = 9,IsMenu = false,IsExpress = false,Status =  Status.Show},
+                                new MenuEntity {Name = "用户跟进",Url = "#",OnlyCode = "wechat-genjin",Weight = 8,IsMenu = false,IsExpress = false,Status =  Status.Show}
+                            }
                         }
                     }
                         },

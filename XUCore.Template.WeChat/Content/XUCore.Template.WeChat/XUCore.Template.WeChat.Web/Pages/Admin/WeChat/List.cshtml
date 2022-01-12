@@ -1,0 +1,280 @@
+﻿@page
+@model XUCore.Template.WeChat.Web.Pages.Admin.WeChat.ListModel
+
+@{
+    Layout = "~/Pages/Admin/Shared/_LayoutAdminiFrame.cshtml";
+}
+@section Scripts{
+
+<script type="text/javascript">
+    $(function () {
+        "use strict";
+
+        var $table = $('#table');
+
+            var Sex = function (value) {
+                switch (value) {
+                    case 1: return '男';
+                    case 2: return '女';
+                    case 0: return '-';
+                    default: return '';
+                }
+            }
+
+        createTable($table, {
+            url: '?handler=PageList',
+            columns: [
+                { field: 'User.Name', title: '跟进人员', align: 'center', width: 120 },
+                {
+                    field: 'Headimgurl', title: '头像', sortable: false, align: 'center', width: 60,formatter:function(val,row){
+                        return '<article class="media"><span class="pull-left thumb-sm"><img src="' + row.Headimgurl + '" alt="..."></span></article>';
+                    }
+                },
+                { field: 'NickName', title: '昵称', sortable: false, align: 'left'},
+                {
+                    field: 'Sex', title: '性别', sortable: false, align: 'center',formatter:function(val,row){
+                        return  Sex(row.Sex);
+                    }
+                },
+                { field: 'Mobile', title: '手机号码', sortable: false, width: 120, align: 'center'},
+                {
+                    field: 'City', title: '所在地区', sortable: false, align: 'left',formatter:function(val,row){
+                        return row.Country + '/' + row.Province + '/' + row.City;
+                    }
+                },
+            ],
+            defaultColumn: {
+                check: true,
+                operate: true,
+                weight: false,
+                status: true,
+                create: true,
+                update: true
+            },
+            queryParams: function (params) {
+                params.status = $('input[type=radio][name=Status]:checked').val();
+                params.field = $('input[type=radio][name=field]:checked').val();
+                params.search = $('#search').val();
+                return params;
+            },
+            onContextMenuItem: function (row, $el) {
+                var item = $el.data('item');
+                switch (item) {
+                    case 'admin':
+                        $adminModal.data('id', row.Id);
+                        $adminModal.modal('show');
+                        $('select[name=AdminUserId]').val(row.UserId);
+                        $('select[name=AdminUserId]').trigger("chosen:updated");
+                        break;
+                    case 'publish':
+                        show.confirm(function () {
+                            putStatus({ table: $table, status: statusModel.show, batch: false, id: row.Id })
+                        });
+                        break;
+                    case 'trash':
+                        show.confirm(function () {
+                            putStatus({ table: $table, status: statusModel.trash, batch: false, id: row.Id })
+                        });
+                        break;
+                    case 'soldout':
+                        show.confirm(function () {
+                            putStatus({ table: $table, status: statusModel.soldout, batch: false, id: row.Id })
+                        });
+                        break;
+                    case 'delete':
+                        show.confirm(function () {
+                            deleteRecords({ table: $table, batch: false, id: row.Id })
+                        });
+                        break;
+                }
+            }
+        });
+
+
+        $('.btnRefresh').click(function () {
+            $table.bootstrapTable('refresh', { silent: true });
+            return false;
+        });
+        $('#statusContainer li').on('click.bs.dropdown', function () {
+            window.setTimeout(function () {
+                $table.bootstrapTable('refresh', { silent: true });
+            }, 50)
+        })
+
+        $('#search').keyup(function () {
+            if (event.keyCode == 13) {
+                $table.bootstrapTable('refresh', { silent: true });
+            }
+        });
+
+        $('#btnPublish').click(function () {
+            show.confirm(function () {
+                putStatus({ table: $table, status: statusModel.show })
+            });
+            return false;
+        });
+        $('#btnTrash').click(function () {
+            show.confirm(function () {
+                putStatus({ table: $table, status: statusModel.trash })
+            });
+            return false;
+        });
+        $('#btnSoldOut').click(function () {
+            show.confirm(function () {
+                putStatus({ table: $table, status: statusModel.soldout })
+            });
+            return false;
+        });
+
+        $('#btnDelete').click(function () {
+            show.confirm(function () {
+                deleteRecords({ table: $table })
+            });
+            return false;
+        });
+
+        var $adminModal = $('#admin-modal');
+        var $adminForm = $('#admin-form');
+
+        $adminForm.parsleyForm({
+            submit: function (formData) {
+                $.ajax({
+                    url: '?handler=UpdateField',
+                    type: "PUT",
+                    data: { id: $adminModal.data('id'), field: 'UserId', value: formData['AdminUserId'] },
+                    success: function (result) {
+                        if (result.Code == 0) {
+                            $adminModal.data('id', 0);
+                            $adminModal.modal('hide');
+                            $table.bootstrapTable('refresh', { silent: true });
+                        } else {
+                            show.error("操作提示", result.Message);
+                        }
+                    }
+                });
+            }
+        });
+    });
+</script>
+}
+
+<section class="panel panel-default padder m-t text-sm">
+    <div class="table-responsive">
+        <div id="custom-toolbar">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="btn-group btn-group-sm" style="display:inline;">
+                        <div class="btn-group btn-group-sm">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-edit m-r-xs"></i>数据操作
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li asp-access asp-access-key="sys-admin-edit">
+                                    <a href="#" id="btnPublish"><i class="fa fa-check m-r-xs"></i>允许登录</a>
+                                </li>
+                                <li asp-access asp-access-key="sys-admin-edit">
+                                    <a href="#" id="btnSoldOut"><i class="fa fa-eye-slash m-r-xs"></i>禁止登录</a>
+                                </li>
+                                <li asp-access asp-access-key="sys-admin-edit">
+                                    <a href="#" id="btnTrash"><i class="fa fa-trash-o m-r-xs"></i>扔回收站</a>
+                                </li>
+                                <li asp-access asp-access-key="sys-admin-delete" class="divider"></li>
+                                <li asp-access asp-access-key="sys-admin-delete">
+                                    <a href="#" id="btnDelete"><i class="fa fa-ban m-r-xs"></i>永久删除</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <a href="#" class="btn btn-default btnRefresh"><i class="fa fa-refresh m-r-xs"></i>刷新</a>
+                    </div>
+                    <div class="input-group input-group-sm" style="width: 250px; padding-left: 10px;">
+                        @*<div class="input-group-btn">
+                            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <span class="dropdown-label">姓名</span>
+                            <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-select text-sm">
+                            <li>
+                            <input type="radio" value="Name" name="field" checked="checked" /><a href="#">姓名</a>
+                            </li>
+                            <li>
+                            <input type="radio" value="Mobile" name="field" /><a href="#">手机号码</a>
+                            </li>
+                            <li>
+                            <input type="radio" value="UserName" name="field" /><a href="#">帐号</a>
+                            </li>
+                            </ul>
+                            </div>*@
+                        <div class="input-group-btn m-r" id="statusContainer">
+                            <button data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle">
+                                <span class="dropdown-label">全部数据</span>
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-select">
+                                @foreach (var item in XUCore.Helpers.Enum.GetDictionary<Status>())
+                                {
+                                    <li>
+                                        @Html.RadioButton("Status", item.Key)
+                                        <a href="#">@item.Value</a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                        <input type="text" id="search" class="form-control" placeholder="输入关键词后回车..." />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul id="context-menu" class="dropdown-menu text-sm">
+            <li data-item="admin" asp-access asp-access-key="wechat-genjin">
+                <a href="#"><i class="fa fa-user m-r-xs"></i>销售跟进</a>
+            </li>
+            <li data-item="publish" asp-access asp-access-key="wechat-user">
+                <a href="#"><i class="fa fa-check m-r-xs"></i>允许登录</a>
+            </li>
+            <li data-item="soldout" asp-access asp-access-key="wechat-user">
+                <a href="#"><i class="fa fa-eye-slash m-r-xs"></i>禁止登录</a>
+            </li>
+            <li data-item="trash" asp-access asp-access-key="wechat-user">
+                <a href="#"><i class="fa fa-trash-o m-r-xs"></i>扔回收站</a>
+            </li>
+            @*<li asp-access asp-access-key="sys-admin-delete" class="divider"></li>
+                <li data-item="delete" asp-access asp-access-key="wechat-user">
+                <a href="#"><i class="fa fa-ban m-r-xs"></i>永久删除</a>
+                </li>*@
+        </ul>
+
+        <table id="table"></table>
+    </div>
+
+    <!--更新跟进销售-->
+    <div class="modal fade text-sm" id="admin-modal">
+        <div class="modal-dialog" style="width: 500px;">
+            <form id="admin-form" class="form-horizontal" data-parsley-validate="true">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 class="modal-title"><i class="fa fa-bullhorn"></i>&nbsp;更改跟进销售</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group m-b-none">
+                            <label class="col-xs-3 control-label">跟进销售</label>
+                            <div class="col-xs-9">
+                                <select class="chosen-select" name="AdminUserId" style="width:100%">
+                                    @foreach (var item in Model.AdminUsers)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="margin-top: 0;">
+                        <a href="javascript:;" class="btn btn-default" data-dismiss="modal">关闭</a>
+                        <button type="submit" class="btn btn-primary">保存数据</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

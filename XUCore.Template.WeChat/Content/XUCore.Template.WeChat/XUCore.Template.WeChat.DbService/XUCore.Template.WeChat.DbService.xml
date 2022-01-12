@@ -1322,6 +1322,16 @@
             用户头像
             </summary>
         </member>
+        <member name="T:XUCore.Template.WeChat.DbService.User.User.UserSimpleDto">
+            <summary>
+            用户信息
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.User.UserSimpleDto.Name">
+            <summary>
+            名字
+            </summary>
+        </member>
         <member name="M:XUCore.Template.WeChat.DbService.User.User.UserService.UpdateAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
             <summary>
             更新状态
@@ -1334,6 +1344,11 @@
         <member name="T:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserCreateCommand">
             <summary>
             创建用户命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserCreateCommand.UserId">
+            <summary>
+            关联的管理员Id
             </summary>
         </member>
         <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserCreateCommand.Unionid">
@@ -1436,11 +1451,6 @@
             状态
             </summary>
         </member>
-        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserQueryPagedCommand.OrderBy">
-            <summary>
-            排序
-            </summary>
-        </member>
         <member name="T:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserUpdateInfoCommand">
             <summary>
             用户信息修改命令
@@ -1496,6 +1506,11 @@
             用户信息
             </summary>
         </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserDto.UserId">
+            <summary>
+            关联的管理员Id
+            </summary>
+        </member>
         <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserDto.Unionid">
             <summary>
             只有在用户将公众号绑定到微信开放平台帐号后，才会出现该字段。详见：获取用户个人信息（UnionID机制）
@@ -1544,6 +1559,11 @@
         <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserDto.Status">
             <summary>
             数据状态
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserDto.User">
+            <summary>
+            管理员信息
             </summary>
         </member>
         <member name="M:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserService.UpdateAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">

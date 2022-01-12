@@ -15,6 +15,8 @@ namespace XUCore.Template.WeChat.DbService.User.User
         Task<int> UpdateAsync(long id, string field, string value, CancellationToken cancellationToken);
         Task<int> UpdateAsync(long[] ids, Status status, CancellationToken cancellationToken);
 
+        Task<IList<UserSimpleDto>> GetListAsync(CancellationToken cancellationToken);
+
         Task<IList<UserLoginRecordDto>> GetRecordListAsync(UserLoginRecordQueryCommand request, CancellationToken cancellationToken);
 
         Task<PagedModel<UserLoginRecordDto>> GetRecordPagedListAsync(UserLoginRecordQueryPagedCommand request, CancellationToken cancellationToken);

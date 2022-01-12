@@ -15,10 +15,10 @@ namespace XUCore.Template.WeChat.DbService.User.WeChatUser
         /// 状态
         /// </summary>
 		public Status Status { get; set; }
-        /// <summary>
-        /// 排序
-        /// </summary>
-        public string OrderBy { get; set; }
+        ///// <summary>
+        ///// 排序
+        ///// </summary>
+        //public string OrderBy { get; set; }
 
         public override bool IsVaild()
         {
