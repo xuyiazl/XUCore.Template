@@ -1,7 +1,9 @@
-﻿using Magicodes.Wx.PublicAccount.Sdk.Apis.Sns;
+﻿using Magicodes.Wx.PublicAccount.Sdk;
+using Magicodes.Wx.PublicAccount.Sdk.Apis.Sns;
 using Magicodes.Wx.PublicAccount.Sdk.AspNet;
-using Magicodes.Wx.PublicAccount.Sdk;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using XUCore.Template.WeChat.Applaction.WeChat;
+using XUCore.Template.WeChat.Persistence.Enums;
 
 namespace XUCore.Template.WeChat.Applaction;
 
@@ -52,6 +54,33 @@ public class WeChatPageModel : PageModel
         var result = await snsApi.GetUserInfoAsync(WebAccessToken, OpenId);
         result.EnsureSuccess();
         return result;
+    }
+
+    public override async void OnPageHandlerExecuted(PageHandlerExecutedContext context)
+    {
+        var user = Request.HttpContext.RequestServices.GetRequiredService<IWeChatUserAppService>();
+
+        var info = await GetWeChatUserInfoAsync();
+
+        await user.CreateAsync(new()
+        {
+            Unionid = info.Unionid,
+            OpenId = info.OpenId,
+            Mobile = string.Empty,
+            Password = string.Empty,
+
+            City = info.City,
+            Province = info.Province,
+            Country = info.Country,
+
+            Headimgurl = info.Headimgurl,
+            NickName = info.NickName,
+            Sex = (int)info.Sex,
+
+            Status = Status.Show
+        });
+
+        base.OnPageHandlerExecuted(context);
     }
 }
 

@@ -1331,5 +1331,229 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
+        <member name="T:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserCreateCommand">
+            <summary>
+            创建用户命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserCreateCommand.Unionid">
+            <summary>
+            只有在用户将公众号绑定到微信开放平台帐号后，才会出现该字段。详见：获取用户个人信息（UnionID机制）
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserCreateCommand.OpenId">
+            <summary>
+            用户的标识，对当前公众号唯一
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserCreateCommand.Mobile">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserCreateCommand.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserCreateCommand.NickName">
+            <summary>
+            用户的昵称
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserCreateCommand.Sex">
+            <summary>
+             用户的性别，值为1时是男性，值为2时是女性，值为0时是未知
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserCreateCommand.City">
+            <summary>
+            用户所在城市
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserCreateCommand.Province">
+            <summary>
+            用户所在省份
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserCreateCommand.Country">
+            <summary>
+            用户所在国家
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserCreateCommand.Headimgurl">
+            <summary>
+            用户头像，最后一个数值代表正方形头像大小（有0、46、64、96、132数值可选，0代表640*640正方形头像），用户没有头像时该项为空。若用户更换头像，原有头像URL将失效。
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserCreateCommand.Status">
+            <summary>
+            数据状态
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserLoginCommand">
+            <summary>
+            登录命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserLoginCommand.Mobile">
+            <summary>
+            手机
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserLoginCommand.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserQueryCommand">
+            <summary>
+            用户查询
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserQueryCommand.Keyword">
+            <summary>
+            搜索关键字
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserQueryCommand.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserQueryPagedCommand">
+            <summary>
+            用户查询分页
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserQueryPagedCommand.Keyword">
+            <summary>
+            搜索关键字
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserQueryPagedCommand.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserQueryPagedCommand.OrderBy">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserUpdateInfoCommand">
+            <summary>
+            用户信息修改命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserUpdateInfoCommand.NickName">
+            <summary>
+            用户的昵称
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserUpdateInfoCommand.Sex">
+            <summary>
+             用户的性别，值为1时是男性，值为2时是女性，值为0时是未知
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserUpdateInfoCommand.City">
+            <summary>
+            用户所在城市
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserUpdateInfoCommand.Province">
+            <summary>
+            用户所在省份
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserUpdateInfoCommand.Country">
+            <summary>
+            用户所在国家
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserUpdateInfoCommand.Headimgurl">
+            <summary>
+            用户头像，最后一个数值代表正方形头像大小（有0、46、64、96、132数值可选，0代表640*640正方形头像），用户没有头像时该项为空。若用户更换头像，原有头像URL将失效。
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserUpdatePasswordCommand">
+            <summary>
+            密码修改命令
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserUpdatePasswordCommand.OldPassword">
+            <summary>
+            旧密码
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserUpdatePasswordCommand.NewPassword">
+            <summary>
+            新密码
+            </summary>
+        </member>
+        <member name="T:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserDto">
+            <summary>
+            用户信息
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserDto.Unionid">
+            <summary>
+            只有在用户将公众号绑定到微信开放平台帐号后，才会出现该字段。详见：获取用户个人信息（UnionID机制）
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserDto.OpenId">
+            <summary>
+            用户的标识，对当前公众号唯一
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserDto.Mobile">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserDto.NickName">
+            <summary>
+            用户的昵称
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserDto.Sex">
+            <summary>
+             用户的性别，值为1时是男性，值为2时是女性，值为0时是未知
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserDto.City">
+            <summary>
+            用户所在城市
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserDto.Province">
+            <summary>
+            用户所在省份
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserDto.Country">
+            <summary>
+            用户所在国家
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserDto.Headimgurl">
+            <summary>
+            用户头像，最后一个数值代表正方形头像大小（有0、46、64、96、132数值可选，0代表640*640正方形头像），用户没有头像时该项为空。若用户更换头像，原有头像URL将失效。
+            </summary>
+        </member>
+        <member name="P:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserDto.Status">
+            <summary>
+            数据状态
+            </summary>
+        </member>
+        <member name="M:XUCore.Template.WeChat.DbService.User.WeChatUser.WeChatUserService.UpdateAsync(System.Int64[],XUCore.Template.WeChat.Persistence.Enums.Status,System.Threading.CancellationToken)">
+            <summary>
+            更新状态
+            </summary>
+            <param name="ids"></param>
+            <param name="status"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

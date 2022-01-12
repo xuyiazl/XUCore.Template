@@ -66,7 +66,4 @@
 	  <None Remove="Magicodes.Wx.PublicAccount.Sdk.AspNet" />
 	  <None Remove="AppServices\WeChat\" />
 	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="AppServices\WeChat\" />
-	</ItemGroup>
 </Project>
