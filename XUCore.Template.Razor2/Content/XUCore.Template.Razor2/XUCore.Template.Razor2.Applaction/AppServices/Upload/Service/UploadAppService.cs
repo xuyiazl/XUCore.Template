@@ -60,12 +60,11 @@ namespace XUCore.Template.Razor2.Applaction.Upload
             {
                 Request = Web.Request,
                 FormFile = imgFile,
-                RootPath = appSettings.LocalPath,
+                RootPath = Web.WebRootPath,
                 Module = "upload",
                 Group = "image",
                 IsCutOriginal = cutorgin,
                 AutoCutSize = autocutsize,
-                ThumbCutMode = ThumbnailMode.Cut,
                 Thumbs = thumbs.SafeString().Split(",", true).ToList()
             };
 
@@ -100,7 +99,7 @@ namespace XUCore.Template.Razor2.Applaction.Upload
             var param = new SingleImageBase64UploadParam()
             {
                 Base64String = request.Base64,
-                RootPath = appSettings.LocalPath,
+                RootPath = Web.WebRootPath,
                 Module = "upload",
                 Group = "image",
 
@@ -114,7 +113,6 @@ namespace XUCore.Template.Razor2.Applaction.Upload
                 Ratio = 70,
                 Quality = 100,
 
-                //ThumbCutMode = ThumbnailMode.Cut,
                 //Thumbs = new List<string> { "200x200", "400x400" },
             };
 

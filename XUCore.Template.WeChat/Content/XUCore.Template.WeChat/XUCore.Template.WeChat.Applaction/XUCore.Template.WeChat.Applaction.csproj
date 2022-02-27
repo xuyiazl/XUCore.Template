@@ -12,7 +12,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Essensoft.Paylink.WeChatPay" Version="4.0.8" />
-		<PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.2" />
 		<PackageReference Include="Magicodes.Wx.PublicAccount.Sdk.AspNet" Version="0.2.8" />
 	</ItemGroup>
 	

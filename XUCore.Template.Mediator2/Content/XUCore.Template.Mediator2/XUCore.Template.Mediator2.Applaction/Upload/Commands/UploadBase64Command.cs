@@ -59,7 +59,6 @@ public class UploadBase64CommandHandler : CommandHandler<UploadBase64Command, Re
             Ratio = 50,
             Quality = 100,
 
-            //ThumbCutMode = ThumbnailMode.Cut,
             //Thumbs = new List<string> { "200x200", "400x400" },
         };
 

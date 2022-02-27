@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
 	<metadata>
-		<id>XUCore.Template.Razor</id>
+		<id>XUCore.Template.WeChat</id>
 		<version>6.1.0</version>
-		<description>Razor WebSite</description>
+		<description>Razor WeChat WebSite</description>
 		<authors>XUCore</authors>
 		<copyright>Copyright © XUCore 2020</copyright>
 		<projectUrl>https://github.com/xuyiazl/XUCore.Template</projectUrl>

@@ -49,7 +49,6 @@ public class UploadImageCommandHandler : CommandHandler<UploadImageCommand, Resu
             Ratio = 50,
             Quality = 100,
 
-            //ThumbCutMode = ThumbnailMode.Cut,
             //Thumbs = new List<string> { "200x300", "400x200" },
         };
 

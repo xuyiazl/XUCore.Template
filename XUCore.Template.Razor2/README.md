@@ -22,7 +22,7 @@ dotnet new -u xrazor2
 
 ```bash
 
-dotnet new --install XUCore.Template.Razor2::6.0.9
+dotnet new --install XUCore.Template.Razor2::6.1.0
 
 ```
 

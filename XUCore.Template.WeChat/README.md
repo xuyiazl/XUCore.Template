@@ -22,7 +22,7 @@ dotnet new -u xrazor2
 
 ```bash
 
-dotnet new --install XUCore.Template.WeChat::6.0.0
+dotnet new --install XUCore.Template.WeChat::6.1.0
 
 ```
 

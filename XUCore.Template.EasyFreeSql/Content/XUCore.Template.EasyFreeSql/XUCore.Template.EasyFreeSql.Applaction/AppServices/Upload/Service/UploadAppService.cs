@@ -69,7 +69,6 @@ namespace XUCore.Template.EasyFreeSql.Applaction.Upload
                 Ratio = 50,
                 Quality = 100,
 
-                //ThumbCutMode = ThumbnailMode.Cut,
                 //Thumbs = new List<string> { "200x300", "400x200" },
             };
 
@@ -112,7 +111,6 @@ namespace XUCore.Template.EasyFreeSql.Applaction.Upload
                 Ratio = 50,
                 Quality = 100,
 
-                //ThumbCutMode = ThumbnailMode.Cut,
                 //Thumbs = new List<string> { "200x200", "400x400" },
             };
 
